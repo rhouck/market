@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+
+
+{% block body %}
+	
+<div class="strip" id="content">
+
+	<div class="container">
+			 
+        <div class="row">
+	    	
+	    	<div class="span8">
+	    	
+	        	<div class="inner">
+	        	
+	        		
+	        	
+              	<h3>Our style team sources today's established and up-and-coming brands. We find items that current girlfriends and wives wished their men would buy for them.</h3>
+
+              	<h3>We work with many brands but we make the process easy for you by showing you only a small selection at a time. The information you provide about your significant other at signup and the ratings you give previous gifts we've sent help us tailor future gifts for your lady's taste. Our service just get's better with time.</h3>
+
+              	<h3>If you have products you think we should offer our customers, please reach out to us. You can reach us by clicking the question mark on the bottom left of the screen. We get many requests so it may take some time to reply, but we'll do so as quickly as possible.</h3>
+
+				
+				{% if request.GET.ref %}
+		    		<a href="{% url 'signup' %}?ref={{ request.GET.ref }}">
+			        	<div class="form-row">
+			        		<input type="submit" class="btn" value="Get Started for Free" style="background-color: #0fba52;"/>
+			     		</div>
+			      </a>
+		    	{% else %}
+		    		<a href="{% url 'signup' %}">
+			        	<div class="form-row">
+			        		<input type="submit" class="btn" value="Get Started for Free" style="background-color: #0fba52;"/>
+			     		</div>
+			      </a>
+		    	{% endif %}
+  	
+
+
+               
+
+
+
+	   
+		    </div>
+	    	
+	    	</div>  
+	    
+	    	<div class="clearfix"></div>
+	    	        	
+	    </div>
+
+	</div>
+
+</div> 
+
+{% endblock %}

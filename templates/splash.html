@@ -1,0 +1,239 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+
+{% block head %}
+
+{% endblock %}
+
+
+{% block body %}
+<div class="strip" id="content">
+    
+	<!-- End content -->	
+	
+	<div class="clearfix"></div> 	
+
+	<div class="container">
+			 
+        <div class="row">
+	    	
+	    	<div class="span12">
+	    	
+	        	<div class="inner align-center">
+	        	
+	        
+	    			</br></br>
+		        	<h1>We find gifts for your girl.</h1>
+					<h3>Sign up to automate the way you keep her happy.</h3>
+		        	</br>
+		        	{% if request.GET.ref %}
+			    		<a href="{% url 'signup' %}?ref={{ request.GET.ref }}">
+				        	<div class="form-row">
+				        		<input type="submit" class="btn" value="Get Started for Free" style="background-color: #0fba52;"/>
+				     		</div>
+				      </a>
+			    	{% else %}
+			    		<a href="{% url 'signup' %}">
+				        	<div class="form-row">
+				        		<input type="submit" class="btn" value="Get Started for Free" style="background-color: #0fba52;"/>
+				     		</div>
+				      </a>
+			    	{% endif %}
+
+		        	
+		        </div>
+	    	
+	    	</div> 
+	    </div>
+	    <div class="row">		        	
+	    </div>
+
+	</div>
+</div>
+
+<div class="strip" id="content">
+    
+	<!-- End content -->	
+	
+	<div class="clearfix"></div> 	
+
+	<div class="container">
+		<div class="row">		        	
+	    	<div class="span12">
+	    		
+		    	</br></br>
+	    		<h1>Heres how it works</h1>	
+		    	
+	    	</div>
+	    </div>
+        <div class="row">
+
+	    	<div class="span4">
+	    	
+	        	<div class="inner">
+	        	
+	        		
+	    	
+		        	<h3><span class="glyph-item icon-user-female" aria-hidden="true" ></span> Tell us about her</h3>
+		        	
+		        	<p>Gifts need to be personalized. You offer her demographic info and her facebook, pinterest, or other social media profiles (optional) so we can get to know her.</p>
+		        	
+		        </div>
+	    	
+	    	</div> 
+	    </div><div class="row">
+	    	<div class="span2">
+	    	</br>
+	    	</div>
+	    	<div class="span4">
+	    	
+	        	<div class="inner">
+	        	
+	        		
+	    	
+		        	<h3><span class="glyph-item icon-magic-wand" aria-hidden="true" ></span> We find gifts</h3>
+		        	
+		        	<p>Roughly every month or two we show you three gifts that our fancy algorithms and style team think she would like. You pick your favorite and we ship it to you.</p>
+		        	
+		        </div>
+	    	
+	    	</div> 
+	    </div><div class="row">
+	    	
+	    	<div class="span4">
+	    	
+	        	<div class="inner">
+	        	
+	        		
+	    	
+		        	<h3><span class="glyph-item icon-heart" aria-hidden="true" ></span> You look good</h3>
+		        	
+		        	<p>You present her with a spontaneous personalized gift. She wasn't expecting it. You are so thoughtful. </p>
+		        	
+		        </div>
+	    	
+	    	</div> 
+	    	
+
+
+	    	<div class="clearfix"></div> 	        	
+	    </div>
+
+	</div>
+</div>
+<div class="strip" id="content">
+    
+	<!-- End content -->	
+	
+	<div class="clearfix"></div> 	
+
+	<div class="container">
+		<div class="row">		        	
+	    	<div class="span12">
+	    		<div class="inner">
+			    	</br></br>
+			    	<h1>Sounds great, how much?</h1>
+			    	<h3>Just <strong>$25</strong> / month per lady you are trying to impress</h3>
+			    
+			    	<ul>
+			    		<li>
+			    			A new gift mailed to you, roughly every six weeks (we randomize delivery dates)
+			    		</li>
+			    		<li>
+			    			You pick from a curated selection of gifts matching her profile
+			    		</li>
+			    		<li>
+			    			You rate her satisfaction with previous gifts so we keep getting better
+			    		</li>
+			    		<li>
+			    			You build street cred for knowing cool local brands
+			    		</li>
+			    		<li>
+			    			100% guaranteed to make her think you're a better catch than you are
+			    		</li>
+			    	</ul>
+			    	</br>
+			    <div class="align-left">
+			    	
+			    	{% if request.GET.ref %}
+			    		<a href="{% url 'signup' %}?ref={{ request.GET.ref }}">
+				        	<div class="form-row">
+				        		<input type="submit" class="btn" value="Get Started for Free" style="background-color: #0fba52;"/>
+				     		</div>
+				      </a>
+			    	{% else %}
+			    		<a href="{% url 'signup' %}">
+				        	<div class="form-row">
+				        		<input type="submit" class="btn" value="Get Started for Free" style="background-color: #0fba52;"/>
+				     		</div>
+				      </a>
+			    	{% endif %}
+
+				</div>
+				</div>
+			    </div>
+	    	</div>
+	    </div>
+
+        <div class="row">
+	    
+	    </div>
+
+	</div>
+</div>
+
+<div class="strip" id="content">
+    
+	<!-- End content -->	
+	
+	<div class="clearfix"></div> 	
+
+	<div class="container">
+		<div class="row">		        	
+	    	<div class="span12">
+	    		<div class="inner align-right">
+			    	</br></br>
+			    	<h1>What people are saying</h1>
+			    	<h3>"I've wanted to give her more gifts but never knew what to pick out. This is for me."</h3>
+			    	<p> Alvin, Developer, San Francisco</p>
+			    	<h3>"It's clear my girlfriend loves when I surprise her with a gift. Still, I usually forget to do it."</h3>
+			    	<p> Kent, Chiropractor, Danville</p>
+			    	<h3>"Surprisr solves my biggest worry when picking something out: will she like it?"</h3>
+			    	<p> Rich, Systems Analyst, Oakland</p>
+			    
+			    	
+			    	</br>
+			    <div class="align-right">
+			    	
+
+			    	{% if request.GET.ref %}
+			    		<a href="{% url 'signup' %}?ref={{ request.GET.ref }}">
+				        	<div class="form-row">
+				        		<input type="submit" class="btn" value="Get Started for Free" style="background-color: #0fba52;"/>
+				     		</div>
+				      </a>
+			    	{% else %}
+			    		<a href="{% url 'signup' %}">
+				        	<div class="form-row">
+				        		<input type="submit" class="btn" value="Get Started for Free" style="background-color: #0fba52;"/>
+				     		</div>
+				      </a>
+			    	{% endif %}
+
+			    	
+				</div>
+				</div>
+			    </div>
+	    	</div>
+	    </div>
+
+        <div class="row">
+	    
+	    </div>
+
+	</div>
+</div>
+{% endblock %}
+
+

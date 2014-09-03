@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+
+
+{% block body %}
+	
+<div class="strip" id="content">
+
+	<div class="container">
+			 
+        <div class="row">
+	    	
+	    	<div class="span6">
+	    	
+	        	<div class="inner">
+	        	
+	      
+              	{% for error in form.non_field_errors %}
+                    <h3 style="color: red;">{{error}}</h3>
+                	</br>
+                {% endfor %}
+
+              	<form method="post" action=""> 
+					{% csrf_token %}
+					<h3>Tell us about her (optional)</h3>
+					<div class="form-row">			
+						Her Age:
+						{% if form.age.errors %}
+		                    <p style="color: red;">{{ form.age.errors }}</p>
+		                {% endif %}	
+						{{ form.age|add_class:""}}
+						<div class="clearfix"></div>
+					</div>
+					<div class="form-row">			
+						Her Style:
+						{% if form.style.errors %}
+		                    <p style="color: red;">{{ form.style.errors }}</p>
+		                {% endif %}	
+						{{ form.style|add_class:""}}
+						<div class="clearfix"></div>
+					</div>
+					<div class="form-row">			
+						{% if form.soc_one.errors %}
+		                    <p style="color: red;">{{ form.soc_one.errors }}</p>
+		                {% endif %}	
+						{{ form.soc_one|add_class:"text login_input"}}
+						<div class="clearfix"></div>
+					</div>
+					<div class="form-row">
+						{% if form.soc_two.errors %}
+		                    <p style="color: red;">{{ form.soc_two.errors }}</p>
+		                {% endif %}					
+						{{ form.soc_two|add_class:"text login_input"}}
+						<div class="clearfix"></div>
+					</div>
+					<div class="form-row">			
+						{% if form.other_page.errors %}
+		                    <p style="color: red;">{{ form.other_page.errors }}</p>
+		                {% endif %}		
+						{{ form.other_page|add_class:"text login_input"}}
+						<div class="clearfix"></div>
+					</div>
+					</br>
+					<h3>Tell us about you</h3>
+					<div class="form-row">	
+						{% if form.email.errors %}
+		                    <p style="color: red;">{{ form.email.errors }}</p>
+		                {% endif %}		
+						{{ form.email|add_class:"text login_input"}}
+						<div class="clearfix"></div>
+					</div>
+					<div class="form-row">	
+						{% if form.password.errors %}
+		                    <p style="color: red;">{{ form.password.errors }}</p>
+		                {% endif %}				
+						{{ form.password|add_class:"text login_input"}}
+						<div class="clearfix"></div>
+					</div>
+					
+					 <div class="form-row">
+      					<input type="submit" name="register" value="Continue" class="btn" style="background-color: #0fba52;" data-loading-text="Loading..." />
+						<div class="clearfix"></div>
+                    </div>
+					
+				</form>
+	   
+		    </div>
+	    	
+	    	</div>  
+	    
+	    	<div class="clearfix"></div>
+	    	        	
+	    </div>
+
+	</div>
+
+</div> 
+
+{% endblock %}

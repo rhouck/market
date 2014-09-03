@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block first %}
+	<div class="homepage-container" id="homepage">
+	    <div class="overlay"></div>
+	        <div class="homepage-content">
+				<h1 class="homepage-title">
+					{{ message|safe }}
+				</h1>
+	        </div>
+	    </div>
+	</div>
+{% endblock %}
+
+
+{% block slider-images %}
+    {image : "{% static '3gift.jpg' %}", url : ''},
+{% endblock %}

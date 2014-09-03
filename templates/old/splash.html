@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block first %}
+    <div class="homepage-container" id="homepage">
+        <div class="overlay"></div>
+            <div class="homepage-content">
+                <h1 class="homepage-title">Coming Soon</br>Surprise Gifts For Your Special Lady<h1>
+                <div class="divider"></div>
+                <h1 class="homepage-title" style="color: #939393; font-weight: 500; 'font-size: 48px">Monthly and Hand-Curated</h1>
+
+                {% comment %}
+                <div class="countdown-container twelve columns"></div>
+                {% endcomment %}
+           
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block second %}  
+
+    <!-- about section -->
+    {% if sub_form.non_field_errors or sub_form.errors %}
+        <script>scrollTo("subscribe")</script>
+    {% endif %}
+    <div class="social-media" id="our-service">
+        <div class="row">
+            <div class="twelve columns">
+                <h1 class="page-title">Our Service</h1>
+                <div class="divider"></div>
+                
+                
+                <p class="page-content">
+                    Spontaneous gifts for your lady delivered to you at different times each month.</br>
+                </p>
+                <p class="page-content" style="text-align:left">
+                    Being busy shouldn't have to keep you from showing her how much she means to you. Our team of experts hand-pick modest but beautiful gifts both from today's up-and-coming brands and also the tried-and-true. You tell us a little bit about her and we do the heavy lifting of finding a gift and sending it over to you. That's right, we make you look like a superstar all year long.</br>
+                    </br>
+                </p>
+                <p class="page-content" style="text-align:left"> 
+                    <b>Here's how it works</b></br>
+                    </br>
+                    1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tell us a little bit about her</br>
+                    2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Receive a discreetly-packaged hand-picked gift each month</br>
+                    3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Surprise her and watch her smile!</br>
+                    </br>
+                </p>
+                
+                <p class="page-content" style="text-align:left">  
+                    <b>The gifts</b></br>
+                    </br>
+                    Our gifts range from flowers to chocolates to trendy costume jewelry, and more.
+                    We source from local brands in each city we're covering and keep our fingers on the pulse on what's new and exciting.</br>
+                    </br>
+                    Because we make collective purchases we can get below-market rates on much of our gifts, keeping our service light on your wallet.
+                </p>
+                
+                
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- parallax break -->
+    <div class="twitter">
+        <div class="twitter-inner">
+            <h1 class="homepage-title">the key to a woman's heart:</br>an unexpected gift at an unexpected time</h1>
+        </div>
+    </div>
+
+    <!-- subscribe section -->
+    <div class="subscribe" id="subscribe">
+        <div class="row">
+            <div class="twelve columns">
+                
+                <h1 class="page-title">SUBSCRIBE TODAY</h1>
+                <div class="divider"></div>
+                <p class="page-content">
+                        We’re just a few weeks from launching and early subscribers wil be offered a spot in our beta program. Get on our mailing list so you can be the first to know when we launch in your area.</br></br>
+                        It’s free and we’ll never spam you. Promise.</br>
+                </p>
+                    
+                <div class="subscription-form">
+                    <form method="post" action="">
+                        {% csrf_token %}
+                        <div class="subscription-form-email">
+                          
+                            {% for error in sub_form.non_field_errors %}
+                                {{error}}</p>
+                            {% endfor %}
+                            
+                            {% if sub_form.email.errors %}
+                                {{ sub_form.email.errors }}</p>
+                            {% endif %}
+                            {{ sub_form.email}}
+                            
+                            {% comment %}
+                            <input type="text" id="email" class="email hide-for-small" name="email" placeholder="enter your email address here and click subscribe"/>
+                            <input type="text" id="email" class="email show-for-small" name="email" placeholder="enter your email address"/>
+                            {% endcomment %}
+                            
+                            <input type="hidden" name="type" value="Subscribe">
+
+                        </div>
+                        <input type="submit" value="SUBSCRIBE" class="submit-button" name="submit" id="submitButton" title="Click here to submit your message!" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        
+
+    <!-- parallax break -->
+    <div class="twitter2">
+        <div class="twitter-inner2">
+            <h1 class="homepage-title">spontaneous monthly reminders that you care</h1>
+        </div>
+    </div>
+
+
+    <!-- contact us -->
+    {% if con_form.non_field_errors or con_form.errors %}
+        <script>scrollTo("contact")</script>
+    {% endif %}
+    <div class="social-media" id="contact">
+        <div class="row">
+            <div class="twelve columns">
+                <h1 class="page-title">Contact Us</h1>
+                <div class="divider"></div>
+                
+                
+                <p class="page-content">Have questions or suggestions?</p>
+
+                <div class="subscription-form">
+                    <form method="post" action="">
+                        {% csrf_token %}
+                        <div class="subscription-form-email">
+                            
+                            {% for error in con_form.non_field_errors %}
+                                {{error}}</p>
+                            {% endfor %}
+                            
+                            {% if con_form.email.errors %}
+                                {{ con_form.email.errors }}</p>
+                            {% endif %}
+                            {{ con_form.email }}
+                            
+                            {% if con_form.message.errors %}
+                                {{ con_form.message.errors }}</p>
+                            {% endif %}
+                            {{ con_form.message}}
+
+                            <input type="hidden" name="type" value="Contact">
+                        </div>
+                        <input type="submit" value="SUBMIT" class="submit-button" name="submit" id="submitButton" title="Click here to submit your message!" />
+                    </form>
+                </div>
+
+                <div class="social-media-buttons">
+                    <a href="https://www.facebook.com/harmonyandspence" class="facebook-button"></a>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block slider-images %}
+    {image : "{% static '1flower.jpg' %}", url : ''},
+    {image : "{% static '1macs.jpg' %}", url : ''},
+    {image : "{% static '3choc.png' %}", url : ''},
+{% endblock %}
+
+
+

@@ -1,0 +1,7 @@
+That was a good move
+
+You are #{{ count }} on our waiting list.
+
+Cut in line and get discounts on your first Surprisr gifts by getting 5 of your friends to sign up with this unique URL:
+
+http://surprisr.co/?ref={{ ref }}
