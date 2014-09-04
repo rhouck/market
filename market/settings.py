@@ -94,7 +94,7 @@ HIGHRISE_CONFIG = {'server': 'harmonyspence', 'auth': '8170f80eac5ace00364b8d81e
 
 # register parse
 from parse_rest.connection import register
-register("d15EqFH2Oa2cIfoynHnII1GHsN0xUQIHOuuRXyJr", "0Au8rhZh3747xrXgCVWaMVCMwmzsKyrb4hzwbp3Q")
+register("mgMLgAozJz1ShdgEFs1w1huGDpfOKpVKuwydMKmz", "HxBvkqWCuoSDE4OUJLh2z9w3sJsFJLloCCTTEsNk")
 
 # email setup
 EMAIL_USE_TLS = True
@@ -109,28 +109,6 @@ GOOGLE_ANALYTICS_PROPERTY_ID = 'UA-53887988-1'
 GOOGLE_ANALYTICS_DOMAIN = 'surprisr.co'
 
 # setup redis queue
-"""
-RQ_QUEUES = {
-    
-    'default': {
-        'HOST': 'localhost',
-        'PORT': 6379,
-        'DB': 0,
-        'PASSWORD': 'some-password',
-        'DEFAULT_TIMEOUT': 360,
-    },
-    'high': {
-        'URL': os.getenv('REDISTOGO_URL', 'redis://localhost:6379'), # If you're on Heroku
-        'DB': 0,
-        'DEFAULT_TIMEOUT': 500,
-    },
-    'low': {
-        'HOST': 'localhost',
-        'PORT': 6379,
-        'DB': 0,
-    }
-}
-"""
 RQ_QUEUES = {
     
     'default': {
