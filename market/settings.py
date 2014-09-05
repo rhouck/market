@@ -100,13 +100,13 @@ register("mgMLgAozJz1ShdgEFs1w1huGDpfOKpVKuwydMKmz", "HxBvkqWCuoSDE4OUJLh2z9w3sJ
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'surprisr.co@gmail.com'
-EMAIL_HOST_PASSWORD = 'wouldnotbang'
-DEFAULT_FROM_EMAIL = 'surprisr.co@gmail.com'
+EMAIL_HOST_USER = 'boostblocks@gmail.com'
+EMAIL_HOST_PASSWORD = '_2nd&mission_'
+DEFAULT_FROM_EMAIL = 'boostblocks@gmail.com'
 
 # google analytics
-GOOGLE_ANALYTICS_PROPERTY_ID = 'UA-53887988-1'
-GOOGLE_ANALYTICS_DOMAIN = 'surprisr.co'
+GOOGLE_ANALYTICS_PROPERTY_ID = 'UA-54495948-1'
+GOOGLE_ANALYTICS_DOMAIN = 'boostblocks.com'
 
 # setup redis queue
 RQ_QUEUES = {

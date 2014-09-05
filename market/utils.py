@@ -175,6 +175,8 @@ def create_highrise_account(email, tag=None):
 
 		cust.save()
 		
+		cust.add_tag('boostblocks')
+
 		if tag:
 			cust.add_tag(tag)
 
