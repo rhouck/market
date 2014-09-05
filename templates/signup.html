@@ -23,46 +23,145 @@
 
               	<form method="post" action=""> 
 					{% csrf_token %}
-					<h3>Tell us about her (optional)</h3>
-					<div class="form-row">			
-						Her Age:
-						{% if form.age.errors %}
-		                    <p style="color: red;">{{ form.age.errors }}</p>
-		                {% endif %}	
-						{{ form.age|add_class:""}}
+					<h3>Nice to meet you</h3>
+					
+					{% if form.company.errors %}
+		                    <p style="color: red;">{{ form.company.errors }}</p>
+		            {% endif %}
+					<div class="form-row">				
+						{{ form.company|add_class:"text login_input"}}
 						<div class="clearfix"></div>
 					</div>
-					<div class="form-row">			
-						Her Style:
-						{% if form.style.errors %}
-		                    <p style="color: red;">{{ form.style.errors }}</p>
-		                {% endif %}	
-						{{ form.style|add_class:""}}
+					
+					{% if form.website.errors %}
+		                    <p style="color: red;">{{ form.website.errors }}</p>
+		            {% endif %}
+					<div class="form-row">				
+						{{ form.website|add_class:"text login_input"}}
 						<div class="clearfix"></div>
 					</div>
-					<div class="form-row">			
-						{% if form.soc_one.errors %}
+					
+					{% if form.soc_one.errors %}
 		                    <p style="color: red;">{{ form.soc_one.errors }}</p>
-		                {% endif %}	
+		            {% endif %}
+					<div class="form-row">						
 						{{ form.soc_one|add_class:"text login_input"}}
 						<div class="clearfix"></div>
 					</div>
-					<div class="form-row">
-						{% if form.soc_two.errors %}
+
+					{% if form.soc_two.errors %}
 		                    <p style="color: red;">{{ form.soc_two.errors }}</p>
-		                {% endif %}					
+		            {% endif %}
+					<div class="form-row">						
 						{{ form.soc_two|add_class:"text login_input"}}
 						<div class="clearfix"></div>
 					</div>
-					<div class="form-row">			
-						{% if form.other_page.errors %}
-		                    <p style="color: red;">{{ form.other_page.errors }}</p>
-		                {% endif %}		
-						{{ form.other_page|add_class:"text login_input"}}
+
+					{% if form.soc_three.errors %}
+		                    <p style="color: red;">{{ form.soc_three.errors }}</p>
+		            {% endif %}
+					<div class="form-row">						
+						{{ form.soc_three|add_class:"text login_input"}}
 						<div class="clearfix"></div>
 					</div>
+					
 					</br>
-					<h3>Tell us about you</h3>
+					<h3>Lets get to know your business</h3>
+					{% if form.dev_stage.errors %}
+		                    <p style="color: red;">{{ form.dev_stage.errors }}</p>
+		            {% endif %}
+					<div class="form-row">			
+						Stage of development:	
+						{{ form.dev_stage|add_class:""}}
+						<div class="clearfix"></div>
+					</div>
+
+					{% if form.sales.errors %}
+		                    <p style="color: red;">{{ form.sales.errors }}</p>
+		            {% endif %}
+					<div class="form-row">			
+						Expected sales this year:	
+						{{ form.sales|add_class:""}}
+						<div class="clearfix"></div>
+					</div>
+
+					{% if form.industry.errors %}
+		                    <p style="color: red;">{{ form.industry.errors }}</p>
+		            {% endif %}
+					<div class="form-row">						
+						{{ form.industry|add_class:"text login_input"}}
+						<div class="clearfix"></div>
+					</div>
+
+					{% if form.co_description.errors %}
+		                    <p style="color: red;">{{ form.co_description.errors }}</p>
+		            {% endif %}
+					<div class="form-row">						
+						{{ form.co_description|add_class:"text login_input"}}
+						<div class="clearfix"></div>
+					</div>
+
+					{% if form.brand_description.errors %}
+		                    <p style="color: red;">{{ form.brand_description.errors }}</p>
+		            {% endif %}
+					<div class="form-row">						
+						{{ form.brand_description|add_class:"text login_input"}}
+						<div class="clearfix"></div>
+					</div>
+
+					{% if form.competition.errors %}
+		                    <p style="color: red;">{{ form.competition.errors }}</p>
+		            {% endif %}
+					<div class="form-row">						
+						{{ form.competition|add_class:"text login_input"}}
+						<div class="clearfix"></div>
+					</div>
+
+					{% if form.other.errors %}
+		                    <p style="color: red;">{{ form.other.errors }}</p>
+		            {% endif %}
+					<div class="form-row">						
+						{{ form.other|add_class:"text login_input"}}
+						<div class="clearfix"></div>
+					</div>
+
+					</br>
+					<h3>Marketing needs</h3>
+					{% if form.goals.errors %}
+		                    <p style="color: red;">{{ form.goals.errors }}</p>
+		            {% endif %}
+					<div class="form-row">			
+						What is your primary goal:	
+						{{ form.goals|add_class:""}}
+						<div class="clearfix"></div>
+					</div>
+
+					{% if form.wants_ads.errors %}
+		                    <p style="color: red;">{{ form.wants_ads.errors }}</p>
+		            {% endif %}
+					<div class="form-row">				
+						{{ form.wants_ads.label }} {{ form.wants_ads|add_class:""}}
+						<div class="clearfix"></div>
+					</div>
+
+					{% if form.wants_social.errors %}
+		                    <p style="color: red;">{{ form.wants_social.errors }}</p>
+		            {% endif %}
+					<div class="form-row">				
+						{{ form.wants_social.label }} {{ form.wants_social|add_class:""}}
+						<div class="clearfix"></div>
+					</div>
+
+					{% if form.wants_creatives.errors %}
+		                    <p style="color: red;">{{ form.wants_creatives.errors }}</p>
+		            {% endif %}
+					<div class="form-row">				
+						{{ form.wants_creatives.label }} {{ form.wants_creatives|add_class:""}}
+						<div class="clearfix"></div>
+					</div>
+
+					</br>
+					<h3>Account info</h3>
 					<div class="form-row">	
 						{% if form.email.errors %}
 		                    <p style="color: red;">{{ form.email.errors }}</p>

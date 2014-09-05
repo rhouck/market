@@ -21,76 +21,11 @@ from utils import *
 
 import django_rq
 redis_conn = django_rq.get_connection()
-"""
-from rq import Queue
-from worker import conn
-q = Queue(connection=conn)
-"""
+
 from parse_rest.user import User as ParseUser
 
 def splash(request):
-	"""
-	# get referral code if exists
-	inputs = request.GET if request.GET else None
-	form = ReferralForm(inputs)
-	referred_by = None
-	if (inputs) and form.is_valid():
-		cd = form.cleaned_data
-		referred_by = cd['ref']
 	
-	
-	inputs = request.POST if request.POST else None
-	form = SubscribeForm(inputs)
-	try:
-		
-		if (inputs) and form.is_valid():
-			
-			cd = form.cleaned_data
-			
-			# check if email already exists
-			existing = Signups.Query.all().filter(email=cd['email'])
-			existing = [e for e in existing]
-			if existing:
-				raise Exception("Email already registered in system.")
-			
-			# get user count
-			count = get_count()
-
-			# create user
-			ref = gen_alphanum_key()
-			signup = Signups(email=cd['email'], ref=ref, count=count)
-			if LIVE:
-				signup.type = 'live'
-				signup.highrise_id = create_highrise_account(cd['email'], tag='landing-page')
-			else:
-				signup.type = 'test'
-			signup.save()
-			
-			result = django_rq.enqueue(bg_cust_setup, cd['email'], count, ref, referred_by)
-			#result = q.enqueue(bg_cust_setup, cd['email'], count, ref, referred_by)
-			rev = str(reverse('confirmation', kwargs={'ref': ref}))
-			return HttpResponseRedirect(rev)	
-			
-			
-			# submit contact form
-			elif inputs['type'] == 'Contact' and con_form.is_valid():	
-				
-				cd = con_form.cleaned_data
-				body = "%s:\n\n%s" % (cd['email'],cd['message'])
-				send_email(subject='Inquiry from site', body=body)
-				create_highrise_account(cd['email'], tag='contact-form')
-				
-				return HttpResponseRedirect(reverse('confirmation', kwargs={'message_type': 'contact'}))
-				
-		else:
-			raise Exception()
-
-		
-	except Exception as err:
-		
-		form.errors['__all__'] = form.error_class([err])
-		return render_to_response('splash.html', {'form': form}, context_instance=RequestContext(request))
-	"""
 	return render_to_response('splash.html', {}, context_instance=RequestContext(request))
 
 def signup(request):

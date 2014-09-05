@@ -22,7 +22,7 @@ class UserReferrals(Object):
     pass
 class Counter(Object):
     pass
-class Recipients(Object):
+class CompanyProfiles(Object):
     pass
 
 def get_count():
@@ -97,23 +97,35 @@ def confirm_referral(ref):
 			msg.attach_alternative(html_content, "text/html")
 			msg.send()
 
-def recipient_demographics(ref, inps):
+def build_comp_profile(ref, inps):
 	
 	signup = get_signup_by_ref(ref)
-	recipient = Recipients(user=signup,
-							age=inps['age'],
-							style=inps['style'],
+	comp = CompanyProfiles(user=signup,
+							company=inps['company'],
+							website=inps['website'],
 							soc_one=inps['soc_one'],
 							soc_two=inps['soc_two'],
+							soc_three=inps['soc_three'],
+							dev_stage=inps['dev_stage'],
+							sales=inps['sales'],
+							industry=inps['industry'],
+							co_description=inps['co_description'],
+							brand_description=inps['brand_description'],
+							competition=inps['competition'],
+							other=inps['other'],
+							goals=inps['goals'],
+							wants_ads=inps['wants_ads'],
+							wants_social=inps['wants_social'],
+							wants_creatives=inps['wants_creatives'],
 							)
-	recipient.save()
+	comp.save()
 
 def bg_cust_setup(inps, count, ref, referred_by):
 	
 	to_email = inps['email']
 	# send welcome email
 	send_welcome_email(to_email, count, ref)
-	recipient_demographics(ref, inps)
+	build_comp_profile(ref, inps)
 	# add referral
 	
 	if referred_by:

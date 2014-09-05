@@ -2,31 +2,46 @@ from django import forms
 from django.forms import widgets
 
 class SubscribeForm(forms.Form):
-    Age_Choices = (
-        ('', ''),
-        ('18-24', '18-24'),
-        ('25-34', '25-34'),
-        ('35-44', '35-44'),
-        ('45+', '45+'),
-    )
-    age = forms.ChoiceField(choices=Age_Choices, required=False, label='Example')
-
-    Style_Choices = (
-        ('', ''),
-        ('traditional', 'Traditional'),
-        ('athletic', 'Athletic'),
-        ('fashionista', 'Fashionista'),
-        ('hip', 'Hip'),
-        ('bookish', 'Bookish'),
-    )
-    style = forms.ChoiceField(choices=Style_Choices, required=False, label='Example')
-    soc_one = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Social media link - Facebook, Pinterest, etc.'}), required=False,)
-    soc_two = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Social media link - Facebook, Pinterest, etc.'}), required=False,)
     
-    email = forms.EmailField(widget=forms.TextInput(attrs={'placeholder': 'Your Email Address'}))
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Your Password'}))
+    company = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Company name'}))
+    website = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Company website'}))
+    soc_one = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Social media presence (optional)'}), required=False,)
+    soc_two = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Social media presence (optional)'}), required=False,)
+    soc_three = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Social media presence (optional)'}), required=False,)
 
-    #message = forms.CharField(min_length=2, widget=forms.Textarea(attrs={'placeholder': 'Let us know right here...', 'rows': 4}))
+    Dev_Choices = (
+        ('startup', 'Startup'),
+        ('growth', 'Growth'),
+        ('mature', 'Mature'),
+    )
+    dev_stage = forms.ChoiceField(choices=Dev_Choices)
+
+    Sales_Choices = (
+        ('less than $100k', 'Less than $100k'),
+        ('less than $1 million', 'Less than $1 million'),
+        ('over $1 milliion', 'Over $1 milliion'),
+        ('over $10 milliion', 'Over $10 milliion'),
+    )
+    sales = forms.ChoiceField(choices=Sales_Choices)
+    industry = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Your industry'}))
+    co_description = forms.CharField(min_length=2, widget=forms.Textarea(attrs={'placeholder': 'Please breifly describe your business.', 'rows': 4}))
+    brand_description = forms.CharField(min_length=2, widget=forms.Textarea(attrs={'placeholder': 'Please breifly describe your brand as you see it and as want it to be.', 'rows': 4}))
+    competition = forms.CharField(max_length=200, widget=forms.TextInput(attrs={'placeholder': 'List your primary compeition.'}))
+    other = forms.CharField(required=False, min_length=2, widget=forms.Textarea(attrs={'placeholder': 'Anything else you would like us to know? (optional)', 'rows': 2}))
+    
+    Goals_Choices = (
+        ('brand awareness', 'Brand awareness'),
+        ('engagement', 'Engagement'),
+        ('driving sales', 'Driving Sales'),
+    )
+    goals = forms.ChoiceField(choices=Goals_Choices)
+    wants_ads = forms.BooleanField(required=False, label="I want to run display and text ads")
+    wants_social = forms.BooleanField(required=False, label="I want you to run my social media presence")
+    wants_creatives = forms.BooleanField(required=False, label="I need you to design ad creatives and/or build my social media profiles")
+
+    email = forms.EmailField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Your Email Address'}))
+    password = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs={'placeholder': 'Your Password'}))
+
 
 class ReferralForm(forms.Form):
     ref = forms.CharField(min_length=8, max_length=8)
