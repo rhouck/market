@@ -26,9 +26,7 @@ class SubscribeForm(forms.Form):
     email = forms.EmailField(widget=forms.TextInput(attrs={'placeholder': 'Your Email Address'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Your Password'}))
 
-class ContactForm(forms.Form):
-	email = forms.EmailField(widget=forms.TextInput(attrs={'placeholder': 'Your Email Address'}))
-	message = forms.CharField(min_length=2, widget=forms.Textarea(attrs={'placeholder': 'Let us know right here...', 'rows': 4}))
+    #message = forms.CharField(min_length=2, widget=forms.Textarea(attrs={'placeholder': 'Let us know right here...', 'rows': 4}))
 
 class ReferralForm(forms.Form):
     ref = forms.CharField(min_length=8, max_length=8)
