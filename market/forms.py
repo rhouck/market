@@ -24,7 +24,7 @@ class SubscribeForm(forms.Form):
     )
     sales = forms.ChoiceField(choices=Sales_Choices)
     industry = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Your industry'}))
-    co_description = forms.CharField(min_length=2, widget=forms.Textarea(attrs={'placeholder': 'Please breifly describe your business.', 'rows': 4}))
+    co_description = forms.CharField(min_length=2, widget=forms.Textarea(attrs={'placeholder': 'Please breifly describe your business and target audience (if known).', 'rows': 4}))
     brand_description = forms.CharField(min_length=2, widget=forms.Textarea(attrs={'placeholder': 'Please breifly describe your brand as you see it and as want it to be.', 'rows': 4}))
     competition = forms.CharField(max_length=200, widget=forms.TextInput(attrs={'placeholder': 'List your primary compeition.'}))
     other = forms.CharField(required=False, min_length=2, widget=forms.Textarea(attrs={'placeholder': 'Anything else you would like us to know? (optional)', 'rows': 2}))

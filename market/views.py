@@ -98,8 +98,10 @@ def confirmation(request, ref):
 	except:
 		raise Http404
 
-def gifts(request):
-	return render_to_response('gifts.html', {}, context_instance=RequestContext(request))
+def philosophy(request):
+	return render_to_response('philosophy.html', {}, context_instance=RequestContext(request))
+def join(request):
+	return render_to_response('join.html', {}, context_instance=RequestContext(request))
 def privacy(request):
 	return render_to_response('priv.html', {}, context_instance=RequestContext(request))
 def tos(request):
