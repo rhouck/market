@@ -24,7 +24,7 @@
 	        	
 	        
 	    			</br></br>
-		        	<h1>Scalable modular social media</h1>
+		        	<h1>The simplest way to grow your brand</h1>
 					<h3>No contracts. No phone calls. Sign up in ten minutes.</h3>
 		        	</br>
 		        	{% if request.GET.ref %}
@@ -75,9 +75,14 @@
 	        	
 	        		
 	    	
-		        	<h3><span class="glyph-item icon-user-female" aria-hidden="true" ></span> Tell us about her</h3>
+		        	<h3><span class="glyph-item icon-eyeglasses" aria-hidden="true" ></span>We get to know your business</h3>
 		        	
-		        	<p>Gifts need to be personalized. You offer her demographic info and her facebook, pinterest, or other social media profiles (optional) so we can get to know her.</p>
+		        	<p>Complete your company profile 
+		        	{% if request.GET.ref %}
+			    		<a href="{% url 'signup' %}?ref={{ request.GET.ref }}">here</a>
+			    	{% else %}
+			    		<a href="{% url 'signup' %}">here</a>      
+			    	{% endif %}. We'll learn your business and send you a custom marketing strategy (usually within 24 hours).</p>
 		        	
 		        </div>
 	    	
@@ -92,9 +97,9 @@
 	        	
 	        		
 	    	
-		        	<h3><span class="glyph-item icon-magic-wand" aria-hidden="true" ></span> We find gifts</h3>
+		        	<h3><span class="glyph-item icon-grid" aria-hidden="true" ></span>Choose your campaign scale</h3>
 		        	
-		        	<p>Roughly every month or two we show you three gifts that our fancy algorithms and style team think she would like. You pick your favorite and we ship it to you.</p>
+		        	<p>Whether its running ads or engaging with your twitter followers, all brand building efforts are delineated in "Blocks". Each block costs $100 per week. You choose how many blocks to apply to a given type of outreach effort each week and we run your campaign accourdingly.</p>
 		        	
 		        </div>
 	    	
@@ -107,9 +112,9 @@
 	        	
 	        		
 	    	
-		        	<h3><span class="glyph-item icon-heart" aria-hidden="true" ></span> You look good</h3>
+		        	<h3><span class="glyph-item icon-bar-chart" aria-hidden="true" ></span>Review and adjust</h3>
 		        	
-		        	<p>You present her with a spontaneous personalized gift. She wasn't expecting it. You are so thoughtful. </p>
+		        	<p>Every week we send you reports of our recent activity and your campaign performance. You choose whether to add or remove blocks as you see fit.</p>
 		        	
 		        </div>
 	    	
@@ -133,7 +138,7 @@
 	    	<div class="span12">
 	    		<div class="inner">
 			    	</br></br>
-			    	<h1>Sounds great, how much?</h1>
+			    	<h1>Sounds great, tell me more</h1>
 			    	<h3>Just <strong>$25</strong> / month per lady you are trying to impress</h3>
 			    
 			    	<ul>
@@ -182,7 +187,7 @@
 
 	</div>
 </div>
-
+{% comment %}
 <div class="strip" id="content">
     
 	<!-- End content -->	
@@ -234,6 +239,7 @@
 
 	</div>
 </div>
+{% endcomment %}
 {% endblock %}
 
 
