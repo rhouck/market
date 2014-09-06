@@ -24,14 +24,16 @@
 	    	
 	        	<div class="inner align-center">
 	        	
-	        		
-	        	<h2>We're operating at full capacity but you're on our waitlist.</h2>
+	        	{% if count %}
+					<h2>W'ere at full capacity. You are #{{ count }} on our waitlist<h2>
+				{% else %}
+					<h2>We're operating at full capacity but you're on our waitlist.</h2>
+				{% endif %}
+
+	        	
               	<h1>Want to jump the line and get your first two blocks FREE?</h1>
 
-				{% if count %}
-					<h2>You are number {{ count }} on our waiting list<h2>
 
-				{% endif %}
 
 				<h4>Get five people to sign up with this unique URL:</h4>
         					
