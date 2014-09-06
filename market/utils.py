@@ -39,7 +39,7 @@ def send_welcome_email(to_email, count, ref):
     plaintext = get_template('email_template/plain_text.txt')
     htmly     = get_template('email_template/index.html')
     d = Context({'count': count, 'ref': ref})
-    subject = "Great move | Surprisr"
+    subject = "Great move | BoostBlocks"
     text_content = plaintext.render(d)
     html_content = htmly.render(d)
     
@@ -67,13 +67,13 @@ def confirm_referral(ref):
 		count = int(len([r for r in refs]))
 
 		if count < 5:
-			subject = "Almost There | Exclusive discounts and priority access at Surprisr"
+			subject = "Almost There | Exclusive discounts and priority access at BoostBlocks"
 			title = "%s/5 sign-ups" % (str(int(count)))
-			body = "Get 5 of your friends to sign up to cut the line and get exclusive discounts on your first gifts. Keep sharing the link below!"
+			body = "Get 5 others to sign up to cut the line and get your first two blocks FREE. Keep sharing the link below!"
 		if count == 5:
-			subject = "You've earned priority access to Surprisr!"
+			subject = "You've earned priority access to BoostBlocks!"
 			title = "You got 5 sign-ups!"
-			body = "You get to cut the line and will be offered exclusive discounts on your first gifts at Surprisr. Keep sharing - more rewards coming soon :)"
+			body = "You get to cut the line and will be offered your first two blocks FREE. Keep sharing - more rewards coming soon :)"
 		if count > 5:
 			subject = "You are incredible"
 			title = "You got %s sign-ups!" % (str(int(count)))
