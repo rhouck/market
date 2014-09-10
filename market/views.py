@@ -106,6 +106,28 @@ def confirmation(request, ref):
 	except:
 		raise Http404
 
+def login(request, ref):
+	
+	"""
+	token = parse_login(cd['username'])
+	if 'error' in token:
+		raise Exception(token['error'])
+	
+	request.session['username'] = cd['username']
+	request.session['token'] = token['token']
+	request.session['ref'] = token['ref']
+	"""
+
+	try:
+		#signup = get_signup_by_ref(ref)	
+		return render_to_response('login.html', {}, context_instance=RequestContext(request))
+	
+	except:
+		raise Http404
+
+
+			
+
 def philosophy(request):
 	return render_to_response('philosophy.html', {}, context_instance=RequestContext(request))
 def join(request):

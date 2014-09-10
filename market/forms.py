@@ -1,7 +1,12 @@
 from django import forms
 from django.forms import widgets
 
-class SubscribeForm(forms.Form):
+class LoginForm(forms.Form):
+
+    email = forms.EmailField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Your Email Address'}))
+    password = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs={'placeholder': 'Your Password'}))
+
+class SubscribeForm(LoginForm):
     
     company = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Company name'}))
     website = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Company website'}))
@@ -38,10 +43,6 @@ class SubscribeForm(forms.Form):
     wants_ads = forms.BooleanField(required=False, label="I want to run display and text ads")
     wants_social = forms.BooleanField(required=False, label="I want you to run my social media presence")
     wants_creatives = forms.BooleanField(required=False, label="I need you to design ad creatives and/or build my social media profiles")
-
-    email = forms.EmailField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Your Email Address'}))
-    password = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs={'placeholder': 'Your Password'}))
-
 
 class ReferralForm(forms.Form):
     ref = forms.CharField(min_length=8, max_length=8)
