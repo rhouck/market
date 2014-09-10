@@ -67,7 +67,15 @@ def signup(request):
 				highrise_id = None
 
 			email = cd['email'].lower()
-			signup = ParseUser.signup(email, cd['password'], email=email, ref=ref, count=count, type=env_type, highrise_id=highrise_id, active=False)
+			signup = ParseUser.signup(email, 
+										cd['password'], 
+										email=email, 
+										ref=ref, 
+										count=count, 
+										type=env_type, 
+										highrise_id=highrise_id, 
+										active=False, 
+										staff=False)
 			
 			result = django_rq.enqueue(bg_cust_setup, cd, count, ref, referred_by)
 			
