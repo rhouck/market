@@ -65,19 +65,21 @@
 						<ul>  
 							
 							{% if request.GET.ref %}      	
-						      <li><a href="{% url 'philosophy' %}?ref={{ request.GET.ref }}">Our Philosophy</a></li>
-						      <li><a href="{% url 'join' %}?ref={{ request.GET.ref }}">Join The Team</a></li>
+								<li><a href="{% url 'philosophy' %}?ref={{ request.GET.ref }}">Our Philosophy</a></li>
+								<li><a href="{% url 'join' %}?ref={{ request.GET.ref }}">Join The Team</a></li>
+								<li class="current"><a href="{% url 'login' %}?ref={{ request.GET.ref }}">Login</a></li> 
 					    	{% else %}
 					    		<li><a href="{% url 'philosophy' %}">Our Philosophy</a></li>
 					    		<li><a href="{% url 'join' %}">Join The Team</a></li>
+					    		
+					    		{% if request.session.token %}
+					    			<li><a href="{% url 'logout' %}">Logout</a></li> 
+					    		{% else %}
+					    			<li class="current"><a href="{% url 'login' %}">Login</a></li> 
+					    		{% endif %}
 					    	{% endif %}
-
-
-
-							 							
-							{% comment %}
-							<li class="current"><a href="page.html">Login</a></li> 
-							{% endcomment %}
+					    		
+	
 						</ul> 
 					</div> 
 					<!-- End Menu -->

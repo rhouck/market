@@ -10,13 +10,19 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'market.views.splash', name='splash'),
+    
     url(r'^our-philosophy/$', 'market.views.philosophy', name='philosophy'),
     url(r'^join/$', 'market.views.join', name='join'),
+    
     url(r'^privacy/$', 'market.views.privacy', name='privacy'),
     url(r'^terms-of-service/$', 'market.views.tos', name='tos'),
+    
     url(r'^login/$', 'market.views.login', name='login'),
+    url(r'^logout/$', 'market.views.logout', name='logout'),
     url(r'^signup/$', 'market.views.signup', name='signup'),
+    url(r'^reset-password/$', 'market.views.resetPassword', name='reset-password'),
     url(r'^confirmation/(?P<ref>[A-Za-z0-9]{8})$', 'market.views.confirmation', name='confirmation'),
+    
     (r'^django-rq/', include('django_rq.urls')),
 
 )

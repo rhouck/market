@@ -1,9 +1,12 @@
 from django import forms
 from django.forms import widgets
 
-class LoginForm(forms.Form):
+class ResetForm(forms.Form):
 
     email = forms.EmailField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Your Email Address'}))
+
+class LoginForm(ResetForm):
+
     password = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs={'placeholder': 'Your Password'}))
 
 class SubscribeForm(LoginForm):

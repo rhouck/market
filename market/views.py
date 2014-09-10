@@ -106,27 +106,57 @@ def confirmation(request, ref):
 	except:
 		raise Http404
 
-def login(request, ref):
+def login(request):
 	
-	"""
-	token = parse_login(cd['username'])
-	if 'error' in token:
-		raise Exception(token['error'])
-	
-	request.session['username'] = cd['username']
-	request.session['token'] = token['token']
-	request.session['ref'] = token['ref']
-	"""
-
+	inputs = request.POST if request.POST else None
+	form = LoginForm(inputs)
 	try:
-		#signup = get_signup_by_ref(ref)	
-		return render_to_response('login.html', {}, context_instance=RequestContext(request))
-	
-	except:
-		raise Http404
-
-
+		
+		if (inputs) and form.is_valid():
 			
+			cd = form.cleaned_data
+			
+			token = parse_login(cd['email'], cd['password'])
+			if 'error' in token:
+				raise Exception(token['error'])
+			
+			request.session['token'] = token['token']
+			request.session['ref'] = token['ref']
+
+			rev = str(reverse('confirmation', kwargs={'ref': ref}))
+			return HttpResponseRedirect(rev)
+		else:
+			raise Exception()
+
+	except Exception as err:
+		
+		form.errors['__all__'] = form.error_class([err])
+		return render_to_response('login.html', {'form': form}, context_instance=RequestContext(request))
+
+def resetPassword(request):
+	
+	inputs = request.POST if request.POST else None
+	form = ResetForm(inputs)
+	try:
+		
+		if (inputs) and form.is_valid():
+			
+			cd = form.cleaned_data
+			
+			reset_parse_user_pass(cd['email'])
+
+			return HttpResponseRedirect(reverse('splash'))
+		else:
+			raise Exception()
+
+	except Exception as err:
+		
+		form.errors['__all__'] = form.error_class([err])
+		return render_to_response('reset.html', {'form': form}, context_instance=RequestContext(request))
+
+def logout(request):	
+	request.session.flush()
+	return HttpResponseRedirect(reverse('splash'))
 
 def philosophy(request):
 	return render_to_response('philosophy.html', {}, context_instance=RequestContext(request))

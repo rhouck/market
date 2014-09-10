@@ -24,7 +24,7 @@
               	<form method="post" action=""> 
 					{% csrf_token %}
 					
-					<h3>Login</h3>
+					<h3>Reset Password</h3>
 					<div class="form-row">	
 						{% if form.email.errors %}
 		                    <p style="color: red;">{{ form.email.errors }}</p>
@@ -32,15 +32,7 @@
 						{{ form.email|add_class:"text login_input"}}
 						<div class="clearfix"></div>
 					</div>
-					<div class="form-row">	
-						{% if form.password.errors %}
-		                    <p style="color: red;">{{ form.password.errors }}</p>
-		                {% endif %}				
-						{{ form.password|add_class:"text login_input"}}
-						<div class="clearfix"></div>
-					</div>
-					<a href="{% url 'reset-password' %}">Forgot password?</a>
-					</br></br>	
+					
 					 <div class="form-row">
       					<input type="submit" name="register" value="Continue" class="btn" style="background-color: #0fba52;" data-loading-text="Loading..." />
 						<div class="clearfix"></div>

@@ -198,3 +198,24 @@ def create_highrise_account(email, tag=None):
 	    
 	    return None
 
+def parse_login(email, password):	
+	
+	email = email.lower()
+
+	try:
+		user = get_parse_user_by_email(email)
+	except:
+		return {'error': "No one has signed up with this address."}
+		
+	if not user.emailVerified:
+		return {'error': "Email address not verified. Please check inbox."}
+
+	u = User.login(email, password)
+	header = u.session_header()
+	return {'token': header['X-Parse-Session-Token'], 'ref': u.ref}
+
+def reset_parse_user_pass(email):
+	email = email.lower()
+	ParseUser.request_password_reset(email=email)
+	return True
+
