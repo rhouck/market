@@ -13,8 +13,15 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # Use site-specific settings
+"""
 from socket import gethostname
 host = gethostname()
+"""
+
+from os import environ
+host = environ.get('MODE', '')
+from re import search
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -33,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'widget_tweaks',
+    'south',
     "django_rq",
 )
 
@@ -129,9 +137,13 @@ RQ_QUEUES = {
 }
 
 
-if host == 'RYANs-MacBook-Air-3.local':
-    from settings_local import *
-    LIVE = False
-else:
+if search('live', host):
     from settings_live import *
     LIVE = True
+elif search('dev', host):
+    from settings_dev import *
+    LIVE = False
+else:
+    from settings_local import *
+    LIVE = False
+
