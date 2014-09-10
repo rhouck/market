@@ -5,9 +5,9 @@ class SubscribeForm(forms.Form):
     
     company = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Company name'}))
     website = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Company website'}))
-    soc_one = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Social media presence (optional)'}), required=False,)
-    soc_two = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Social media presence (optional)'}), required=False,)
-    soc_three = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Social media presence (optional)'}), required=False,)
+    soc_one = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'URL to social media profile (optional)'}), required=False,)
+    soc_two = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'URL to social media profile (optional)'}), required=False,)
+    soc_three = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'URL to social media profile (optional)'}), required=False,)
 
     Dev_Choices = (
         ('startup', 'Startup'),
