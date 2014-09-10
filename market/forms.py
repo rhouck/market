@@ -43,9 +43,39 @@ class SubscribeForm(LoginForm):
         ('driving sales', 'Driving Sales'),
     )
     goals = forms.ChoiceField(choices=Goals_Choices)
-    wants_ads = forms.BooleanField(required=False, label="I want to run display and text ads")
-    wants_social = forms.BooleanField(required=False, label="I want you to run my social media presence")
+    #wants_ads = forms.BooleanField(required=False, label="I want to run display and text ads")
+    #wants_social = forms.BooleanField(required=False, label="I want you to run my social media presence")
     wants_creatives = forms.BooleanField(required=False, label="I need you to design ad creatives and/or build my social media profiles")
+
+    Ads_Choices = (
+        ('0', '0'),
+        ('1', '1'),
+        ('2', '2'),
+        ('3', '3'),
+        ('4', '4'),
+        ('5', '5'),
+        ('6', '6'),
+        ('7', '7'),
+        ('8', '8'),
+        ('9', '9'),
+        ('10', '10'),
+    )
+    ads_scale = forms.ChoiceField(choices=Ads_Choices)
+
+    Social_Choices = (
+        ('0', '0'),
+        ('1', '1'),
+        ('2', '2'),
+        ('3', '3'),
+        ('4', '4'),
+        ('5', '5'),
+        ('6', '6'),
+        ('7', '7'),
+        ('8', '8'),
+        ('9', '9'),
+        ('10', '10'),
+    )
+    social_scale = forms.ChoiceField(choices=Social_Choices)
 
 class ReferralForm(forms.Form):
     ref = forms.CharField(min_length=8, max_length=8)

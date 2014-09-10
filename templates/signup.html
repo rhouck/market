@@ -138,22 +138,27 @@
 						<div class="clearfix"></div>
 					</div>
 
-					{% if form.wants_ads.errors %}
-		                    <p style="color: red;">{{ form.wants_ads.errors }}</p>
+					
+
+					{% if form.ads_scale.errors %}
+		                    <p style="color: red;">{{ form.ads_scale.errors }}</p>
 		            {% endif %}
-					<div class="form-row">				
-						{{ form.wants_ads.label }} {{ form.wants_ads|add_class:""}}
+					<div class="form-row">			
+						Expected starting number of Ads Blocks ($50/wk):	
+						{{ form.ads_scale|add_class:""}}
 						<div class="clearfix"></div>
 					</div>
 
-					{% if form.wants_social.errors %}
-		                    <p style="color: red;">{{ form.wants_social.errors }}</p>
+					{% if form.social_scale.errors %}
+		                    <p style="color: red;">{{ form.social_scale.errors }}</p>
 		            {% endif %}
-					<div class="form-row">				
-						{{ form.wants_social.label }} {{ form.wants_social|add_class:""}}
+					<div class="form-row">			
+						Expected starting number of Social Blocks ($50/wk):
+						{{ form.social_scale|add_class:""}}
 						<div class="clearfix"></div>
 					</div>
 
+					
 					{% if form.wants_creatives.errors %}
 		                    <p style="color: red;">{{ form.wants_creatives.errors }}</p>
 		            {% endif %}

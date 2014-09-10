@@ -97,6 +97,46 @@ def confirm_referral(ref):
 			msg.attach_alternative(html_content, "text/html")
 			msg.send()
 
+def alert_admin_new_signup(inps):
+	
+	subject = "New User signup"
+	title = "%s has signed up" % (inps['email'])
+	body =	"""Email: %s\n\nComapny: %s\n\nWebsite: %s\n\nSocial 1: %s\n\nSocial 2: %s\n\nSocial 3: %s\n\nDevelopment Stage: %s\n\nAnnual Sales: %s\n\nIndustry: %s\n\nCo. Description: %s\n\nBrand Description: %s\n\nCompetition: %s\n\nOther: %s\n\nGoals: %s\n\nAds Blocks: %s\n\nSocial Blocks: %s\n\nWants Creatives: %s""" % (
+				inps['email'],
+				inps['company'],
+				inps['website'],
+				inps['soc_one'],
+				inps['soc_two'],
+				inps['soc_three'],
+				inps['dev_stage'],
+				inps['sales'],
+				inps['industry'],
+				inps['co_description'],
+				inps['brand_description'],
+				inps['competition'],
+				inps['other'],
+				inps['goals'],
+				inps['ads_scale'],
+				inps['social_scale'],
+				inps['wants_creatives'],)
+
+	plaintext = get_template('email_template/admin_com.txt')
+	htmly     = get_template('email_template/admin_com.html')
+	d = Context({'title': title, 'body': body,})
+
+	text_content = plaintext.render(d)
+	html_content = htmly.render(d)
+
+	html_content = inline_css(html_content)
+
+	connection = get_connection(username=DEFAULT_FROM_EMAIL, password=EMAIL_HOST_PASSWORD, fail_silently=False)
+	if LIVE:
+		msg = EmailMultiAlternatives(subject, text_content, DEFAULT_FROM_EMAIL, [DEFAULT_FROM_EMAIL], [HIGHRISE_CONFIG['email']], connection=connection)
+	else:
+		msg = EmailMultiAlternatives(subject, text_content, DEFAULT_FROM_EMAIL, [DEFAULT_FROM_EMAIL], connection=connection)
+	msg.attach_alternative(html_content, "text/html")
+	msg.send()
+
 def build_comp_profile(ref, inps):
 	
 	signup = get_signup_by_ref(ref)
@@ -114,8 +154,8 @@ def build_comp_profile(ref, inps):
 							competition=inps['competition'],
 							other=inps['other'],
 							goals=inps['goals'],
-							wants_ads=inps['wants_ads'],
-							wants_social=inps['wants_social'],
+							ads_scale=inps['ads_scale'],
+							social_scale=inps['social_scale'],
 							wants_creatives=inps['wants_creatives'],
 							)
 	comp.save()
@@ -126,8 +166,9 @@ def bg_cust_setup(inps, count, ref, referred_by):
 	# send welcome email
 	send_welcome_email(to_email, count, ref)
 	build_comp_profile(ref, inps)
-	# add referral
+	alert_admin_new_signup(inps)
 	
+	# add referral
 	if referred_by:
 		signup = get_signup_by_ref(ref)	
 		referral = UserReferrals(user=signup, code=referred_by,)
