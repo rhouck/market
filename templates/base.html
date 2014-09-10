@@ -73,7 +73,7 @@
 					    		<li><a href="{% url 'join' %}">Join The Team</a></li>
 					    		
 					    		{% if request.session.token %}
-					    			<li><a href="{% url 'logout' %}">Logout</a></li> 
+					    			<li class="current"><a href="{% url 'logout' %}">Logout</a></li> 
 					    		{% else %}
 					    			<li class="current"><a href="{% url 'login' %}">Login</a></li> 
 					    		{% endif %}

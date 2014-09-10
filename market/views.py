@@ -117,14 +117,20 @@ def login(request):
 			cd = form.cleaned_data
 			
 			token = parse_login(cd['email'], cd['password'])
+			
 			if 'error' in token:
 				raise Exception(token['error'])
 			
 			request.session['token'] = token['token']
-			request.session['ref'] = token['ref']
+			request.session['staff'] = token['staff']
+			
+			if token['ref']:
+				request.session['ref'] = token['ref']
 
-			rev = str(reverse('confirmation', kwargs={'ref': ref}))
-			return HttpResponseRedirect(rev)
+				rev = str(reverse('confirmation', kwargs={'ref': token['ref']}))
+				return HttpResponseRedirect(rev)
+			else:			
+				return HttpResponseRedirect(reverse('projects'))
 		else:
 			raise Exception()
 
@@ -157,6 +163,94 @@ def resetPassword(request):
 def logout(request):	
 	request.session.flush()
 	return HttpResponseRedirect(reverse('splash'))
+
+
+def createStaff(request):
+
+	
+	inputs = request.POST if request.POST else None
+	form = LoginForm(inputs)
+	try:
+		
+		if (inputs) and form.is_valid():
+			
+			cd = form.cleaned_data
+			
+			# check if email already exists
+			
+			existing = ParseUser.Query.all().filter(email=cd['email'])
+			existing = [e for e in existing]
+			if existing:
+				raise Exception("Email already registered in system.")
+					
+			if LIVE:
+				env_type = 'live'
+				highrise_id = create_highrise_account(cd['email'], tag='staff')
+			else:
+				env_type = 'test'
+				highrise_id = None
+
+			email = cd['email'].lower()
+			signup = ParseUser.signup(email, 
+										cd['password'], 
+										email=email, 
+										type=env_type, 
+										highrise_id=highrise_id, 
+										active=False, 
+										staff=True)
+			
+			return HttpResponseRedirect(reverse('splash'))	
+			
+		else:
+			raise Exception()
+		
+	except Exception as err:
+		
+		form.errors['__all__'] = form.error_class([err])
+		return render_to_response('create-staff.html', {'form': form}, context_instance=RequestContext(request))
+
+def projects(request):
+	
+	if request.session['staff']:
+		
+		
+		return render_to_response('projects.html', {}, context_instance=RequestContext(request))
+
+	else:
+		raise Http404		
+	"""
+	inputs = request.POST if request.POST else None
+	form = LoginForm(inputs)
+	try:
+		
+		if (inputs) and form.is_valid():
+			
+			cd = form.cleaned_data
+			
+			token = parse_login(cd['email'], cd['password'])
+			
+			if 'error' in token:
+				raise Exception(token['error'])
+			
+			request.session['token'] = token['token']
+			request.session['staff'] = token['staff']
+			
+			if token['ref']:
+				request.session['ref'] = token['ref']
+
+				rev = str(reverse('confirmation', kwargs={'ref': token['ref']}))
+				return HttpResponseRedirect(rev)
+			else:			
+				return HttpResponseRedirect(reverse('splash'))
+		else:
+			raise Exception()
+
+	except Exception as err:
+		
+		form.errors['__all__'] = form.error_class([err])
+		return render_to_response('login.html', {'form': form}, context_instance=RequestContext(request))
+	"""
+
 
 def philosophy(request):
 	return render_to_response('philosophy.html', {}, context_instance=RequestContext(request))

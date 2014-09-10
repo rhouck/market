@@ -206,16 +206,31 @@ def parse_login(email, password):
 		user = get_parse_user_by_email(email)
 	except:
 		return {'error': "No one has signed up with this address."}
-		
-	if not user.emailVerified:
-		return {'error': "Email address not verified. Please check inbox."}
+	
+	# only check for verified addresses on users who signed up after initializing email verification
+	try:
+		if user.emailVerified == False:
+			return {'error': "Email address not verified. Please check inbox."}
+	except:
+		pass
 
-	u = User.login(email, password)
+	u = ParseUser.login(email, password)
 	header = u.session_header()
-	return {'token': header['X-Parse-Session-Token'], 'ref': u.ref}
+	
+	response = {'token': header['X-Parse-Session-Token']}
+	try:
+		response['ref'] = u.ref
+		response['staff'] = False
+	except:
+		response['ref'] = None
+		response['staff'] = True
+	
+	return response
+
 
 def reset_parse_user_pass(email):
 	email = email.lower()
-	ParseUser.request_password_reset(email=email)
-	return True
-
+	valid = ParseUser.request_password_reset(email=email)
+	if valid:
+		return True
+	raise Exception("Could not send 'reset password' email.")

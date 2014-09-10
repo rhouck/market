@@ -1,6 +1,6 @@
 That was a good move
 
-You are #{{ count }} on our waiting list.
+You are currently on our waiting list.
 
 Cut in line and get your first two blocks FREE by getting 5 other people to sign up with this unique URL:
 
