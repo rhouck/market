@@ -1,0 +1,236 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+
+
+{% block body %}
+	
+<div class="strip" id="content">
+
+	<div class="container">
+		
+
+        <div class="row">
+
+	    	<div class="span12">
+	    	
+	        	
+
+	        		</br></br>
+	        		<div class="align-center">	
+	        			<h1>My Dashboard</h1>
+	        		</div>
+	        		</br>
+	        		
+	        		{% comment %}
+				    	Blocks Section
+				    {% endcomment %}
+	        		<div class="row">
+						<div class="span8">
+						
+
+							{% for error in form.non_field_errors %}
+			                    <h3 style="color: red;">{{error}}</h3>
+			                	</br>
+			                {% endfor %}
+
+			              	<form method="post" action=""> 
+								{% csrf_token %}
+									
+									{% comment %}
+								    	Engagement Blocks
+								    {% endcomment %}
+
+									<div class="row">
+					        			<div class="span12">
+								        	<div class="inner">
+								        		<h2>Monthly Social Media Engagement</h2>								        	
+								        		<p>Select the social media platforms and scale for this month's engagement.</p>
+								        		<p>The block descriptions show the work we'll do for each block. If you want more, scale up.</p>
+								        	</div>
+								        </div>
+								    </div>
+					        		<div class="row">
+								    	<div class="span4">
+								        	<div class="inner align-center">
+								        		<div style="-webkit-border-radius: 15px;-moz-border-radius: 15px;border-radius: 15px;border:2px solid #777777;background:rgba(255,255,255,0.0);">
+								        		</br>
+								        		<p>Facebook</p>
+								        		<p>$100 x {{ form.facebook_scale|add_class:""}}</p>
+								        		</br>
+								        		</div>
+								        	</div>
+								        </div>
+								        <div class="span8">
+								        	<div class="inner">
+								        		<p>Light engagment (30min) x 4</p>
+								        		<p>Weekly scheduling of your marketing collateral (30 min) x 4</p>
+								        		<p>Weekly content curation around your brand (30min) x 4</p>
+								        		<p>Weekly summary with custom summary from our team (30min) x 4</p>
+								        	</div>
+								        </div>
+								    </div>
+								    <div class="row">
+								        <div class="span4">
+								        	<div class="inner align-center">
+								        		<div style="-webkit-border-radius: 15px;-moz-border-radius: 15px;border-radius: 15px;border:2px solid #777777;background:rgba(255,255,255,0.0);">
+								        		</br>
+								        		<p>Twitter</p>
+								        		<p>$100 x {{ form.twitter_scale|add_class:""}}</p>
+								        		</br>
+								        	</div>
+								        	</div>
+								        </div>
+								         <div class="span8">
+								        	<div class="inner">
+								        		<p>Light engagment (30min) x 4</p>
+								        		<p>Weekly scheduling of your marketing collateral (30 min) x 4</p>
+								        		<p>Weekly content curation around your brand (30min) x 4</p>
+								        		<p>Weekly summary with custom summary from our team (30min) x 4</p>
+								        	</div>
+								        </div>
+								    </div>
+								    <div class="row">
+								        <div class="span4">
+								        	<div class="inner align-center">
+								        		<div style="-webkit-border-radius: 15px;-moz-border-radius: 15px;border-radius: 15px;border:2px solid #777777;background:rgba(255,255,255,0.0);">
+								        		</br>
+								        		<p>Instagram</p>
+								        		<p>$100 x {{ form.instagram_scale|add_class:""}}</p>
+								        		</br>
+								        		</div>
+								        	</div>
+								        </div>
+								         <div class="span8">
+								        	<div class="inner">
+								        		<p>Light engagment (30min) x 4</p>
+								        		<p>Weekly scheduling of your marketing collateral (30 min) x 4</p>
+								        		<p>Weekly content curation around your brand (30min) x 4</p>
+								        		<p>Weekly summary with custom summary from our team (30min) x 4</p>
+								        	</div>
+								        </div>
+								    </div>
+								    
+
+								    {% comment %}
+								    	Setup Blocks
+								    {% endcomment %}
+									<div class="row">
+					        			<div class="span12">
+								        	<div class="inner">
+								        		<h2>Profile Setup and Maintenance</h2>	
+								        		<p>This is an optional one-time charge. Select the social media profiles you want us to build or let us know if it's time to update and build a new marketing strategy.</p>
+								        	</div>
+								        </div>
+								    </div>
+					        		<div class="row">
+								    	<div class="span3">
+								        	<div class="inner align-center">
+								        		<div style="-webkit-border-radius: 15px;-moz-border-radius: 15px;border-radius: 15px;border:2px solid #777777;background:rgba(255,255,255,0.0);">
+								        		<p>Facebook</p>
+								        		<p>$50 {{ form.facebook_profile }}</p>
+								        		</div>
+								        	</div>
+								        </div>
+								        <div class="span3">
+								        	<div class="inner align-center">
+								        		<div style="-webkit-border-radius: 15px;-moz-border-radius: 15px;border-radius: 15px;border:2px solid #777777;background:rgba(255,255,255,0.0);">
+								        		<p>Twitter</p>
+								        		<p>$50 {{ form.twitter_profile }}</p>
+								        	</div>
+								        	</div>
+								        </div>
+								        <div class="span3">
+								        	<div class="inner align-center">
+								        		<div style="-webkit-border-radius: 15px;-moz-border-radius: 15px;border-radius: 15px;border:2px solid #777777;background:rgba(255,255,255,0.0);">
+								        		<p>Instagram</p>
+								        		<p>$50 {{ form.instagram_profile }}</p>
+								        		</div>
+								        	</div>
+								        </div>
+								        <div class="span3">
+								        	<div class="inner align-center">
+								        		<div style="-webkit-border-radius: 15px;-moz-border-radius: 15px;border-radius: 15px;border:2px solid #777777;background:rgba(255,255,255,0.0);">
+								        		<p>Marketing Strat.</p>
+								        		<p>$100 {{ form.marketing_strategy }}</p>
+								        		</div>
+								        	</div>
+								        </div>
+								    </div>
+								    <div class="row">
+								    	<div class="span12">
+								        	<div class="inner">
+								        		<p>If you have existing accounts please make sure you have provide appropriate login information in the discussion section below. If not, we can set this up for you. If you have specific images or content or guidelines you'd lke us to work with please prodivde in discussion section.</p>
+								        	</div>
+								        </div>
+								    </div>
+
+								<div class="row">
+								    <div class="form-row align-left">
+			      						<input type="submit" name="register" value="Update" class="btn" style="background-color: #0fba52;" data-loading-text="Loading..." />
+										<div class="clearfix"></div>
+		                    		</div>
+		                    	</div>
+							</form>
+
+						</div>
+						
+						{% comment %}
+					    	Marketing Plan Section
+					    {% endcomment %}
+						<div class="span4">
+							<div class="row">
+			        			<div class="span12">
+						        	<div class="inner sidebar">
+						        		<div class="pad-left">
+						        		<h2>Primary Goal</h2>
+						        		<p>Generate Sales Leads</p>	
+						        		<h2>Marketing Strategy</h2>	
+						        		<p>Polaroid wayfarers enim, before they sold out mlkshk locavore mixtape sustainable. Flexitarian kitsch voluptate cred. Culpa dolore ethical, nesciunt deep v narwhal veniam Pitchfork. Proident before they sold out raw denim consectetur. Ut et small batch Banksy, distillery gentrify cray hashtag. Quis voluptate nisi, nostrud readymade Banksy fashion axe authentic bitters. Culpa High Life flannel post-ironic slow-carb officia, typewriter ugh tote bag semiotics fanny pack dolore qui ullamco.</p>
+
+										<p>Fixie messenger bag pop-up forage hella hashtag. Proident fanny pack single-origin coffee master cleanse Godard. Hashtag crucifix fashion axe, odio excepteur proident farm-to-table master cleanse banjo. Id raw denim nulla fingerstache, fixie selfies actually before they sold out aesthetic 90's. Craft beer art party actually mustache paleo fap. Esse try-hard selfies sapiente tattooed. Ad Schlitz Tonx duis.</p>
+										</div>
+
+
+						        	</div>
+						        </div>
+						    </div>
+						</div>
+
+	        		
+	        		
+		      
+              	
+					</div>
+	    	
+	    		</div>
+	    	</div>
+	    
+	    {% comment %}
+	    	Discussion Section
+	    {% endcomment %}
+	    <div class="row">
+			<div class="span12">
+	    	
+	        	<div class="inner">
+	        		{% include "disqus.html" %}
+	        		{% comment %}
+	   			 		
+    				{% endcomment %}
+		   		
+
+
+
+		    	</div>
+	    	
+	    	</div>  
+	    
+	    	<div class="clearfix"></div>
+	    	        	
+	    </div>
+
+	</div>
+
+</div> 
+
+{% endblock %}

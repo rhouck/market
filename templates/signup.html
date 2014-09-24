@@ -16,7 +16,7 @@
 	    	
 	        	<div class="inner">
 
-	        	<h2>Sign up today and you may win your first two weeks FREE</h2>	 
+	        	<h2>Sign up to recieve a FREE social media audit with no obligations.</h2>	 
 	      
               	{% for error in form.non_field_errors %}
                     <h3 style="color: red;">{{error}}</h3>
@@ -87,19 +87,19 @@
 						<div class="clearfix"></div>
 					</div>
 
+					{% if form.pitch.errors %}
+		                    <p style="color: red;">{{ form.pitch.errors }}</p>
+		            {% endif %}
+					<div class="form-row">						
+						{{ form.pitch|add_class:"text login_input"}}
+						<div class="clearfix"></div>
+					</div>
+
 					{% if form.industry.errors %}
 		                    <p style="color: red;">{{ form.industry.errors }}</p>
 		            {% endif %}
 					<div class="form-row">						
 						{{ form.industry|add_class:"text login_input"}}
-						<div class="clearfix"></div>
-					</div>
-
-					{% if form.co_description.errors %}
-		                    <p style="color: red;">{{ form.co_description.errors }}</p>
-		            {% endif %}
-					<div class="form-row">						
-						{{ form.co_description|add_class:"text login_input"}}
 						<div class="clearfix"></div>
 					</div>
 
@@ -111,6 +111,22 @@
 						<div class="clearfix"></div>
 					</div>
 
+					{% if form.target_description.errors %}
+		                    <p style="color: red;">{{ form.target_description.errors }}</p>
+		            {% endif %}
+					<div class="form-row">						
+						{{ form.target_description|add_class:"text login_input"}}
+						<div class="clearfix"></div>
+					</div>
+
+					{% if form.clients.errors %}
+		                    <p style="color: red;">{{ form.clients.errors }}</p>
+		            {% endif %}
+					<div class="form-row">						
+						{{ form.clients|add_class:"text login_input"}}
+						<div class="clearfix"></div>
+					</div>
+					
 					{% if form.competition.errors %}
 		                    <p style="color: red;">{{ form.competition.errors }}</p>
 		            {% endif %}
@@ -138,26 +154,41 @@
 						<div class="clearfix"></div>
 					</div>
 
+					{% if form.budget.errors %}
+		                    <p style="color: red;">{{ form.budget.errors }}</p>
+		            {% endif %}
+					<div class="form-row">						
+						{{ form.budget|add_class:"text login_input"}}
+						<div class="clearfix"></div>
+					</div>
+
+					{% if form.creatives.errors %}
+		                    <p style="color: red;">{{ form.creatives.errors }}</p>
+		            {% endif %}
+					<div class="form-row">						
+						{{ form.creatives|add_class:"text login_input"}}
+						<div class="clearfix"></div>
+					</div>
 					
+					{% comment %}
+						{% if form.ads_scale.errors %}
+			                    <p style="color: red;">{{ form.ads_scale.errors }}</p>
+			            {% endif %}
+						<div class="form-row">			
+							Expected starting number of Ads Blocks ($50/wk):	
+							{{ form.ads_scale|add_class:""}}
+							<div class="clearfix"></div>
+						</div>
 
-					{% if form.ads_scale.errors %}
-		                    <p style="color: red;">{{ form.ads_scale.errors }}</p>
-		            {% endif %}
-					<div class="form-row">			
-						Expected starting number of Ads Blocks ($50/wk):	
-						{{ form.ads_scale|add_class:""}}
-						<div class="clearfix"></div>
-					</div>
-
-					{% if form.social_scale.errors %}
-		                    <p style="color: red;">{{ form.social_scale.errors }}</p>
-		            {% endif %}
-					<div class="form-row">			
-						Expected starting number of Social Blocks ($50/wk):
-						{{ form.social_scale|add_class:""}}
-						<div class="clearfix"></div>
-					</div>
-
+						{% if form.social_scale.errors %}
+			                    <p style="color: red;">{{ form.social_scale.errors }}</p>
+			            {% endif %}
+						<div class="form-row">			
+							Expected starting number of Social Blocks ($50/wk):
+							{{ form.social_scale|add_class:""}}
+							<div class="clearfix"></div>
+						</div>
+					{% endcomment %}
 					
 					{% if form.wants_creatives.errors %}
 		                    <p style="color: red;">{{ form.wants_creatives.errors }}</p>

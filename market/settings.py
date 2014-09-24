@@ -42,6 +42,8 @@ INSTALLED_APPS = (
     'widget_tweaks',
     'south',
     "django_rq",
+    'disqus',
+    #'django.contrib.sites',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -136,6 +138,13 @@ RQ_QUEUES = {
     }
 }
 
+
+# disqus creds
+"""
+DISQUS_API_KEY = 'DwJvfEXNALMxzQecWZ2Z8odhqam8sFwVqfcy2kt4Yx9EODTSRzh0YPVRIHNh0gbw'
+DISQUS_WEBSITE_SHORTNAME = 'boostblocks'
+SITE_ID = 1
+"""
 
 if search('live', host):
     from settings_live import *

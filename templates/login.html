@@ -40,6 +40,13 @@
 						<div class="clearfix"></div>
 					</div>
 					<a href="{% url 'reset-password' %}">Forgot password?</a>
+					 | 
+					{% if request.GET.ref %}
+			    		<a href="{% url 'signup' %}?ref={{ request.GET.ref }}">Signup</a>
+			    	{% else %}
+			    		<a href="{% url 'signup' %}">Signup</a>  
+			    	{% endif %}
+
 					</br></br>	
 					 <div class="form-row">
       					<input type="submit" name="register" value="Continue" class="btn" style="background-color: #0fba52;" data-loading-text="Loading..." />

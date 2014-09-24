@@ -22,9 +22,11 @@ urlpatterns = patterns('',
     url(r'^signup/$', 'market.views.signup', name='signup'),
     url(r'^reset-password/$', 'market.views.resetPassword', name='reset-password'),
     url(r'^confirmation/(?P<ref>[A-Za-z0-9]{8})$', 'market.views.confirmation', name='confirmation'),
+    url(r'^dashboard/(?P<ref>[A-Za-z0-9]{8})$', 'market.views.profile', name='profile'),
     
     url(r'^create-staff/$', 'market.views.createStaff', name='create-staff'),
     url(r'^projects/$', 'market.views.projects', name='projects'),
+    url(r'^test/$', 'market.views.test'),
 
     (r'^django-rq/', include('django_rq.urls')),
 

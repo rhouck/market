@@ -106,6 +106,27 @@ def confirmation(request, ref):
 	except:
 		raise Http404
 
+def profile(request, ref):
+	
+	try:
+		signup = get_signup_by_ref(ref)	
+	except:
+		raise Http404
+
+
+	inputs = request.POST if request.POST else None
+	form = DashboardForm(inputs)
+	
+	if (inputs) and form.is_valid():	
+		cd = form.cleaned_data
+		return render_to_response('profile.html', {'form': form}, context_instance=RequestContext(request))
+	else:
+		#form.errors['__all__'] = form.error_class([err])
+		return render_to_response('profile.html', {'form': form}, context_instance=RequestContext(request))
+
+	
+
+
 def login(request):
 	
 	inputs = request.POST if request.POST else None
@@ -127,7 +148,8 @@ def login(request):
 			if token['ref']:
 				request.session['ref'] = token['ref']
 
-				rev = str(reverse('confirmation', kwargs={'ref': token['ref']}))
+				#rev = str(reverse('confirmation', kwargs={'ref': token['ref']}))
+				rev = str(reverse('profile', kwargs={'ref': token['ref']}))
 				return HttpResponseRedirect(rev)
 			else:			
 				return HttpResponseRedirect(reverse('projects'))
@@ -218,6 +240,7 @@ def projects(request):
 
 	else:
 		raise Http404		
+
 	"""
 	inputs = request.POST if request.POST else None
 	form = LoginForm(inputs)
@@ -251,6 +274,11 @@ def projects(request):
 		return render_to_response('login.html', {'form': form}, context_instance=RequestContext(request))
 	"""
 
+def test(request):
+	
+	return render_to_response('test.html', {}, context_instance=RequestContext(request))
+
+	
 
 def philosophy(request):
 	return render_to_response('philosophy.html', {}, context_instance=RequestContext(request))

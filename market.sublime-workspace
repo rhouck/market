@@ -443,6 +443,78 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "market/urls.py",
+			"settings":
+			{
+				"buffer_size": 1193,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "market/views.py",
+			"settings":
+			{
+				"buffer_size": 6598,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "market/utils.py",
+			"settings":
+			{
+				"buffer_size": 8079,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/projects.html",
+			"settings":
+			{
+				"buffer_size": 6261,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "commit.txt",
+			"settings":
+			{
+				"buffer_size": 12,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "market/forms.py",
+			"settings":
+			{
+				"buffer_size": 3564,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/signup.html",
+			"settings":
+			{
+				"buffer_size": 6329,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/splash.html",
+			"settings":
+			{
+				"buffer_size": 8302,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/email_template/admin_com.html",
+			"settings":
+			{
+				"buffer_size": 22688,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -472,6 +544,42 @@
 	},
 	"file_history":
 	[
+		"/Users/ryanchouck/Desktop/dev/market/market/settings.py",
+		"/Users/ryanchouck/Desktop/dev/market/market/wsgi.py",
+		"/Users/ryanchouck/Desktop/dev/market/templates/email_template/counter.txt",
+		"/Users/ryanchouck/Desktop/dev/market/templates/email_template/admin_com.txt",
+		"/Users/ryanchouck/Desktop/dev/market/templates/splash.html",
+		"/Users/ryanchouck/Desktop/dev/market/templates/base.html",
+		"/Users/ryanchouck/Desktop/dev/market/templates/uv.html",
+		"/Users/ryanchouck/Desktop/dev/market/market/settings_local.py",
+		"/Users/ryanchouck/Desktop/dev/market/market/views.py",
+		"/Users/ryanchouck/Desktop/dev/market/market/utils.py",
+		"/Users/ryanchouck/Desktop/dev/market/templates/login.html",
+		"/Users/ryanchouck/Desktop/dev/market/market/forms.py",
+		"/Users/ryanchouck/Desktop/dev/market/templates/reset.html",
+		"/Users/ryanchouck/Desktop/dev/market/templates/create-staff.html",
+		"/Users/ryanchouck/Desktop/dev/market/static/parse_templates/choose_password.html",
+		"/Users/ryanchouck/Desktop/dev/market/venv/lib/python2.7/site-packages/parse_rest/user.py",
+		"/Users/ryanchouck/Desktop/dev/market/commit.txt",
+		"/Users/ryanchouck/Desktop/dev/market/templates/signup.html",
+		"/Users/ryanchouck/Desktop/dev/market/templates/email_template/index.html",
+		"/Users/ryanchouck/Desktop/dev/market/templates/email_template/plain_text.txt",
+		"/Users/ryanchouck/Desktop/dev/market/templates/confirmation.html",
+		"/Users/ryanchouck/Desktop/dev/market/templates/projects.html",
+		"/Users/ryanchouck/Desktop/dev/market/market/models.py",
+		"/Users/ryanchouck/Desktop/dev/market/.gitignore",
+		"/Users/ryanchouck/Desktop/dev/market/manage.py",
+		"/Users/ryanchouck/Desktop/dev/market/README.md",
+		"/Users/ryanchouck/Desktop/dev/market/templates/fb.html",
+		"/Users/ryanchouck/Desktop/dev/market/templates/philosophy.html",
+		"/Users/ryanchouck/Desktop/dev/market/templates/join.html",
+		"/Users/ryanchouck/Downloads/blank w- header.html",
+		"/Users/ryanchouck/Desktop/dev/market/templates/email_template/counter.html",
+		"/Users/ryanchouck/Desktop/dev/market/market/settings_live.py",
+		"/Users/ryanchouck/Desktop/dev/market/market/settings_dev.py",
+		"/Users/ryanchouck/Desktop/dev/market/requirements.txt",
+		"/Users/ryanchouck/Desktop/dev/market/Procfile",
+		"/Users/ryanchouck/Desktop/dev/market/templates/tos.html",
 		"/Users/ryanchouck/Desktop/dev/gifts/templates/tos.html",
 		"/Users/ryanchouck/Desktop/dev/gifts/templates/priv.html",
 		"/Users/ryanchouck/Desktop/dev/gifts/templates/confirmation.html",
@@ -563,25 +671,7 @@
 		"/Users/ryanchouck/Desktop/dev/api/analysis/views.py",
 		"/Users/ryanchouck/Desktop/dev/api/analysis/forms.py",
 		"/Users/ryanchouck/Desktop/dev/api/api/templates/email_template/plain_text.txt",
-		"/Users/ryanchouck/Desktop/dev/api/api/templates/analysis/charts.html",
-		"/Users/ryanchouck/Desktop/dev/api/api/templates/explore/performance.html",
-		"/Users/ryanchouck/Desktop/dev/api/pricing/images.py",
-		"/Users/ryanchouck/Desktop/dev/api/venv/lib/python2.7/site-packages/quix.pay-0.1.4-py2.7-nspkg.pth",
-		"/Users/ryanchouck/Desktop/dev/api/api/templates/sales/trash.py",
-		"/Users/ryanchouck/Desktop/dev/api/venv/lib/python2.7/site-packages/django/core/mail/__init__.py",
-		"/Users/ryanchouck/Desktop/dev/practice/practice/settings.py",
-		"/Users/ryanchouck/Desktop/dev/practice/practice/views.py",
-		"/Users/ryanchouck/Desktop/dev/api/api/templates/email_template/test_html.html",
-		"/Users/ryanchouck/Desktop/dev/api/api/templates/email_template/index_no_image.html",
-		"/Users/ryanchouck/Desktop/dev/api/api/views.py",
-		"/Users/ryanchouck/Desktop/dev/api/email_template/index.html",
-		"/Users/ryanchouck/Desktop/dev/api/venv/lib/python2.7/site-packages/quix/pay/transaction.py",
-		"/Users/ryanchouck/Desktop/dev/api/venv/lib/python2.7/site-packages/quix/pay/gateway/authorizenet.py",
-		"/Users/ryanchouck/Desktop/dev/pricing-model/view_data.py",
-		"/Users/ryanchouck/Desktop/dev/pricing-model/functions.py",
-		"/Users/ryanchouck/Desktop/dev/pricing-model/.gitignore",
-		"/Users/ryanchouck/Desktop/dev/pricing-model/simp_price.py",
-		"/Users/ryanchouck/Downloads/view_data.py"
+		"/Users/ryanchouck/Desktop/dev/api/api/templates/analysis/charts.html"
 	],
 	"find":
 	{
@@ -589,7 +679,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
 			""
@@ -597,9 +687,32 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": false,
+		"case_sensitive": true,
 		"find_history":
 		[
+			"Reset Your Password F",
+			"market",
+			"host",
+			"img",
+			"surp",
+			"sur",
+			"surp",
+			"sur",
+			"surp",
+			"sur",
+			"surp",
+			"h2",
+			"Choos",
+			"boost",
+			"sur",
+			"Surprisr",
+			".com",
+			"Surprisr",
+			"surp",
+			"sur",
+			"sup",
+			"sur",
+			"gifts",
 			"Parse",
 			"referrals",
 			"Sign",
@@ -704,30 +817,7 @@
 			"current_time_aware",
 			"json",
 			"ast",
-			"refund_for",
-			"parse",
-			"template",
-			"expired",
-			"alerts",
-			"boolean",
-			"delta",
-			"sweep_expire",
-			"could not",
-			"google_live",
-			"date",
-			"conv",
-			"date",
-			" =",
-			"staging",
-			"We will sned",
-			"parse",
-			"purch_date_time",
-			"run_flight_sear",
-			"get_airline_inf",
-			"purchase",
-			"get_airline_",
-			"get_airline_image",
-			"get_airline_"
+			"refund_for"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -735,6 +825,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"h3",
+			"BoostBlocks"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -745,8 +837,253 @@
 	"groups":
 	[
 		{
+			"selected": 8,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "market/urls.py",
+					"settings":
+					{
+						"buffer_size": 1193,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1119,
+								1119
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "market/views.py",
+					"settings":
+					{
+						"buffer_size": 6598,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5225,
+								5225
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 489.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "market/utils.py",
+					"settings":
+					{
+						"buffer_size": 8079,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3816,
+								3816
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1199.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "templates/projects.html",
+					"settings":
+					{
+						"buffer_size": 6261,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "commit.txt",
+					"settings":
+					{
+						"buffer_size": 12,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								12,
+								12
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "market/forms.py",
+					"settings":
+					{
+						"buffer_size": 3564,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2620,
+								2620
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 543.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "templates/signup.html",
+					"settings":
+					{
+						"buffer_size": 6329,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4975,
+								4975
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2023.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "templates/splash.html",
+					"settings":
+					{
+						"buffer_size": 8302,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1407,
+								1407
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 488.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "templates/email_template/admin_com.html",
+					"settings":
+					{
+						"buffer_size": 22688,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								20625,
+								20625
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 9186.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -787,7 +1124,7 @@
 	},
 	"replace":
 	{
-		"height": 0.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":

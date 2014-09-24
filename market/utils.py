@@ -101,23 +101,26 @@ def alert_admin_new_signup(inps):
 	
 	subject = "New User signup"
 	title = "%s has signed up" % (inps['email'])
-	body =	"""Email: %s\n\nComapny: %s\n\nWebsite: %s\n\nSocial 1: %s\n\nSocial 2: %s\n\nSocial 3: %s\n\nDevelopment Stage: %s\n\nAnnual Sales: %s\n\nIndustry: %s\n\nCo. Description: %s\n\nBrand Description: %s\n\nCompetition: %s\n\nOther: %s\n\nGoals: %s\n\nAds Blocks: %s\n\nSocial Blocks: %s\n\nWants Creatives: %s""" % (
+	body =	"""Email: %s\n\nComapny: %s\n\nWebsite: %s\n\nSocial 1: %s\n\nSocial 2: %s\n\nSocial 3: %s\n\nSocial 4: %s\n\nDevelopment Stage: %s\n\nAnnual Sales: %s\n\nPitch: %s\n\nIndustry: %s\n\nTarget Description: %s\n\nBrand Description: %s\n\nClients: %s\n\nCompetition: %s\n\nOther: %s\n\nGoals: %s\n\nBudget: %s\n\nCreatives: %s\n\nWants Creatives: %s""" % (
 				inps['email'],
 				inps['company'],
 				inps['website'],
 				inps['soc_one'],
 				inps['soc_two'],
 				inps['soc_three'],
+				inps['soc_four'],
 				inps['dev_stage'],
 				inps['sales'],
+				inps['pitch'],
 				inps['industry'],
-				inps['co_description'],
+				inps['target_description'],
 				inps['brand_description'],
+				inps['clients'],
 				inps['competition'],
 				inps['other'],
 				inps['goals'],
-				inps['ads_scale'],
-				inps['social_scale'],
+				inps['budget'],
+				inps['creatives'],
 				inps['wants_creatives'],)
 
 	plaintext = get_template('email_template/admin_com.txt')
@@ -146,16 +149,19 @@ def build_comp_profile(ref, inps):
 							soc_one=inps['soc_one'],
 							soc_two=inps['soc_two'],
 							soc_three=inps['soc_three'],
+							soc_four=inps['soc_four'],
 							dev_stage=inps['dev_stage'],
 							sales=inps['sales'],
+							pitch=inps['pitch'],
 							industry=inps['industry'],
-							co_description=inps['co_description'],
+							target_description=inps['target_description'],
 							brand_description=inps['brand_description'],
+							clients=inps['clients'],
 							competition=inps['competition'],
 							other=inps['other'],
 							goals=inps['goals'],
-							ads_scale=inps['ads_scale'],
-							social_scale=inps['social_scale'],
+							budget=inps['budget'],
+							creatives=inps['creatives'],
 							wants_creatives=inps['wants_creatives'],
 							)
 	comp.save()
