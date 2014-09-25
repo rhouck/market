@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        
+    <title>Hostify - HTML5 Hosting Template</title>
+
+	<meta name="author" content="DanThemes" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta charset="utf-8" />
+	
+	<!-- css files -->
+    <link href="css/red.css" rel="stylesheet" title="red" />
+    <link href="css/blue.css" rel="alternate stylesheet" title="blue" />
+    <link href="css/green.css" rel="alternate stylesheet" title="green" />
+    <link href="css/brown.css" rel="alternate stylesheet" title="brown" />
+    <link href="css/purple.css" rel="alternate stylesheet" title="purple" />
+    <link href="css/black.css" rel="alternate stylesheet" title="black" />
+    <link href="css/font-awesome.css" rel="stylesheet" />
+    <link href="css/responsive.css" rel="stylesheet" />
+    <link href="css/options.css" rel="stylesheet" />
+	
+	<!-- javascript files -->
+	<script src="js/jquery.js"></script>
+  	<script src="js/jquery-ui.js"></script>
+	<script src="js/jquery.easytabs.js"></script>
+	<script src="js/jquery.cycle.all.js"></script>
+	<script src="js/superfish.js"></script>
+	<script src="js/jquery.bxSlider.min.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/responsive-nav.js"></script>
+	<script src="js/options.js"></script>
+	<script src="js/jquery.carouFredSel-6.2.1-packed.js"></script>
+
+	<script type="text/javascript">
+		$(function() {
+			$('#carousel').carouFredSel({
+				auto: true,
+				prev: '#prev2',
+				next: '#next2',
+				scroll: 1,
+				items: {
+					visible: {
+						min: 1,
+						max: 4
+					}
+				}
+			});
+		});
+	</script>
+
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css' />
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic,500italic,700italic' rel='stylesheet' type='text/css' />
+	
+</head>
+
+<body onload="set_style_from_cookie()">
+
+	<!-- START options -->
+	<div id="optwrap">		
+		<div id="options">
+		
+			<!-- change color style -->
+			<div class="color-switcher">
+				<strong>Change the color style</strong> <br />
+				
+				<ul id="color_scheme" class="styleswitcher">
+					<li><a class="red" href="#" onclick="switch_style('red');return false;"></a></li>
+					<li><a class="blue" href="#" onclick="switch_style('blue');return false;"></a></li>
+					<li><a class="green" href="#" onclick="switch_style('green');return false;"></a></li>
+					<li><a class="brown" href="#" onclick="switch_style('brown');return false;"></a></li>
+					<li><a class="purple" href="#" onclick="switch_style('purple');return false;"></a></li>
+					<li><a class="black" href="#" onclick="switch_style('black');return false;"></a></li>
+				</ul>
+				
+				<div class="clear"></div>
+				
+			</div>
+			
+		</div>
+		<div id="closer">
+			<a class="opener" href="#"></a>
+			<a class="closerer" href="#"></a>
+		</div>
+		
+	</div>
+	<!-- END options -->
+
+	<div class="top_area">
+		<div class="wrap">
+			<ul class="social">
+				<li><a href="#"><i class="icon-twitter-sign"></i></a></li>
+				<li><a href="#"><i class="icon-facebook-sign"></i></a></li>
+				<li><a href="#"><i class="icon-google-plus-sign"></i></a></li>
+				<li><a href="#"><i class="icon-pinterest-sign"></i></a></li>
+				<li><a href="#"><i class="icon-tumblr-sign"></i></a></li>
+				<li><a href="#"><i class="icon-flickr"></i></a></li>
+				<li><a href="#"><i class="icon-linkedin-sign"></i></a></li>
+				<li><a href="#"><i class="icon-pinterest-sign"></i></a></li>
+			</ul>
+
+			<ul id="top_area_links">
+				<li><i class="icon-phone"></i>1.888-888-8888</li>
+				<li><i class="icon-envelope"></i><a href="#">support@website.com</a></li>
+				<li><i class="icon-headphones"></i><a href="#">Live Chat</a></li>
+				<li><i class="icon-comments"></i><a href="#">Send a Ticket</a></li>
+			</ul>
+		</div>
+		<div class="clear"></div>
+	</div>
+
+	<header id="top">
+		<div class="wrap">
+		
+			<div id="logo">
+				<p><a href="index.html">Hostify</a></p>
+			</div>
+			
+			<a href="#nav" id="toggle"><i class="icon-reorder"></i></a>
+
+			<nav class="nav-collapse" id="nav">
+				<ul class="sf-menu">
+					<li><a class="selected" href="index.html">Home<span>homepage</span></a>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="index-bxslider.html">Home - Bx Slider</a></li>
+							<li><a href="index-sequence.html">Home - Sequence</a></li>
+							<li><a href="index-unslider.html">Home - Un Slider</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Pages<span>all features</span></a>
+						<ul>
+							<li><a href="column-layouts.html">Column Layouts</a></li>
+							<li><a href="full-width.html">Full Width</a></li>
+							<li><a href="typography.html">Typography</a></li>
+							<li><a href="elements.html">Elements</a></li>
+							<li><a href="icons.html">Icons</a></li>
+							<li><a href="sidebar-left.html">Sidebar Left</a></li>
+							<li><a href="sidebar-right.html">Sidebar Right</a></li>
+							<li><a href="#">Portfolio</a>
+								<ul>
+									<li><a href="portfolio-one-column.html">One Column</a></li>
+									<li><a href="portfolio-two-columns.html">Two Columns</a></li>
+									<li><a href="portfolio-three-columns.html">Three Columns</a></li>
+									<li><a href="portfolio-four-columns.html">Four Columns</a></li>
+								</ul>
+							</li>
+							<li><a href="#">Blog</a>
+								<ul>
+									<li><a href="blog-sidebar-left.html">Blog - Sidebar Left</a></li>
+									<li><a href="blog-sidebar-right.html">Blog - Sidebar Right</a></li>
+									<li><a href="single-post.html">Single Post</a></li>
+								</ul>
+							</li>
+							<li><a href="404.html">404 - Error Page</a></li>
+						</ul>
+					</li>
+					<li><a href="web-hosting.html">Web Hosting<span>our hosting plans</span></a></li>
+					<li><a href="about-us.html">About Us<span>our team</span></a></li>
+					<li><a href="contact.html">Contact<span>get in touch</span></a></li>
+				</ul><div class="clear"></div>
+			</nav>
+			
+			<div class="clear"></div>
+
+		</div>
+	</header>
+
+	<div id="slider_wrapper">
+		<div class="wrap">
+
+			<div class="tabs">
+
+			    <div class="tab-content">
+			        <div id="tab1" class="tab active">
+		        		<span class="tab-price">
+		        			<i class="icon-comment-alt"></i>
+		        			<span>only<em>$4.95</em>per month</span>
+		        		</span>
+
+			            <h1>Shared Hosting</h1>
+			            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dignissim sodales nisl sed facilisis. Suspendisse tempor, nisl eu sollicitudin feugiat, eros sem porta magna, quis vestibulum lorem urna eu orci. In hac habitasse platea dictumst. In vel diam vitae orci suscipit suscipit eu id neque.</p>
+			        	<a href="#" class="tab-button">Order Now</a>
+			        </div>
+			 
+			        <div id="tab2" class="tab">
+		        		<span class="tab-price">
+		        			<i class="icon-comment-alt"></i>
+		        			<span>only<em>$19.95</em>per month</span>
+		        		</span>
+
+			            <h1>Reseller Hosting</h1>
+			            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dignissim sodales nisl sed facilisis. Suspendisse tempor, nisl eu sollicitudin feugiat, eros sem porta magna, quis vestibulum lorem urna eu orci. In hac habitasse platea dictumst. In vel diam vitae orci suscipit suscipit eu id neque.</p>
+			        	<a href="#" class="tab-button">Order Now</a>
+			        </div>
+			 
+			        <div id="tab3" class="tab">
+		        		<span class="tab-price">
+		        			<i class="icon-comment-alt"></i>
+		        			<span>only<em>$24.95</em>per month</span>
+		        		</span>
+
+			            <h1>VPS Hosting</h1>
+			            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dignissim sodales nisl sed facilisis. Suspendisse tempor, nisl eu sollicitudin feugiat, eros sem porta magna, quis vestibulum lorem urna eu orci. In hac habitasse platea dictumst. In vel diam vitae orci suscipit suscipit eu id neque.</p>
+			        	<a href="#" class="tab-button">Order Now</a>
+			        </div>
+
+			        <div id="tab4" class="tab">
+		        		<span class="tab-price">
+		        			<i class="icon-comment-alt"></i>
+		        			<span>only<em>$199.95</em>per month</span>
+		        		</span>
+
+			            <h1>Dedicated Servers</h1>
+			            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dignissim sodales nisl sed facilisis. Suspendisse tempor, nisl eu sollicitudin feugiat, eros sem porta magna, quis vestibulum lorem urna eu orci. In hac habitasse platea dictumst. In vel diam vitae orci suscipit suscipit eu id neque.</p>
+			        	<a href="#" class="tab-button">Order Now</a>
+			        </div>
+			    </div>
+
+			    <ul class="tab-links">
+			        <li class="active"><a href="#tab1"><i class="icon-hdd"></i><span>Shared Hosting</span></a></li>
+			        <li><a href="#tab2"><i class="icon-hdd"></i><span>Reseller Hosting</span></a></li>
+			        <li><a href="#tab3"><i class="icon-hdd"></i><span>VPS Hosting</span></a></li>
+			        <li><a href="#tab4"><i class="icon-hdd"></i><span>Dedicated Servers</span></a></li>
+			    </ul>
+
+			</div>
+
+		</div>
+	</div>
+
+	<div class="clear"></div>
+
+	<div class="content">
+		<div class="wrap">
+
+			<div class="clear"></div>
+
+			<div class="pricing_wrapper">
+				<div class="one_fourth">
+					<div class="pricing">
+						<div class="pricing_top">
+							<h4>Starter Plan</h4>
+							<p>$4.95</p>
+						</div>
+
+						<ul>
+							<li><i class="icon-hdd"></i><strong>10GB</strong> Disk Space</li>
+							<li><i class="icon-dashboard"></i><strong>100GB</strong> Bandwidth</li>
+							<li><i class="icon-envelope"></i><strong>10</strong> Email Adresses</li>
+							<li><i class="icon-globe"></i><strong>1</strong> Free Domain Name</li>
+							<li class="pricing_order"><a href="#">Order Now</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="one_fourth">
+					<div class="pricing">
+						<div class="pricing_ribbon">
+							<p>Best</p>
+						</div>
+						<div class="pricing_top">
+							<h4>Personal Plan</h4>
+							<p>$9.95</p>
+						</div>
+
+						<ul>
+							<li><i class="icon-hdd"></i><strong>10GB</strong> Disk Space</li>
+							<li><i class="icon-dashboard"></i><strong>100GB</strong> Bandwidth</li>
+							<li><i class="icon-envelope"></i><strong>10</strong> Email Adresses</li>
+							<li><i class="icon-globe"></i><strong>1</strong> Free Domain Name</li>
+							<li class="pricing_order"><a href="#">Order Now</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="one_fourth">
+					<div class="pricing">
+						<div class="pricing_top">
+							<h4>Advanced Plan</h4>
+							<p>$19.95</p>
+						</div>
+
+						<ul>
+							<li><i class="icon-hdd"></i><strong>10GB</strong> Disk Space</li>
+							<li><i class="icon-dashboard"></i><strong>100GB</strong> Bandwidth</li>
+							<li><i class="icon-envelope"></i><strong>10</strong> Email Adresses</li>
+							<li><i class="icon-globe"></i><strong>1</strong> Free Domain Name</li>
+							<li class="pricing_order"><a href="#">Order Now</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="one_fourth last">
+					<div class="pricing">
+						<div class="pricing_top">
+							<h4>Business Plan</h4>
+							<p>$29.95</p>
+						</div>
+
+						<ul>
+							<li><i class="icon-hdd"></i><strong>10GB</strong> Disk Space</li>
+							<li><i class="icon-dashboard"></i><strong>100GB</strong> Bandwidth</li>
+							<li><i class="icon-envelope"></i><strong>10</strong> Email Adresses</li>
+							<li><i class="icon-globe"></i><strong>1</strong> Free Domain Name</li>
+							<li class="pricing_order"><a href="#">Order Now</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="clear"></div>
+			<div class="space"></div>
+
+		</div>
+
+		<div class="stats_wrap">
+			<div class="wrap">
+				<div class="one_fourth">
+					<div class="stats">
+						<p><span class="icon-heart"></span></p>
+						<h5><span class="count">572</span><br /> Satisfied Clients</h5>
+					</div>
+				</div>
+
+				<div class="one_fourth">
+					<div class="stats">
+						<p><span class="icon-heart"></span></p>
+						<h5><span class="count">879</span><br /> Hosted Websites</h5>
+					</div>
+				</div>
+
+				<div class="one_fourth">
+					<div class="stats">
+						<p><span class="icon-heart"></span></p>
+						<h5><span class="count">132</span><br /> Staff Members</h5>
+					</div>
+				</div>
+
+				<div class="one_fourth last">
+					<div class="stats">
+						<p><span class="icon-heart"></span></p>
+						<h5><span class="count">89</span><br /> Dedicated Servers</h5>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+
+		<div class="wrap">
+
+			<div class="clear"></div>
+			<div class="space"></div>
+
+			<div class="heading"><span>Why Choose <em>Us</em> ?</span></div>
+
+			<div class="one_third">
+				<div class="box_feature">
+					<div class="box_feature_icon"><span class="icon-ok"></span></div>
+					<div class="box_feature_text">
+						<h6>Free Daily Backups</h6>
+						<p>Lorem ipsum dolor amet conse</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="one_third">
+				<div class="box_feature">
+					<div class="box_feature_icon"><span class="icon-ok"></span></div>
+					<div class="box_feature_text">
+						<h6>24/7 Customer Support</h6>
+						<p>Lorem ipsum dolor amet conse</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="one_third last">
+				<div class="box_feature">
+					<div class="box_feature_icon"><span class="icon-ok"></span></div>
+					<div class="box_feature_text">
+						<h6>Fast &amp; Powerful Servers</h6>
+						<p>Lorem ipsum dolor amet conse</p>
+					</div>
+				</div>
+			</div>
+
+					<div class="clear"></div>
+					<div class="space2"></div>
+
+			<div class="one_third">
+				<div class="box_feature">
+					<div class="box_feature_icon"><span class="icon-ok"></span></div>
+					<div class="box_feature_text">
+						<h6>99.5% Uptime Guarantee</h6>
+						<p>Lorem ipsum dolor amet conse</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="one_third">
+				<div class="box_feature">
+					<div class="box_feature_icon"><span class="icon-ok"></span></div>
+					<div class="box_feature_text">
+						<h6>World-Wide Services</h6>
+						<p>Lorem ipsum dolor amet conse</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="one_third last">
+				<div class="box_feature">
+					<div class="box_feature_icon"><span class="icon-ok"></span></div>
+					<div class="box_feature_text">
+						<h6>Unlimited Disk Space</h6>
+						<p>Lorem ipsum dolor amet conse</p>
+					</div>
+				</div>
+			</div>
+
+				<div class="clear"></div>
+				<div class="space"></div>
+
+		</div>
+
+		<div class="tabs_panel">
+			<div class="wrap">
+				<div id="tabs" class="tab-container">
+					<ul class="etabs">
+						<li class="tab"><a href="#domain-name"><i class="icon-home"></i>Register a Domain</a></li>
+						<li class="tab"><a href="#who-are-we"><i class="icon-check"></i>Who Are We?</a></li>
+						<li class="tab"><a href="#what-do-we-offer"><i class="icon-briefcase"></i>What Do We Offer?</a></li>
+					</ul>
+
+					<div class="tab-item" id="domain-name">
+						<h1 class="clear">Register a <em>domain</em>:</h1>
+						<div class="domains">
+
+							<input type="text" placeholder="Enter a domain name (e.g. mydomain)" />
+							<select>
+								<option>.com</option>
+								<option>.net</option>
+								<option>.org</option>
+								<option>.info</option>
+							</select>
+							<a href="#" class="button">Search</a>
+
+							<h1 class="clear">Our <em>Prices:</em></h1>
+							<ul>
+								<li><span>$10.99</span> .com</li>
+								<li><span>$10.99</span> .net</li>
+								<li><span>$10.99</span> .us</li>
+								<li><span>$10.99</span> .info</li>
+								<li><span>$10.99</span> .org</li>
+							</ul>
+
+						</div>
+						<span class="clear"></span>
+					</div>
+					<div class="tab-item" id="who-are-we">
+						<div class="one_third">
+							<h1>We <em>Provide</em>:</h1>
+							<ul>
+								<li><i class="icon-ok"></i>Unlimited Shared Web Hosting</li>
+								<li><i class="icon-ok"></i>Great Virtual Private Servers</li>
+								<li><i class="icon-ok"></i>Powerful Dedicated Servers</li>
+								<li><i class="icon-ok"></i>Domain Registration (WhoIsGuard)</li>
+							</ul>
+						</div>
+						<div class="two_thirds last">
+							<h1>About <em>us</em>:</h1>
+							<p>Vehicula non massa at, venenatisen laoreet urna. Duis fringilla consequ consectetur. Suspendisse aliquet nunc sapien, est get pulvinar risus viverra eu. Duis ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sitfringilla consequ consectetur. Duis quis velit lectus.</p>
+						</div>
+					</div>
+					<div class="tab-item" id="what-do-we-offer">
+						<div class="one_third">
+							<div class="box_feature">
+								<div class="box_feature_icon"><span class="icon-time"></span></div>
+								<div class="box_feature_text">
+									<h6>99.5% Uptime Guarantee</h6>
+									<p>Sed non urna. Donec et ante ell us non ellus donu urna.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="one_third">
+							<div class="box_feature">
+								<div class="box_feature_icon"><span class="icon-globe"></span></div>
+								<div class="box_feature_text">
+									<h6>World-Wide Services</h6>
+									<p>Sed non urna. Donec et ante ell us non ellus donu urna.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="one_third last">
+							<div class="box_feature">
+								<div class="box_feature_icon"><span class="icon-hdd"></span></div>
+								<div class="box_feature_text">
+									<h6>Unlimited Disk Space</h6>
+									<p>Sed non urna. Donec et ante ell us non ellus donu urna.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="clear"></div>
+						<div class="space2"></div>
+
+						<div class="one_third">
+							<div class="box_feature">
+								<div class="box_feature_icon"><span class="icon-hdd"></span></div>
+								<div class="box_feature_text">
+									<h6>Unlimited Disk Space</h6>
+									<p>Sed non urna. Donec et ante ell us non ellus donu urna.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="one_third">
+							<div class="box_feature">
+								<div class="box_feature_icon"><span class="icon-time"></span></div>
+								<div class="box_feature_text">
+									<h6>99.5% Uptime Guarantee</h6>
+									<p>Sed non urna. Donec et ante ell us non ellus donu urna.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="one_third last">
+							<div class="box_feature">
+								<div class="box_feature_icon"><span class="icon-globe"></span></div>
+								<div class="box_feature_text">
+									<h6>World-Wide Services</h6>
+									<p>Sed non urna. Donec et ante ell us non ellus donu urna.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+
+		<div class="wrap">
+
+				<div class="clear"></div>
+				<div class="space"></div>
+
+			<div class="heading"><span><em>Every</em> Account Comes With</span></div>
+
+			<div class="hosting_features">
+				<div class="one_third">
+					<ul>
+						<li><span><i class="icon-hdd"></i></span>Unlimited Disk Space</li>
+						<li><span><i class="icon-dashboard"></i></span>Unlimited Bandwidth</li>
+						<li><span><i class="icon-sitemap"></i></span>MySQL Databases</li>
+						<li><span><i class="icon-inbox"></i></span>FTP Accounts</li>
+						<li><span><i class="icon-share-sign"></i></span>Shell Access</li>
+					</ul>
+				</div>
+
+				<div class="one_third">
+					<ul>
+						<li><span><i class="icon-envelope"></i></span>Email Accounts</li>
+						<li><span><i class="icon-globe"></i></span>1 Free Domain Name</li>
+						<li><span><i class="icon-star"></i></span>Free Softaculous</li>
+						<li><span><i class="icon-rocket"></i></span>LightSpeed Hosting</li>
+						<li><span><i class="icon-shield"></i></span>DDoS Protection</li>
+					</ul>
+				</div>
+
+				<div class="one_third last">
+					<ul>
+						<li><span><i class="icon-edit"></i></span>Free Site Builder</li>
+						<li><span><i class="icon-plus"></i></span>Additional IP Addresses</li>
+						<li><span><i class="icon-time"></i></span>99% Uptime Guarantee</li>
+						<li><span><i class="icon-money"></i></span>45-Day Money Back</li>
+						<li><span><i class="icon-gear"></i></span>24/7 Customer Support</li>
+					</ul>
+				</div>
+
+				<div class="clear"></div>
+			</div>
+
+				<div class="clear"></div>
+				<div class="space"></div>
+
+			<div class="two_thirds">
+				<div class="heading"><span><em>Latest</em> Blog Posts</span></div>
+
+				<div class="latest_posts">
+					<div class="one_half">
+						<div class="latest_post">
+							<img src="images/server2.png" alt="" />
+							<a href="single-post.html"><h6>New Datacenter</h6></a>
+							<p>Sed non urna. Donec et ante sellus eu ligula. Vestibulum sit amet
+							purus. Vivamus pellentesque porta.</p>
+							<div class="blog-post">
+								<ul>
+									<li><i class="icon-time"></i>16 September 2013</li>
+									<li><i class="icon-comments"></i>7 comments</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="one_half last">
+						<div class="latest_post">
+							<img src="images/server3.png" alt="" />
+							<a href="single-post.html"><h6>Downtime Scheduled Next Week</h6></a>
+							<p>Sed non urna. Donec et ante sellus eu ligula. Vestibulum sit amet
+							purus. Vivamus pellentesque porta.</p>
+							<div class="blog-post">
+								<ul>
+									<li><i class="icon-time"></i>03 September 2013</li>
+									<li><i class="icon-comments"></i>12 comments</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="one_third last">
+				<div class="heading"><span>View Our <em>FAQ</em></span></div>
+
+				<div id="accordion">
+					<p class="accordion_header"><i class="icon-question"></i>Where are you located?</p>
+					<div>
+						<p>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
+						purus. Vivamus pellentesque nivest ibulum blandit metus porta.</p>
+					</div>
+					<p class="accordion_header"><i class="icon-question"></i>Is there any set-up fee?</p>
+					<div>
+						<p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
+				   		ut neque. Vivamus nisi metus vest ibulum, mol nisi metus.</p>
+					</div>
+					<p class="accordion_header"><i class="icon-question"></i>What do you use Lighttpd?</p>
+					<div>
+						<p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
+				   		ut neque. Vivamus nisi metu vest ibulum nisi bit metus velida.</p>
+					</div>
+				</div>
+			</div>
+
+				<div class="clear"></div>
+				<div class="space"></div>
+
+
+			<div class="heading"><span><em>Latest</em> Tweets</span></div>
+
+			<div class="tweets_panel">
+				<div class="wrap">
+					<div class="tweets">
+						<p>
+							<i class="icon-twitter"></i>
+							<span><a href="#">(11 Jan 2014)</a></span>
+							Check out this great <a href="#">#themeforest</a> item 'Raluk - Responsive Business Theme' <a href="http://t.co/DTShlVvo">http://t.co/DTShlVvo</a>
+						</p>
+						<p>
+							<i class="icon-twitter"></i>
+							<span><a href="#">28 Dec 2013</a></span>
+							Take a look at this <a href="#">#themeforest</a> item 'DanHost - Hosting Theme' <a href="http://bit.ly/1fQZw4C">http://bit.ly/1fQZw4C</a>
+						</p>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+
+				<div class="clear"></div>
+				<div class="space"></div>
+
+			<div class="heading"><span>Our <em>Sponsors</em></span></div>
+
+			<div class="list_carousel">
+				<ul id="carousel">
+					<li><img src="images/carousel/tf.png" alt="" /></li>
+					<li><img src="images/carousel/vh.png" alt="" /></li>
+					<li><img src="images/carousel/cc.png" alt="" /></li>
+					<li><img src="images/carousel/aj.png" alt="" /></li>
+					<li><img src="images/carousel/ad.png" alt="" /></li>
+					<li><img src="images/carousel/pd.png" alt="" /></li>
+					<li><img src="images/carousel/3o.png" alt="" /></li>
+					<li><img src="images/carousel/t.png" alt="" /></li>
+				</ul>
+				<div class="clearfix"></div>
+				<a id="prev2" class="prev" href="#"><i class="icon-arrow-left"></i></a>
+				<a id="next2" class="next" href="#"><i class="icon-arrow-right"></i></a>
+			</div>
+
+			<div class="clear"></div>
+			<div class="space"></div>
+
+		</div>
+
+		<div class="message">
+			<div class="wrap">
+				<h1>Need help? Talk to our Support staff right away!</h1>
+				<span><a href="#" class="button">Live Chat</a></span>
+				<div class="clear"></div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="testimonials_wrap">
+		<div class="wrap">
+			<div class="testimonials">
+				<blockquote>
+					<img src="images/employee2.png" alt="" class="testimonials_img" />
+					<p>
+					<span class="icon-quote-left"></span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex consequat labore et dolore magna nec viverra tellus luctus ut. Quisque semper, dolor at aliquet laoreet lacus sed condimentum pulvinar, metus arcu pellentesque libero dolor at aliquet laoreet.<span class="icon-quote-right"></span>
+		       	 	<cite class="testimonials_author">
+		       	 		<i class="icon-chevron-sign-right"></i>Jane Doe, Executive Manager ( domain.org )</cite>
+		       	 	</p>
+		       	 </blockquote>
+
+		        <blockquote>
+		        	<img src="images/employee1.png" alt="" class="testimonials_img" />
+		        	<p><span class="icon-quote-left"></span>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
+					purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor	velit, faucibus in suscipit faucibus urna dolor at aliquet laoreet mauris non urna hendrerit lacus dolor at aliquet mauris mauris non urna hendrerit turpis laoreet urna sed condimentum pulvinar turpisaliquet non urna laoreet.<span class="icon-quote-right"></span>
+		        	<cite class="testimonials_author">
+		        		<i class="icon-chevron-sign-right"></i>Johnny Doe, Web Designer ( site.org )</cite>
+		        	</p>
+		        </blockquote>
+	    	</div>
+    	</div>
+    </div>
+
+	<footer>
+
+		<div class="wrap">
+
+			<div class="footer_nav">
+				<div class="one_third">
+					<h3>About <span>Hostify</span></h3>
+
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dignissim sodales nisl sed facilisis. Suspendisse tempor, nisl eu sollicitudin feugiat, eros sem porta magna quis vestibulum lorem urna.</p>
+				</div>
+
+				<div class="one_third">
+					<h3>Our <span>Services</span></h3>
+
+					<ul>
+						<li><i class="icon-chevron-right"></i><a href="#">Web Hosting</a></li>
+						<li><i class="icon-chevron-right"></i><a href="#">Technology</a></li>
+						<li><i class="icon-chevron-right"></i><a href="#">Support Forums</a></li>
+						<li><i class="icon-chevron-right"></i><a href="#">Affiliate Program</a></li>
+					</ul>
+				</div>
+
+				<div class="one_third last">
+					<h3><span>Contact</span> Us</h3>
+
+					<ul id="footer_address">
+						<li><i class="icon-pushpin"></i><span>Address: </span> 272 11th Avenue, New York</li>
+						<li><i class="icon-envelope"></i><span>Email: </span> support@website.com</li>
+						<li><i class="icon-headphones"></i><span>Phone: </span> 1.888-888-8888</li>
+						<li><i class="icon-print"></i><span>Fax: </span> 1.555-555-5555</li>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+
+			<div class="clear"></div>
+
+		</div>
+
+		<div class="copyright_panel">
+			<div class="wrap">
+				<p class="alignleft">Copyright &copy; <a href="http://www.danthemes.com">DanThemes</a>. All Rights Reserved.</p>
+				<p class="alignright"><a href="#">Terms &amp; Conditions</a> / <a href="#">Private Policy</a></p>
+				<div class="clear"></div>
+			</div>
+		</div>
+
+	</footer>
+
+	<script type="text/javascript">
+		$('.count').each(function () {
+		    $(this).prop('Counter',0).animate({
+		        Counter: $(this).text()
+		    }, {
+		        duration: 4000,
+		        easing: 'swing',
+		        step: function (now) {
+		            $(this).text(Math.ceil(now));
+		        }
+		    });
+		});
+	</script>
+
+	<script type="text/javascript">
+		var nav = responsiveNav("#nav", {customToggle: "#toggle"});
+	</script>
+
+</body>
+
+</html>

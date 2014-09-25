@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        
+    <title>Elements | Hostify - HTML5 Hosting Template</title>
+
+	<meta name="author" content="DanThemes" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta charset="utf-8" />
+	
+	<!-- css files -->
+    <link href="css/red.css" rel="stylesheet" title="red" />
+    <link href="css/blue.css" rel="alternate stylesheet" title="blue" />
+    <link href="css/green.css" rel="alternate stylesheet" title="green" />
+    <link href="css/brown.css" rel="alternate stylesheet" title="brown" />
+    <link href="css/purple.css" rel="alternate stylesheet" title="purple" />
+    <link href="css/black.css" rel="alternate stylesheet" title="black" />
+    <link href="css/font-awesome.css" rel="stylesheet" />
+    <link href="css/responsive.css" rel="stylesheet" />
+    <link href="css/options.css" rel="stylesheet" />
+	
+	<!-- javascript files -->
+	<script src="js/jquery.js"></script>
+  	<script src="js/jquery-ui.js"></script>
+	<script src="js/jquery.easytabs.js"></script>
+	<script src="js/jquery.cycle.all.js"></script>
+	<script src="js/superfish.js"></script>
+	<script src="js/jquery.bxSlider.min.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/responsive-nav.js"></script>
+	<script src="js/options.js"></script>
+
+	<script>
+		$(document).on("scroll",function(){
+			$("nav").toggleClass("small-header", $(document).scrollTop()>200);
+		});
+	</script>
+
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css' />
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic,500italic,700italic' rel='stylesheet' type='text/css' />
+	
+</head>
+
+<body onload="set_style_from_cookie()">
+
+	<!-- START options -->
+	<div id="optwrap">		
+		<div id="options">
+		
+			<!-- change color style -->
+			<div class="color-switcher">
+				<strong>Change the color style</strong> <br />
+				
+				<ul id="color_scheme" class="styleswitcher">
+					<li><a class="red" href="#" onclick="switch_style('red');return false;"></a></li>
+					<li><a class="blue" href="#" onclick="switch_style('blue');return false;"></a></li>
+					<li><a class="green" href="#" onclick="switch_style('green');return false;"></a></li>
+					<li><a class="brown" href="#" onclick="switch_style('brown');return false;"></a></li>
+					<li><a class="purple" href="#" onclick="switch_style('purple');return false;"></a></li>
+					<li><a class="black" href="#" onclick="switch_style('black');return false;"></a></li>
+				</ul>
+				
+				<div class="clear"></div>
+				
+			</div>
+			
+		</div>
+		<div id="closer">
+			<a class="opener" href="#"></a>
+			<a class="closerer" href="#"></a>
+		</div>
+		
+	</div>
+	<!-- END options -->
+
+	<div class="top_area">
+		<div class="wrap">
+			<ul class="social">
+				<li><a href="#"><i class="icon-twitter-sign"></i></a></li>
+				<li><a href="#"><i class="icon-facebook-sign"></i></a></li>
+				<li><a href="#"><i class="icon-google-plus-sign"></i></a></li>
+				<li><a href="#"><i class="icon-pinterest-sign"></i></a></li>
+				<li><a href="#"><i class="icon-tumblr-sign"></i></a></li>
+				<li><a href="#"><i class="icon-flickr"></i></a></li>
+				<li><a href="#"><i class="icon-linkedin-sign"></i></a></li>
+				<li><a href="#"><i class="icon-pinterest-sign"></i></a></li>
+			</ul>
+
+			<ul id="top_area_links">
+				<li><i class="icon-phone"></i>1.888-888-8888</li>
+				<li><i class="icon-envelope"></i><a href="#">support@website.com</a></li>
+				<li><i class="icon-headphones"></i><a href="#">Live Chat</a></li>
+				<li><i class="icon-comments"></i><a href="#">Send a Ticket</a></li>
+			</ul>
+		</div>
+		<div class="clear"></div>
+	</div>
+
+	<header id="top">
+		<div class="wrap">
+		
+			<div id="logo">
+				<p><a href="index.html">Hostify</a></p>
+			</div>
+			
+			<a href="#nav" id="toggle"><i class="icon-reorder"></i></a>
+
+			<nav class="nav-collapse" id="nav">
+				<ul class="sf-menu">
+					<li><a href="index.html">Home<span>homepage</span></a>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="index-bxslider.html">Home - Bx Slider</a></li>
+							<li><a href="index-sequence.html">Home - Sequence</a></li>
+							<li><a href="index-unslider.html">Home - Un Slider</a></li>
+						</ul>
+					</li>
+					<li><a class="selected" href="#">Pages<span>all features</span></a>
+						<ul>
+							<li><a href="column-layouts.html">Column Layouts</a></li>
+							<li><a href="full-width.html">Full Width</a></li>
+							<li><a href="typography.html">Typography</a></li>
+							<li><a class="selected" href="elements.html">Elements</a></li>
+							<li><a href="icons.html">Icons</a></li>
+							<li><a href="sidebar-left.html">Sidebar Left</a></li>
+							<li><a href="sidebar-right.html">Sidebar Right</a></li>
+							<li><a href="#">Portfolio</a>
+								<ul>
+									<li><a href="portfolio-one-column.html">One Column</a></li>
+									<li><a href="portfolio-two-columns.html">Two Columns</a></li>
+									<li><a href="portfolio-three-columns.html">Three Columns</a></li>
+									<li><a href="portfolio-four-columns.html">Four Columns</a></li>
+								</ul>
+							</li>
+							<li><a href="#">Blog</a>
+								<ul>
+									<li><a href="blog-sidebar-left.html">Blog - Sidebar Left</a></li>
+									<li><a href="blog-sidebar-right.html">Blog - Sidebar Right</a></li>
+									<li><a href="single-post.html">Single Post</a></li>
+								</ul>
+							</li>
+							<li><a href="404.html">404 - Error Page</a></li>
+						</ul>
+					</li>
+					<li><a href="web-hosting.html">Web Hosting<span>our hosting plans</span></a></li>
+					<li><a href="about-us.html">About Us<span>our team</span></a></li>
+					<li><a href="contact.html">Contact<span>get in touch</span></a></li>
+				</ul><div class="clear"></div>
+			</nav>
+			
+			<div class="clear"></div>
+
+		</div>
+	</header>
+
+	<div id="slider_wrapper2">
+		<div class="wrap">
+
+			<h1>Elements</h1>
+
+		</div>
+	</div>
+
+	<div class="clear"></div>
+
+	<div class="content">
+		<div class="wrap">
+
+			<div class="heading"><span>Hosting <em>Features</em></span></div>
+
+			<div class="one_third">
+				<div class="box_feature">
+					<div class="box_feature_icon"><span class="icon-ok"></span></div>
+					<div class="box_feature_text">
+						<h6>Free Daily Backups</h6>
+						<p>Lorem ipsum dolor amet conse</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="one_third">
+				<div class="box_feature">
+					<div class="box_feature_icon"><span class="icon-ok"></span></div>
+					<div class="box_feature_text">
+						<h6>24/7 Customer Support</h6>
+						<p>Lorem ipsum dolor amet conse</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="one_third last">
+				<div class="box_feature">
+					<div class="box_feature_icon"><span class="icon-ok"></span></div>
+					<div class="box_feature_text">
+						<h6>Fast &amp; Powerful Servers</h6>
+						<p>Lorem ipsum dolor amet conse</p>
+					</div>
+				</div>
+			</div>
+
+					<div class="clear"></div>
+					<div class="space2"></div>
+
+			<div class="one_third">
+				<div class="box_feature">
+					<div class="box_feature_icon"><span class="icon-ok"></span></div>
+					<div class="box_feature_text">
+						<h6>99.5% Uptime Guarantee</h6>
+						<p>Lorem ipsum dolor amet conse</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="one_third">
+				<div class="box_feature">
+					<div class="box_feature_icon"><span class="icon-ok"></span></div>
+					<div class="box_feature_text">
+						<h6>World-Wide Services</h6>
+						<p>Lorem ipsum dolor amet conse</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="one_third last">
+				<div class="box_feature">
+					<div class="box_feature_icon"><span class="icon-ok"></span></div>
+					<div class="box_feature_text">
+						<h6>Unlimited Disk Space</h6>
+						<p>Lorem ipsum dolor amet conse</p>
+					</div>
+				</div>
+			</div>
+
+				<div class="clear"></div>
+				<div class="space"></div>
+
+			<div class="heading"><span><em>Every</em> Account Comes With:</span></div>
+
+			<div class="one_fourth quick-features">
+				<p><i class="icon-check"></i><em>Free Domain Name</em></p>
+			</div>
+			<div class="one_fourth quick-features">
+				<p><i class="icon-check"></i><em>Unlimited Domains</em></p>
+			</div>
+			<div class="one_fourth quick-features">
+				<p><i class="icon-check"></i><em>Instant Set-up</em></p>
+			</div>
+			<div class="one_fourth last quick-features">
+				<p><i class="icon-check"></i><em>24/7 Support</em></p>
+			</div>
+
+			<div class="one_fourth quick-features">
+				<p><i class="icon-check"></i><em>Unlimited Emails</em></p>
+			</div>
+			<div class="one_fourth quick-features">
+				<p><i class="icon-check"></i><em>SSH Access</em></p>
+			</div>
+			<div class="one_fourth quick-features">
+				<p><i class="icon-check"></i><em>Software Installer</em></p>
+			</div>
+			<div class="one_fourth last quick-features">
+				<p><i class="icon-check"></i><em>Free SiteBuilder</em></p>
+			</div>
+
+				<div class="clear"></div>
+				<div class="space"></div>
+
+			<div class="heading"><span><em>Latest</em> Tweets</span></div>
+
+			<div class="tweets_panel">
+				<div class="wrap">
+					<div class="tweets">
+						<p>
+							<i class="icon-twitter"></i>
+							<span><a href="#">(11 Jan 2014)</a></span>
+							Check out this great <a href="#">#themeforest</a> item 'Raluk - Responsive Business Theme' <a href="#">http://t.co/DTShlVvo</a>
+						</p>
+						<p>
+							<i class="icon-twitter"></i>
+							<span><a href="#">28 Dec 2013</a></span>
+							Take a look at this <a href="#">#themeforest</a> item 'DanHost - Hosting Theme' <a href="#">http://bit.ly/1fQZw4C</a>
+						</p>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+
+				<div class="clear"></div>
+				<div class="space"></div>
+			
+			<div class="heading"><span><em>Toggle/Accordion</em> Slider</span></div>
+			
+			<div id="accordion">
+			 	<p class="accordion_header"><i class="icon-time"></i>99.5% Uptime Guarantee</p>
+			  	<div>
+			   	 	<p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
+			   		ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
+			  	  	amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
+			  		odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
+			 	</div>
+				<p class="accordion_header"><i class="icon-hdd"></i>Unlimited Disk Space &amp; Bandwidth</p>
+				<div>
+					<p>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
+					purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
+					velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
+					suscipit faucibus urna.</p>
+				</div>
+				<p class="accordion_header"><i class="icon-rocket"></i>Fast &amp; Powerful Servers</p>
+				<div>
+					<p>Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
+					Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero
+					ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
+					lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.</p>
+				</div>
+			</div>
+
+				<div class="clear"></div>
+				<div class="space"></div>
+			
+				<div class="heading"><span><em>Full-Width</em> Testimonials</span></div>
+
+			</div>
+
+			<div class="testimonials_wrap">
+				<div class="wrap">
+					<div class="testimonials">
+						<blockquote>
+							<img src="images/employee2.png" alt="" class="testimonials_img" />
+							<p>
+							<span class="icon-quote-left"></span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex consequat labore et dolore magna nec viverra tellus luctus ut. Quisque semper, lacus sed condimentum pulvinar, metus arcu pellentesque libero.<span class="icon-quote-right"></span>
+				       	 	<cite class="testimonials_author">
+				       	 		<i class="icon-chevron-sign-right"></i>John Doe, Executive Manager ( domain.org )</cite>
+				       	 	</p>
+				       	 </blockquote>
+
+				        <blockquote>
+				        	<img src="images/employee1.png" alt="" class="testimonials_img" />
+				        	<p><span class="icon-quote-left"></span>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
+							purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor	velit, faucibus in suscipit faucibus urna dolor at aliquet laoreet mauris non urna hendrerit lacus sed condimentum pulvinar turpisaliquet non urna laoreet.<span class="icon-quote-right"></span>
+				        	<cite class="testimonials_author">
+				        		<i class="icon-chevron-sign-right"></i>Johnny Doe, Web Designer ( site.org )</cite>
+				        	</p>
+				        </blockquote>
+			    	</div>
+		    	</div>
+		    </div>
+
+		    <div class="wrap">
+
+				<div class="clear"></div>
+				<div class="space"></div>
+			
+			<div class="heading"><span><em>Button</em> Sizes</span></div>
+
+			<p><a class="button big" href="#">Big Button</a></p><br /><br />
+			<p><a class="button medium" href="#">Medium Button</a></p><br />
+			<p><a class="button small" href="#">Small Button</a></p>
+
+				<div class="clear"></div>
+				<div class="space"></div>
+			
+			<div class="heading"><span>Text <em>Highlight</em></span></div>
+
+			<p>Phasellus fermentum tincidunt ullamcorper <span class="highlight">suspendisse</span> at malesuada enim. Mauris massa est, vestibulum a hendrerit sit amet, aliquet faucibus turpis. Sed felis felis, sollicitudin sed pellentesque at, accumsan id odio. Duis ac enim sed ante condimentum porttitor. Curabitur pharetra elit vel libero tempus facilisis. Suspendisse vehicula, erat id iaculis ultricies, enim erat ornare turpis, a dapibus nunc ante ut ligula.</p>
+
+			<div class="clear"></div>
+
+		</div>
+	</div>
+
+	<footer>
+
+		<div class="wrap">
+
+			<div class="footer_nav">
+				<div class="one_third">
+					<h3>About <span>Hostify</span></h3>
+
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dignissim sodales nisl sed facilisis. Suspendisse tempor, nisl eu sollicitudin feugiat, eros sem porta magna quis vestibulum lorem urna.</p>
+				</div>
+
+				<div class="one_third">
+					<h3>Our <span>Services</span></h3>
+
+					<ul>
+						<li><i class="icon-chevron-right"></i><a href="#">Web Hosting</a></li>
+						<li><i class="icon-chevron-right"></i><a href="#">Technology</a></li>
+						<li><i class="icon-chevron-right"></i><a href="#">Support Forums</a></li>
+						<li><i class="icon-chevron-right"></i><a href="#">Affiliate Program</a></li>
+					</ul>
+				</div>
+
+				<div class="one_third last">
+					<h3><span>Contact</span> Us</h3>
+
+					<ul id="footer_address">
+						<li><i class="icon-pushpin"></i><span>Address: </span> 272 11th Avenue, New York</li>
+						<li><i class="icon-envelope"></i><span>Email: </span> support@website.com</li>
+						<li><i class="icon-headphones"></i><span>Phone: </span> 1.888-888-8888</li>
+						<li><i class="icon-print"></i><span>Fax: </span> 1.555-555-5555</li>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+
+			<div class="clear"></div>
+
+		</div>
+
+		<div class="copyright_panel">
+			<div class="wrap">
+				<p class="alignleft">Copyright &copy; <a href="http://www.danthemes.com">DanThemes</a>. All Rights Reserved.</p>
+				<p class="alignright"><a href="#">Terms &amp; Conditions</a> / <a href="#">Private Policy</a></p>
+				<div class="clear"></div>
+			</div>
+		</div>
+
+	</footer>
+
+	<script type="text/javascript">
+		$('.count').each(function () {
+		    $(this).prop('Counter',0).animate({
+		        Counter: $(this).text()
+		    }, {
+		        duration: 4000,
+		        easing: 'swing',
+		        step: function (now) {
+		            $(this).text(Math.ceil(now));
+		        }
+		    });
+		});
+	</script>
+
+	<script type="text/javascript">
+		var nav = responsiveNav("#nav", {customToggle: "#toggle"});
+	</script>
+
+</body>
+
+</html>

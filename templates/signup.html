@@ -4,6 +4,189 @@
 
 
 {% block body %}
+
+{% comment %}
+<div id="slider_wrapper2">
+	<div class="wrap">
+			
+		<h1>Get Started</h1>
+
+	</div>
+</div>
+<div class="clear"></div>
+{% endcomment %}
+
+
+<div class="content">
+	<div class="wrap">
+
+
+		<div class="heading"><span>Lets get started</span></div>
+
+		<p>After filling out your brand profile we'll begin a full social media audit of your business.</p>
+		
+		<p>The more care you put into this form, the better we can grow your brand.</p>
+	
+		<p>You have no obligation to use our service after receiving our free audit.</p>	 
+	      
+              	{% for error in form.non_field_errors %}
+                    <h3 style="color: red;">{{error}}</h3>
+                	</br>
+                {% endfor %}
+
+              	<form method="post" action=""> 
+					{% csrf_token %}
+					<h3>Nice to meet you</h3>
+					
+					{% if form.company.errors %}
+		                    <p style="color: red;">{{ form.company.errors }}</p>
+		            {% endif %}			
+						{{ form.company|add_class:"text-button"}}
+					
+					{% if form.website.errors %}
+		                    <p style="color: red;">{{ form.website.errors }}</p>
+		            {% endif %}			
+						{{ form.website|add_class:"text-button"}}
+					
+					{% if form.soc_one.errors %}
+		                    <p style="color: red;">{{ form.soc_one.errors }}</p>
+		            {% endif %}					
+						{{ form.soc_one|add_class:"text-button"}}
+
+					{% if form.soc_two.errors %}
+		                    <p style="color: red;">{{ form.soc_two.errors }}</p>
+		            {% endif %}					
+						{{ form.soc_two|add_class:"text-button"}}
+
+					{% if form.soc_three.errors %}
+		                    <p style="color: red;">{{ form.soc_three.errors }}</p>
+		            {% endif %}					
+						{{ form.soc_three|add_class:"text-button"}}
+					
+					</br></br>
+					<h3>Let's get to know your business</h3>
+					{% if form.dev_stage.errors %}
+		                    <p style="color: red;">{{ form.dev_stage.errors }}</p>
+		            {% endif %}		
+					Stage of development:	
+					<div>
+						{{ form.dev_stage|add_class:"select-button"}}
+					</div>
+					{% if form.sales.errors %}
+		                    <p style="color: red;">{{ form.sales.errors }}</p>
+		            {% endif %}		
+						Expected sales this year:	
+						<div>
+							{{ form.sales|add_class:"select-button"}}
+						</div>
+					{% if form.pitch.errors %}
+		                    <p style="color: red;">{{ form.pitch.errors }}</p>
+		            {% endif %}					
+						{{ form.pitch|add_class:"textarea-button"}}
+
+					{% if form.industry.errors %}
+		                    <p style="color: red;">{{ form.industry.errors }}</p>
+		            {% endif %}					
+						{{ form.industry|add_class:"textarea-button"}}
+
+					{% if form.brand_description.errors %}
+		                    <p style="color: red;">{{ form.brand_description.errors }}</p>
+		            {% endif %}					
+						{{ form.brand_description|add_class:"textarea-button"}}
+
+					{% if form.target_description.errors %}
+		                    <p style="color: red;">{{ form.target_description.errors }}</p>
+		            {% endif %}					
+						{{ form.target_description|add_class:"textarea-button"}}
+
+					{% if form.clients.errors %}
+		                    <p style="color: red;">{{ form.clients.errors }}</p>
+		            {% endif %}					
+						{{ form.clients|add_class:"text-button"}}
+					
+					{% if form.competition.errors %}
+		                    <p style="color: red;">{{ form.competition.errors }}</p>
+		            {% endif %}					
+						{{ form.competition|add_class:"text-button"}}
+
+					{% if form.other.errors %}
+		                    <p style="color: red;">{{ form.other.errors }}</p>
+		            {% endif %}					
+						{{ form.other|add_class:"textarea-button"}}
+
+
+					</br></br>
+					<h3>Marketing needs</h3>
+					{% if form.goals.errors %}
+		                    <p style="color: red;">{{ form.goals.errors }}</p>
+		            {% endif %}		
+						What is your primary goal:	
+					<div>
+						{{ form.goals|add_class:"select-button"}}
+					</div>
+
+					{% if form.budget.errors %}
+		                    <p style="color: red;">{{ form.budget.errors }}</p>
+		            {% endif %}					
+						{{ form.budget|add_class:"text-button"}}
+
+
+					{% if form.creatives.errors %}
+		                    <p style="color: red;">{{ form.creatives.errors }}</p>
+		            {% endif %}					
+						{{ form.creatives|add_class:"textarea-button"}}
+
+					
+	
+					
+					{% if form.wants_creatives.errors %}
+		                    <p style="color: red;">{{ form.wants_creatives.errors }}</p>
+		            {% endif %}
+					<div>
+						{{ form.wants_creatives.label }} {{ form.wants_creatives|add_class:""}}
+					</div>
+
+					</br>
+					<h3>Create account</h3>
+					<p>You will be asked to verify your email address</p>
+				
+						{% if form.email.errors %}
+		                    <p style="color: red;">{{ form.email.errors }}</p>
+		                {% endif %}		
+						{{ form.email|add_class:"text-button"}}
+	
+
+						{% if form.password.errors %}
+		                    <p style="color: red;">{{ form.password.errors }}</p>
+		                {% endif %}				
+						{{ form.password|add_class:"text-button"}}
+		
+
+			<div class="row">
+
+				</br>
+				<a href="#" class="button small" onclick="$(this).closest('form').submit()">Continue</a>		
+
+			</div>
+				
+		</form>
+
+		<div class="clear"></div>
+
+	</div>
+</div>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
 	
 <div class="strip" id="content">
 
@@ -235,4 +418,4 @@
 
 </div> 
 
-{% endblock %}
+

@@ -4,79 +4,59 @@
 
 
 {% block body %}
-	
-<div class="strip" id="content">
 
-	<div class="container">
-			 
-        <div class="row">
-	    	
-	    	<div class="span8">
-	    	
-	        	<div class="inner">
-	        	
-
-
-              	<h2>Simplicity for the customer.</h2> 
-
-				<h3>This is the philosophy that drives everything we do here at BoostBlocks.</h3> 
-
-				<h3>We know you’re busy building your product and running operations.  Maybe you don’t have a dedicated marketing outreach staff at this point that can implement online advertising.  Maybe you don’t have a dedicated social media management team to cover even the basics, a routine social media content and engagement strategy. That’s ok, it’s what we’re here for. You select your blocks, we get to know what we need from you and then you get back to running your business.</h3>
-
-				<h3>Our goal is for a customer to fill out their profile today and see real human-powered results the next. We want to drive results quickly.</h3>
-
-				<h3>In order to do this most effectively we’ve made the strategic decision to do away with long, cumbersome back and forth meetings that are commonplace today when getting introductory social media engagement strategies  or ad campaigns up and running. Once we perform our introductory social media audit, all you have to do is select the blocks representing the type of social media or advertising engagement you want. We do all the heavy lifting to meet your goals, be it an increase in followers, generating sales leads, or driving specific results with online advertising.</h3>
-
-				<h3>We’ve put together a team of experienced and brilliant minds in social media management and online advertising that can get your company out there, while minimizing the back-and-forth emails and haggling.</h3> 
-
-				<h3>Our team collaborates on the strategies that we craft uniquely for each customer. The implementation of these strategies requires careful attention and thoughtful action. This is reflected in our social media practices that always places the human element first. You aren’t just paying for robots, after all!</h3> 
-
-				<h3>We don’t reinvent the wheel either. We use the industry’s top tools and platforms to make the most of our time and to help us make the right decisions, maximizing value to you.</h3>
-
-				<h3>Finally, we are data-driven. We rely on the reporting and metrics that we send you each week to help us do our job too. This means we are constantly testing and questioning our strategies, iterating and adjusting when need be to get the most out of our time spent.</h3>
-
-				<h3>Our approach to marketing is unorthodox but we’re ok with that because it works!</h3>
-				
-				<h3>We look forward to working with you soon.</h3>
-				
-				<h3>- The BoostBlocks Team</h3>
-
-
-
-				</br>
-
-				
-				{% if request.GET.ref %}
-		    		<a href="{% url 'signup' %}?ref={{ request.GET.ref }}">
-			        	<div class="form-row">
-			        		<input type="submit" class="btn" value="Get Started for Free" style="background-color: #0fba52;"/>
-			     		</div>
-			      </a>
-		    	{% else %}
-		    		<a href="{% url 'signup' %}">
-			        	<div class="form-row">
-			        		<input type="submit" class="btn" value="Get Started for Free" style="background-color: #0fba52;"/>
-			     		</div>
-			      </a>
-		    	{% endif %}
-  	
-
-
-               
-
-
-
-	   
-		    </div>
-	    	
-	    	</div>  
-	    
-	    	<div class="clearfix"></div>
-	    	        	
-	    </div>
+{% comment %}
+<div id="slider_wrapper2">
+	<div class="wrap">
+			
+		<h1>Our Philosophy</h1>
 
 	</div>
+</div>
+{% endcomment %}
 
-</div> 
+<div class="clear"></div>
+
+<div class="content">
+	<div class="wrap">
+
+		<div class="heading"><span>Our Philosophy</span></div>
+
+		<p>Transparency and Simplicity</p>
+
+		<p>This is the philosophy that drives everything we do here at BoostBlocks.</p> 
+
+		<p>We know you’re busy building your product and running operations.  Maybe you don’t have a dedicated marketing outreach staff at this point that can implement online advertising.  Maybe you don’t have a dedicated social media management team to cover even the basics, a routine social media content and engagement strategy. That’s ok, it’s what we’re here for. You select your blocks, we get to know what we need from you and then you get back to running your business.</p>
+
+		<p>Our goal is for a customer to fill out their profile today and see real human-powered results the next. We want to drive results quickly.</p>
+
+		<p>In order to do this most effectively we’ve made the strategic decision to do away with long, cumbersome back and forth meetings that are commonplace today when getting introductory social media engagement strategies  or ad campaigns up and running. Once we perform our introductory social media audit, all you have to do is select the blocks representing the type of social media or advertising engagement you want. We do all the heavy lifting to meet your goals, be it an increase in followers, generating sales leads, or driving specific results with online advertising.</p>
+
+		<p>We’ve put together a team of experienced and brilliant minds in social media management and online advertising that can get your company out there, while minimizing the back-and-forth emails and haggling.</p> 
+
+		<p>Our team collaborates on the strategies that we craft uniquely for each customer. The implementation of these strategies requires careful attention and thoughtful action. This is reflected in our social media practices that always places the human element first. You aren’t just paying for robots, after all!</p> 
+
+		<p>We don’t reinvent the wheel either. We use the industry’s top tools and platforms to make the most of our time and to help us make the right decisions, maximizing value to you.</p>
+
+		<p>Finally, we are data-driven. We rely on the reporting and metrics that we send you each week to help us do our job too. This means we are constantly testing and questioning our strategies, iterating and adjusting when need be to get the most out of our time spent.</p>
+
+		<p>Our approach to marketing is unorthodox but we’re ok with that because it works!</p>
+		
+		<p>We look forward to working with you soon.</p>
+		</br>
+		<p>- The BoostBlocks Team</p>
+		
+
+		{% if request.GET.ref %}
+			<a class="tab-button" style="margin-left: 0px;" href="{% url 'signup' %}?ref={{ request.GET.ref }}">Get Started for Free</a>
+    	{% else %}
+    		<a class="tab-button" style="margin-left: 0px;" href="{% url 'signup' %}">Get Started for Free</a>
+    	{% endif %}
+
+		<div class="clear"></div>
+
+	</div>
+</div>
+	
 
 {% endblock %}

@@ -33,12 +33,12 @@ class SubscribeForm(LoginForm):
     )
     sales = forms.ChoiceField(choices=Sales_Choices)
     #industry = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Your industry'}))
-    pitch = forms.CharField(min_length=2, widget=forms.Textarea(attrs={'placeholder': 'What is your sales pitch? (pretend we are a customer of yours)', 'rows': 4}))
+    pitch = forms.CharField(min_length=2, widget=forms.Textarea(attrs={'placeholder': 'What is your mission statement and sales pitch? (pretend we are a customer of yours)', 'rows': 6}))
     industry = forms.CharField(min_length=2, widget=forms.Textarea(attrs={'placeholder': 'Describe the industry you operate in. List some topics relevant to your industry and business.', 'rows': 4}))
     target_description = forms.CharField(min_length=2, widget=forms.Textarea(attrs={'placeholder': 'Define your target market and buyer personas:\n - Where do they live?\n - What are their interests?\n - Social networks you know they are on?\n - Events that are popular for them?\n - Influencers they follow?', 'rows': 6}))
     brand_description = forms.CharField(min_length=2, widget=forms.Textarea(attrs={'placeholder': 'Please briefly describe your brand as you see it and as want it to be.', 'rows': 4}))
     clients = forms.CharField(max_length=200, widget=forms.TextInput(attrs={'placeholder': 'List two current and two prospective clients/customers.'}))
-    competition = forms.CharField(max_length=200, widget=forms.TextInput(attrs={'placeholder': 'List a cople of your primary competitors.'}))
+    competition = forms.CharField(max_length=200, widget=forms.TextInput(attrs={'placeholder': 'List a couple of your primary competitors.'}))
     other = forms.CharField(required=False, min_length=2, widget=forms.Textarea(attrs={'placeholder': 'Anything else you would like us to know? (optional)', 'rows': 2}))
     
 
@@ -101,15 +101,8 @@ class DashboardForm(ResetForm):
         ('1', '1'),
         ('2', '2'),
         ('3', '3'),
-        ('4', '4'),
-        ('5', '5'),
-        ('6', '6'),
-        ('7', '7'),
-        ('8', '8'),
-        ('9', '9'),
-        ('10', '10'),
     )
     facebook_scale = forms.ChoiceField(choices=scale_choices)
     twitter_scale = forms.ChoiceField(choices=scale_choices)
     instagram_scale = forms.ChoiceField(choices=scale_choices)
-    
+

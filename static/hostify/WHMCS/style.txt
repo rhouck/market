@@ -1,0 +1,13 @@
+.whmcscontainer img {  vertical-align: baseline !important; }
+.divider { width: auto !important; border-top:0 !important; }
+.navbar .navbar-inner { margin: 0 0 0 -20px; }
+.footerdivider { margin: 0 0 0 -20px; }
+.whmcscontainer h1,
+.whmcscontainer h2,
+.whmcscontainer h3,
+.whmcscontainer h4,
+.whmcscontainer h5,
+.whmcscontainer h6 {
+    margin-bottom: 0 !important;
+}
+h1 small { text-transform: none !important; }

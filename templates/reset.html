@@ -4,52 +4,49 @@
 
 
 {% block body %}
-	
-<div class="strip" id="content">
 
-	<div class="container">
-		
-
-        <div class="row">
-
-	    	<div class="span6">
-	    	
-	        	<div class="inner">
-	      
-              	{% for error in form.non_field_errors %}
-                    <h3 style="color: red;">{{error}}</h3>
-                	</br>
-                {% endfor %}
-
-              	<form method="post" action=""> 
-					{% csrf_token %}
-					
-					<h3>Reset Password</h3>
-					<div class="form-row">	
-						{% if form.email.errors %}
-		                    <p style="color: red;">{{ form.email.errors }}</p>
-		                {% endif %}		
-						{{ form.email|add_class:"text login_input"}}
-						<div class="clearfix"></div>
-					</div>
-					
-					 <div class="form-row">
-      					<input type="submit" name="register" value="Continue" class="btn" style="background-color: #0fba52;" data-loading-text="Loading..." />
-						<div class="clearfix"></div>
-                    </div>
-					
-				</form>
-	   			
-		    </div>
-	    	
-	    	</div>  
-	    
-	    	<div class="clearfix"></div>
-	    	        	
-	    </div>
+{% comment %}
+<div id="slider_wrapper2">
+	<div class="wrap">
+			
+		<h1>Reset Password</h1>
 
 	</div>
+</div>
+<div class="clear"></div>
+{% endcomment %}
 
-</div> 
+
+<div class="content">
+	<div class="wrap">
+
+
+		<div class="heading"><span>Reset Password</span></div>
+
+		{% for error in form.non_field_errors %}
+            <h3 style="color: red;">{{error}}</h3>
+        	</br>
+        {% endfor %}
+
+      	<form method="post" action=""> 
+			{% csrf_token %}
+			
+			{% if form.email.errors %}
+                <p style="color: red;">{{ form.email.errors }}</p>
+            {% endif %}		
+			{{ form.email|add_class:"text-button"}}
+
+			<div class="row">
+				</br>
+				<a href="#" class="button small" onclick="$(this).closest('form').submit()">Continue</a>		
+			</div>
+	
+		</form>
+
+		<div class="clear"></div>
+
+	</div>
+</div>
+
 
 {% endblock %}

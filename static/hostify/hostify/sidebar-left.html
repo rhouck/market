@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        
+    <title>Sidebar Left | Hostify - HTML5 Hosting Template</title>
+
+	<meta name="author" content="DanThemes" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta charset="utf-8" />
+	
+	<!-- css files -->
+    <link href="css/red.css" rel="stylesheet" title="red" />
+    <link href="css/blue.css" rel="alternate stylesheet" title="blue" />
+    <link href="css/green.css" rel="alternate stylesheet" title="green" />
+    <link href="css/brown.css" rel="alternate stylesheet" title="brown" />
+    <link href="css/purple.css" rel="alternate stylesheet" title="purple" />
+    <link href="css/black.css" rel="alternate stylesheet" title="black" />
+    <link href="css/font-awesome.css" rel="stylesheet" />
+    <link href="css/responsive.css" rel="stylesheet" />
+    <link href="css/options.css" rel="stylesheet" />
+	
+	<!-- javascript files -->
+	<script src="js/jquery.js"></script>
+  	<script src="js/jquery-ui.js"></script>
+	<script src="js/jquery.easytabs.js"></script>
+	<script src="js/jquery.cycle.all.js"></script>
+	<script src="js/superfish.js"></script>
+	<script src="js/jquery.bxSlider.min.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/responsive-nav.js"></script>
+	<script src="js/options.js"></script>
+
+	<script>
+		$(document).on("scroll",function(){
+			$("nav").toggleClass("small-header", $(document).scrollTop()>200);
+		});
+	</script>
+
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css' />
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic,500italic,700italic' rel='stylesheet' type='text/css' />
+	
+</head>
+
+<body onload="set_style_from_cookie()">
+
+	<!-- START options -->
+	<div id="optwrap">		
+		<div id="options">
+		
+			<!-- change color style -->
+			<div class="color-switcher">
+				<strong>Change the color style</strong> <br />
+				
+				<ul id="color_scheme" class="styleswitcher">
+					<li><a class="red" href="#" onclick="switch_style('red');return false;"></a></li>
+					<li><a class="blue" href="#" onclick="switch_style('blue');return false;"></a></li>
+					<li><a class="green" href="#" onclick="switch_style('green');return false;"></a></li>
+					<li><a class="brown" href="#" onclick="switch_style('brown');return false;"></a></li>
+					<li><a class="purple" href="#" onclick="switch_style('purple');return false;"></a></li>
+					<li><a class="black" href="#" onclick="switch_style('black');return false;"></a></li>
+				</ul>
+				
+				<div class="clear"></div>
+				
+			</div>
+			
+		</div>
+		<div id="closer">
+			<a class="opener" href="#"></a>
+			<a class="closerer" href="#"></a>
+		</div>
+		
+	</div>
+	<!-- END options -->
+
+	<div class="top_area">
+		<div class="wrap">
+			<ul class="social">
+				<li><a href="#"><i class="icon-twitter-sign"></i></a></li>
+				<li><a href="#"><i class="icon-facebook-sign"></i></a></li>
+				<li><a href="#"><i class="icon-google-plus-sign"></i></a></li>
+				<li><a href="#"><i class="icon-pinterest-sign"></i></a></li>
+				<li><a href="#"><i class="icon-tumblr-sign"></i></a></li>
+				<li><a href="#"><i class="icon-flickr"></i></a></li>
+				<li><a href="#"><i class="icon-linkedin-sign"></i></a></li>
+				<li><a href="#"><i class="icon-pinterest-sign"></i></a></li>
+			</ul>
+
+			<ul id="top_area_links">
+				<li><i class="icon-phone"></i>1.888-888-8888</li>
+				<li><i class="icon-envelope"></i><a href="#">support@website.com</a></li>
+				<li><i class="icon-headphones"></i><a href="#">Live Chat</a></li>
+				<li><i class="icon-comments"></i><a href="#">Send a Ticket</a></li>
+			</ul>
+		</div>
+		<div class="clear"></div>
+	</div>
+
+	<header id="top">
+		<div class="wrap">
+		
+			<div id="logo">
+				<p><a href="index.html">Hostify</a></p>
+			</div>
+			
+			<a href="#nav" id="toggle"><i class="icon-reorder"></i></a>
+
+			<nav class="nav-collapse" id="nav">
+				<ul class="sf-menu">
+					<li><a href="index.html">Home<span>homepage</span></a>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="index-bxslider.html">Home - Bx Slider</a></li>
+							<li><a href="index-sequence.html">Home - Sequence</a></li>
+							<li><a href="index-unslider.html">Home - Un Slider</a></li>
+						</ul>
+					</li>
+					<li><a class="selected" href="#">Pages<span>all features</span></a>
+						<ul>
+							<li><a href="column-layouts.html">Column Layouts</a></li>
+							<li><a href="full-width.html">Full Width</a></li>
+							<li><a href="typography.html">Typography</a></li>
+							<li><a href="elements.html">Elements</a></li>
+							<li><a href="icons.html">Icons</a></li>
+							<li><a class="selected" href="sidebar-left.html">Sidebar Left</a></li>
+							<li><a href="sidebar-right.html">Sidebar Right</a></li>
+							<li><a href="#">Portfolio</a>
+								<ul>
+									<li><a href="portfolio-one-column.html">One Column</a></li>
+									<li><a href="portfolio-two-columns.html">Two Columns</a></li>
+									<li><a href="portfolio-three-columns.html">Three Columns</a></li>
+									<li><a href="portfolio-four-columns.html">Four Columns</a></li>
+								</ul>
+							</li>
+							<li><a href="#">Blog</a>
+								<ul>
+									<li><a href="blog-sidebar-left.html">Blog - Sidebar Left</a></li>
+									<li><a href="blog-sidebar-right.html">Blog - Sidebar Right</a></li>
+									<li><a href="single-post.html">Single Post</a></li>
+								</ul>
+							</li>
+							<li><a href="404.html">404 - Error Page</a></li>
+						</ul>
+					</li>
+					<li><a href="web-hosting.html">Web Hosting<span>our hosting plans</span></a></li>
+					<li><a href="about-us.html">About Us<span>our team</span></a></li>
+					<li><a href="contact.html">Contact<span>get in touch</span></a></li>
+				</ul><div class="clear"></div>
+			</nav>
+			
+			<div class="clear"></div>
+
+		</div>
+	</header>
+
+	<div id="slider_wrapper2">
+		<div class="wrap">
+				
+			<h1>Sidebar Left</h1>
+
+		</div>
+	</div>
+
+	<div class="clear"></div>
+
+	<div class="content">
+		<div class="wrap">
+
+			<div class="sidebar-left">
+				<div class="heading"><span>Navigation</span></div>
+
+				<ul>
+					<li><i class="icon-chevron-sign-right"></i><a href="#">Terms &amp; Conditions</a></li>
+					<li><i class="icon-chevron-sign-right"></i><a href="#">Private Policy</a></li>
+					<li><i class="icon-chevron-sign-right"></i><a href="#">Unlimited Disk Space</a></li>
+					<li><i class="icon-chevron-sign-right"></i><a href="#">Unlimited Bandwidth</a></li>
+					<li><i class="icon-chevron-sign-right"></i><a href="#">Free Domain For Life</a></li>
+				</ul>
+
+					<div class="clear"></div>
+					<div class="space"></div>
+
+				<div class="heading"><span>Search</span></div>
+				<div class="search"><input type="text" placeholder=" Search..." /></div>
+
+					<div class="clear"></div>
+					<div class="space"></div>
+
+				<div class="heading"><span>Text Area</span></div>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dignissim sodales nisl sed facilisis. Suspendisse tempor, nisl eu suscipit suscipit eu id neque. Quisque elit quam, rhoncus vitae hendrerit vel iaculis ac eros.</p>
+			</div>
+
+			<div class="content-right">
+				<h3>A Random Title Goes Here</h3>
+
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dignissim sodales nisl sed facilisis. Suspendisse tempor, nisl eu sollicitudin feugiat, eros sem porta magna, quis vestibulum lorem urna eu orci. In hac habitasse platea dictumst. In vel diam vitae orci suscipit suscipit eu id neque. Quisque elit quam, rhoncus vitae hendrerit vel, iaculis ac eros. Curabitur iaculis sapien sit amet ipsum imperdiet feugiat dapibus odio bibendum. Quisque sed porttitor dolor. Aliquam vel arcu ipsum, nec sagittis risus. Aenean sed odio eu risus convallis suscipit eu quis ligula. Maecenas ac eros at sem rutrum varius id viverra odio. Proin vehicula, felis id auctor ultricies, elit dui hendrerit quam, sed dignissim dolor quam vel lacus. Vestibulum dapibus nibh nec urna tincidunt id porta risus congue. Sed a est et justo facilisis euismod non ac eros.</p>
+
+				<p>Phasellus fermentum tincidunt ullamcorper. Suspendisse at malesuada enim. Mauris massa est, vestibulum a hendrerit sit amet, aliquet faucibus turpis. Sed felis felis, sollicitudin sed pellentesque at, accumsan id odio. Duis ac enim sed ante condimentum porttitor. Curabitur pharetra elit vel libero tempus facilisis. Suspendisse vehicula, erat id iaculis ultricies, enim erat ornare turpis, a dapibus nunc ante ut ligula.</p>
+
+				<p>Vestibulum enim orci, molestie nec congue eget, lobortis in arcu. In elementum pretium ullamcorper. Phasellus vulputate vehicula nunc, viverra congue erat suscipit ac. Suspendisse quis lacus a purus lobortis pharetra a ut nisi. Morbi non felis orci, ut cursus ante. Nam in enim eu quam aliquam egestas. Nullam vestibulum metus fringilla libero posuere vel vulputate risus imperdiet. Donec porta suscipit mauris, eget luctus felis pellentesque eget. Ut nisl sem, hendrerit rutrum pulvinar vel, pellentesque eu lectus. Cras vitae massa nibh. Nam pharetra, nisi pharetra faucibus fringilla, diam elit aliquet erat, et accumsan massa dui sit amet eros. Duis aliquam consectetur suscipit. Curabitur nibh dui, lacinia sit amet fermentum in, iaculis et nibh. Sed elit quam, molestie maecenas tincidunt sagittis erat id blandit. Morbi quis sollicitudin felis.</p>
+			</div>
+
+			<div class="clear"></div>
+
+		</div>
+	</div>
+
+	<footer>
+
+		<div class="wrap">
+
+			<div class="footer_nav">
+				<div class="one_third">
+					<h3>About <span>Hostify</span></h3>
+
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dignissim sodales nisl sed facilisis. Suspendisse tempor, nisl eu sollicitudin feugiat, eros sem porta magna quis vestibulum lorem urna.</p>
+				</div>
+
+				<div class="one_third">
+					<h3>Our <span>Services</span></h3>
+
+					<ul>
+						<li><i class="icon-chevron-right"></i><a href="#">Web Hosting</a></li>
+						<li><i class="icon-chevron-right"></i><a href="#">Technology</a></li>
+						<li><i class="icon-chevron-right"></i><a href="#">Support Forums</a></li>
+						<li><i class="icon-chevron-right"></i><a href="#">Affiliate Program</a></li>
+					</ul>
+				</div>
+
+				<div class="one_third last">
+					<h3><span>Contact</span> Us</h3>
+
+					<ul id="footer_address">
+						<li><i class="icon-pushpin"></i><span>Address: </span> 272 11th Avenue, New York</li>
+						<li><i class="icon-envelope"></i><span>Email: </span> support@website.com</li>
+						<li><i class="icon-headphones"></i><span>Phone: </span> 1.888-888-8888</li>
+						<li><i class="icon-print"></i><span>Fax: </span> 1.555-555-5555</li>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+
+			<div class="clear"></div>
+
+		</div>
+
+		<div class="copyright_panel">
+			<div class="wrap">
+				<p class="alignleft">Copyright &copy; <a href="http://www.danthemes.com">DanThemes</a>. All Rights Reserved.</p>
+				<p class="alignright"><a href="#">Terms &amp; Conditions</a> / <a href="#">Private Policy</a></p>
+				<div class="clear"></div>
+			</div>
+		</div>
+
+	</footer>
+
+	<script type="text/javascript">
+		$('.count').each(function () {
+		    $(this).prop('Counter',0).animate({
+		        Counter: $(this).text()
+		    }, {
+		        duration: 4000,
+		        easing: 'swing',
+		        step: function (now) {
+		            $(this).text(Math.ceil(now));
+		        }
+		    });
+		});
+	</script>
+
+	<script type="text/javascript">
+		var nav = responsiveNav("#nav", {customToggle: "#toggle"});
+	</script>
+
+</body>
+
+</html>

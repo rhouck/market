@@ -1,0 +1,138 @@
+{% load staticfiles %}
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>BoostBlocks</title>
+	
+	<meta property="og:image" content="http://www.boostblocks.com/static/bb_ad_image.png" />
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="535">
+    <meta property="og:image:height" content="335">
+    <meta property="og:url" content="http://www.boostblocks.com/" />
+    <meta property="og:title" content="BoostBlocks" />
+    <meta property="og:description" content="The Simplest way to grow your brand." />
+
+	<link rel="shortcut icon" href={% static "bb_fav.ico" %} type="image/x-icon">
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />  
+	<link href={% static "conversion/templates/css/style.css" %} rel="stylesheet"/>  
+	<link href={% static "conversion/templates/css/colors/style-color-06.css" %} rel="stylesheet"/>    
+	<link rel="stylesheet" href={% static "conversion/templates/css/simple-line-icons.css" %}>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700' rel='stylesheet' type='text/css'>
+
+	<link href={% static "custom.css" %} rel="stylesheet"/> 
+
+	{% if GOOGLE_ANALYTICS_PROPERTY_ID %}
+	  {% include "ga.html" %}
+	{% endif %}
+	{% block head %}
+	{% endblock %}
+	
+	<script src="//load.sumome.com/" data-sumo-site-id="6ced727f39647145994385e3b763da001c3eb58618a04eefbc80366df35dcf3c" async></script>
+
+</head> 
+<body>
+
+<div id="wrapper" class="wrapper-page wrapper-flexi">
+	<!-- Start Header -->
+	<div id="header">
+	
+		<div class="container">
+			<div class="row">
+				<div class="span12">
+				
+					<h1>
+						{% if request.GET.ref %}      		      
+				    		<a href="{% url 'splash' %}?ref={{ request.GET.ref }}"><span class="glyph-item icon-grid" aria-hidden="true" style="color: white;"></span>BoostBlocks</a>
+				    	{% else %}
+				    		<a href="{% url 'splash' %}"><span class="glyph-item icon-grid" aria-hidden="true" style="color: white;"></span>BoostBlocks</a>
+				    	{% endif %}
+
+						
+						
+						
+						{% comment %}
+							<img src={% static "conversion/templates/images/logo.png" %} alt="Convert" />
+						{% endcomment %}
+					</h1>
+					
+					
+
+					
+					<h2 class="menulink"><a href="#">Menu</a></h2>
+					
+					<!-- Start Menu -->
+					<div id="menu">
+						<ul>  
+							
+							{% if request.GET.ref %}      	
+								<li><a href="{% url 'philosophy' %}?ref={{ request.GET.ref }}">Our Philosophy</a></li>
+								<li><a href="{% url 'join' %}?ref={{ request.GET.ref }}">Join The Team</a></li>
+								<li class="current"><a href="{% url 'login' %}?ref={{ request.GET.ref }}">Login</a></li> 
+					    	{% else %}
+					    		<li><a href="{% url 'philosophy' %}">Our Philosophy</a></li>
+					    		<li><a href="{% url 'join' %}">Join The Team</a></li>
+					    		
+					    		{% if request.session.token %}
+					    			<li class="current"><a href="{% url 'logout' %}">Logout</a></li> 
+					    		{% else %}
+					    			<li class="current"><a href="{% url 'login' %}">Login</a></li> 
+					    		{% endif %}
+					    	{% endif %}
+					    		
+	
+						</ul> 
+					</div> 
+					<!-- End Menu -->
+				
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		
+		</div>
+	
+	</div>
+	<!-- End Header -->	
+</div>
+
+{% block body %}
+{% endblock %}
+</div>
+
+
+<div class="clearfix"></div> 
+
+<div id="footer">
+
+	<p> 
+		{% comment %}
+			<a href="#"><span class="glyph-item mega icon-social-youtube" aria-hidden="true" ></span></a>
+			<a href="#"><span class="glyph-item mega icon-social-tumblr" aria-hidden="true" ></span></a>
+			<a href="#"><span class="glyph-item mega icon-social-dropbox" aria-hidden="true" ></span></a>
+			<a href="#"><span class="glyph-item mega icon-social-dribbble" aria-hidden="true" ></span></a>		
+		
+		<a href="https://www.facebook.com/pages/Surprisrco/879845972043137"><span class="glyph-item mega icon-social-facebook" aria-hidden="true" ></span></a>
+		<a href="https://twitter.com/SurprisrCo"><span class="glyph-item mega icon-social-twitter" aria-hidden="true" ></span></a>
+		{% endcomment %}
+	</p>
+   	
+	Copyright &copy; 2014 | <a href="{% url 'privacy' %}">Privacy</a> | <a href="{% url 'tos' %}">TOS</a>
+	
+	<div class="clearfix"></div>
+
+</div>
+
+<!--[if lte IE 7]><script src={% static "conversion/templates/js/icons-lte-ie7.js" %}></script><![endif]-->
+<script src={% static "conversion/templates/js/jquery.min.js" %}></script>
+<script src={% static "conversion/templates/js/respond.min.js" %}></script>
+<script src={% static "conversion/templates/js/scripts.js" %}></script>
+<script>
+	$('#scroll1').click(function () {	
+		$('html, body').animate({ scrollTop: $("#steps").offset().top}, 1000);
+	});
+</script>	 	        		
+{% include "uv.html" %}
+</body>
+</html>

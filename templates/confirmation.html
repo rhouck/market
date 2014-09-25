@@ -3,129 +3,62 @@
 {% load widget_tweaks %}
 
 {% block head %}
-	
 	{% if GOOGLE_ANALYTICS_PROPERTY_ID %}
 		{% include "fb.html" %}
 	{% endif %}
-
 {% endblock %}
-
 
 
 {% block body %}
-	
-<div class="strip" id="content">
-
-	<div class="container">
-			 
-        <div class="row">
-	    	
-	    	<div class="span12">
-	    	
-	        	<div class="inner align-center">
-	        	
-	        	<h2>We're operating at full capacity but you're on our waitlist.</h2>
-	        	
-              	<h1>Want to jump the line and get your first two blocks FREE?</h1>
 
 
-
-				<h4>Get five people to sign up with this unique URL:</h4>
-        					
-              	<h2>http://boostblocks.com/?ref={{ ref }}</h2>
-              	</br>
-
-	        				
-	                  
-				<div class="row">
-					<div class="span3">
-						&nbsp;
-					</div>
-					<div class="span3">      
-					  
-				      <a href="http://www.facebook.com/share.php?u=http%3A%2F%2Fboostblocks.com%2F%3Fref%3D{{ ref }}" target="_blank">
-				        <img src="{% static "fb_share.png" %}">
-				      </a>
-					</div>
-					<div class="span3"> 
-				      <a href="http://twitter.com/home?status=The simplest way to grow your brand: +http%3A%2F%2Fboostblocks.com%2F%3Fref%3D{{ ref }}" target="_blank">
-				        <img src="{% static "twit_share.png" %}">
-				      </a>
-					</div>
-					
-					
-				</div>
-
-
-                <div class="row">
-                  <div class="col-md-12">      
-                    </br>
-                    <h2>So far, you have <strong>0</strong> referrals.</h2>
-                  </div>
-                </div> 
-
-
-
-
-
-
-
-	   
-		    </div>
-	    	
-	    	</div>  
-	    	{% comment %}
-	    	<div class="span4">
-	    	
-	        	<div class="inner" id="sidebar">
-	        	
-	        		<ul>
-	        		
-	        			<li>
-		        			<h3><span class="glyph-item icon-screen-smartphone" aria-hidden="true" ></span>Download our app!</h3>
-		        			<p>Phasellus consequat facilisis volutpat ma faucibus odio vitae semper. Ae volutpat lobortis. </p>
-		        		</li>
-		        	 	<li>
-				        	<h3><span class="glyph-item icon-screen-desktop" aria-hidden="true" ></span> Responsive</h3>	
-				        	<p>Fusce fermentum placerat magna ac pharetra. Aliquam euismod elit non ipsum lacinia consectetur.</p>
-				        </li> 
-				        <li>
-				        	<h3><span class="glyph-item  icon-pencil" aria-hidden="true" ></span> Signup</h3>	
-							<form method="post" action="#" name="example"> 
-								
-								<div class="form-row">							 
-									<input id="user_name" placeholder="Your name" class="text login_input" type="text" name="user_name" required />
-									<div class="clearfix"></div>
-								</div>
-								
-								<div class="form-row">			 
-									<input id="user_email" type="email" placeholder="Your email" class="text login_input" name="user_email" required />
-									<div class="clearfix"></div>
-								</div>  
-								
-								<div class="form-row">							 
-									<textarea placeholder="Your message"></textarea>
-									<div class="clearfix"></div>
-								</div>
-								    								
-								<div class="form-row">					
-									<input type="submit" name="register" value="Sign up now!" class="btn btn-wide" data-loading-text="Loading..." />
-									<div class="clearfix"></div>
-								</div>  
-								
-							</form>
-						</li>				        
-		        	</ul>	
-		        </div>
-	    	
-	    	</div> 
-	    	{% endcomment %}
-	    	<div class="clearfix"></div>
-	    	        	
-	    </div>
+<div id="slider_wrapper2">
+	<div class="wrap">
+			
+		<h1>We're at full capacity but you're on our waitlist.</h1>
 
 	</div>
+</div>
 
-</div> 
+<div class="clear"></div>
+
+<div class="content">
+	<div class="wrap">
+
+		
+	        	
+				<div style="text-align: center">
+					<h3 style="color: #999;">Want to jump the line?</h3>
+				
+					<p>Get three people to sign up with this unique URL:</p>			
+	              	<h3>http://boostblocks.com/?ref={{ ref }}</h3>
+                	<div>
+                		<a href="http://www.facebook.com/share.php?u=http%3A%2F%2Fboostblocks.com%2F%3Fref%3D{{ ref }}" target="_blank"><img src="{% static "fb_share.png" %}"></a>
+                		<a href="http://twitter.com/home?status=The simplest way to grow your brand: +http%3A%2F%2Fboostblocks.com%2F%3Fref%3D{{ ref }}" target="_blank"><img src="{% static "twit_share.png" %}"></a>
+                	</div>
+	                <div>
+	                </br>
+	                    <p>So far, you have <strong>0</strong> referrals.</p>
+	                </div> 
+                </div>
+
+
+		<div class="clear"></div>
+
+	</div>
+</div>
 
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+

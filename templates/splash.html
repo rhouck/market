@@ -8,6 +8,239 @@
 
 
 {% block body %}
+
+<div id="slider_wrapper">
+		<div class="wrap">
+
+			<div id="slider">
+				<div>
+					<div class="slide">
+						<h2>We grow your brand while you run your company.</h2>
+						<h1>No contracts. No phone calls. Get started in just ten minutes.</h1>
+
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dignissim sodales nisl sed facilisis. Suspendisse tempor, nisl eu sollicitudin feugiat, eros sem porta magna, quis vestibulum lorem urna eu orci hac habitasse platea dictumst.</p>
+
+						<a href="#" class="button2"><span>Sign Up</span></a>
+
+						<div class="clear"></div><br />
+					</div>
+				</div>
+				<div>
+					<div class="slide">
+						<h2>50% Off For The First Month</h2>
+						<h1>Order Now!</h1>
+						
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dignissim sodales nisl sed facilisis. Suspendisse tempor, nisl eu sollicitudin feugiat, eros sem porta magna, quis vestibulum lorem urna eu orci hac habitasse platea dictumst.</p>
+
+						<a href="#" class="button2"><span>Sign Up</span></a>
+
+						<div class="clear"></div><br />
+					</div>
+				</div>
+				<div>
+					<div class="slide">
+						<h2>Meet Our Staff Members</h2>
+						<h1>Meet Us!</h1>
+
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dignissim sodales nisl sed facilisis. Suspendisse tempor, nisl eu sollicitudin feugiat, eros sem porta magna, quis vestibulum lorem urna eu orci hac habitasse platea dictumst.</p>
+
+						<a href="#" class="button2"><span>Sign Up</span></a>
+
+						<div class="clear"></div><br />
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="content">
+
+
+		<div class="wrap">
+
+				<div class="clear"></div>
+				<div class="space"></div>
+
+			<div>
+				<div class="heading"><span>Here's how it works</span></div>
+
+				<div class="latest_posts">
+					<div class="one_third">
+						<div class="latest_post">
+							<h3><i class="icon-group"></i> We get to know your business</h3>
+							<p>Complete your company  
+				        	{% if request.GET.ref %}
+					    		<a href="{% url 'signup' %}?ref={{ request.GET.ref }}">profile</a>
+					    	{% else %}
+					    		<a href="{% url 'signup' %}">profile</a>      
+					    	{% endif %}.</p>
+					    	<p>We'll then perform a full social media audit and identify where we can add the most value. We'll send you a custom social media strategy outlining our plan to boost your brand. This of course is all Free!</p>
+
+
+						</div>
+					</div>
+					<div class="one_third">
+						<div class="latest_post">
+							<h3><i class="icon-signal"></i> Choose Campaign Scope and Scale</h3>
+							<p>You select the social media networks you want to engage with and the amount of resources you want to apply to each. Our services are packaged into blocks. You can buy two Facebook blocks and one Instagram block, for instance.
+							</p>
+						</div>
+					</div>
+
+					<div class="one_third last">
+						<div class="latest_post">
+							<h3><i class="icon-bar-chart"></i> Review Stats and Adjust Accordingly</h3>
+							<p>Every week we send you reports of our recent activity and your campaign performance. You choose whether to add or remove blocks as you see fit. Shift your allocation of resources between social media networks as you see fit.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			
+
+				<div class="clear"></div>
+				<div class="space"></div>
+
+		</div>
+
+
+
+		<div class="wrap">
+
+			<div class="clear"></div>
+
+			<div class="heading"><span>The Boost Blocks</span></div>
+			<p>Each month you can set the number of blocks you want applied to each social network.</p>
+			<ul>
+				<li><i class="icon-chevron-right"></i>Each block is $200 per month</li>
+				<li><i class="icon-chevron-right"></i> We send you weekly stats summaries with performance metrics</li>
+				<li><i class="icon-chevron-right"></i> Once a month we send you a summarizing report with recommendations for each social network</li> 
+				<li><i class="icon-chevron-right"></i> All communication done through dashboard so we never have to interupt your schedule</li>
+			</ul>
+			</br>
+			<p>Below is describes what you get, in general, for each block you purchase per month.</p> 
+
+			<div class="pricing_wrapper">
+				<div class="one_fourth">
+					<div class="pricing">
+						<div class="pricing_top" style="padding: 10px 0 0 0;">
+							<p><i class="icon-facebook-sign" style="color: white; font-size: 72px;"></i></p>							
+						</div>
+						<ul>
+							<li>Facebook</li>
+							<li>Light engagment (30min) x 4</li>
+							<li>Weekly content curation around your brand (30min) x 4</li>
+							<li>Scheduling of your marketing collateral (30 min) x 2</li>
+						</ul>
+					</div>
+				</div>
+				<div class="one_fourth">
+					<div class="pricing">
+						<div class="pricing_top" style="padding: 10px 0 0 0;">
+							<p><i class="icon-twitter-sign" style="color: white; font-size: 72px;"></i></p>							
+						</div>
+						<ul>
+							<li>Twitter</li>
+							<li>Light engagment (30min) x 4</li>
+							<li>Weekly content curation around your brand (30min) x 4</li>
+							<li>Scheduling of your marketing collateral (30 min) x 2</li>
+						</ul>
+					</div>
+				</div>
+				<div class="one_fourth">
+					<div class="pricing">
+						<div class="pricing_top" style="padding: 10px 0 0 0;">
+							<p><i class="icon-instagram" style="color: white; font-size: 72px;"></i></p>							
+						</div>
+						<ul>
+							<li>Instagram</li>
+							<li>Post and follow-up engagement of client-supplied audio and visual content (40min) x 4</li>
+							<li>Curated content post and follow-up engagement (40min) x 4</li>
+						</ul>
+					</div>
+				</div>
+				<div class="one_fourth last">
+					<div class="pricing">
+						<div class="pricing_top" style="padding: 10px 0 0 0;">
+							<p><i class="icon-linkedin-sign" style="color: white; font-size: 72px;"></i></p>							
+						</div>
+						<ul>
+							<li>LinkedIn</li>
+							<li>Light engagment (30min) x 4</li>
+							<li>Weekly scheduling of your marketing collateral (30 min) x 4</li>
+							<li>Weekly content curation around your brand (30min) x 4</li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="clear"></div>
+			
+
+			<div class="row">
+				</br>
+				<p>Our team may occasionally allocate more or less time to certain activities within each block to optimize impact of our efforts.</p>
+				<ul>
+					<li><i class="icon-chevron-right"></i> The more content you provide us to work with, the more time we can spend interacting directly with your target audience</li>
+					<li><i class="icon-chevron-right"></i> If you provide us very little or no content to work with, more time will be allocated towards content curation and finding material to engage your target audience with</li>
+				</ul>
+			</div>
+
+		</div>
+
+
+
+
+
+		<div class="wrap">
+
+			<div class="clear"></div>
+			<div class="space"></div>
+
+			<div class="heading"><span>Why Choose <em>Us</em> ?</span></div>
+
+			<div class="one_third">
+				<div class="box_feature">
+					<div class="box_feature_icon"><span class="icon-ok"></span></div>
+					<div class="box_feature_text">
+						<h6>Quick setup and no long-term contracts</h6>
+						<p>Scale our service up or down to fit your changing budget. No inneficient introductory meetings or reviews.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="one_third">
+				<div class="box_feature">
+					<div class="box_feature_icon"><span class="icon-ok"></span></div>
+					<div class="box_feature_text">
+						<h6>We allocate your budget for max impact</h6>
+						<p>We know when to shift resources between content curation and engagement.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="one_third last">
+				<div class="box_feature">
+					<div class="box_feature_icon"><span class="icon-ok"></span></div>
+					<div class="box_feature_text">
+						<h6>Retain control of accounts</h6>
+						<p>You will always have full control of your social media accounts and can contribute to them as much as little as you like.</p>
+					</div>
+				</div>
+			</div>
+
+					<div class="clear"></div>
+					<div class="space2"></div>
+
+
+		</div>
+</div>	
+
+
+
+
+{% comment %}
 <div class="strip" id="content">
     
 	<!-- End content -->	
@@ -255,59 +488,6 @@
 
 	</div>
 </div>
-{% comment %}
-<div class="strip" id="content">
-    
-	<!-- End content -->	
-	
-	<div class="clearfix"></div> 	
-
-	<div class="container">
-		<div class="row">		        	
-	    	<div class="span12">
-	    		<div class="inner align-right">
-			    	</br></br>
-			    	<h1>What people are saying</h1>
-			    	<h3>"I've wanted to give her more gifts but never knew what to pick out. This is for me."</h3>
-			    	<p> Alvin, Developer, San Francisco</p>
-			    	<h3>"It's clear my girlfriend loves when I surprise her with a gift. Still, I usually forget to do it."</h3>
-			    	<p> Kent, Chiropractor, Danville</p>
-			    	<h3>"Surprisr solves my biggest worry when picking something out: will she like it?"</h3>
-			    	<p> Rich, Systems Analyst, Oakland</p>
-			    
-			    	
-			    	</br>
-			    <div class="align-right">
-			    	
-
-			    	{% if request.GET.ref %}
-			    		<a href="{% url 'signup' %}?ref={{ request.GET.ref }}">
-				        	<div class="form-row">
-				        		<input type="submit" class="btn" value="Get Started for Free" style="background-color: #0fba52;"/>
-				     		</div>
-				      </a>
-			    	{% else %}
-			    		<a href="{% url 'signup' %}">
-				        	<div class="form-row">
-				        		<input type="submit" class="btn" value="Get Started for Free" style="background-color: #0fba52;"/>
-				     		</div>
-				      </a>
-			    	{% endif %}
-
-			    	
-				</div>
-				</div>
-			    </div>
-	    	</div>
-	    </div>
-
-        <div class="row">
-	    
-	    </div>
-
-	</div>
-</div>
 {% endcomment %}
+
 {% endblock %}
-
-
