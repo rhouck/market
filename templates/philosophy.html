@@ -48,9 +48,9 @@
 		
 
 		{% if request.GET.ref %}
-			<a class="tab-button" style="margin-left: 0px;" href="{% url 'signup' %}?ref={{ request.GET.ref }}">Get Started for Free</a>
+			<a class="tab-button" style="margin-left: 0px;" href="{% url 'signup' %}?ref={{ request.GET.ref }}">Get Started</a>
     	{% else %}
-    		<a class="tab-button" style="margin-left: 0px;" href="{% url 'signup' %}">Get Started for Free</a>
+    		<a class="tab-button" style="margin-left: 0px;" href="{% url 'signup' %}">Get Started</a>
     	{% endif %}
 
 		<div class="clear"></div>

@@ -50,7 +50,7 @@ class SubscribeForm(LoginForm):
     )
     goals = forms.ChoiceField(choices=Goals_Choices)
     budget = forms.CharField(max_length=200, widget=forms.TextInput(attrs={'placeholder': 'What is your estimated monthly social media engagement spend?'}))
-    creatives = forms.CharField(required=False, min_length=2, widget=forms.Textarea(attrs={'placeholder': 'Will you be providing us your own marketing content regularly?\nIf so, how frequently? Describe content you will provide us. (Images, White Papers, Press Releases, Blogs, etc.)', 'rows': 4}))
+    creatives = forms.CharField(required=False, min_length=2, widget=forms.Textarea(attrs={'placeholder': 'Will you be providing us your own marketing content regularly?\nIf so, how frequently?\nDescribe content you will provide us.\n(Images, White Papers, Press Releases, Blogs, etc.)', 'rows': 4}))
 
     #wants_ads = forms.BooleanField(required=False, label="I want to run display and text ads")
     #wants_social = forms.BooleanField(required=False, label="I want you to run my social media presence")

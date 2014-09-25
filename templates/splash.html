@@ -15,36 +15,52 @@
 			<div id="slider">
 				<div>
 					<div class="slide">
-						<h2>We grow your brand while you run your company.</h2>
-						<h1>No contracts. No phone calls. Get started in just ten minutes.</h1>
+						<h2>Full-service social media marketing</h2>
+						<h1><i class="icon-facebook-sign" style="font-size: 72px;"></i>
+							<i class="icon-twitter-sign" style="font-size: 72px;"></i>
+							<i class="icon-instagram" style="font-size: 72px;"></i>
+							<i class="icon-linkedin-sign" style="font-size: 72px;"></i>
+						</h1>
 
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dignissim sodales nisl sed facilisis. Suspendisse tempor, nisl eu sollicitudin feugiat, eros sem porta magna, quis vestibulum lorem urna eu orci hac habitasse platea dictumst.</p>
+						<p>No long-term contracts. No phone calls. Fill our your company profile to receive your free social media audit.</p>
 
-						<a href="#" class="button2"><span>Sign Up</span></a>
+						{% if request.GET.ref %}
+							<a class="button2" href="{% url 'signup' %}?ref={{ request.GET.ref }}">Get Started</a>
+				    	{% else %}
+				    		<a class="button2" href="{% url 'signup' %}">Get Started</a>
+				    	{% endif %}
 
 						<div class="clear"></div><br />
 					</div>
 				</div>
 				<div>
 					<div class="slide">
-						<h2>50% Off For The First Month</h2>
-						<h1>Order Now!</h1>
+						<h2>We grow your brand while you run your company</h2>
+						<h1>the right balance</h1>
 						
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dignissim sodales nisl sed facilisis. Suspendisse tempor, nisl eu sollicitudin feugiat, eros sem porta magna, quis vestibulum lorem urna eu orci hac habitasse platea dictumst.</p>
+						<p>Our team of social media experts is dedicated to make the most out of your marketing budget. Our data-driven approach enables us to work within your budget to find the optmial balance of engagement and content curation.</p>
 
-						<a href="#" class="button2"><span>Sign Up</span></a>
+						{% if request.GET.ref %}
+							<a class="button2" href="{% url 'signup' %}?ref={{ request.GET.ref }}">Get Started</a>
+				    	{% else %}
+				    		<a class="button2" href="{% url 'signup' %}">Get Started</a>
+				    	{% endif %}
 
 						<div class="clear"></div><br />
 					</div>
 				</div>
 				<div>
 					<div class="slide">
-						<h2>Meet Our Staff Members</h2>
-						<h1>Meet Us!</h1>
+						<h2>Adjust your budget as you see fit</h2>
+						<h1>Scalable and modular</h1>
 
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dignissim sodales nisl sed facilisis. Suspendisse tempor, nisl eu sollicitudin feugiat, eros sem porta magna, quis vestibulum lorem urna eu orci hac habitasse platea dictumst.</p>
+						<p>BoostBlocks lets you select the social media networks you want to engage with. Every month you can adjust the spend on each network. Want more Instagram and less Facebook? It's as simple as checking a box in your dashboard.</p>
 
-						<a href="#" class="button2"><span>Sign Up</span></a>
+						{% if request.GET.ref %}
+							<a class="button2" href="{% url 'signup' %}?ref={{ request.GET.ref }}">Get Started</a>
+				    	{% else %}
+				    		<a class="button2" href="{% url 'signup' %}">Get Started</a>
+				    	{% endif %}
 
 						<div class="clear"></div><br />
 					</div>
@@ -119,6 +135,7 @@
 			</ul>
 			</br>
 			<p>Below is describes what you get, in general, for each block you purchase per month.</p> 
+
 
 			<div class="pricing_wrapper">
 				<div class="one_fourth">
@@ -235,6 +252,12 @@
 
 
 		</div>
+
+		{% if request.GET.ref %}
+			<a class="tab-button" href="{% url 'signup' %}?ref={{ request.GET.ref }}">Get Started</a>
+    	{% else %}
+    		<a class="tab-button" href="{% url 'signup' %}">Get Started</a>
+    	{% endif %}
 </div>	
 
 
