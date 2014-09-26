@@ -69,15 +69,15 @@ def confirm_referral(ref):
 
 		count = int(len([r for r in refs]))
 
-		if count < 5:
-			subject = "Almost There | Exclusive discounts and priority access at BoostBlocks"
-			title = "%s/5 sign-ups" % (str(int(count)))
-			body = "Get 5 others to sign up to cut the line and get your first two blocks FREE. Keep sharing the link below!"
-		if count == 5:
+		if count < 3:
+			subject = "Almost There | Priority access at BoostBlocks"
+			title = "%s/3 sign-ups" % (str(int(count)))
+			body = "Get 3 others to sign up to cut the line. Keep sharing the link below!"
+		if count == 3:
 			subject = "You've earned priority access to BoostBlocks!"
-			title = "You got 5 sign-ups!"
-			body = "You get to cut the line and will be offered your first two blocks FREE. Keep sharing - more rewards coming soon :)"
-		if count > 5:
+			title = "You got 3 sign-ups!"
+			body = "You get to cut the line. Keep sharing - more rewards coming soon :)"
+		if count > 3:
 			subject = "You are incredible"
 			title = "You got %s sign-ups!" % (str(int(count)))
 			body = "Wow! Those that get more sign-ups will get rewarded. You have our word."

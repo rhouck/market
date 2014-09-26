@@ -167,7 +167,9 @@
 			    		<li><a href="{% url 'philosophy' %}">Our Philosophy</a></li>
 			    		<li><a href="{% url 'join' %}">Join The Team</a></li>
 			    		
-			    		{% if request.session.active and request.session.ref %}
+			    		{% if request.session.staff %}
+			    			<li><a href="{% url 'projects' %}">Admin</a></li>
+			    		{% elif request.session.active and request.session.ref %}
 		    				<li><a href="{% url 'dashboard' request.session.ref %}">Dashboard</a></li> 
 		    			{% endif %}
 
