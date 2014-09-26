@@ -48,9 +48,10 @@
 					<div class="tabs">
 
 					    <div class="tab-content">
-					        <div id="tab1" class="tab active">
+					        <div id="tab1" class="tab">
 				        		</br>
-				        		{% if not request.session.chargify_active and not request.session.staff %}
+				        		
+				        		{% if not user.chargify_active and not user.staff %}
 					            	<h1>Activate your billing account</h1>
 					            	<p>Before we can begin, we need you need to enter your billing information.</p>
 					            	<p>The link below will direct you to our Chargify account. Nothing will be charged to your card upon setup and we will never store any of your credit card information</p>
@@ -60,14 +61,20 @@
 									</div>
 
 					            {% else %}
-					            	<p>Updated your billing account information.</p>
+					            	<h1>Your account is actiavted</h1>
+					            	
+					            	
+					            	<p>Should you need to cancel your account at any time just let a BoostBlocks member know and we will take care of that for you. Keep in mind that you don't need to cancel your account in order to prevent additional charges. Simply unselect all currently selected Boost Blocks.</p>
+					            	
+
+					            	
 
 					            {% endif %}
 					        </div>
 					 
 					        <div id="tab2" class="tab">
 				        		</br>
-				        		{% if not request.session.chargify_active and not request.session.staff %}
+				        		{% if not user.chargify_active and not user.staff %}
 					            	<h1>Activate your billing account</h1>
 					            	<p>Before we can begin, we need you need to enter your billing information.</p>
 					            	<p>The link below will direct you to our Chargify account. Nothing will be charged to your card upon setup and we will never store any of your credit card information</p>
@@ -77,14 +84,14 @@
 									</div>
 
 					            {% else %}
-					            	<p>Updated your billing account information.</p>
+					            	<p>Update your billing account information.</p>
 
 					            {% endif %}
 					        </div>
 					 
-					        <div id="tab3" class="tab">
+					        <div id="tab3" class="tab active">
 				        		</br>
-				        		{% if not request.session.chargify_active and not request.session.staff %}
+				        		{% if not user.chargify_active and not user.staff %}
 					            	<h1>Activate your billing account</h1>
 					            	<p>Before we can begin, we need you need to enter your billing information.</p>
 					            	<p>The link below will direct you to our Chargify account. Nothing will be charged to your card upon setup and we will never store any of your credit card information</p>
@@ -94,7 +101,7 @@
 									</div>
 
 					            {% else %}
-					            	<p>Updated your billing account information.</p>
+					            	<p>Update your billing account information.</p>
 
 					            {% endif %}
 					        </div>
@@ -113,9 +120,9 @@
 					    </div>
 
 					    <ul class="tab-links">
-					        <li class="active"><a href="#tab1"><span style="margin-left: 0px;">Account Billing</span></a></li>
+					        <li><a href="#tab1"><span style="margin-left: 0px;">Account Billing</span></a></li>
 					        <li><a href="#tab2"></i><span style="margin-left: 0px;">Profile Builder Blocks</span></a></li>
-					        <li><a href="#tab3"></i><span style="margin-left: 0px;">Engagement Blocks</span></a></li>
+					        <li class="active"><a href="#tab3"></i><span style="margin-left: 0px;">Engagement Blocks</span></a></li>
 					        <li><a href="#tab4"></i><span style="margin-left: 0px;">Company Profile</span></a></li>
 					    </ul>
 

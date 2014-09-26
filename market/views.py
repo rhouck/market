@@ -110,7 +110,7 @@ def confirmation(request, ref):
 def profile(request, ref):
 	
 	try:
-		signup = get_signup_by_ref(ref)	
+		user = get_signup_by_ref(ref)	
 	except:
 		raise Http404
 
@@ -120,10 +120,10 @@ def profile(request, ref):
 	
 	if (inputs) and form.is_valid():	
 		cd = form.cleaned_data
-		return render_to_response('profile.html', {'form': form}, context_instance=RequestContext(request))
+		return render_to_response('profile.html', {'form': form, 'user': user}, context_instance=RequestContext(request))
 	else:
 		#form.errors['__all__'] = form.error_class([err])
-		return render_to_response('profile.html', {'form': form}, context_instance=RequestContext(request))
+		return render_to_response('profile.html', {'form': form, 'user': user}, context_instance=RequestContext(request))
 
 	
 
@@ -278,6 +278,45 @@ def projects(request):
 		form.errors['__all__'] = form.error_class([err])
 		return render_to_response('login.html', {'form': form}, context_instance=RequestContext(request))
 	"""
+
+def activate(request):
+	
+	inputs = request.GET if request.GET else None
+	form = ActivateForm(inputs)
+	try:
+		
+		if (inputs) and form.is_valid():
+			
+			if 'token' not in request.session:
+				raise Exception("Session token unavailable.")
+			
+			cd = form.cleaned_data
+
+			user = ParseUser.Query.all().filter(ref=cd['ref'])
+			user = [u for u in user]
+			if not user:
+				raise Exception("User not registered in system.")
+			
+			user = user[0]		
+			if user.chargify_active:
+				raise Exception("User Chargify account already activated.")	
+
+			user.sessionToken = request.session['token']
+			user.chargify_active = True
+			user.chargify_id = cd['id']
+			user.save()
+
+			rev = str(reverse('dashboard', kwargs={'ref': cd['ref']}))
+			return HttpResponseRedirect(rev)	
+			
+		else:
+			raise Exception()
+		
+	except Exception as err:
+		form.errors['__all__'] = form.error_class([err])
+		return HttpResponse(str(form.errors))
+		
+
 
 def test(request):
 	

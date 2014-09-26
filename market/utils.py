@@ -264,9 +264,12 @@ def parse_login(email, password):
 	u = ParseUser.login(email, password)
 	header = u.session_header()
 	
-	response = {'token': header['X-Parse-Session-Token']}
-	response['active'] = u.active
-	response['chargify_active'] = u.chargify_active
+	response = {'token': header['X-Parse-Session-Token'],
+				'active': u.active,
+				'chargify_active': u.chargify_active,
+				#'user': u,
+				}
+
 	try:
 		response['ref'] = u.ref
 		response['staff'] = False
