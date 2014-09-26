@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+
+
+{% block body %}
+
+
+<div id="slider_wrapper2">
+	<div class="wrap">
+			
+		<h1>Admin view</h1>
+
+	</div>
+</div>
+
+<div class="clear"></div>
+
+<div class="content">
+	<div class="wrap">
+
+		<div class="heading"><span>All accounts</span></div>
+
+		{% for i in accts %}
+			{% if not i.user.staff %}
+				<p>{{ i.user.email }}: <a href="{% url 'dashboard' i.user.ref %}">Dashboard</a></p>
+			{% endif %}
+		{% endfor %}
+			
+			
+
+
+		<div class="clear"></div>
+
+	</div>
+</div>
+
+{% endblock %}

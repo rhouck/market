@@ -24,6 +24,9 @@ class Counter(Object):
     pass
 class CompanyProfiles(Object):
     pass
+class AccountDetails(Object):
+    pass
+
 
 def get_count():
 
@@ -143,6 +146,10 @@ def alert_admin_new_signup(inps):
 def build_comp_profile(ref, inps):
 	
 	signup = get_signup_by_ref(ref)
+
+	acct = AccountDetails(user=signup, active=False)
+	acct.save()
+
 	comp = CompanyProfiles(user=signup,
 							company=inps['company'],
 							website=inps['website'],
@@ -265,11 +272,11 @@ def parse_login(email, password):
 	header = u.session_header()
 	
 	response = {'token': header['X-Parse-Session-Token'],
-				'active': u.active,
 				'chargify_active': u.chargify_active,
-				#'user': u,
 				}
-
+				#'active': u.active,
+				#'user': u,
+	
 	try:
 		response['ref'] = u.ref
 		response['staff'] = False
@@ -278,6 +285,33 @@ def parse_login(email, password):
 		response['staff'] = True
 		
 	return response
+
+def get_acct_details_by_email(email):
+	acct = None
+	accts = AccountDetails.Query.all()
+	for a in accts:
+		if a.user['email'] == email:
+			acct = a
+			break
+	return acct
+
+def get_accts():
+	accts = AccountDetails.Query.all()
+	accts = [a for a in accts]
+	return accts
+
+
+def user_is_active(email):
+	
+	email = email.lower()
+	try:
+		acct = get_acct_details_by_email(email)
+		if acct:
+			return {'status': acct.active}
+		else:
+			return {'error': 'No record found for user with that email address.'}
+	except Exception as err:
+		return {'error': str(err)}	
 
 
 def reset_parse_user_pass(email):

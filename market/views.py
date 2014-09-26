@@ -74,7 +74,6 @@ def signup(request):
 										count=count, 
 										type=env_type, 
 										highrise_id=highrise_id, 
-										active=False, 
 										chargify_active=False, 
 										staff=False)
 			
@@ -109,21 +108,25 @@ def confirmation(request, ref):
 
 def profile(request, ref):
 	
+	if not request.session['active']:
+		raise Http404
+	
 	try:
 		user = get_signup_by_ref(ref)	
 	except:
 		raise Http404
 
+	acct = get_acct_details_by_email(user.email)
 
 	inputs = request.POST if request.POST else None
 	form = DashboardForm(inputs)
 	
 	if (inputs) and form.is_valid():	
 		cd = form.cleaned_data
-		return render_to_response('profile.html', {'form': form, 'user': user}, context_instance=RequestContext(request))
+		return render_to_response('profile.html', {'form': form, 'user': user, 'acct': acct}, context_instance=RequestContext(request))
 	else:
 		#form.errors['__all__'] = form.error_class([err])
-		return render_to_response('profile.html', {'form': form, 'user': user}, context_instance=RequestContext(request))
+		return render_to_response('profile.html', {'form': form, 'user': user, 'acct': acct}, context_instance=RequestContext(request))
 
 	
 
@@ -145,7 +148,12 @@ def login(request):
 			
 			request.session['token'] = token['token']
 			request.session['staff'] = token['staff']
-			request.session['active'] = token['active']
+			
+			active_status = user_is_active(cd['email'])
+			if 'error' in active_status:
+				raise Exception(active_status['error'])
+			
+			request.session['active'] = active_status['status']
 			
 			if token['ref']:
 				request.session['ref'] = token['ref']
@@ -223,9 +231,13 @@ def createStaff(request):
 										email=email, 
 										type=env_type, 
 										highrise_id=highrise_id, 
-										active=False, 
+										chargify_active=False, 
 										staff=True)
 			
+			user = get_parse_user_by_email(email)
+			acct = AccountDetails(user=user, active=True)
+			acct.save()
+
 			return HttpResponseRedirect(reverse('splash'))	
 			
 		else:
@@ -240,8 +252,8 @@ def projects(request):
 	
 	if request.session['staff']:
 		
-		
-		return render_to_response('projects.html', {}, context_instance=RequestContext(request))
+		accts = get_accts()
+		return render_to_response('projects.html', {'accts': accts}, context_instance=RequestContext(request))
 
 	else:
 		raise Http404		

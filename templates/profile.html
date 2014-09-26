@@ -22,23 +22,34 @@
 <div class="content">
 	<div class="wrap" style="width: 85%;">
 
-		<div class="sidebar-right">
-			<div class="heading"><span>Current Campaign</span></div>
-			<p>Facebook x 2</p>
-			<p>Twitter x 2</p>
-			<p>Mothly: $800</p>
-			</br>
-
-			<div class="heading"><span>Primary Goal</span></div>
-			<p>Engagement</p>
-			</br>
+		<div class="sidebar-right" style="padding-left: 10px;">
 			
+			<div class="heading"><span>Summary</span></div>
+			<div id="accordion" style="padding: 10px 10px 10px 10px;">
+				<p class="accordion_header">Current Campaign</p>
+				<div>
+					<p>Facebook x 2</p>
+					<p>Twitter x 2</p>
+					<p>Mothly: $800</p>
+				</div>
+				<p class="accordion_header">Strategy</p>
+				<div>
+					<p>Primary Goals:</p>
+					<p>{{ acct.goal }}</p>
+					</br>
+					<p>{{ acct.strategy }}</p>
+				</div>
+			</div>
+
+			
+
+			
+			{% comment %}
 			<div class="clear"></div>
 				
 			<div class="heading"><span>Strategy</span></div>
 			<p>Polaroid wayfarers enim, before they sold out mlkshk locavore mixtape sustainable. Flexitarian kitsch voluptate cred. Culpa dolore ethical, nesciunt deep v narwhal veniam Pitchfork. Proident before they sold out raw denim consectetur. Ut et small batch Banksy, distillery gentrify cray hashtag. Quis voluptate nisi, nostrud readymade Banksy fashion axe authentic bitters. Culpa High Life flannel post-ironic slow-carb officia, typewriter ugh tote bag semiotics fanny pack dolore qui ullamco.</p>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dignissim sodales nisl sed facilisis. Suspendisse tempor, nisl eu sollicitudin feugiat, eros sem porta magna, quis vestibulum lorem urna eu orci. In hac habitasse platea dictumst. In vel diam vitae orci suscipit suscipit eu id neque.</p>
-
+			{% endcomment %}
 		</div>
 
 		<div class="content-left" style="width: auto;">
@@ -72,7 +83,7 @@
 					            {% endif %}
 					        </div>
 					 
-					        <div id="tab2" class="tab">
+					        <div id="tab2" class="tab active">
 				        		</br>
 				        		{% if not user.chargify_active and not user.staff %}
 					            	<h1>Activate your billing account</h1>
@@ -89,41 +100,20 @@
 					            {% endif %}
 					        </div>
 					 
-					        <div id="tab3" class="tab active">
+					        <div id="tab3" class="tab" style="width: 100%;">
 				        		</br>
-				        		{% if not user.chargify_active and not user.staff %}
-					            	<h1>Activate your billing account</h1>
-					            	<p>Before we can begin, we need you need to enter your billing information.</p>
-					            	<p>The link below will direct you to our Chargify account. Nothing will be charged to your card upon setup and we will never store any of your credit card information</p>
-					            	</br>
-					            	<div>
-										<a href="https://boost-blocks-test.chargify.com/h/3562785/subscriptions/new?reference={{ request.session.ref }}" class="button">Setup</a>		
-									</div>
-
-					            {% else %}
-					            	<p>Update your billing account information.</p>
-
-					            {% endif %}
+				        		{% include "disqus.html" %}	
+				        		<div class="disqus">
+						    		
+						    	</div> 
 					        </div>
 
-					        <div id="tab4" class="tab">
-				        		<span class="tab-price">
-				        			<i class="icon-comment-alt"></i>
-				        			<span>only<em>$199.95</em>per month</span>
-				        		</span>
-
-					            <h1>Dedicated Servers</h1>
-					            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dignissim sodales nisl sed facilisis. Suspendisse tempor, nisl eu sollicitudin feugiat, eros sem porta magna, quis vestibulum lorem urna eu orci. In hac habitasse platea dictumst. In vel diam vitae orci suscipit suscipit eu id neque.</p>
-					            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dignissim sodales nisl sed facilisis. Suspendisse tempor, nisl eu sollicitudin feugiat, eros sem porta magna, quis vestibulum lorem urna eu orci. In hac habitasse platea dictumst. In vel diam vitae orci suscipit suscipit eu id neque.</p>
-					        	<a href="#" class="tab-button">Order Now</a>
-					        </div>
 					    </div>
 
 					    <ul class="tab-links">
-					        <li><a href="#tab1"><span style="margin-left: 0px;">Account Billing</span></a></li>
-					        <li><a href="#tab2"></i><span style="margin-left: 0px;">Profile Builder Blocks</span></a></li>
-					        <li class="active"><a href="#tab3"></i><span style="margin-left: 0px;">Engagement Blocks</span></a></li>
-					        <li><a href="#tab4"></i><span style="margin-left: 0px;">Company Profile</span></a></li>
+					        <li><a href="#tab1"></i><span style="margin-left: 0px;">Profile Builder Blocks</span></a></li>
+					        <li class="active"><a href="#tab2"></i><span style="margin-left: 0px;">Engagement Blocks</span></a></li>
+					        <li><a href="#tab3"></i><span style="margin-left: 0px;">Discussion</span></a></li>
 					    </ul>
 
 					</div>
@@ -131,13 +121,6 @@
 				</div>
 			</div>
 			
-			<div class="clear"></div>
-			<div class="space"></div>
-			
-			<div class="disqus">
-	    		{% include "disqus.html" %}
-	    	</div>  
-
 		</div>
 
 		<div class="clear"></div>
@@ -145,23 +128,7 @@
 
 
 	</div>
-	{% comment %}
-	<div class="wrap" style="width: 85%;">
-		<div class="sidebar-right">
-		</div>
-		<div class="content-left" style="width: auto;">
-			<div class="wrap">
-			
-		    	<div class="disqus">
-		    		{% include "disqus.html" %}
-		    	</div>    	
-		    	
-		    	<div class="clear"></div>	
-		    </div>
-		</div>
-
-	</div>
-	{% endcomment %}		
+		
 
 </div>
 
