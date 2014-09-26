@@ -49,36 +49,54 @@
 
 					    <div class="tab-content">
 					        <div id="tab1" class="tab active">
-				        		<span class="tab-price">
-				        			<i class="icon-comment-alt"></i>
-				        			<span>only<em>$4.95</em>per month</span>
-				        		</span>
+				        		</br>
+				        		{% if not request.session.chargify_active and not request.session.staff %}
+					            	<h1>Activate your billing account</h1>
+					            	<p>Before we can begin, we need you need to enter your billing information.</p>
+					            	<p>The link below will direct you to our Chargify account. Nothing will be charged to your card upon setup and we will never store any of your credit card information</p>
+					            	</br>
+					            	<div>
+										<a href="https://boost-blocks-test.chargify.com/h/3562785/subscriptions/new?reference={{ request.session.ref }}" class="button">Setup</a>		
+									</div>
 
-					            <h1>Shared Hosting</h1>
-					            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dignissim sodales nisl sed facilisis. Suspendisse tempor, nisl eu sollicitudin feugiat, eros sem porta magna, quis vestibulum lorem urna eu orci. In hac habitasse platea dictumst. In vel diam vitae orci suscipit suscipit eu id neque.</p>
-					        	<a href="#" class="tab-button">Order Now</a>
+					            {% else %}
+					            	<p>Updated your billing account information.</p>
+
+					            {% endif %}
 					        </div>
 					 
 					        <div id="tab2" class="tab">
-				        		<span class="tab-price">
-				        			<i class="icon-comment-alt"></i>
-				        			<span>only<em>$19.95</em>per month</span>
-				        		</span>
+				        		</br>
+				        		{% if not request.session.chargify_active and not request.session.staff %}
+					            	<h1>Activate your billing account</h1>
+					            	<p>Before we can begin, we need you need to enter your billing information.</p>
+					            	<p>The link below will direct you to our Chargify account. Nothing will be charged to your card upon setup and we will never store any of your credit card information</p>
+					            	</br>
+					            	<div>
+										<a href="https://boost-blocks-test.chargify.com/h/3562785/subscriptions/new?reference={{ request.session.ref }}" class="button">Setup</a>		
+									</div>
 
-					            <h1>Reseller Hosting</h1>
-					            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dignissim sodales nisl sed facilisis. Suspendisse tempor, nisl eu sollicitudin feugiat, eros sem porta magna, quis vestibulum lorem urna eu orci. In hac habitasse platea dictumst. In vel diam vitae orci suscipit suscipit eu id neque.</p>
-					        	<a href="#" class="tab-button">Order Now</a>
+					            {% else %}
+					            	<p>Updated your billing account information.</p>
+
+					            {% endif %}
 					        </div>
 					 
 					        <div id="tab3" class="tab">
-				        		<span class="tab-price">
-				        			<i class="icon-comment-alt"></i>
-				        			<span>only<em>$24.95</em>per month</span>
-				        		</span>
+				        		</br>
+				        		{% if not request.session.chargify_active and not request.session.staff %}
+					            	<h1>Activate your billing account</h1>
+					            	<p>Before we can begin, we need you need to enter your billing information.</p>
+					            	<p>The link below will direct you to our Chargify account. Nothing will be charged to your card upon setup and we will never store any of your credit card information</p>
+					            	</br>
+					            	<div>
+										<a href="https://boost-blocks-test.chargify.com/h/3562785/subscriptions/new?reference={{ request.session.ref }}" class="button">Setup</a>		
+									</div>
 
-					            <h1>VPS Hosting</h1>
-					            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dignissim sodales nisl sed facilisis. Suspendisse tempor, nisl eu sollicitudin feugiat, eros sem porta magna, quis vestibulum lorem urna eu orci. In hac habitasse platea dictumst. In vel diam vitae orci suscipit suscipit eu id neque.</p>
-					        	<a href="#" class="tab-button">Order Now</a>
+					            {% else %}
+					            	<p>Updated your billing account information.</p>
+
+					            {% endif %}
 					        </div>
 
 					        <div id="tab4" class="tab">
@@ -95,10 +113,10 @@
 					    </div>
 
 					    <ul class="tab-links">
-					        <li class="active"><a href="#tab1"><i class="icon-hdd"></i><span>Shared Hosting</span></a></li>
-					        <li><a href="#tab2"><i class="icon-hdd"></i><span>Reseller Hosting</span></a></li>
-					        <li><a href="#tab3"><i class="icon-hdd"></i><span>VPS Hosting</span></a></li>
-					        <li><a href="#tab4"><i class="icon-hdd"></i><span>Dedicated Servers</span></a></li>
+					        <li class="active"><a href="#tab1"><span style="margin-left: 0px;">Account Billing</span></a></li>
+					        <li><a href="#tab2"></i><span style="margin-left: 0px;">Profile Builder Blocks</span></a></li>
+					        <li><a href="#tab3"></i><span style="margin-left: 0px;">Engagement Blocks</span></a></li>
+					        <li><a href="#tab4"></i><span style="margin-left: 0px;">Company Profile</span></a></li>
 					    </ul>
 
 					</div>

@@ -265,13 +265,15 @@ def parse_login(email, password):
 	header = u.session_header()
 	
 	response = {'token': header['X-Parse-Session-Token']}
+	response['active'] = u.active
+	response['chargify_active'] = u.chargify_active
 	try:
 		response['ref'] = u.ref
 		response['staff'] = False
 	except:
 		response['ref'] = None
 		response['staff'] = True
-	
+		
 	return response
 
 

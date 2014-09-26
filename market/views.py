@@ -75,6 +75,7 @@ def signup(request):
 										type=env_type, 
 										highrise_id=highrise_id, 
 										active=False, 
+										chargify_active=False, 
 										staff=False)
 			
 			result = django_rq.enqueue(bg_cust_setup, cd, count, ref, referred_by)
@@ -144,13 +145,17 @@ def login(request):
 			
 			request.session['token'] = token['token']
 			request.session['staff'] = token['staff']
+			request.session['active'] = token['active']
 			
 			if token['ref']:
 				request.session['ref'] = token['ref']
 
-				#rev = str(reverse('confirmation', kwargs={'ref': token['ref']}))
-				rev = str(reverse('profile', kwargs={'ref': token['ref']}))
+				if request.session['active']:
+					rev = str(reverse('dashboard', kwargs={'ref': token['ref']}))
+				else:
+					rev = str(reverse('confirmation', kwargs={'ref': token['ref']}))
 				return HttpResponseRedirect(rev)
+
 			else:			
 				return HttpResponseRedirect(reverse('projects'))
 		else:
