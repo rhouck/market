@@ -164,7 +164,9 @@ def login(request):
 					rev = str(reverse('confirmation', kwargs={'ref': token['ref']}))
 				return HttpResponseRedirect(rev)
 
-			else:			
+			else:
+				if not request.session['active']:
+					raise Exception("Your staff account has not been activated.")			
 				return HttpResponseRedirect(reverse('projects'))
 		else:
 			raise Exception()
@@ -235,7 +237,7 @@ def createStaff(request):
 										staff=True)
 			
 			user = get_parse_user_by_email(email)
-			acct = AccountDetails(user_id=user.objectId, user=user, active=True)
+			acct = AccountDetails(user_id=user.objectId, user=user, active=False)
 			acct.save()
 
 			return HttpResponseRedirect(reverse('splash'))	
