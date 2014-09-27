@@ -147,10 +147,11 @@ def build_comp_profile(ref, inps):
 	
 	signup = get_signup_by_ref(ref)
 
-	acct = AccountDetails(user=signup, active=False)
+	acct = AccountDetails(user_id=signup.objectId, user=signup, active=False)
 	acct.save()
 
 	comp = CompanyProfiles(user=signup,
+							user_id=signup.objectId,
 							company=inps['company'],
 							website=inps['website'],
 							soc_one=inps['soc_one'],

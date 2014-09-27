@@ -235,7 +235,7 @@ def createStaff(request):
 										staff=True)
 			
 			user = get_parse_user_by_email(email)
-			acct = AccountDetails(user=user, active=True)
+			acct = AccountDetails(user_id=user.objectId, user=user, active=True)
 			acct.save()
 
 			return HttpResponseRedirect(reverse('splash'))	
