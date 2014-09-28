@@ -258,14 +258,16 @@ def projects(request):
 		form = UpdateAdminForm(inputs)
 		
 		if (inputs) and form.is_valid():
-			cd = form.cleaned_data
-			#return HttpResponse(str(cd))
-			user = get_signup_by_ref(cd['ref'])
-			acct = get_acct_details(user)
-			acct.account_detail.strategy = cd['strategy']
-			acct.account_detail.active = cd['active']
-			acct.account_detail.goal = cd['goal']
-			acct.account_detail.save()
+			try:
+				cd = form.cleaned_data
+				user = get_signup_by_ref(cd['ref'])
+				acct = get_acct_details(user)
+				acct.account_detail.strategy = cd['strategy']
+				acct.account_detail.active = cd['active']
+				acct.account_detail.goal = cd['goal']
+				acct.account_detail.save()
+			except:
+				pass
 
 		accts = get_accts()
 		return render_to_response('projects.html', {'form': form, 'accts': accts}, context_instance=RequestContext(request))
@@ -273,38 +275,6 @@ def projects(request):
 	else:
 		raise Http404		
 
-	"""
-	inputs = request.POST if request.POST else None
-	form = LoginForm(inputs)
-	try:
-		
-		if (inputs) and form.is_valid():
-			
-			cd = form.cleaned_data
-			
-			token = parse_login(cd['email'], cd['password'])
-			
-			if 'error' in token:
-				raise Exception(token['error'])
-			
-			request.session['token'] = token['token']
-			request.session['staff'] = token['staff']
-			
-			if token['ref']:
-				request.session['ref'] = token['ref']
-
-				rev = str(reverse('confirmation', kwargs={'ref': token['ref']}))
-				return HttpResponseRedirect(rev)
-			else:			
-				return HttpResponseRedirect(reverse('splash'))
-		else:
-			raise Exception()
-
-	except Exception as err:
-		
-		form.errors['__all__'] = form.error_class([err])
-		return render_to_response('login.html', {'form': form}, context_instance=RequestContext(request))
-	"""
 
 def activate(request):
 	

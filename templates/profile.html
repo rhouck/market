@@ -8,7 +8,7 @@
 <div id="slider_wrapper2">
 	<div class="wrap">
 			
-		<h1>My Dashboard</h1>
+		<h1>{{ acct.company_profile.company }} Dashboard</h1>
 
 	</div>
 </div>
@@ -35,21 +35,13 @@
 				<p class="accordion_header">Strategy</p>
 				<div>
 					<p>Primary Goals:</p>
-					<p>{{ acct.goal }}</p>
+					<p>{{ acct.account_detail.goal }}</p>
 					</br>
-					<p>{{ acct.strategy }}</p>
+					<p>Strategy:</p>
+					<p>{{ acct.account_detail.strategy }}</p>
 				</div>
 			</div>
 
-			
-
-			
-			{% comment %}
-			<div class="clear"></div>
-				
-			<div class="heading"><span>Strategy</span></div>
-			<p>Polaroid wayfarers enim, before they sold out mlkshk locavore mixtape sustainable. Flexitarian kitsch voluptate cred. Culpa dolore ethical, nesciunt deep v narwhal veniam Pitchfork. Proident before they sold out raw denim consectetur. Ut et small batch Banksy, distillery gentrify cray hashtag. Quis voluptate nisi, nostrud readymade Banksy fashion axe authentic bitters. Culpa High Life flannel post-ironic slow-carb officia, typewriter ugh tote bag semiotics fanny pack dolore qui ullamco.</p>
-			{% endcomment %}
 		</div>
 
 		<div class="content-left" style="width: auto;">
