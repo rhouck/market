@@ -16,23 +16,86 @@
 
 <div class="clear"></div>
 
-<div class="content">
+<div class="content portfolio_four">
 	<div class="wrap">
 
-		<div class="heading"><span>All accounts</span></div>
-
 		{% for i in accts %}
-			{% if not i.user.staff %}
-				<p>{{ i.user.email }}: <a href="{% url 'dashboard' i.user.ref %}">Dashboard</a></p>
-			{% endif %}
+			
+			<form method="post" action=""> 
+			{% csrf_token %}
+			
+		
+			<h2><a href="{% url 'dashboard' i.user.ref %}">{{ i.company_profile.company }}</a></h2>
+			
+			<div class="one_fourth">
+				<p>Email:</p>
+				<p>{{ i.user.email }}</p>
+				<p>Payments setup:</p>
+				<p>{{ i.user.chargify_active }}</p>
+			</div>
+
+			<div class="one_fourth">	
+				<p>Website & Social Media:</p>
+				<p><a href="{{ i.company_profile.website }}" target="">{{ i.company_profile.website|truncatechars:25 }}</a></p>
+				<p><a href="{{ i.company_profile.soc_one }}" target="">{{ i.company_profile.soc_one|truncatechars:25 }}</a></p>
+				<p><a href="{{ i.company_profile.soc_two }}" target="">{{ i.company_profile.soc_two|truncatechars:25 }}</a></p>
+				<p><a href="{{ i.company_profile.soc_three }}" target="">{{ i.company_profile.soc_three|truncatechars:25 }}</a></p>
+			</div>
+
+			<div class="one_fourth">
+				
+				<p>Strategy:</p>
+				{% if form.strategy.errors %}
+		            <p style="color: red;">{{ form.strategy.errors }}</p>
+		        {% endif %}		
+				<TEXTAREA class="textarea-button-small" id="id_strategy" NAME="strategy" ROWS=10>{{ i.account_detail.strategy }}</TEXTAREA>
+				
+			</div>
+
+			<div class="one_fourth last">	
+				
+				<p>Active:</p>
+				{% if form.active.errors %}
+		            <p style="color: red;">{{ form.active.errors }}</p>
+		        {% endif %}		
+				<input class="" id="id_active" name="active" type="checkbox" value="{{ i.account_detail.active }}" />
+			
+				
+				<p>Goal:</p>
+				{% if form.goal.errors %}
+		            <p style="color: red;">{{ form.goal.errors }}</p>
+		        {% endif %}		
+				<input type="text" class="text-button-small" id="id_goal" name="goal" value="{{ i.account_detail.goal }}" />
+				
+				<input type="hidden" id="id_ref" name="ref" value="{{ i.user.ref }}">
+				<div>
+					</br>
+					<a href="#" class="button small" onclick="$(this).closest('form').submit()">Update</a>
+				</div>
+			</div>
+
+			</form>
+
+				<div class="clear"></div>
+				<div class="divider"></div>
+			
+
 		{% endfor %}
-			
-			
-
-
+		
+		{% comment %}
+		<ul id="pagination">
+			<li><a class="pagination-current" href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+		</ul>
 		<div class="clear"></div>
+		{% endcomment %}
 
 	</div>
 </div>
+
+
+
 
 {% endblock %}

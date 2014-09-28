@@ -116,7 +116,7 @@ def profile(request, ref):
 	except:
 		raise Http404
 
-	acct = get_acct_details_by_email(user.email)
+	acct = get_acct_details(user)
 
 	inputs = request.POST if request.POST else None
 	form = DashboardForm(inputs)
@@ -254,8 +254,20 @@ def projects(request):
 	
 	if request.session['staff']:
 		
+		inputs = request.POST if request.POST else None
+		form = UpdateAdminForm(inputs)
+		
+		if (inputs) and form.is_valid():
+			cd = form.cleaned_data
+			user = get_signup_by_ref(cd['ref'])
+			acct = get_acct_details(user)
+			acct.account_detail.strategy = cd['strategy']
+			acct.account_detail.active = cd['active']
+			acct.account_detail.goal = cd['goal']
+			acct.account_detail.save()
+
 		accts = get_accts()
-		return render_to_response('projects.html', {'accts': accts}, context_instance=RequestContext(request))
+		return render_to_response('projects.html', {'form': form, 'accts': accts}, context_instance=RequestContext(request))
 
 	else:
 		raise Http404		
@@ -333,9 +345,11 @@ def activate(request):
 
 
 def test(request):
-	
+	pass
+	"""
+	create_acct_detail_rows()
 	return render_to_response('test.html', {}, context_instance=RequestContext(request))
-
+	"""
 	
 
 def philosophy(request):

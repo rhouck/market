@@ -111,3 +111,11 @@ class ActivateForm(forms.Form):
     id = forms.IntegerField(min_value=1000000, max_value=10000000)
     ref = forms.CharField(min_length=8, max_length=8)
 
+class UpdateAdminForm(forms.Form):
+    
+    ref = forms.CharField(min_length=8, max_length=8)
+    goal = forms.CharField(required=False)
+    strategy = forms.CharField(required=False, widget=forms.Textarea())
+    active = forms.BooleanField(required=False)
+
+

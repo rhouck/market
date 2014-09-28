@@ -16,8 +16,6 @@ from django.template import Context
 from inlinestyler.utils import inline_css
 
 
-class Signups(Object):
-    pass
 class UserReferrals(Object):
     pass
 class Counter(Object):
@@ -26,6 +24,21 @@ class CompanyProfiles(Object):
     pass
 class AccountDetails(Object):
     pass
+
+class Account(Object):
+    """
+    This object contains all relvant information to an individual user and his/her associated company information.
+
+    Attributes:
+        user: The Parse User object.
+        account_detail: The Parse AccountDetails object.
+        company_profile: The Parse CompanyProfiles Object.
+    """
+    def __init__(self):
+    	self.user = None
+    	self.account_detail = None
+    	self.company_profile = None
+
 
 
 def get_count():
@@ -223,6 +236,7 @@ def get_signup_by_ref(ref):
 	return signup
 
 def get_parse_user_by_email(email):
+	email = email.lower()
 	user = ParseUser.Query.get(email=str(email))
 	return user
 
@@ -287,32 +301,41 @@ def parse_login(email, password):
 		
 	return response
 
-def get_acct_details_by_email(email):
-	acct = None
-	accts = AccountDetails.Query.all()
-	for a in accts:
-		if a.user['email'] == email:
-			acct = a
-			break
-	return acct
 
+
+def get_acct_details(user):
+	
+	account = Account()
+	account.user = user
+
+	user_id = user.objectId
+	try:
+		acct = AccountDetails.Query.get(user_id=user_id)
+		account.account_detail = acct
+	except:
+		pass
+
+	try:
+		comp_profile = CompanyProfiles.Query.get(user_id=user_id)
+		account.company_profile = comp_profile
+	except:
+		pass
+	
+	return account
+	
 def get_accts():
-	accts = AccountDetails.Query.all()
-	accts = [a for a in accts]
+	users = ParseUser.Query.filter(staff=False)
+	accts = [get_acct_details(user) for user in users]
 	return accts
 
 
 def user_is_active(email):
-	
-	email = email.lower()
+	user = get_parse_user_by_email(email)
 	try:
-		acct = get_acct_details_by_email(email)
-		if acct:
-			return {'status': acct.active}
-		else:
-			return {'error': 'No record found for user with that email address.'}
+		acct = get_acct_details(user)
+		return {'status': acct.account_detail.active}
 	except Exception as err:
-		return {'error': str(err)}	
+		return {'error': "No record found for user with that email address: %s" % (str(err))}	
 
 
 def reset_parse_user_pass(email):
@@ -321,3 +344,11 @@ def reset_parse_user_pass(email):
 	if valid:
 		return True
 	raise Exception("Could not send 'reset password' email.")
+
+"""
+def create_acct_detail_rows():
+	users = ParseUser.Query.all()
+	for i in users:
+		acct = AccountDetails(user_id=i.objectId, user=i, active=False)
+		acct.save()
+"""
