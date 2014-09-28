@@ -20,7 +20,7 @@
 <div class="content">
 	<div class="wrap">
 
-		{% if not form.is_valid %}
+		{% if not form.is_valid and request.POST %}
 			<h1 style="color: red;">Please correct the errors below.</h1>
 			</br>
 		{% endif %}		

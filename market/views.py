@@ -259,6 +259,7 @@ def projects(request):
 		
 		if (inputs) and form.is_valid():
 			cd = form.cleaned_data
+			#return HttpResponse(str(cd))
 			user = get_signup_by_ref(cd['ref'])
 			acct = get_acct_details(user)
 			acct.account_detail.strategy = cd['strategy']

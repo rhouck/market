@@ -54,12 +54,17 @@
 
 			<div class="one_fourth last">	
 				
-				<p>Active:</p>
+				
 				{% for error in form.active.errors %}
                 	<p class="errors">{{ error }}</p>
                 {% endfor %}		
-				<input class="" id="id_active" name="active" type="checkbox" value="{{ i.account_detail.active }}" />
-			
+				
+				{% if i.account_detail.active %}
+					<p>Active: <input checked="checked" class="" id="id_active" name="active" type="checkbox"/></p>
+				{% else %}
+					<p>Active: <input class="" id="id_active" name="active" type="checkbox"/></p>
+				{% endif %}
+				  
 				
 				<p>Goal:</p>
 				{% for error in form.goal.errors %}
