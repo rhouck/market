@@ -45,9 +45,9 @@
 			<div class="one_fourth">
 				
 				<p>Strategy:</p>
-				{% if form.strategy.errors %}
-		            <p style="color: red;">{{ form.strategy.errors }}</p>
-		        {% endif %}		
+				{% for error in form.strategy.errors %}
+                	<p class="errors">{{ error }}</p>
+                {% endfor %}
 				<TEXTAREA class="textarea-button-small" id="id_strategy" NAME="strategy" ROWS=10>{{ i.account_detail.strategy }}</TEXTAREA>
 				
 			</div>
@@ -55,16 +55,16 @@
 			<div class="one_fourth last">	
 				
 				<p>Active:</p>
-				{% if form.active.errors %}
-		            <p style="color: red;">{{ form.active.errors }}</p>
-		        {% endif %}		
+				{% for error in form.active.errors %}
+                	<p class="errors">{{ error }}</p>
+                {% endfor %}		
 				<input class="" id="id_active" name="active" type="checkbox" value="{{ i.account_detail.active }}" />
 			
 				
 				<p>Goal:</p>
-				{% if form.goal.errors %}
-		            <p style="color: red;">{{ form.goal.errors }}</p>
-		        {% endif %}		
+				{% for error in form.goal.errors %}
+                	<p class="errors">{{ error }}</p>
+                {% endfor %}
 				<input type="text" class="text-button-small" id="id_goal" name="goal" value="{{ i.account_detail.goal }}" />
 				
 				<input type="hidden" id="id_ref" name="ref" value="{{ i.user.ref }}">
