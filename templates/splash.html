@@ -19,7 +19,9 @@
 						<h1><i class="icon-facebook-sign" style="font-size: 72px;"></i>
 							<i class="icon-twitter-sign" style="font-size: 72px;"></i>
 							<i class="icon-instagram" style="font-size: 72px;"></i>
+							{% comment %}
 							<i class="icon-linkedin-sign" style="font-size: 72px;"></i>
+							{% endcomment %}
 						</h1>
 
 						<p>No long-term contracts. No phone calls. Fill our your company profile to receive your free social media audit.</p>
@@ -90,7 +92,7 @@
 					    	{% else %}
 					    		<a href="{% url 'signup' %}">profile</a>      
 					    	{% endif %}.</p>
-					    	<p>We'll then perform a full social media audit and identify where we can add the most value. We'll send you a custom social media strategy outlining our plan to boost your brand. This of course is all Free!</p>
+					    	<p>We'll then perform a full social media audit and identify where we can add the most value. We'll send you a custom social media strategy outlining our plan to reach your goals. This of course is all Free!</p>
 
 
 						</div>
@@ -98,15 +100,22 @@
 					<div class="one_third">
 						<div class="latest_post">
 							<h3><i class="icon-signal"></i> Choose Campaign Scope and Scale</h3>
+
+							<p>We'll provide recommendations but you choose where to spend your budget. Our services are packaged into blocks. Each block covers light content distribution, content curation and engagement. The more blocks you apply to a network, the bigger the impact.</p>
+							{% comment %}
 							<p>You select the social media networks you want to engage with and the amount of resources you want to apply to each. Our services are packaged into blocks. You can buy two Facebook blocks and one Instagram block, for instance.
 							</p>
+							{% endcomment %}
 						</div>
 					</div>
 
 					<div class="one_third last">
 						<div class="latest_post">
 							<h3><i class="icon-bar-chart"></i> Review Stats and Adjust Accordingly</h3>
+							<p>Every week we share statistics that indicate how your blocks are achieving your goals. We make recommendations and you choose whether to add or remove blocks as you see fit.</p>
+							{% comment %}
 							<p>Every week we send you reports of our recent activity and your campaign performance. You choose whether to add or remove blocks as you see fit. Shift your allocation of resources between social media networks as you see fit.</p>
+							{% endcomment %}
 						</div>
 					</div>
 				</div>
@@ -130,53 +139,54 @@
 			</br>
 			<ul>
 				<li><i class="icon-chevron-right"></i> Each block is $200 per month</li>
-				<li><i class="icon-chevron-right"></i> We send you weekly stats summaries with performance metrics</li>
+				<li><i class="icon-chevron-right"></i> Every week we share statistics showing how your blocks are reaching your goals</li>
 				<li><i class="icon-chevron-right"></i> Once a month we send you a summarizing report with recommendations for each social network</li> 
 				<li><i class="icon-chevron-right"></i> All communication done through dashboard so we never have to interupt your schedule</li>
 			</ul>
 			</br>
-			<p>Below is describes what you get, in general, for each block you purchase per month.</p> 
+			<p>Below describes what you get every week for each BoostBlock.</p> 
 			</br>
 
 			<div class="pricing_wrapper">
-				<div class="one_fourth">
+				<div class="one_third">
 					<div class="pricing">
 						<div class="pricing_top" style="padding: 10px 0 0 0;">
 							<p><i class="icon-facebook-sign" style="color: white; font-size: 72px;"></i></p>							
 						</div>
 						<ul>
 							<li>Facebook</li>
-							<li>Light engagment (30min) x 4</li>
-							<li>Weekly content curation around your brand (30min) x 4</li>
-							<li>Scheduling of your marketing collateral (30 min) x 2</li>
+							<li>Light engagment</li>
+							<li>Content curation around your brand</li>
+							<li>Scheduling of your marketing collateral</li>
 						</ul>
 					</div>
 				</div>
-				<div class="one_fourth">
+				<div class="one_third">
 					<div class="pricing">
 						<div class="pricing_top" style="padding: 10px 0 0 0;">
 							<p><i class="icon-twitter-sign" style="color: white; font-size: 72px;"></i></p>							
 						</div>
 						<ul>
 							<li>Twitter</li>
-							<li>Light engagment (30min) x 4</li>
-							<li>Weekly content curation around your brand (30min) x 4</li>
-							<li>Scheduling of your marketing collateral (30 min) x 2</li>
+							<li>Light engagment</li>
+							<li>Content curation around your brand</li>
+							<li>Scheduling of your marketing collateral</li>
 						</ul>
 					</div>
 				</div>
-				<div class="one_fourth">
+				<div class="one_third last">
 					<div class="pricing">
 						<div class="pricing_top" style="padding: 10px 0 0 0;">
 							<p><i class="icon-instagram" style="color: white; font-size: 72px;"></i></p>							
 						</div>
 						<ul>
 							<li>Instagram</li>
-							<li>Post and follow-up engagement of client-supplied audio and visual content (40min) x 4</li>
-							<li>Curated content post and follow-up engagement (40min) x 4</li>
+							<li>Post and follow-up engagement of client-provided content</li>
+							<li>Curated content posts and follow-up engagement</li>
 						</ul>
 					</div>
 				</div>
+				{% comment %}
 				<div class="one_fourth last">
 					<div class="pricing">
 						<div class="pricing_top" style="padding: 10px 0 0 0;">
@@ -190,7 +200,7 @@
 						</ul>
 					</div>
 				</div>
-
+				{% endcomment %}
 			</div>
 
 			<div class="clear"></div>
@@ -200,8 +210,9 @@
 				</br>
 				<p>Our team may occasionally allocate more or less time to certain activities within each block to optimize impact of our efforts.</p>
 				<ul>
-					<li><i class="icon-chevron-right"></i> The more content you provide us to work with, the more time we can spend interacting directly with your target audience</li>
-					<li><i class="icon-chevron-right"></i> If you provide us very little or no content to work with, more time will be allocated towards content curation and finding material to engage your target audience with</li>
+					<li><i class="icon-chevron-right"></i> The more visual and written content you provide us, the more time we can spend interacting directly with your target audience</li>
+					<li><i class="icon-chevron-right"></i> If you provide us very little or no content to work with, more time will be allocated towards content curation and finding material (blogs, articles, videos, etc.) to engage your target audience with</li>
+					<li><i class="icon-chevron-right"></i> If you want to be part of the content curation selection, we gladly offer the option to share a Pearltree curation space with you. Don’t know what this is? Ask us.</li>
 				</ul>
 			</div>
 
