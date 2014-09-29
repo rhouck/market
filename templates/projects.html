@@ -25,24 +25,17 @@
 			{% csrf_token %}
 			
 		
-			<h2><a href="{% url 'dashboard' i.user.ref %}">{{ i.company_profile.company }}</a></h2>
+			<h2><a href="{% url 'dashboard' i.user.ref %}"  target="_blank">{{ i.company_profile.company }}</a></h2>
 			
-			<div class="one_fourth">
-				<p>Email:</p>
-				<p>{{ i.user.email }}</p>
-				<p>Payments setup:</p>
-				<p>{{ i.user.chargify_active }}</p>
+			<div class="one_third">
+				<p><a href="{% url 'company_description' i.user.ref %}" target="_blank"> Company Profile</a></p>
+				<p><a href="{{ i.company_profile.website }}" target="_blank">{{ i.company_profile.website|truncatechars:25 }}</a></p>
+				<p><a href="{{ i.company_profile.soc_one }}" target="_blank">{{ i.company_profile.soc_one|truncatechars:25 }}</a></p>
+				<p><a href="{{ i.company_profile.soc_two }}" target="_blank">{{ i.company_profile.soc_two|truncatechars:25 }}</a></p>
+				<p><a href="{{ i.company_profile.soc_three }}" target="_blank">{{ i.company_profile.soc_three|truncatechars:25 }}</a></p>
 			</div>
 
-			<div class="one_fourth">	
-				<p>Website & Social Media:</p>
-				<p><a href="{{ i.company_profile.website }}" target="">{{ i.company_profile.website|truncatechars:25 }}</a></p>
-				<p><a href="{{ i.company_profile.soc_one }}" target="">{{ i.company_profile.soc_one|truncatechars:25 }}</a></p>
-				<p><a href="{{ i.company_profile.soc_two }}" target="">{{ i.company_profile.soc_two|truncatechars:25 }}</a></p>
-				<p><a href="{{ i.company_profile.soc_three }}" target="">{{ i.company_profile.soc_three|truncatechars:25 }}</a></p>
-			</div>
-
-			<div class="one_fourth">
+			<div class="one_third">
 				
 				<p>Strategy:</p>
 				{% for error in form.strategy.errors %}
@@ -52,26 +45,26 @@
 				
 			</div>
 
-			<div class="one_fourth last">	
-				
-				
-				{% for error in form.active.errors %}
-                	<p class="errors">{{ error }}</p>
-                {% endfor %}		
-				
-				{% if i.account_detail.active %}
-					<p>Active: <input checked="checked" class="" id="id_active" name="active" type="checkbox"/></p>
-				{% else %}
-					<p>Active: <input class="" id="id_active" name="active" type="checkbox"/></p>
-				{% endif %}
-				  
+			<div class="one_third last">	
 				
 				<p>Goal:</p>
 				{% for error in form.goal.errors %}
                 	<p class="errors">{{ error }}</p>
                 {% endfor %}
 				<input type="text" class="text-button-small" id="id_goal" name="goal" value="{{ i.account_detail.goal }}" />
+
+				<p>Payments Setup: {{ i.user.chargify_active }}</p>
+
+				{% for error in form.active.errors %}
+                	<p class="errors">{{ error }}</p>
+                {% endfor %}		
 				
+				{% if i.account_detail.active %}
+					<p>Dashboard Active: <input checked="checked" class="" id="id_active" name="active" type="checkbox"/></p>
+				{% else %}
+					<p>Dashboard Active: <input class="" id="id_active" name="active" type="checkbox"/></p>
+				{% endif %}
+				  
 				<input type="hidden" id="id_ref" name="ref" value="{{ i.user.ref }}">
 				<div>
 					</br>

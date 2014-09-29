@@ -123,10 +123,10 @@ def profile(request, ref):
 	
 	if (inputs) and form.is_valid():	
 		cd = form.cleaned_data
-		return render_to_response('profile.html', {'form': form, 'user': user, 'acct': acct}, context_instance=RequestContext(request))
+		return render_to_response('profile.html', {'form': form, 'user': user, 'acct': acct, 'ref': ref, 'scope': 'external'}, context_instance=RequestContext(request))
 	else:
 		#form.errors['__all__'] = form.error_class([err])
-		return render_to_response('profile.html', {'form': form, 'user': user, 'acct': acct}, context_instance=RequestContext(request))
+		return render_to_response('profile.html', {'form': form, 'user': user, 'acct': acct, 'ref': ref, 'scope': 'external'}, context_instance=RequestContext(request))
 
 	
 
@@ -313,6 +313,26 @@ def activate(request):
 		form.errors['__all__'] = form.error_class([err])
 		return HttpResponse(str(form.errors))
 		
+
+def company_description(request, ref):
+	
+	if not request.session['staff']:
+		raise Http404
+	
+	try:
+		user = get_signup_by_ref(ref)	
+	except:
+		raise Http404
+
+	acct = get_acct_details(user)
+	email = acct.user.email
+	comp = acct.company_profile.__dict__
+
+	for i in ('_created_at', '_updated_at', 'user_id', 'highrise_id', 'user'):
+		if i in comp:
+			del comp[i]
+	return render_to_response('comp_desc.html', {'email': email, 'comp': comp, 'ref': ref, 'scope': 'internal'}, context_instance=RequestContext(request))
+	
 
 
 def test(request):

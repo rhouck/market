@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+
+{% block head %}
+	{% include "disqus_head.html" %}
+{% endblock %}
+
+{% block body %}
+
+{% comment %}
+<div id="slider_wrapper2">
+	<div class="wrap">
+			
+		<h1>Join the team</h1>
+
+	</div>
+</div>
+{% endcomment %}
+<div class="clear"></div>
+
+<div class="content">
+	<div class="wrap">
+
+		<div class="heading"><span>{{ comp.company }}</span></div>
+			
+			<p><strong>email:</strong></p>
+			<p>{{ email }}</p>
+			{% for key,value in comp.items %}
+				<p><strong>{{ key }}:</strong></p>
+				<p>{{ value }}</p>
+			{% endfor %}
+
+			<div class="clear"></div>
+			<div class="space"></div>
+
+			<p><strong>Internal discussion:</strong></p>
+			{% include "disqus.html" %}
+
+		<div class="clear"></div>
+
+	</div>
+</div>
+
+{% endblock %}
