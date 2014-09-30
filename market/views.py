@@ -334,7 +334,7 @@ def company_description(request, ref):
 	email = acct.user.email
 	comp = acct.company_profile.__dict__
 
-	for i in ('_created_at', '_updated_at', 'user_id', 'highrise_id', 'user', '_object_id'):
+	for i in ('_created_at', '_updated_at', 'user_id', 'highrise_id', 'user', '_object_id', 'social_scale', 'ads_scale'):
 		if i in comp:
 			del comp[i]
 	return render_to_response('comp_desc.html', {'email': email, 'comp': comp, 'ref': ref, 'scope': 'internal'}, context_instance=RequestContext(request))
