@@ -29,10 +29,31 @@
 			
 			<div class="one_third">
 				<p><a href="{% url 'company_description' i.user.ref %}" target="_blank"> Company Profile</a></p>
-				<p><a href="{{ i.company_profile.website }}" target="_blank">{{ i.company_profile.website|truncatechars:25 }}</a></p>
-				<p><a href="{{ i.company_profile.soc_one }}" target="_blank">{{ i.company_profile.soc_one|truncatechars:25 }}</a></p>
-				<p><a href="{{ i.company_profile.soc_two }}" target="_blank">{{ i.company_profile.soc_two|truncatechars:25 }}</a></p>
-				<p><a href="{{ i.company_profile.soc_three }}" target="_blank">{{ i.company_profile.soc_three|truncatechars:25 }}</a></p>
+				
+				{% if i.company_profile.website|slice:":4" != 'http' %}
+					<p><a href="http://{{ i.company_profile.website }}" target="_blank">{{ i.company_profile.website|truncatechars:25 }}</a></p>
+				{% else %}
+					<p><a href="{{ i.company_profile.website }}" target="_blank">{{ i.company_profile.website|truncatechars:25 }}</a></p>
+				{% endif %}
+
+				{% if i.company_profile.soc_one|slice:":4" != 'http' %}
+					<p><a href="http://{{ i.company_profile.soc_one }}" target="_blank">{{ i.company_profile.soc_one|truncatechars:25 }}</a></p>
+				{% else %}
+					<p><a href="{{ i.company_profile.soc_one }}" target="_blank">{{ i.company_profile.soc_one|truncatechars:25 }}</a></p>
+				{% endif %}
+
+				{% if i.company_profile.soc_two|slice:":4" != 'http' %}
+					<p><a href="http://{{ i.company_profile.soc_two }}" target="_blank">{{ i.company_profile.soc_two|truncatechars:25 }}</a></p>
+				{% else %}
+					<p><a href="{{ i.company_profile.soc_two }}" target="_blank">{{ i.company_profile.soc_two|truncatechars:25 }}</a></p>
+				{% endif %}
+
+				{% if i.company_profile.soc_three|slice:":4" != 'http' %}
+					<p><a href="http://{{ i.company_profile.soc_three }}" target="_blank">{{ i.company_profile.soc_three|truncatechars:25 }}</a></p>
+				{% else %}
+					<p><a href="{{ i.company_profile.soc_three }}" target="_blank">{{ i.company_profile.soc_three|truncatechars:25 }}</a></p>
+				{% endif %}
+
 			</div>
 
 			<div class="one_third">
