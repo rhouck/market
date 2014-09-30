@@ -37,6 +37,12 @@
 
 			<div class="one_third">
 				
+				<p>Goal:</p>
+				{% for error in form.goal.errors %}
+                	<p class="errors">{{ error }}</p>
+                {% endfor %}
+				<input type="text" class="text-button-small" id="id_goal" name="goal" value="{{ i.account_detail.goal }}" />
+
 				<p>Strategy:</p>
 				{% for error in form.strategy.errors %}
                 	<p class="errors">{{ error }}</p>
@@ -47,12 +53,6 @@
 
 			<div class="one_third last">	
 				
-				<p>Goal:</p>
-				{% for error in form.goal.errors %}
-                	<p class="errors">{{ error }}</p>
-                {% endfor %}
-				<input type="text" class="text-button-small" id="id_goal" name="goal" value="{{ i.account_detail.goal }}" />
-
 				<p>Payments Setup: {{ i.user.chargify_active }}</p>
 
 				{% for error in form.active.errors %}

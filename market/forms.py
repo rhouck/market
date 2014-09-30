@@ -89,7 +89,7 @@ class SubscribeForm(LoginForm):
 class ReferralForm(forms.Form):
     ref = forms.CharField(min_length=8, max_length=8)
 
-class DashboardForm(ResetForm):
+class DashboardForm(forms.Form):
 
     facebook_profile = forms.BooleanField(required=False)
     twitter_profile = forms.BooleanField(required=False)

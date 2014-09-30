@@ -24,6 +24,8 @@ class CompanyProfiles(Object):
     pass
 class AccountDetails(Object):
     pass
+class SelectedBlocks(Object):
+    pass
 
 class Account(Object):
     """
@@ -38,7 +40,6 @@ class Account(Object):
     	self.user = None
     	self.account_detail = None
     	self.company_profile = None
-
 
 
 def get_count():
@@ -352,3 +353,26 @@ def create_acct_detail_rows():
 		acct = AccountDetails(user_id=i.objectId, user=i, active=False)
 		acct.save()
 """
+
+def set_blocks(user, form):
+	blocks = SelectedBlocks(user=user, 
+							user_id=user.objectId,
+							facebook_profile=form['facebook_profile'],
+							twitter_profile=form['twitter_profile'],
+							instagram_profile=form['instagram_profile'],
+							marketing_strategy=form['marketing_strategy'],
+							linkedin_profile=False,
+							facebook_scale=int(form['facebook_scale']),
+							twitter_scale=int(form['twitter_scale']),
+							instagram_scale=int(form['instagram_scale']),
+							)
+	blocks.save()
+	return blocks
+
+def get_current_blocks(user):
+	blocks = SelectedBlocks.Query.filter(user_id=user.objectId).order_by("-createdAt")
+	blocks = [b for b in blocks]
+	if blocks:
+		return blocks[0]
+	else:
+		return None

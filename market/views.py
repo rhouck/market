@@ -121,12 +121,18 @@ def profile(request, ref):
 	inputs = request.POST if request.POST else None
 	form = DashboardForm(inputs)
 	
+	#return HttpResponse(str(form))
+
+	blocks = None
+
 	if (inputs) and form.is_valid():	
 		cd = form.cleaned_data
-		return render_to_response('profile.html', {'form': form, 'user': user, 'acct': acct, 'ref': ref, 'scope': 'external'}, context_instance=RequestContext(request))
-	else:
-		#form.errors['__all__'] = form.error_class([err])
-		return render_to_response('profile.html', {'form': form, 'user': user, 'acct': acct, 'ref': ref, 'scope': 'external'}, context_instance=RequestContext(request))
+		blocks = set_blocks(user, cd)
+		
+	if not blocks:
+		blocks = get_current_blocks(user)
+	#return HttpResponse(str(blocks.__dict__))
+	return render_to_response('profile.html', {'form': form, 'blocks': blocks, 'user': user, 'acct': acct, 'ref': ref, 'scope': 'external'}, context_instance=RequestContext(request))
 
 	
 

@@ -29,19 +29,49 @@
 			
 			<div class="heading"><span>Summary</span></div>
 			<div id="accordion" style="padding: 10px 10px 10px 10px;">
-				<p class="accordion_header">Current Campaign</p>
+				<p class="accordion_header">Current Plan</p>
 				<div>
-					<p>Facebook x 2</p>
-					<p>Twitter x 2</p>
-					<p>Mothly: $800</p>
+					{% if not user.chargify_active and not user.staff %}
+						<p>Action Required:</p>
+						<p>activate billing acount <a href="https://boost-blocks-test.chargify.com/h/3562785/subscriptions/new?reference={{ request.session.ref }}">here</a></p>
+					{% elif not blocks %}
+						<p>You have not selected any BoostBlocks for this period.</p>
+					{% else %}
+						
+						{% if blocks.facebook_profile %}
+							<p>Facebook Profile: $100</p>
+						{% endif %}
+						{% if blocks.twitter_profile %}
+							<p>Twitter Profile: $50</p>
+						{% endif %}
+						{% if blocks.instagram_profile %}
+							<p>Instagram Profile: $50</p>
+						{% endif %}
+						{% if blocks.social_media_strategy %}
+							<p>Social Media Strategy: $100</p>
+						{% endif %}
+
+						{% if blocks.facebook_scale > 0 %}
+							<p>Facebook Blocks:</p><p>{{ blocks.facebook_scale }} x $200</p>
+						{% endif %}
+						{% if blocks.twitter_scale > 0 %}
+							<p>Twitter Blocks:</p><p>{{ blocks.twitter_scale }} x $200</p>
+						{% endif %}
+						{% if blocks.instagram_scale > 0 %}
+							<p>Instagram Blocks:</p><p>{{ blocks.instagram_scale }} x $200</p>
+						{% endif %}
+
+						
+					{% endif %}
+					
 				</div>
 				<p class="accordion_header">Strategy</p>
 				<div>
-					<p>Primary Goals:</p>
+					<p><strong>Primary Goals:</strong></p>
 					<p>{{ acct.account_detail.goal }}</p>
 					</br>
-					<p>Strategy:</p>
-					<p>{{ acct.account_detail.strategy }}</p>
+					<p><strong>Strategy:</strong></p>
+					<p>{{ acct.account_detail.strategy|linebreaksbr }}</p>
 				</div>
 			</div>
 
@@ -54,6 +84,12 @@
 					<div class="tabs">
 
 					    <div class="tab-content">
+
+		
+							<form method="post" action=""> 
+								{% csrf_token %}
+
+									
 					        <div id="tab1" class="tab">
 				        		</br>
 				        		
@@ -67,13 +103,81 @@
 									</div>
 
 					            {% else %}
-					            	<h1>Your account is actiavted</h1>
 					            	
-					            	
-					            	<p>Should you need to cancel your account at any time just let a BoostBlocks member know and we will take care of that for you. Keep in mind that you don't need to cancel your account in order to prevent additional charges. Simply unselect all currently selected Boost Blocks.</p>
-					            	
+									
+				            		{% for error in form.non_field_errors %}
+									    <h3 class="errors">{{error}}</h3>
+										</br>
+									{% endfor %}
+									<div class="one_fourth">
+										<i class="icon-facebook-sign" style="font-size: 72px;"></i>	
+										<p>Facebook</p>							
+										{% for error in form.facebook_profile.errors %}
+							            	<p class="errors">{{ error }}</p>
+							            {% endfor %}
+										
+										{% if blocks and blocks.facebook_profile %}
+											<p>$100 <input checked="checked" class="" id="id_facebook_profile" name="facebook_profile" type="checkbox"/></p>
+										{% else %}
+											<p>$100 <input class="" id="id_facebook_profile" name="facebook_profile" type="checkbox"/></p>
+										{% endif %}
 
-					            	
+
+									</div>
+									<div class="one_fourth">
+										<i class="icon-twitter-sign" style="font-size: 72px;"></i>
+										<p>Twitter</p>
+										{% for error in form.twitter_profile.errors %}
+							            	<p class="errors">{{ error }}</p>
+							            {% endfor %}
+										
+										{% if blocks and blocks.twitter_profile %}
+											<p>$50 <input checked="checked" class="" id="id_twitter_profile" name="twitter_profile" type="checkbox"/></p>
+										{% else %}
+											<p>$50 <input class="" id="id_twitter_profile" name="twitter_profile" type="checkbox"/></p>
+										{% endif %}
+									
+
+									</div>
+									<div class="one_fourth">
+										<i class="icon-instagram" style="font-size: 72px;"></i>
+										<p>Instagram</p>
+										{% for error in form.instagram_profile.errors %}
+							            	<p class="errors">{{ error }}</p>
+							            {% endfor %}
+										
+										{% if blocks and blocks.instagram_profile %}
+											<p>$50 <input checked="checked" class="" id="id_instagram_profile" name="instagram_profile" type="checkbox"/></p>
+										{% else %}
+											<p>$50 <input class="" id="id_instagram_profile" name="instagram_profile" type="checkbox"/></p>
+										{% endif %}
+
+
+									</div>
+									<div class="one_fourth last">
+										<i class="icon-gears" style="font-size: 72px;"></i>
+										<p>Social Media Strategy</p>
+										{% for error in form.marketing_strategy.errors %}
+							            	<p class="errors">{{ error }}</p>
+							            {% endfor %}
+										
+										{% if blocks and blocks.marketing_strategy %}
+											<p>$100 <input checked="checked" class="" id="id_marketing_strategy" name="marketing_strategy" type="checkbox"/></p>
+										{% else %}
+											<p>$100 <input class="" id="id_marketing_strategy" name="marketing_strategy" type="checkbox"/></p>
+										{% endif %}
+
+									</div>
+									<div>
+										<div class="clear"></div>
+										<div class="space2"></div>
+										<p>Each of these setup blocks are optional one-time charges. You will need to provide us the appropriate cover and profile images. We provide the initial social media strategy free of charge. When you wish to revise this strategy let us know by selecting the Socail Media Strategy block.</p>
+										</br></br>
+									</div>
+									<div>
+										
+										<a href="#" class="button small" onclick="$(this).closest('form').submit()">Update</a>		
+									</div>				            	
 
 					            {% endif %}
 					        </div>
@@ -90,7 +194,52 @@
 									</div>
 
 					            {% else %}
-					            	<p>Update your billing account information.</p>
+									
+					            	{% for error in form.non_field_errors %}
+									    <h3 class="errors">{{error}}</h3>
+										</br>
+									{% endfor %}
+									<div class="one_third">
+										<i class="icon-facebook-sign" style="font-size: 72px;"></i>	
+										<p>Facebook</p>							
+										{% for error in form.facebook_scale.errors %}
+							            	<p class="errors">{{ error }}</p>
+							            {% endfor %}
+										$200 x {{ form.facebook_scale|add_class:"select-button-small"}}
+									</div>
+									<div class="one_third">
+										<i class="icon-twitter-sign" style="font-size: 72px;"></i>
+										<p>Twitter</p>
+										{% for error in form.twitter_scale.errors %}
+							            	<p class="errors">{{ error }}</p>
+							            {% endfor %}
+										$200 x {{ form.twitter_scale|add_class:"select-button-small"}}
+									</div>
+									<div class="one_third last">
+										<i class="icon-instagram" style="font-size: 72px;"></i>
+										<p>Instagram</p>
+										{% for error in form.instagram_scale.errors %}
+							            	<p class="errors">{{ error }}</p>
+							            {% endfor %}
+										$200 x {{ form.instagram_scale|add_class:"select-button-small"}}
+									</div>
+									<div>
+										<div class="clear"></div>
+										<div class="space2"></div>
+										
+										<p>Select the number of BoostBlocks you want for each social media platform. This is a recurring monthly charge.</p>
+									</div>
+									{% if blocks %}
+										<h6><strong>Note:</strong> Updates go into effect at start of next billing cycle.</h6>
+									{% else %}
+										</br></br>
+									{% endif %}
+
+									<div>
+										<a href="#" class="button small" onclick="$(this).closest('form').submit()">Update</a>		
+									</div>
+									
+
 
 					            {% endif %}
 					        </div>
@@ -102,7 +251,7 @@
 						    		
 						    	</div> 
 					        </div>
-
+					        </form>
 					    </div>
 
 					    <ul class="tab-links">
