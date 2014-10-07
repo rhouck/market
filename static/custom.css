@@ -15,6 +15,11 @@
 	background: #ededed;
 }
 
+.left {
+	text-align: left;
+}
+
+
 .disqus {
 	/*
 	font-color: #888;

@@ -23,13 +23,21 @@
 
 
 <div class="content">
-	<div class="wrap" style="width: 85%;">
+	<div class="wrap" style="width: 90%;">
 
 		<div class="sidebar-right" style="padding-left: 10px;">
 			
 			<div class="heading"><span>Summary</span></div>
 			<div id="accordion" style="padding: 10px 10px 10px 10px;">
-				<p class="accordion_header">Current Plan</p>
+				<p class="accordion_header">Current Blocks</p>
+				<div>
+					<p>--</p>
+				</div>
+				<p class="accordion_header">Start of Next Period</p>
+				<div>
+					<p>--</p>
+				</div>
+				<p class="accordion_header">Next Period's Blocks</p>
 				<div>
 					{% if not user.chargify_active and not user.staff %}
 						<p>Action Required:</p>
@@ -65,6 +73,7 @@
 					{% endif %}
 					
 				</div>
+				{% comment %}
 				<p class="accordion_header">Strategy</p>
 				<div>
 					<p><strong>Primary Goals:</strong></p>
@@ -73,11 +82,12 @@
 					<p><strong>Strategy:</strong></p>
 					<p>{{ acct.account_detail.strategy|linebreaksbr }}</p>
 				</div>
+				{% endcomment %}
 			</div>
 
 		</div>
 
-		<div class="content-left" style="width: auto;">
+		<div class="content-left"> <!-- style="width: auto;">-->
 			<div id="slider_wrapper dash-menu">
 				<div class="wrap">
 
@@ -115,12 +125,7 @@
 										{% for error in form.facebook_profile.errors %}
 							            	<p class="errors">{{ error }}</p>
 							            {% endfor %}
-										
-										{% if blocks and blocks.facebook_profile %}
-											<p>$100 <input checked="checked" class="" id="id_facebook_profile" name="facebook_profile" type="checkbox"/></p>
-										{% else %}
-											<p>$100 <input class="" id="id_facebook_profile" name="facebook_profile" type="checkbox"/></p>
-										{% endif %}
+										<p>$100 {{ form.facebook_profile }}</p>
 
 
 									</div>
@@ -130,14 +135,7 @@
 										{% for error in form.twitter_profile.errors %}
 							            	<p class="errors">{{ error }}</p>
 							            {% endfor %}
-										
-										{% if blocks and blocks.twitter_profile %}
-											<p>$50 <input checked="checked" class="" id="id_twitter_profile" name="twitter_profile" type="checkbox"/></p>
-										{% else %}
-											<p>$50 <input class="" id="id_twitter_profile" name="twitter_profile" type="checkbox"/></p>
-										{% endif %}
-									
-
+										<p>$50 {{ form.twitter_profile }}</p>
 									</div>
 									<div class="one_fourth">
 										<i class="icon-instagram" style="font-size: 72px;"></i>
@@ -145,13 +143,7 @@
 										{% for error in form.instagram_profile.errors %}
 							            	<p class="errors">{{ error }}</p>
 							            {% endfor %}
-										
-										{% if blocks and blocks.instagram_profile %}
-											<p>$50 <input checked="checked" class="" id="id_instagram_profile" name="instagram_profile" type="checkbox"/></p>
-										{% else %}
-											<p>$50 <input class="" id="id_instagram_profile" name="instagram_profile" type="checkbox"/></p>
-										{% endif %}
-
+										<p>$50 {{ form.instagram_profile }}</p>
 
 									</div>
 									<div class="one_fourth last">
@@ -160,18 +152,15 @@
 										{% for error in form.marketing_strategy.errors %}
 							            	<p class="errors">{{ error }}</p>
 							            {% endfor %}
-										
-										{% if blocks and blocks.marketing_strategy %}
-											<p>$100 <input checked="checked" class="" id="id_marketing_strategy" name="marketing_strategy" type="checkbox"/></p>
-										{% else %}
-											<p>$100 <input class="" id="id_marketing_strategy" name="marketing_strategy" type="checkbox"/></p>
-										{% endif %}
+										<p>$50 {{ form.marketing_strategy }}</p>
 
 									</div>
 									<div>
 										<div class="clear"></div>
 										<div class="space2"></div>
-										<p>Each of these setup blocks are optional one-time charges. You will need to provide us the appropriate cover and profile images. We provide the initial social media strategy free of charge. When you wish to revise this strategy let us know by selecting the Socail Media Strategy block.</p>
+										<p><div class="left">If you haven't set up your social media profiles or would like us to update them, let us know here. We ask that you provide us the appropriate cover and profile images if you have them.</p></div>
+										</br>
+										<p><div class="left">We provide the initial social media strategy free of charge. When you wish to revise this strategy let us know by selecting the Socail Media Strategy option.</div></p>
 										</br></br>
 									</div>
 									<div>
@@ -227,10 +216,10 @@
 										<div class="clear"></div>
 										<div class="space2"></div>
 										
-										<p>Select the number of BoostBlocks you want for each social media platform. This is a recurring monthly charge.</p>
+										<p><div class="left">Select the number of BoostBlocks you want for each social media platform. This is a recurring monthly charge.</div></p>
 									</div>
 									{% if blocks %}
-										<h6><strong>Note:</strong> Updates go into effect at start of next billing cycle.</h6>
+										<h6><div class="left"><strong>Note:</strong> Updates go into effect at start of next billing cycle.</div></h6>
 									{% else %}
 										</br></br>
 									{% endif %}
@@ -243,8 +232,18 @@
 
 					            {% endif %}
 					        </div>
-					 
-					        <div id="tab3" class="tab" style="width: 100%;">
+					 		
+					 		<div id="tab3" class="tab">
+				        		
+				        		<p><strong><div class="left">Primary Goals:</div></strong></p>
+								<p><div class="left">{{ acct.account_detail.goal }}</div></p>
+								</br>
+								<p><strong><div class="left">Strategy:</div></strong></p>
+								<p><div class="left">{{ acct.account_detail.strategy|linebreaksbr }}</div></p>
+							
+					        </div>
+
+					        <div id="tab4" class="tab" style="width: 100%;">
 				        		</br>
 				        		{% include "disqus.html" %}	
 				        		<div class="disqus">
@@ -255,9 +254,10 @@
 					    </div>
 
 					    <ul class="tab-links">
-					        <li><a href="#tab1"></i><span style="margin-left: 0px;">Profile Builder Blocks</span></a></li>
-					        <li class="active"><a href="#tab2"></i><span style="margin-left: 0px;">Engagement Blocks</span></a></li>
-					        <li><a href="#tab3"></i><span style="margin-left: 0px;">Discussion</span></a></li>
+					        <li><a href="#tab1"><i class="icon-magic"></i><span style="margin-left: 0px;">Profile Builder</span></a></li>
+					        <li class="active"><a href="#tab2"><i class="icon-th-large"></i><span style="margin-left: 0px;">BoostBlocks</span></a></li>
+					        <li><a href="#tab3"><i class="icon-puzzle-piece"></i><span style="margin-left: 0px;">Our Strategy</span></a></li>
+					        <li><a href="#tab4"><i class="icon-comments"></i><span style="margin-left: 0px;">Discussion</span></a></li>
 					    </ul>
 
 					</div>

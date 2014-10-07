@@ -121,17 +121,26 @@ def profile(request, ref):
 	inputs = request.POST if request.POST else None
 	form = DashboardForm(inputs)
 	
-	#return HttpResponse(str(form))
-
+	
 	blocks = None
-
 	if (inputs) and form.is_valid():	
 		cd = form.cleaned_data
 		blocks = set_blocks(user, cd)
-		
+	
 	if not blocks:
 		blocks = get_current_blocks(user)
-	#return HttpResponse(str(blocks.__dict__))
+	
+	# re-initialize form if no post variable passed but previous block values were saved
+	if blocks:
+		form = DashboardForm(initial={'facebook_scale': blocks.facebook_scale, 
+										'twitter_scale': blocks.twitter_scale, 
+										'instagram_scale': blocks.instagram_scale,
+										'facebook_profile': blocks.facebook_profile,
+										'twitter_profile': blocks.twitter_profile,
+										'instagram_profile': blocks.instagram_profile,
+										'marketing_strategy': blocks.marketing_strategy,
+										})
+		#return HttpResponse(str(blocks.__dict__))
 	return render_to_response('profile.html', {'form': form, 'blocks': blocks, 'user': user, 'acct': acct, 'ref': ref, 'scope': 'external'}, context_instance=RequestContext(request))
 
 	

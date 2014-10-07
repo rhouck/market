@@ -56,6 +56,8 @@ class SubscribeForm(LoginForm):
     #wants_social = forms.BooleanField(required=False, label="I want you to run my social media presence")
     wants_creatives = forms.BooleanField(required=False, label="I need you to build all creative content and/or social media profiles")
 
+    promo = forms.CharField(required=False, max_length=30, widget=forms.TextInput(attrs={'placeholder': 'Promo Code'}))
+
     Ads_Choices = (
         ('0', '0'),
         ('1', '1'),

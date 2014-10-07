@@ -118,7 +118,7 @@ def alert_admin_new_signup(inps):
 	
 	subject = "New User signup"
 	title = "%s has signed up" % (inps['email'])
-	body =	"""Email: %s\n\nComapny: %s\n\nWebsite: %s\n\nSocial 1: %s\n\nSocial 2: %s\n\nSocial 3: %s\n\nSocial 4: %s\n\nDevelopment Stage: %s\n\nAnnual Sales: %s\n\nPitch: %s\n\nIndustry: %s\n\nTarget Description: %s\n\nBrand Description: %s\n\nClients: %s\n\nCompetition: %s\n\nOther: %s\n\nGoals: %s\n\nBudget: %s\n\nCreatives: %s\n\nWants Creatives: %s""" % (
+	body =	"""Email: %s\n\nComapny: %s\n\nWebsite: %s\n\nSocial 1: %s\n\nSocial 2: %s\n\nSocial 3: %s\n\nSocial 4: %s\n\nDevelopment Stage: %s\n\nAnnual Sales: %s\n\nPitch: %s\n\nIndustry: %s\n\nTarget Description: %s\n\nBrand Description: %s\n\nClients: %s\n\nCompetition: %s\n\nOther: %s\n\nGoals: %s\n\nBudget: %s\n\nCreatives: %s\n\nWants Creatives: %s\n\nPromo Code: %s""" % (
 				inps['email'],
 				inps['company'],
 				inps['website'],
@@ -138,7 +138,8 @@ def alert_admin_new_signup(inps):
 				inps['goals'],
 				inps['budget'],
 				inps['creatives'],
-				inps['wants_creatives'],)
+				inps['wants_creatives'],
+				inps['promo'],)
 
 	plaintext = get_template('email_template/admin_com.txt')
 	htmly     = get_template('email_template/admin_com.html')
@@ -161,7 +162,7 @@ def build_comp_profile(ref, inps):
 	
 	signup = get_signup_by_ref(ref)
 
-	acct = AccountDetails(user_id=signup.objectId, user=signup, active=False)
+	acct = AccountDetails(user_id=signup.objectId, user=signup, active=False, promo=inps['promo'])
 	acct.save()
 
 	comp = CompanyProfiles(user=signup,

@@ -30,9 +30,9 @@
 		<p>After filling out your brand profile we'll begin a full social media audit of your business.</p>
 		
 		<p>The more care you put into this form, the better we can grow your brand.</p>
-	
+		{% comment %}
 		<p>You have no obligation to use our service after receiving our free audit.</p>	 
-	      
+	    {% endcomment %}
               	{% for error in form.non_field_errors %}
                     <h3 style="color: red;">{{error}}</h3>
                 	</br>
@@ -166,6 +166,11 @@
 	                    	<p class="errors">{{ error }}</p>
 	                    {% endfor %}
 						{{ form.password|add_class:"text-button"}}
+
+						{% for error in form.promo.errors %}
+	                    	<p class="errors">{{ error }}</p>
+	                    {% endfor %}
+						{{ form.promo|add_class:"text-button"}}
 		
 
 			<div class="row">
