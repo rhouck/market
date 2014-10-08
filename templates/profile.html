@@ -47,7 +47,7 @@
 					{% else %}
 						
 						{% if blocks.facebook_profile %}
-							<p>Facebook Profile: $100</p>
+							<p>Facebook Profile: $50</p>
 						{% endif %}
 						{% if blocks.twitter_profile %}
 							<p>Twitter Profile: $50</p>
@@ -60,13 +60,13 @@
 						{% endif %}
 
 						{% if blocks.facebook_scale > 0 %}
-							<p>Facebook Blocks:</p><p>{{ blocks.facebook_scale }} x $200</p>
+							<p>Facebook Blocks:</p><p>{{ blocks.facebook_scale }} x $50</p>
 						{% endif %}
 						{% if blocks.twitter_scale > 0 %}
-							<p>Twitter Blocks:</p><p>{{ blocks.twitter_scale }} x $200</p>
+							<p>Twitter Blocks:</p><p>{{ blocks.twitter_scale }} x $50</p>
 						{% endif %}
 						{% if blocks.instagram_scale > 0 %}
-							<p>Instagram Blocks:</p><p>{{ blocks.instagram_scale }} x $200</p>
+							<p>Instagram Blocks:</p><p>{{ blocks.instagram_scale }} x $50</p>
 						{% endif %}
 
 						
@@ -80,7 +80,7 @@
 					<p>{{ acct.account_detail.goal }}</p>
 					</br>
 					<p><strong>Strategy:</strong></p>
-					<p>{{ acct.account_detail.strategy|linebreaksbr }}</p>
+					<p>{{ acct.account_detail.strategy|safe }}</p>
 				</div>
 				{% endcomment %}
 			</div>
@@ -125,7 +125,7 @@
 										{% for error in form.facebook_profile.errors %}
 							            	<p class="errors">{{ error }}</p>
 							            {% endfor %}
-										<p>$100 {{ form.facebook_profile }}</p>
+										<p>$50 {{ form.facebook_profile }}</p>
 
 
 									</div>
@@ -152,7 +152,7 @@
 										{% for error in form.marketing_strategy.errors %}
 							            	<p class="errors">{{ error }}</p>
 							            {% endfor %}
-										<p>$50 {{ form.marketing_strategy }}</p>
+										<p>$100 {{ form.marketing_strategy }}</p>
 
 									</div>
 									<div>
@@ -179,7 +179,7 @@
 					            	<p>The link below will direct you to our Chargify account. Nothing will be charged to your card upon setup and we will never store any of your credit card information</p>
 					            	</br>
 					            	<div>
-										<a href="https://boost-blocks-test.chargify.com/h/3562785/subscriptions/new?reference={{ request.session.ref }}" class="button">Setup</a>		
+										<a href="https://boost-blocks.chargify.com/h/3562785/subscriptions/new?reference={{ request.session.ref }}" class="button">Setup</a>		
 									</div>
 
 					            {% else %}
@@ -194,7 +194,7 @@
 										{% for error in form.facebook_scale.errors %}
 							            	<p class="errors">{{ error }}</p>
 							            {% endfor %}
-										$200 x {{ form.facebook_scale|add_class:"select-button-small"}}
+										$50 x {{ form.facebook_scale|add_class:"select-button-small"}}
 									</div>
 									<div class="one_third">
 										<i class="icon-twitter-sign" style="font-size: 72px;"></i>
@@ -202,7 +202,7 @@
 										{% for error in form.twitter_scale.errors %}
 							            	<p class="errors">{{ error }}</p>
 							            {% endfor %}
-										$200 x {{ form.twitter_scale|add_class:"select-button-small"}}
+										$50 x {{ form.twitter_scale|add_class:"select-button-small"}}
 									</div>
 									<div class="one_third last">
 										<i class="icon-instagram" style="font-size: 72px;"></i>
@@ -210,13 +210,13 @@
 										{% for error in form.instagram_scale.errors %}
 							            	<p class="errors">{{ error }}</p>
 							            {% endfor %}
-										$200 x {{ form.instagram_scale|add_class:"select-button-small"}}
+										$50 x {{ form.instagram_scale|add_class:"select-button-small"}}
 									</div>
 									<div>
 										<div class="clear"></div>
 										<div class="space2"></div>
 										
-										<p><div class="left">Select the number of BoostBlocks you want for each social media platform. This is a recurring monthly charge.</div></p>
+										<p><div class="left">Select the number of BoostBlocks you want for each social media platform. This is a recurring weekly charge.</div></p>
 									</div>
 									{% if blocks %}
 										<h6><div class="left"><strong>Note:</strong> Updates go into effect at start of next billing cycle.</div></h6>
@@ -239,7 +239,7 @@
 								<p><div class="left">{{ acct.account_detail.goal }}</div></p>
 								</br>
 								<p><strong><div class="left">Strategy:</div></strong></p>
-								<p><div class="left">{{ acct.account_detail.strategy|linebreaksbr }}</div></p>
+								<div class="left">{{ acct.account_detail.strategy|safe }}</div>
 							
 					        </div>
 

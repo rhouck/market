@@ -28,7 +28,6 @@
 			<h2><a href="{% url 'dashboard' i.user.ref %}"  target="_blank">{{ i.company_profile.company }}</a></h2>
 			
 			<div class="one_third">
-				<p><a href="{% url 'company_description' i.user.ref %}" target="_blank"> Company Profile</a></p>
 				
 				{% if i.company_profile.website|slice:":4" != 'http' %}
 					<p><a href="http://{{ i.company_profile.website }}" target="_blank">{{ i.company_profile.website|truncatechars:25 }}</a></p>
@@ -58,17 +57,37 @@
 
 			<div class="one_third">
 				
-				<p>Goal:</p>
-				{% for error in form.goal.errors %}
-                	<p class="errors">{{ error }}</p>
-                {% endfor %}
-				<input type="text" class="text-button-small" id="id_goal" name="goal" value="{{ i.account_detail.goal }}" />
+				{% comment %}
+					<p>Goal:</p>
+					{% for error in form.goal.errors %}
+	                	<p class="errors">{{ error }}</p>
+	                {% endfor %}
+					<input type="text" class="text-button-small" id="id_goal" name="goal" value="{{ i.account_detail.goal }}" />
 
-				<p>Strategy:</p>
-				{% for error in form.strategy.errors %}
-                	<p class="errors">{{ error }}</p>
+					<p>Strategy:</p>
+					{% for error in form.strategy.errors %}
+	                	<p class="errors">{{ error }}</p>
                 {% endfor %}
-				<TEXTAREA class="textarea-button-small" id="id_strategy" NAME="strategy" ROWS=10>{{ i.account_detail.strategy }}</TEXTAREA>
+                
+        		<TEXTAREA class="textarea-button-small" id="id_strategy" NAME="strategy" ROWS=10>{{ i.account_detail.strategy }}</TEXTAREA>
+                {% endcomment %}
+               
+                <p><a href="{% url 'company_description' i.user.ref %}" target="_blank"> Company Profile</a></p>
+                <p>Goal: 
+                {% if i.account_detail.goal %}
+                	True
+                {% else %}
+                	False
+                {% endif %}
+                </p>
+                <p>Strategy: 
+                {% if i.account_detail.strategy %}
+                	True
+                {% else %}
+                	False
+                {% endif %}
+                </p>
+                
 				
 			</div>
 

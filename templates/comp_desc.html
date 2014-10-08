@@ -2,7 +2,34 @@
 {% load staticfiles %}
 {% load widget_tweaks %}
 
+
 {% block head %}
+	
+	
+
+{{ form.media }}
+{% include "wysiwyg-init.html" %}
+	{% comment %}
+		
+	
+
+		<script type="text/javascript" src="{% static 'tiny_mce/tiny_mce.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'tiny_mce/threads.js' %}"></script>
+		<script type="text/javascript" src="{% static 'tiny_mce/textareas.js' %}"></script>
+		<script src="{{ MEDIA_URL }}js/tiny_mce/tiny_mce.js"></script>
+   		<script src="{{ MEDIA_URL }}js/tiny_mce/textareas.js"></script>
+		<script type="text/javascript">
+	        tinyMCE.init({
+	                mode: "textareas",
+	                theme: "simple"
+	        });
+		</script>	
+		{% load url from future %}	
+		<script type="text/javascript" src="{{ MEDIA_URL }}js/tiny_mce/tiny_mce.js"></script>
+		<script type="text/javascript" src="{% url "tinymce-js" "NAME" %}"></script>
+	{% endcomment %}
+
+
 	{% include "disqus_head.html" %}
 {% endblock %}
 
@@ -20,16 +47,42 @@
 <div class="clear"></div>
 
 <div class="content">
+	
 	<div class="wrap">
 
 		<div class="heading"><span>{{ comp.company }}</span></div>
 			
-			<p><strong>email:</strong></p>
-			<p>{{ email }}</p>
-			{% for key,value in comp.items %}
-				<p><strong>{{ key }}:</strong></p>
-				<p>{{ value }}</p>
-			{% endfor %}
+			<div class="content portfolio_two">
+				<div class="wrap">
+
+					<div class="one_half">		
+						<p><strong>email:</strong></p>
+						<p>{{ email }}</p>
+						{% for key,value in comp.items %}
+							<p><strong>{{ key }}:</strong></p>
+							<p>{{ value }}</p>
+						{% endfor %}
+					</div>
+					<div class="one_half last">
+						<form method="post" action=""> 
+							{% csrf_token %}
+							<p>Goal:</p>
+							{% for error in form.goal.errors %}
+			                	<p class="errors">{{ error }}</p>
+			                {% endfor %}
+							{{ form.goal|add_class:"text-button-small" }}
+
+							<p>Strategy:</p>
+							{% for error in form.strategy.errors %}
+			                	<p class="errors">{{ error }}</p>
+			                {% endfor %}
+			                {{ form.strategy }}
+			            	</br></br>
+							<a href="#" class="button small" onclick="$(this).closest('form').submit()">Update</a>
+							</form>
+					</div>
+				</div>
+			</div>
 
 			<div class="clear"></div>
 			<div class="space"></div>

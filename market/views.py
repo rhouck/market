@@ -266,20 +266,22 @@ def createStaff(request):
 		return render_to_response('create-staff.html', {'form': form}, context_instance=RequestContext(request))
 
 def projects(request):
-	
+
 	if request.session['staff']:
 		
 		inputs = request.POST if request.POST else None
+
 		form = UpdateAdminForm(inputs)
 		
 		if (inputs) and form.is_valid():
+			
 			try:
 				cd = form.cleaned_data
 				user = get_signup_by_ref(cd['ref'])
 				acct = get_acct_details(user)
-				acct.account_detail.strategy = cd['strategy']
+				#acct.account_detail.strategy = cd['strategy']
 				acct.account_detail.active = cd['active']
-				acct.account_detail.goal = cd['goal']
+				#acct.account_detail.goal = cd['goal']
 				acct.account_detail.save()
 			except:
 				pass
@@ -338,15 +340,36 @@ def company_description(request, ref):
 		user = get_signup_by_ref(ref)	
 	except:
 		raise Http404
+	
+	acct = None
+	inputs = request.POST if request.POST else None
+	if inputs:
+		pass
+		#return HttpResponse(str(dict(request.POST)))
+	form = CompDescForm(inputs)
 
-	acct = get_acct_details(user)
+	if (inputs) and form.is_valid():
+		try:
+			cd = form.cleaned_data
+			acct = get_acct_details(user)
+			acct.account_detail.strategy = cd['strategy']
+			acct.account_detail.goal = cd['goal']
+			acct.account_detail.save()
+		except:
+			pass
+
+	if not acct:
+		acct = get_acct_details(user)
+		#return HttpResponse(str(acct.__dict__))
+		form = CompDescForm(initial={'goal': acct.account_detail.goal, 'strategy': acct.account_detail.strategy,})
+
 	email = acct.user.email
 	comp = acct.company_profile.__dict__
 
 	for i in ('_created_at', '_updated_at', 'user_id', 'highrise_id', 'user', '_object_id', 'social_scale', 'ads_scale'):
 		if i in comp:
 			del comp[i]
-	return render_to_response('comp_desc.html', {'email': email, 'comp': comp, 'ref': ref, 'scope': 'internal'}, context_instance=RequestContext(request))
+	return render_to_response('comp_desc.html', {'email': email, 'comp': comp, 'ref': ref, 'scope': 'internal', 'form': form}, context_instance=RequestContext(request))
 	
 
 

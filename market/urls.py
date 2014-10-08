@@ -31,5 +31,6 @@ urlpatterns = patterns('',
     url(r'^test/$', 'market.views.test'),
 
     (r'^django-rq/', include('django_rq.urls')),
+     (r'^tinymce/', include('tinymce.urls')),
 
 )

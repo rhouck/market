@@ -1,5 +1,6 @@
 from django import forms
 from django.forms import widgets
+from tinymce.widgets import TinyMCE
 
 class ResetForm(forms.Form):
 
@@ -116,8 +117,12 @@ class ActivateForm(forms.Form):
 class UpdateAdminForm(forms.Form):
     
     ref = forms.CharField(min_length=8, max_length=8)
-    goal = forms.CharField(required=False)
-    strategy = forms.CharField(required=False, widget=forms.Textarea())
+    #goal = forms.CharField(required=False)
+    #strategy = forms.CharField(required=False, widget=TinyMCE(attrs={'cols': 40, 'rows': 20}))
     active = forms.BooleanField(required=False)
 
+class CompDescForm(forms.Form):
+    goal = forms.CharField(required=False)
+    strategy = forms.CharField(required=False, widget=TinyMCE(attrs={'cols': 40, 'rows': 40}))
+    #strategy = forms.CharField(required=False,)
 

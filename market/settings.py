@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'widget_tweaks',
     'south',
     "django_rq",
+    'tinymce',
     #'disqus',
     #'django.contrib.sites',
 )
