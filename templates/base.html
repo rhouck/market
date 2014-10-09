@@ -145,9 +145,9 @@
 		
 			<div id="logo">
 				{% if request.GET.ref %}      		      
-		    		<p><a href="{% url 'splash' %}?ref={{ request.GET.ref }}">BoostBlocks</a></p>
+		    		<p><a href="{% url 'splash' %}?ref={{ request.GET.ref }}"><i class="icon-th-large"></i>BoostBlocks</a></p>
 		    	{% else %}
-		    		<p><a href="{% url 'splash' %}">BoostBlocks</a></p>
+		    		<p><a href="{% url 'splash' %}"><i class="icon-th-large"></i>BoostBlocks</a></p>
 		    	{% endif %}
 			</div>
 
