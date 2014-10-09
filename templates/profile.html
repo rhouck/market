@@ -41,7 +41,7 @@
 				<div>
 					{% if not user.chargify_active and not user.staff %}
 						<p>Action Required:</p>
-						<p>activate billing acount <a href="https://boost-blocks-test.chargify.com/h/3562785/subscriptions/new?reference={{ request.session.ref }}">here</a></p>
+						<p>activate billing acount <a href="https://boostblocks.chargify.com/h/3562785/subscriptions/new?reference={{ request.session.ref }}">here</a></p>
 					{% elif not blocks %}
 						<p>You have not selected any BoostBlocks for this period.</p>
 					{% else %}
@@ -109,7 +109,7 @@
 					            	<p>The link below will direct you to our Chargify account. Nothing will be charged to your card upon setup and we will never store any of your credit card information</p>
 					            	</br>
 					            	<div>
-										<a href="https://boost-blocks-test.chargify.com/h/3562785/subscriptions/new?reference={{ request.session.ref }}" class="button">Setup</a>		
+										<a href="https://boostblocks.chargify.com/h/3562785/subscriptions/new?reference={{ request.session.ref }}" class="button">Setup</a>		
 									</div>
 
 					            {% else %}
@@ -179,7 +179,7 @@
 					            	<p>The link below will direct you to our Chargify account. Nothing will be charged to your card upon setup and we will never store any of your credit card information</p>
 					            	</br>
 					            	<div>
-										<a href="https://boost-blocks.chargify.com/h/3562785/subscriptions/new?reference={{ request.session.ref }}" class="button">Setup</a>		
+										<a href="https://boostblocks.chargify.com/h/3562785/subscriptions/new?reference={{ request.session.ref }}" class="button">Setup</a>		
 									</div>
 
 					            {% else %}
