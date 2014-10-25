@@ -33,7 +33,7 @@
 	<script src={% static "hostify/hostify/js/responsive-nav.js" %}></script>
 	<script src={% static "hostify/hostify/js/options.js" %}></script>
 	<script src={% static "hostify/hostify/js/jquery.carouFredSel-6.2.1-packed.js" %}></script>
-	
+
 	<script type="text/javascript">
 		$(function() {
 			$('#carousel').carouFredSel({
@@ -57,6 +57,8 @@
 		});
 	</script>
 	
+	<script src={% static "custom.js" %}></script>
+
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css' />
 	<link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic,500italic,700italic' rel='stylesheet' type='text/css' />
 	
@@ -159,10 +161,12 @@
 			<nav class="nav-collapse" id="nav">
 				<ul class="sf-menu">
 					{% if request.GET.ref %}      	
+						<li><a href="{% url 'service' %}?ref={{ request.GET.ref }}">Our Service</a></li>
 						<li><a href="{% url 'philosophy' %}?ref={{ request.GET.ref }}">Our Philosophy</a></li>
 						<li><a href="{% url 'join' %}?ref={{ request.GET.ref }}">Join The Team</a></li>
 						<li class="selected"><a href="{% url 'login' %}?ref={{ request.GET.ref }}">Login</a></li> 
 			    	{% else %}
+			    		<li><a href="{% url 'service' %}">Our Service</a></li>
 			    		<li><a href="{% url 'philosophy' %}">Our Philosophy</a></li>
 			    		<li><a href="{% url 'join' %}">Join The Team</a></li>
 			    		
@@ -815,6 +819,15 @@
 		<div class="wrap">
 			<p class="alignleft">Copyright &copy; BoostBlocks. All Rights Reserved.</p>
 			<p class="alignright"><a href="{% url 'tos' %}">Terms of Service</a> / <a href="{% url 'privacy' %}">Privacy Policy</a></p>
+			</br>
+			<div class="alignright">
+				<script LANGUAGE="JavaScript" type="text/javascript">
+				  gen_mail_to_link('info','boostblocks.com','Hello...')
+				</script>
+				<noscript>
+				  <em>Email address protected by JavaScript. Activate javascript to see the email.</em>
+				</noscript>
+			</div>
 			<div class="clear"></div>
 		</div>
 		{% comment %}

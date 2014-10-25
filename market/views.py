@@ -383,6 +383,8 @@ def test(request):
 
 def philosophy(request):
 	return render_to_response('philosophy.html', {}, context_instance=RequestContext(request))
+def service(request):
+	return render_to_response('service.html', {}, context_instance=RequestContext(request))
 def join(request):
 	return render_to_response('join.html', {}, context_instance=RequestContext(request))
 def privacy(request):

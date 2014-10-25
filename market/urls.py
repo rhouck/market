@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     url(r'^$', 'market.views.splash', name='splash'),
     
     url(r'^our-philosophy/$', 'market.views.philosophy', name='philosophy'),
+    url(r'^our-service/$', 'market.views.service', name='service'),
     url(r'^join/$', 'market.views.join', name='join'),
     
     url(r'^privacy/$', 'market.views.privacy', name='privacy'),
