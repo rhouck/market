@@ -100,7 +100,7 @@ STATICFILES_DIRS = (
 )
 
 #highrise cms API
-HIGHRISE_CONFIG = {'server': 'harmonyspence', 'auth': '8170f80eac5ace00364b8d81eac26dac', 'email': 'dropbox@35586853.harmonyspence.highrisehq.com'}
+HIGHRISE_CONFIG = {'server': 'boostblocks', 'auth': '8170f80eac5ace00364b8d81eac26dac', 'email': 'dropbox@35586853.boostblocks.highrisehq.com'}
 
 
 # register parse
