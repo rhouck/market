@@ -343,25 +343,30 @@ def company_description(request, ref):
 	
 	acct = None
 	inputs = request.POST if request.POST else None
-	if inputs:
-		pass
-		#return HttpResponse(str(dict(request.POST)))
+	
 	form = CompDescForm(inputs)
 
 	if (inputs) and form.is_valid():
 		try:
 			cd = form.cleaned_data
 			acct = get_acct_details(user)
+			acct.account_detail.storage = cd['storage']
 			acct.account_detail.strategy = cd['strategy']
 			acct.account_detail.goal = cd['goal']
 			acct.account_detail.save()
 		except:
 			pass
 
+
 	if not acct:
 		acct = get_acct_details(user)
-		#return HttpResponse(str(acct.__dict__))
-		form = CompDescForm(initial={'goal': acct.account_detail.goal, 'strategy': acct.account_detail.strategy,})
+		form_items = {}
+		for i in ('storage', 'goal', 'strategy'):
+			try:
+				form_items[i] = getattr(acct.account_detail, i)
+			except:
+				pass
+		form = CompDescForm(initial=form_items)
 
 	email = acct.user.email
 	comp = acct.company_profile.__dict__

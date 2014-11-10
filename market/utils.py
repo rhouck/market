@@ -27,7 +27,7 @@ class AccountDetails(Object):
 class SelectedBlocks(Object):
     pass
 
-class Account(Object):
+class Account(object):
     """
     This object contains all relvant information to an individual user and his/her associated company information.
 
@@ -322,7 +322,7 @@ def get_acct_details(user):
 		account.company_profile = comp_profile
 	except:
 		pass
-	
+
 	return account
 	
 def get_accts():

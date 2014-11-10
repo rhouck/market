@@ -73,6 +73,17 @@
                 {% endcomment %}
                
                 <p><a href="{% url 'company_description' i.user.ref %}" target="_blank"> Company Profile</a></p>
+                <p>
+                {% if i.account_detail.storage %}        	
+                	{% if i.company_profile.soc_two|slice:":5" != 'https' %}
+						<a href="https://{{ i.account_detail.storage }}" target="_blank">File Storage</a>
+					{% else %}
+						<a href="{{ i.account_detail.storage }}" target="_blank">File Storage</a>
+					{% endif %}  	
+                {% else %}
+                	File Storage: False
+                {% endif %}
+                </p>
                 <p>Goal: 
                 {% if i.account_detail.goal %}
                 	True

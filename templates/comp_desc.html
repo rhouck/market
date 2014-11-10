@@ -66,6 +66,12 @@
 					<div class="one_half last">
 						<form method="post" action=""> 
 							{% csrf_token %}
+							<p>File Storage URL:</p>
+							{% for error in form.storage.errors %}
+			                	<p class="errors">{{ error }}</p>
+			                {% endfor %}
+							{{ form.storage|add_class:"text-button-small" }}
+
 							<p>Goal:</p>
 							{% for error in form.goal.errors %}
 			                	<p class="errors">{{ error }}</p>

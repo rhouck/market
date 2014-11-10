@@ -27,8 +27,22 @@
 
 		<div class="sidebar-right" style="padding-left: 10px;">
 			
-			<div class="heading"><span>Summary</span></div>
+			<div class="heading"><span>Account Info</span></div>
 			<div id="accordion" style="padding: 10px 10px 10px 10px;">
+				<p class="accordion_header">File Storage</p>
+				<div>
+					<p>
+						{% if acct.account_detail.storage %}        	
+		                	{% if acct.company_profile.soc_two|slice:":5" != 'https' %}
+								<a href="https://{{ acct.account_detail.storage }}" target="_blank">Shared Google Drive Folder</a>
+							{% else %}
+								<a href="{{ acct.account_detail.storage }}" target="_blank">Shared Google Drive Folder</a>
+							{% endif %}  	
+		                {% else %}
+		                	File storage not yet setup
+		                {% endif %}
+					</p>
+				</div>
 				<p class="accordion_header">Current Blocks</p>
 				<div>
 					<p>--</p>

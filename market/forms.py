@@ -122,7 +122,7 @@ class UpdateAdminForm(forms.Form):
     active = forms.BooleanField(required=False)
 
 class CompDescForm(forms.Form):
+    storage = forms.CharField(required=False)
     goal = forms.CharField(required=False)
     strategy = forms.CharField(required=False, widget=TinyMCE(attrs={'cols': 40, 'rows': 40}))
-    #strategy = forms.CharField(required=False,)
 
