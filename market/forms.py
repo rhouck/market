@@ -104,10 +104,18 @@ class DashboardForm(forms.Form):
         ('1', '1'),
         ('2', '2'),
         ('3', '3'),
+        ('4', '4'),
+        ('5', '5'),
     )
     facebook_scale = forms.ChoiceField(choices=scale_choices)
     twitter_scale = forms.ChoiceField(choices=scale_choices)
     instagram_scale = forms.ChoiceField(choices=scale_choices)
+
+    facebook_url = forms.CharField(required=False, max_length=200, widget=forms.TextInput(attrs={'placeholder': 'Facebook Page URL'}))
+    twitter_handle = forms.CharField(required=False, max_length=200, widget=forms.TextInput(attrs={'placeholder': 'Twitter Handle'}))
+    twitter_password = forms.CharField(required=False, max_length=200, widget=forms.TextInput(attrs={'placeholder': 'Twitter Password'}))
+    instagram_username = forms.CharField(required=False, max_length=200, widget=forms.TextInput(attrs={'placeholder': 'Instagram Username'}))
+    instagram_password = forms.CharField(required=False, max_length=200, widget=forms.TextInput(attrs={'placeholder': 'Instagram Password'}))
 
 class ActivateForm(forms.Form):
     

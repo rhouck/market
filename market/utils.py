@@ -347,13 +347,6 @@ def reset_parse_user_pass(email):
 		return True
 	raise Exception("Could not send 'reset password' email.")
 
-"""
-def create_acct_detail_rows():
-	users = ParseUser.Query.all()
-	for i in users:
-		acct = AccountDetails(user_id=i.objectId, user=i, active=False)
-		acct.save()
-"""
 
 def set_blocks(user, form):
 	blocks = SelectedBlocks(user=user, 
@@ -377,3 +370,10 @@ def get_current_blocks(user):
 		return blocks[0]
 	else:
 		return None
+
+def set_profile_credentials(user, form):
+	acct = AccountDetails.Query.get(user_id=user.objectId)	
+	for i in ('facebook_url','twitter_handle','twitter_password','instagram_username','instagram_password',):
+		setattr(acct, i, form[i])
+	acct.save()
+	return acct

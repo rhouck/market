@@ -123,12 +123,16 @@ def profile(request, ref):
 	
 	
 	blocks = None
+	creds = None
 	if (inputs) and form.is_valid():	
 		cd = form.cleaned_data
 		blocks = set_blocks(user, cd)
+		creds = set_profile_credentials(user, cd)
 	
 	if not blocks:
 		blocks = get_current_blocks(user)
+		acct = get_acct_details(user)
+		creds = acct.account_detail
 	
 	# re-initialize form if no post variable passed but previous block values were saved
 	if blocks:
@@ -139,6 +143,11 @@ def profile(request, ref):
 										'twitter_profile': blocks.twitter_profile,
 										'instagram_profile': blocks.instagram_profile,
 										'marketing_strategy': blocks.marketing_strategy,
+										'facebook_url': creds.facebook_url,
+										'twitter_handle': creds.twitter_handle,
+										'twitter_password': creds.twitter_password,
+										'instagram_username': creds.instagram_username,
+										'instagram_password': creds.instagram_password,
 										})
 		#return HttpResponse(str(blocks.__dict__))
 	return render_to_response('profile.html', {'form': form, 'blocks': blocks, 'user': user, 'acct': acct, 'ref': ref, 'scope': 'external'}, context_instance=RequestContext(request))

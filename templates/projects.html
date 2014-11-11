@@ -27,8 +27,8 @@
 		
 			<h2><a href="{% url 'dashboard' i.user.ref %}"  target="_blank">{{ i.company_profile.company }}</a></h2>
 			
-			<div class="one_third">
-				
+			<div class="one_fourth">
+				<p>SM Presence:</p>
 				{% if i.company_profile.website|slice:":4" != 'http' %}
 					<p><a href="http://{{ i.company_profile.website }}" target="_blank">{{ i.company_profile.website|truncatechars:25 }}</a></p>
 				{% else %}
@@ -55,7 +55,24 @@
 
 			</div>
 
-			<div class="one_third">
+			<div class="one_fourth">
+				<p>FB page: 
+				{% if i.account_detail.facebook_url|slice:":5" != 'https' %}
+					<a href="https://{{ i.account_detail.facebook_url }}" target="_blank">here</a>
+				{% else %}
+					<p><a href="{{ i.account_detail.facebook_url }}" target="_blank">here</a>
+				{% endif %}
+				</p>
+				<p>Twit handle: {{ i.account_detail.twitter_handle }}</p>
+				<p>Twit pswd: {{ i.account_detail.twitter_password }}</p>
+				<p>IG un: {{ i.account_detail.instagram_username }}</p>
+				<p>IG pswd: {{ i.account_detail.instagram_password }}</p>
+				
+				
+
+			</div>
+
+			<div class="one_fourth">
 				
 				{% comment %}
 					<p>Goal:</p>
@@ -81,17 +98,17 @@
 						<a href="{{ i.account_detail.storage }}" target="_blank">File Storage</a>
 					{% endif %}  	
                 {% else %}
-                	File Storage: False
+                	File Storage: Not set
                 {% endif %}
                 </p>
-                <p>Goal: 
+                <p>Goal set: 
                 {% if i.account_detail.goal %}
                 	True
                 {% else %}
                 	False
                 {% endif %}
                 </p>
-                <p>Strategy: 
+                <p>Strategy set: 
                 {% if i.account_detail.strategy %}
                 	True
                 {% else %}
@@ -102,7 +119,7 @@
 				
 			</div>
 
-			<div class="one_third last">	
+			<div class="one_fourth last">	
 				
 				<p>Payments Setup: {{ i.user.chargify_active }}</p>
 

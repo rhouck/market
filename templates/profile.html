@@ -209,6 +209,14 @@
 							            	<p class="errors">{{ error }}</p>
 							            {% endfor %}
 										$50 x {{ form.facebook_scale|add_class:"select-button-small"}}
+										
+										{% for error in form.facebook_url.errors %}
+							            	<p class="errors">{{ error }}</p>
+							            {% endfor %}
+										{{ form.facebook_url|add_class:"text-button-small-dashboard"}}
+										
+										<p style="text-align: left;">Must provide BoostBlocks access through Facebook page settings.</p>
+
 									</div>
 									<div class="one_third">
 										<i class="icon-twitter-sign" style="font-size: 72px;"></i>
@@ -217,6 +225,18 @@
 							            	<p class="errors">{{ error }}</p>
 							            {% endfor %}
 										$50 x {{ form.twitter_scale|add_class:"select-button-small"}}
+
+										{% for error in form.twitter_handle.errors %}
+							            	<p class="errors">{{ error }}</p>
+							            {% endfor %}
+										{{ form.twitter_handle|add_class:"text-button-small-dashboard"}}
+
+										{% for error in form.twitter_password.errors %}
+							            	<p class="errors">{{ error }}</p>
+							            {% endfor %}
+										{{ form.twitter_password|add_class:"text-button-small-dashboard"}}
+
+
 									</div>
 									<div class="one_third last">
 										<i class="icon-instagram" style="font-size: 72px;"></i>
@@ -225,6 +245,18 @@
 							            	<p class="errors">{{ error }}</p>
 							            {% endfor %}
 										$50 x {{ form.instagram_scale|add_class:"select-button-small"}}
+										
+										{% for error in form.instagram_username.errors %}
+							            	<p class="errors">{{ error }}</p>
+							            {% endfor %}
+										{{ form.instagram_username|add_class:"text-button-small-dashboard"}}
+
+										{% for error in form.instagram_password.errors %}
+							            	<p class="errors">{{ error }}</p>
+							            {% endfor %}
+										{{ form.instagram_password|add_class:"text-button-small-dashboard"}}
+
+
 									</div>
 									<div>
 										<div class="clear"></div>
