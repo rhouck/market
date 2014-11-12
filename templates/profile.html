@@ -33,7 +33,7 @@
 				<div>
 					<p>
 						{% if acct.account_detail.storage %}        	
-		                	{% if acct.company_profile.soc_two|slice:":5" != 'https' %}
+		                	{% if acct.account_detail.storage|slice:":5" != 'https' %}
 								<a href="https://{{ acct.account_detail.storage }}" target="_blank">Shared Google Drive Folder</a>
 							{% else %}
 								<a href="{{ acct.account_detail.storage }}" target="_blank">Shared Google Drive Folder</a>
