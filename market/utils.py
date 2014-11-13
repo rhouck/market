@@ -355,7 +355,7 @@ def set_blocks(user, form):
 							twitter_profile=form['twitter_profile'],
 							instagram_profile=form['instagram_profile'],
 							marketing_strategy=form['marketing_strategy'],
-							linkedin_profile=False,
+							linkedin_profile=form['linkedin_profile'],
 							facebook_scale=int(form['facebook_scale']),
 							twitter_scale=int(form['twitter_scale']),
 							instagram_scale=int(form['instagram_scale']),

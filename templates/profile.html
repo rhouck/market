@@ -28,6 +28,59 @@
 		<div class="sidebar-right" style="padding-left: 10px;">
 			
 			<div class="heading"><span>Account Info</span></div>
+
+			<div>
+				<p>File Storage:</p>
+				<p>
+					{% if acct.account_detail.storage %}        	
+	                	{% if acct.account_detail.storage|slice:":5" != 'https' %}
+							<a href="https://{{ acct.account_detail.storage }}" target="_blank">Shared Google Drive Folder</a>
+						{% else %}
+							<a href="{{ acct.account_detail.storage }}" target="_blank">Shared Google Drive Folder</a>
+						{% endif %}  	
+	                {% else %}
+	                	Not yet setup...
+	                {% endif %}
+				</p>
+			</div>
+			</br>
+			<div>
+				<p>Current period's blocks:</p>
+				{% if not user.chargify_active and not user.staff %}
+					<p>Action Required:</p>
+					<p>activate billing acount <a href="https://boostblocks.chargify.com/h/3562785/subscriptions/new?reference={{ request.session.ref }}">here</a></p>
+				{% elif not blocks %}
+					<p>You have not selected any BoostBlocks for this period.</p>
+				{% else %}
+					
+					{% if blocks.facebook_profile %}
+						<p>Facebook Profile: $50</p>
+					{% endif %}
+					{% if blocks.twitter_profile %}
+						<p>Twitter Profile: $50</p>
+					{% endif %}
+					{% if blocks.instagram_profile %}
+						<p>Instagram Profile: $50</p>
+					{% endif %}
+					{% if blocks.social_media_strategy %}
+						<p>Social Media Strategy: $100</p>
+					{% endif %}
+
+					{% if blocks.facebook_scale > 0 %}
+						<p>Facebook Blocks:</p><p>{{ blocks.facebook_scale }} x $50</p>
+					{% endif %}
+					{% if blocks.twitter_scale > 0 %}
+						<p>Twitter Blocks:</p><p>{{ blocks.twitter_scale }} x $50</p>
+					{% endif %}
+					{% if blocks.instagram_scale > 0 %}
+						<p>Instagram Blocks:</p><p>{{ blocks.instagram_scale }} x $50</p>
+					{% endif %}
+
+					
+				{% endif %}
+				
+				</div>
+			{% comment %}
 			<div id="accordion" style="padding: 10px 10px 10px 10px;">
 				<p class="accordion_header">File Storage</p>
 				<div>
@@ -87,17 +140,8 @@
 					{% endif %}
 					
 				</div>
-				{% comment %}
-				<p class="accordion_header">Strategy</p>
-				<div>
-					<p><strong>Primary Goals:</strong></p>
-					<p>{{ acct.account_detail.goal }}</p>
-					</br>
-					<p><strong>Strategy:</strong></p>
-					<p>{{ acct.account_detail.strategy|safe }}</p>
-				</div>
-				{% endcomment %}
 			</div>
+			{% endcomment %}
 
 		</div>
 
@@ -133,7 +177,7 @@
 									    <h3 class="errors">{{error}}</h3>
 										</br>
 									{% endfor %}
-									<div class="one_fourth">
+									<div class="one_fifth">
 										<i class="icon-facebook-sign" style="font-size: 72px;"></i>	
 										<p>Facebook</p>							
 										{% for error in form.facebook_profile.errors %}
@@ -143,15 +187,15 @@
 
 
 									</div>
-									<div class="one_fourth">
+									<div class="one_fifth">
 										<i class="icon-twitter-sign" style="font-size: 72px;"></i>
 										<p>Twitter</p>
 										{% for error in form.twitter_profile.errors %}
 							            	<p class="errors">{{ error }}</p>
 							            {% endfor %}
-										<p>$50 {{ form.twitter_profile }}</p>
+										<p>$40 {{ form.twitter_profile }}</p>
 									</div>
-									<div class="one_fourth">
+									<div class="one_fifth">
 										<i class="icon-instagram" style="font-size: 72px;"></i>
 										<p>Instagram</p>
 										{% for error in form.instagram_profile.errors %}
@@ -160,7 +204,16 @@
 										<p>$50 {{ form.instagram_profile }}</p>
 
 									</div>
-									<div class="one_fourth last">
+									<div class="one_fifth">
+										<i class="icon-linkedin" style="font-size: 72px;"></i>
+										<p>LinkedIn</p>
+										{% for error in form.linkedin_profile.errors %}
+							            	<p class="errors">{{ error }}</p>
+							            {% endfor %}
+										<p>$70 {{ form.linkedin_profile }}</p>
+
+									</div>
+									<div class="one_fifth last">
 										<i class="icon-gears" style="font-size: 72px;"></i>
 										<p>Social Media Strategy</p>
 										{% for error in form.marketing_strategy.errors %}
@@ -197,7 +250,14 @@
 									</div>
 
 					            {% else %}
-									
+									{% if blocks %}
+										<h6><div class="left">Updates go into effect at start of next billing cycle: Jan 1, 2014</div></h6>
+									{% endif %}
+
+									<p><div class="left">Select number of blocks desired for each network. Our team will allocate budget between social media engagement and ad spend for best performance.</div></p>
+					
+									</br>									
+					            	
 					            	{% for error in form.non_field_errors %}
 									    <h3 class="errors">{{error}}</h3>
 										</br>
@@ -208,14 +268,14 @@
 										{% for error in form.facebook_scale.errors %}
 							            	<p class="errors">{{ error }}</p>
 							            {% endfor %}
-										$50 x {{ form.facebook_scale|add_class:"select-button-small"}}
+										$50 / week x {{ form.facebook_scale|add_class:"select-button-small"}}
 										
 										{% for error in form.facebook_url.errors %}
 							            	<p class="errors">{{ error }}</p>
 							            {% endfor %}
 										{{ form.facebook_url|add_class:"text-button-small-dashboard"}}
 										
-										<p style="text-align: left;">Must provide BoostBlocks access through Facebook page settings.</p>
+										<p style="text-align: left;">Must provide BoostBlocks admin access.</p>
 
 									</div>
 									<div class="one_third">
@@ -224,7 +284,7 @@
 										{% for error in form.twitter_scale.errors %}
 							            	<p class="errors">{{ error }}</p>
 							            {% endfor %}
-										$50 x {{ form.twitter_scale|add_class:"select-button-small"}}
+										$50 / week x {{ form.twitter_scale|add_class:"select-button-small"}}
 
 										{% for error in form.twitter_handle.errors %}
 							            	<p class="errors">{{ error }}</p>
@@ -244,7 +304,7 @@
 										{% for error in form.instagram_scale.errors %}
 							            	<p class="errors">{{ error }}</p>
 							            {% endfor %}
-										$50 x {{ form.instagram_scale|add_class:"select-button-small"}}
+										$50 / week x {{ form.instagram_scale|add_class:"select-button-small"}}
 										
 										{% for error in form.instagram_username.errors %}
 							            	<p class="errors">{{ error }}</p>
@@ -261,15 +321,8 @@
 									<div>
 										<div class="clear"></div>
 										<div class="space2"></div>
-										
-										<p><div class="left">Select the number of BoostBlocks you want for each social media platform. This is a recurring weekly charge.</div></p>
-									</div>
-									{% if blocks %}
-										<h6><div class="left"><strong>Note:</strong> Updates go into effect at start of next billing cycle.</div></h6>
-									{% else %}
-										</br></br>
-									{% endif %}
-
+									</div>	
+									
 									<div>
 										<a href="#" class="button small" onclick="$(this).closest('form').submit()">Update</a>		
 									</div>

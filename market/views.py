@@ -142,6 +142,7 @@ def profile(request, ref):
 										'facebook_profile': blocks.facebook_profile,
 										'twitter_profile': blocks.twitter_profile,
 										'instagram_profile': blocks.instagram_profile,
+										'linkedin_profile': blocks.linkedin_profile,
 										'marketing_strategy': blocks.marketing_strategy,
 										'facebook_url': creds.facebook_url,
 										'twitter_handle': creds.twitter_handle,

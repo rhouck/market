@@ -97,6 +97,7 @@ class DashboardForm(forms.Form):
     facebook_profile = forms.BooleanField(required=False)
     twitter_profile = forms.BooleanField(required=False)
     instagram_profile = forms.BooleanField(required=False)
+    linkedin_profile = forms.BooleanField(required=False)
     marketing_strategy = forms.BooleanField(required=False)
 
     scale_choices = (
