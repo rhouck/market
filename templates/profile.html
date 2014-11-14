@@ -30,7 +30,7 @@
 			<div class="heading"><span>Account Info</span></div>
 
 			<div>
-				<p>File Storage:</p>
+				<h5>File Storage:</h5>
 				<p>
 					{% if acct.account_detail.storage %}        	
 	                	{% if acct.account_detail.storage|slice:":5" != 'https' %}
@@ -45,10 +45,27 @@
 			</div>
 			</br>
 			<div>
-				<p>Current period's blocks:</p>
+				
+				
+				{% if builders %}
+					<h5>Profile Builders:</h5>
+					{% for b in builders %}
+						<p>{{ b.0 }} - {{ b.1|date:"M d" }}</p>
+					{% endfor %}
+					</br>
+				{% endif %}
+				
+				<h5>Current period's blocks:</h5>
+				{{ blocks }}
 				{% if not user.chargify_active and not user.staff %}
 					<p>Action Required:</p>
-					<p>activate billing acount <a href="https://boostblocks.chargify.com/h/3562785/subscriptions/new?reference={{ request.session.ref }}">here</a></p>
+					<p>activate billing acount 
+						{% if acct.user.type == 'test' %}
+							<a href="https://boostblocks-dev.chargify.com/h/3597467/subscriptions/new?reference={{ request.session.ref }}">
+						{% else %}
+							<a href="https://boostblocks.chargify.com/h/3562785/subscriptions/new?reference={{ request.session.ref }}">
+						{% endif %}
+							here</a></p>
 				{% elif not blocks %}
 					<p>You have not selected any BoostBlocks for this period.</p>
 				{% else %}
@@ -108,7 +125,12 @@
 				<div>
 					{% if not user.chargify_active and not user.staff %}
 						<p>Action Required:</p>
-						<p>activate billing acount <a href="https://boostblocks.chargify.com/h/3562785/subscriptions/new?reference={{ request.session.ref }}">here</a></p>
+						{% if acct.user.type == 'test' %}
+							<a href="https://boostblocks-dev.chargify.com/h/3597467/subscriptions/new?reference={{ request.session.ref }}">
+						{% else %}
+							<a href="https://boostblocks.chargify.com/h/3562785/subscriptions/new?reference={{ request.session.ref }}">
+						{% endif %}
+							here</a></p>
 					{% elif not blocks %}
 						<p>You have not selected any BoostBlocks for this period.</p>
 					{% else %}
@@ -154,8 +176,7 @@
 					    <div class="tab-content">
 
 		
-							<form method="post" action=""> 
-								{% csrf_token %}
+							
 
 									
 					        <div id="tab1" class="tab">
@@ -167,11 +188,16 @@
 					            	<p>The link below will direct you to our Chargify account. Nothing will be charged to your card upon setup and we will never store any of your credit card information</p>
 					            	</br>
 					            	<div>
-										<a href="https://boostblocks.chargify.com/h/3562785/subscriptions/new?reference={{ request.session.ref }}" class="button">Setup</a>		
+										{% if acct.user.type == 'test' %}
+											<a href="https://boostblocks-dev.chargify.com/h/3597467/subscriptions/new?reference={{ request.session.ref }}" class="button">Setup</a>
+										{% else %}
+											<a href="https://boostblocks.chargify.com/h/3562785/subscriptions/new?reference={{ request.session.ref }}" class="button">Setup</a>
+										{% endif %}	
 									</div>
 
 					            {% else %}
-					            	
+					        		<form method="post" action=""> 
+										{% csrf_token %}    	
 									
 				            		{% for error in form.non_field_errors %}
 									    <h3 class="errors">{{error}}</h3>
@@ -232,9 +258,11 @@
 									</div>
 									<div>
 										
-										<a href="#" class="button small" onclick="$(this).closest('form').submit()">Update</a>		
-									</div>				            	
-
+										<a href="#" class="button small" onclick="$(this).closest('form').submit(confirm('Your card will be charged for any selected profile builder blocks. Please confirm you would like to continue.'))">Submit</a>
+									
+									</div>
+									<input type="hidden" name="type" value="builder">				            	
+									</form>
 					            {% endif %}
 					        </div>
 					 
@@ -246,7 +274,11 @@
 					            	<p>The link below will direct you to our Chargify account. Nothing will be charged to your card upon setup and we will never store any of your credit card information</p>
 					            	</br>
 					            	<div>
-										<a href="https://boostblocks.chargify.com/h/3562785/subscriptions/new?reference={{ request.session.ref }}" class="button">Setup</a>		
+										{% if acct.user.type == 'test' %}
+											<a href="https://boostblocks-dev.chargify.com/h/3597467/subscriptions/new?reference={{ request.session.ref }}" class="button">Setup</a>
+										{% else %}
+											<a href="https://boostblocks.chargify.com/h/3562785/subscriptions/new?reference={{ request.session.ref }}" class="button">Setup</a>
+										{% endif %}			
 									</div>
 
 					            {% else %}
@@ -257,6 +289,8 @@
 									<p><div class="left">Select number of blocks desired for each network. Our team will allocate budget between social media engagement and ad spend for best performance.</div></p>
 					
 									</br>									
+					            	<form method="post" action=""> 
+										{% csrf_token %}
 					            	
 					            	{% for error in form.non_field_errors %}
 									    <h3 class="errors">{{error}}</h3>
@@ -326,9 +360,8 @@
 									<div>
 										<a href="#" class="button small" onclick="$(this).closest('form').submit()">Update</a>		
 									</div>
-									
-
-
+									<input type="hidden" name="type" value="blocks">
+									</form>		
 					            {% endif %}
 					        </div>
 					 		
@@ -349,7 +382,7 @@
 						    		
 						    	</div> 
 					        </div>
-					        </form>
+					        
 					    </div>
 
 					    <ul class="tab-links">

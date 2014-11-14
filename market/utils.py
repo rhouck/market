@@ -26,6 +26,8 @@ class AccountDetails(Object):
     pass
 class SelectedBlocks(Object):
     pass
+class ProfileBuilder(Object):
+    pass
 
 class Account(object):
     """
@@ -40,7 +42,6 @@ class Account(object):
     	self.user = None
     	self.account_detail = None
     	self.company_profile = None
-
 
 def get_count():
 
@@ -349,19 +350,35 @@ def reset_parse_user_pass(email):
 
 
 def set_blocks(user, form):
+	# update scale of boost blocks
 	blocks = SelectedBlocks(user=user, 
 							user_id=user.objectId,
-							facebook_profile=form['facebook_profile'],
-							twitter_profile=form['twitter_profile'],
-							instagram_profile=form['instagram_profile'],
-							marketing_strategy=form['marketing_strategy'],
-							linkedin_profile=form['linkedin_profile'],
+							#facebook_profile=form['facebook_profile'],
+							#twitter_profile=form['twitter_profile'],
+							#instagram_profile=form['instagram_profile'],
+							#marketing_strategy=form['marketing_strategy'],
+							#linkedin_profile=form['linkedin_profile'],
 							facebook_scale=int(form['facebook_scale']),
 							twitter_scale=int(form['twitter_scale']),
 							instagram_scale=int(form['instagram_scale']),
 							)
 	blocks.save()
+	
 	return blocks
+
+def record_profile_builder(user, form):
+	# record request for profile builder blocks if exist
+	if form['facebook_profile'] or form['twitter_profile'] or form['instagram_profile'] or form['marketing_strategy'] or form['linkedin_profile']:
+		builder = ProfileBuilder(user=user, 
+								user_id=user.objectId,
+								facebook_profile=form['facebook_profile'],
+								twitter_profile=form['twitter_profile'],
+								instagram_profile=form['instagram_profile'],
+								marketing_strategy=form['marketing_strategy'],
+								linkedin_profile=form['linkedin_profile'],
+								)
+		builder.save()
+	return True
 
 def get_current_blocks(user):
 	blocks = SelectedBlocks.Query.filter(user_id=user.objectId).order_by("-createdAt")
@@ -370,6 +387,25 @@ def get_current_blocks(user):
 		return blocks[0]
 	else:
 		return None
+
+def get_recent_profile_builders(user):
+	now = datetime.datetime.now()
+	week_ago = now - datetime.timedelta(days=7)
+	builders = ProfileBuilder.Query.filter(user_id=user.objectId, createdAt__gte=week_ago).order_by("createdAt")
+	builders_list = []
+	
+	for b in builders:
+		for i in ('facebook_profile', 'twitter_profile', 'instagram_profile', 'marketing_strategy', 'linkedin_profile'): 
+			if getattr(b, i):
+				split = i.split('_')
+				name = ""
+				for s in split:
+					name += "%s " % (s.title())
+				builders_list.append((name, b.createdAt))
+	return builders_list
+			
+
+	
 
 def set_profile_credentials(user, form):
 	acct = AccountDetails.Query.get(user_id=user.objectId)	

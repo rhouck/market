@@ -108,9 +108,9 @@ class DashboardForm(forms.Form):
         ('4', '4'),
         ('5', '5'),
     )
-    facebook_scale = forms.ChoiceField(choices=scale_choices)
-    twitter_scale = forms.ChoiceField(choices=scale_choices)
-    instagram_scale = forms.ChoiceField(choices=scale_choices)
+    facebook_scale = forms.ChoiceField(required=False, choices=scale_choices)
+    twitter_scale = forms.ChoiceField(required=False, choices=scale_choices)
+    instagram_scale = forms.ChoiceField(required=False, choices=scale_choices)
 
     facebook_url = forms.CharField(required=False, max_length=200, widget=forms.TextInput(attrs={'placeholder': 'Facebook Page URL'}))
     twitter_handle = forms.CharField(required=False, max_length=200, widget=forms.TextInput(attrs={'placeholder': 'Twitter Handle'}))
