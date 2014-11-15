@@ -174,10 +174,6 @@
 					<div class="tabs">
 
 					    <div class="tab-content">
-
-		
-							
-
 									
 					        <div id="tab1" class="tab">
 				        		</br>
@@ -196,7 +192,10 @@
 									</div>
 
 					            {% else %}
-					        		<form method="post" action=""> 
+
+					            	<p><div class="left">If you would like us to set up or update your social media profiles, let us know here. We provide the initial social media strategy free of charge but if you wish to revise this strategy you can select the Socail Media Strategy option.</p></div>
+										</br>
+					        		<form method="post" id="builders" action=""> 
 										{% csrf_token %}    	
 									
 				            		{% for error in form.non_field_errors %}
@@ -251,14 +250,10 @@
 									<div>
 										<div class="clear"></div>
 										<div class="space2"></div>
-										<p><div class="left">If you haven't set up your social media profiles or would like us to update them, let us know here. We ask that you provide us the appropriate cover and profile images if you have them.</p></div>
-										</br>
-										<p><div class="left">We provide the initial social media strategy free of charge. When you wish to revise this strategy let us know by selecting the Socail Media Strategy option.</div></p>
-										</br></br>
 									</div>
 									<div>
 										
-										<a href="#" class="button small" onclick="$(this).closest('form').submit(confirm('Your card will be charged for any selected profile builder blocks. Please confirm you would like to continue.'))">Submit</a>
+										<a href="#" id="submit_button" class="button small">Submit</a>
 									
 									</div>
 									<input type="hidden" name="type" value="builder">				            	
@@ -408,4 +403,16 @@
 
 </div>
 
+{% endblock %}
+
+{% block footer %}
+	<script type="text/javascript">
+		$(function() {
+		   $("#submit_button").click(function(){
+		      if (confirm("If you've selected a profile builder block, your card will be charged. Click OK to proceed.")){ 
+		         $('form#builders').submit();
+		      }
+		   });
+		});
+	</script>
 {% endblock %}
