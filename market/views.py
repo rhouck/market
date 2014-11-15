@@ -137,7 +137,6 @@ def profile(request, ref):
 			creds = set_profile_credentials(user, cd)
 		else:
 			builder = record_profile_builder(user, cd)
-			result = django_rq.enqueue(profile_builder_alert_email, acct, cd)
 
 	if not blocks:
 		blocks = get_current_blocks(user)
@@ -412,12 +411,8 @@ def company_description(request, ref):
 
 
 def test(request):
-	pass
-	"""
-	create_acct_detail_rows()
-	return render_to_response('test.html', {}, context_instance=RequestContext(request))
-	"""
-	
+	result = django_rq.enqueue(profile_builder_alert_email)
+	return HttpResponse(True)
 
 def philosophy(request):
 	return render_to_response('philosophy.html', {}, context_instance=RequestContext(request))

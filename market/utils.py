@@ -397,42 +397,6 @@ def set_blocks(user, form):
 	
 	return blocks
 
-def profile_builder_alert_email(acct, form):
-
-	subject = "%s ordered profile builder blocks" % (acct.company_profile.company)
-	title = "%s ordered profile builder blocks" % (acct.company_profile.company)
-	body = "Email: %s\n\n" % (acct.user.email)
-	try:
-		body += "Name: %s\n\n" % (acct.user.full_name)
-	except:
-		pass
-	body += "Company: %s\n\n" % (acct.company_profile.company)
-	body += "\n\nThe profile builder blocks:\n\n"
-	for i in ('facebook_profile', 'twitter_profile', 'instagram_profile', 'marketing_strategy', 'linkedin_profile'): 
-			if form[i]:
-				split = i.split('_')
-				name = ""
-				for s in split:
-					name += "%s " % (s.title())
-				body += "%s\n" % (name)
-
-	plaintext = get_template('email_template/admin_com.txt')
-	htmly     = get_template('email_template/admin_com.html')
-	d = Context({'title': title, 'body': body,})
-
-	text_content = plaintext.render(d)
-	html_content = htmly.render(d)
-
-	html_content = inline_css(html_content)
-
-	connection = get_connection(username=DEFAULT_FROM_EMAIL, password=EMAIL_HOST_PASSWORD, fail_silently=False)
-	if LIVE:
-		msg = EmailMultiAlternatives(subject, text_content, DEFAULT_FROM_EMAIL, [DEFAULT_FROM_EMAIL, 'ryan@boostblocks.com','sarina@boostblocks.com'], [HIGHRISE_CONFIG['email']], connection=connection)
-	else:
-		msg = EmailMultiAlternatives(subject, text_content, DEFAULT_FROM_EMAIL, [DEFAULT_FROM_EMAIL,], connection=connection)
-	msg.attach_alternative(html_content, "text/html")
-	msg.send()
-
 
 def record_profile_builder(user, form):
 	# record request for profile builder blocks if exist
@@ -481,3 +445,64 @@ def set_profile_credentials(user, form):
 		setattr(acct, i, form[i])
 	acct.save()
 	return acct
+
+
+
+"""
+These functions send email notification of customer activity to be scheduled in cron jobs
+"""
+def profile_builder_alert_email():
+
+	now = current_time_aware()
+	yesterday = now - datetime.timedelta(days=1)
+
+	builder = ProfileBuilder.Query.filter(createdAt__gte=yesterday)
+	builder = [b for b in builder]
+
+	if builder:
+			
+		subject = "New profile builder blocks ordered"
+		title = "New profile builder blocks ordered"
+		body = ""
+
+		for b in builder:
+
+			body += "Email: %s\n" % (b.user['email'])
+			try:
+				body += "Name: %s\n" % (b.user['full_name'])
+			except:
+				pass
+			try:
+				company = CompanyProfiles.Query.get(user_id=str(b.user_id))
+				body += "Company: %s\n" % (company.company)
+			except:
+				pass
+
+			for i in ('facebook_profile', 'twitter_profile', 'instagram_profile', 'marketing_strategy', 'linkedin_profile'): 
+					if getattr(b, i):
+						split = i.split('_')
+						name = ""
+						for s in split:
+							name += "%s " % (s.title())
+						body += "%s\n" % (name)
+			body += "\n\n\n"
+			
+		
+		plaintext = get_template('email_template/admin_com.txt')
+		htmly     = get_template('email_template/admin_com.html')
+		d = Context({'title': title, 'body': body,})
+
+		text_content = plaintext.render(d)
+		html_content = htmly.render(d)
+
+		html_content = inline_css(html_content)
+
+		connection = get_connection(username=DEFAULT_FROM_EMAIL, password=EMAIL_HOST_PASSWORD, fail_silently=False)
+		if LIVE:
+			msg = EmailMultiAlternatives(subject, text_content, DEFAULT_FROM_EMAIL, [DEFAULT_FROM_EMAIL, 'ryan@boostblocks.com','sarina@boostblocks.com'], [HIGHRISE_CONFIG['email']], connection=connection)
+		else:
+			msg = EmailMultiAlternatives(subject, text_content, DEFAULT_FROM_EMAIL, [DEFAULT_FROM_EMAIL,], connection=connection)
+		msg.attach_alternative(html_content, "text/html")
+		msg.send()
+		
+	
