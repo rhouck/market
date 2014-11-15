@@ -137,7 +137,8 @@ def profile(request, ref):
 			creds = set_profile_credentials(user, cd)
 		else:
 			builder = record_profile_builder(user, cd)
-		
+			result = django_rq.enqueue(profile_builder_alert_email, acct, cd)
+
 	if not blocks:
 		blocks = get_current_blocks(user)
 		creds = acct.account_detail
@@ -343,12 +344,14 @@ def activate(request):
 			if acct.account_detail.chargify_active:
 				raise Exception("User Chargify account already activated.")	
 
-			user.sessionToken = request.session['token']
-			user.chargify_id = cd['id']
-			user.save()
+			acct.user.sessionToken = request.session['token']
+			acct.user.chargify_id = cd['id']
+			acct.user.save()
 			acct.account_detail.chargify_active = True
 			acct.account_detail.chargify_per_end = current_time_aware() + datetime.timedelta(days=7)
 			acct.account_detail.save()
+
+			result = django_rq.enqueue(confirmed_payments_email, acct)
 
 			rev = str(reverse('dashboard', kwargs={'ref': cd['ref']}))
 			return HttpResponseRedirect(rev)	

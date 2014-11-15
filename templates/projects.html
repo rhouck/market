@@ -57,10 +57,12 @@
 
 			<div class="one_fourth">
 				<p>FB page: 
-				{% if i.account_detail.facebook_url|slice:":5" != 'https' %}
-					<a href="https://{{ i.account_detail.facebook_url }}" target="_blank">here</a>
-				{% else %}
-					<p><a href="{{ i.account_detail.facebook_url }}" target="_blank">here</a>
+				{% if i.account_detail.facebook_url %}
+					{% if i.account_detail.facebook_url|slice:":5" != 'https' %}
+						<a href="https://{{ i.account_detail.facebook_url }}" target="_blank">here</a>
+					{% else %}
+						<p><a href="{{ i.account_detail.facebook_url }}" target="_blank">here</a>
+					{% endif %}
 				{% endif %}
 				</p>
 				<p>Twit handle: {{ i.account_detail.twitter_handle }}</p>

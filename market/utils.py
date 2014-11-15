@@ -71,6 +71,35 @@ def send_welcome_email(to_email, count, ref):
     msg.attach_alternative(html_content, "text/html")
     msg.send()
 
+def confirmed_payments_email(acct):
+
+	subject = "New customer payment information received"
+	title = "New customer payment information received"
+	body = "Email: %s\n\n" % (acct.user.email)
+	try:
+		body += "Name: %s\n\n" % (acct.user.full_name)
+	except:
+		pass
+	body += "Company: %s\n\n" % (acct.company_profile.company)
+
+	plaintext = get_template('email_template/admin_com.txt')
+	htmly     = get_template('email_template/admin_com.html')
+	d = Context({'title': title, 'body': body,})
+
+	text_content = plaintext.render(d)
+	html_content = htmly.render(d)
+
+	html_content = inline_css(html_content)
+
+	connection = get_connection(username=DEFAULT_FROM_EMAIL, password=EMAIL_HOST_PASSWORD, fail_silently=False)
+	if LIVE:
+		msg = EmailMultiAlternatives(subject, text_content, DEFAULT_FROM_EMAIL, [DEFAULT_FROM_EMAIL, 'ryan@boostblocks.com','sarina@boostblocks.com'], [HIGHRISE_CONFIG['email']], connection=connection)
+	else:
+		msg = EmailMultiAlternatives(subject, text_content, DEFAULT_FROM_EMAIL, [DEFAULT_FROM_EMAIL,], connection=connection)
+	msg.attach_alternative(html_content, "text/html")
+	msg.send()
+
+
 def confirm_referral(ref):
 	
 	referrer = ParseUser.Query.all().filter(ref=ref)
@@ -219,6 +248,7 @@ def bg_cust_setup(inps, count, ref, referred_by):
 	except:
 		pass
 
+
 def gen_alphanum_key():
     key = ''
     for i in range(8):
@@ -366,6 +396,43 @@ def set_blocks(user, form):
 	blocks.save()
 	
 	return blocks
+
+def profile_builder_alert_email(acct, form):
+
+	subject = "%s ordered profile builder blocks" % (acct.company_profile.company)
+	title = "%s ordered profile builder blocks" % (acct.company_profile.company)
+	body = "Email: %s\n\n" % (acct.user.email)
+	try:
+		body += "Name: %s\n\n" % (acct.user.full_name)
+	except:
+		pass
+	body += "Company: %s\n\n" % (acct.company_profile.company)
+	body += "\n\nThe profile builder blocks:\n\n"
+	for i in ('facebook_profile', 'twitter_profile', 'instagram_profile', 'marketing_strategy', 'linkedin_profile'): 
+			if form[i]:
+				split = i.split('_')
+				name = ""
+				for s in split:
+					name += "%s " % (s.title())
+				body += "%s\n" % (name)
+
+	plaintext = get_template('email_template/admin_com.txt')
+	htmly     = get_template('email_template/admin_com.html')
+	d = Context({'title': title, 'body': body,})
+
+	text_content = plaintext.render(d)
+	html_content = htmly.render(d)
+
+	html_content = inline_css(html_content)
+
+	connection = get_connection(username=DEFAULT_FROM_EMAIL, password=EMAIL_HOST_PASSWORD, fail_silently=False)
+	if LIVE:
+		msg = EmailMultiAlternatives(subject, text_content, DEFAULT_FROM_EMAIL, [DEFAULT_FROM_EMAIL, 'ryan@boostblocks.com','sarina@boostblocks.com'], [HIGHRISE_CONFIG['email']], connection=connection)
+	else:
+		msg = EmailMultiAlternatives(subject, text_content, DEFAULT_FROM_EMAIL, [DEFAULT_FROM_EMAIL,], connection=connection)
+	msg.attach_alternative(html_content, "text/html")
+	msg.send()
+
 
 def record_profile_builder(user, form):
 	# record request for profile builder blocks if exist
