@@ -389,7 +389,7 @@ def get_current_blocks(user):
 		return None
 
 def get_recent_profile_builders(user):
-	now = datetime.datetime.now()
+	now = current_time_aware()
 	week_ago = now - datetime.timedelta(days=7)
 	builders = ProfileBuilder.Query.filter(user_id=user.objectId, createdAt__gte=week_ago).order_by("createdAt")
 	builders_list = []

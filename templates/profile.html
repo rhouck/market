@@ -56,10 +56,9 @@
 				{% endif %}
 				
 				<h5>Current period's blocks:</h5>
-				{{ blocks }}
-				{% if not user.chargify_active and not user.staff %}
-					<p>Action Required:</p>
-					<p>activate billing acount 
+			
+				{% if not acct.account_detail.chargify_active and not acct.user.staff %}
+					<p>Activate billing acount 
 						{% if acct.user.type == 'test' %}
 							<a href="https://boostblocks-dev.chargify.com/h/3597467/subscriptions/new?reference={{ request.session.ref }}">
 						{% else %}
@@ -69,28 +68,16 @@
 				{% elif not blocks %}
 					<p>You have not selected any BoostBlocks for this period.</p>
 				{% else %}
+					<p>Period ending {{ acct.account_detail.chargify_per_end|date:"M d" }}</p>
 					
-					{% if blocks.facebook_profile %}
-						<p>Facebook Profile: $50</p>
-					{% endif %}
-					{% if blocks.twitter_profile %}
-						<p>Twitter Profile: $50</p>
-					{% endif %}
-					{% if blocks.instagram_profile %}
-						<p>Instagram Profile: $50</p>
-					{% endif %}
-					{% if blocks.social_media_strategy %}
-						<p>Social Media Strategy: $100</p>
-					{% endif %}
-
 					{% if blocks.facebook_scale > 0 %}
-						<p>Facebook Blocks:</p><p>{{ blocks.facebook_scale }} x $50</p>
+						<p>Facebook Blocks: {{ blocks.facebook_scale }}</p>
 					{% endif %}
 					{% if blocks.twitter_scale > 0 %}
-						<p>Twitter Blocks:</p><p>{{ blocks.twitter_scale }} x $50</p>
+						<p>Twitter Blocks: {{ blocks.twitter_scale }}</p>
 					{% endif %}
 					{% if blocks.instagram_scale > 0 %}
-						<p>Instagram Blocks:</p><p>{{ blocks.instagram_scale }} x $50</p>
+						<p>Instagram Blocks: {{ blocks.instagram_scale }}</p>
 					{% endif %}
 
 					
@@ -123,7 +110,7 @@
 				</div>
 				<p class="accordion_header">Next Period's Blocks</p>
 				<div>
-					{% if not user.chargify_active and not user.staff %}
+					{% if not acct.chargify_active and not acct.user.staff %}
 						<p>Action Required:</p>
 						{% if acct.user.type == 'test' %}
 							<a href="https://boostblocks-dev.chargify.com/h/3597467/subscriptions/new?reference={{ request.session.ref }}">
@@ -178,7 +165,7 @@
 					        <div id="tab1" class="tab">
 				        		</br>
 				        		
-				        		{% if not user.chargify_active and not user.staff %}
+				        		{% if not acct.account_detail.chargify_active and not acct.user.staff %}
 					            	<h1>Activate your billing account</h1>
 					            	<p>Before we can begin, we need you need to enter your billing information.</p>
 					            	<p>The link below will direct you to our Chargify account. Nothing will be charged to your card upon setup and we will never store any of your credit card information</p>
@@ -263,7 +250,7 @@
 					 
 					        <div id="tab2" class="tab active">
 				        		</br>
-				        		{% if not user.chargify_active and not user.staff %}
+				        		{% if not acct.account_detail.chargify_active and not acct.user.staff %}
 					            	<h1>Activate your billing account</h1>
 					            	<p>Before we can begin, we need you need to enter your billing information.</p>
 					            	<p>The link below will direct you to our Chargify account. Nothing will be charged to your card upon setup and we will never store any of your credit card information</p>
@@ -278,7 +265,7 @@
 
 					            {% else %}
 									{% if blocks %}
-										<h6><div class="left">Updates go into effect at start of next billing cycle: Jan 1, 2014</div></h6>
+										<h6><div class="left">Updates go into effect at start of next billing cycle: {{ acct.account_detail.chargify_per_end|date:"M d" }}</div></h6>
 									{% endif %}
 
 									<p><div class="left">Select number of blocks desired for each network. Our team will allocate budget between social media engagement and ad spend for best performance.</div></p>

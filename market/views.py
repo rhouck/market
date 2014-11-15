@@ -155,7 +155,7 @@ def profile(request, ref):
 										'instagram_password': creds.instagram_password,
 										})
 		#return HttpResponse(str(blocks.__dict__))
-	return render_to_response('profile.html', {'form': form, 'blocks': blocks, 'user': user, 'acct': acct, 'ref': ref, 'scope': 'external', 'builders': builders}, context_instance=RequestContext(request))
+	return render_to_response('profile.html', {'form': form, 'blocks': blocks, 'acct': acct, 'ref': ref, 'scope': 'external', 'builders': builders}, context_instance=RequestContext(request))
 
 	
 
@@ -319,20 +319,29 @@ def activate(request):
 				raise Exception("Session token unavailable.")
 			
 			cd = form.cleaned_data
-
+			"""
 			user = ParseUser.Query.all().filter(ref=cd['ref'])
 			user = [u for u in user]
 			if not user:
 				raise Exception("User not registered in system.")
-			
-			user = user[0]		
-			if user.chargify_active:
+			user = user[0]
+			"""
+			try:
+				user = get_signup_by_ref(cd['ref'])
+			except:
+				raise Exception("User not registered in system.")
+
+			acct = get_acct_details(user)
+
+			if acct.account_detail.chargify_active:
 				raise Exception("User Chargify account already activated.")	
 
 			user.sessionToken = request.session['token']
-			user.chargify_active = True
 			user.chargify_id = cd['id']
 			user.save()
+			acct.account_detail.chargify_active = True
+			acct.account_detail.chargify_per_end = current_time_aware() + datetime.timedelta(days=7)
+			acct.account_detail.save()
 
 			rev = str(reverse('dashboard', kwargs={'ref': cd['ref']}))
 			return HttpResponseRedirect(rev)	
