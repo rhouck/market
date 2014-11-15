@@ -153,9 +153,10 @@ def alert_admin_new_signup(inps):
 
 	connection = get_connection(username=DEFAULT_FROM_EMAIL, password=EMAIL_HOST_PASSWORD, fail_silently=False)
 	if LIVE:
-		msg = EmailMultiAlternatives(subject, text_content, DEFAULT_FROM_EMAIL, [DEFAULT_FROM_EMAIL], [HIGHRISE_CONFIG['email']], connection=connection)
+		msg = EmailMultiAlternatives(subject, text_content, DEFAULT_FROM_EMAIL, [DEFAULT_FROM_EMAIL, 'ryan@boostblocks.com','sarina@boostblocks.com'], [HIGHRISE_CONFIG['email']], connection=connection)
 	else:
-		msg = EmailMultiAlternatives(subject, text_content, DEFAULT_FROM_EMAIL, [DEFAULT_FROM_EMAIL], connection=connection)
+		pass
+		#msg = EmailMultiAlternatives(subject, text_content, DEFAULT_FROM_EMAIL, [DEFAULT_FROM_EMAIL, 'ryan@boostblocks.com'], connection=connection)
 	msg.attach_alternative(html_content, "text/html")
 	msg.send()
 
@@ -163,7 +164,7 @@ def build_comp_profile(ref, inps):
 	
 	signup = get_signup_by_ref(ref)
 
-	acct = AccountDetails(user_id=signup.objectId, user=signup, active=False, promo=inps['promo'])
+	acct = AccountDetails(user_id=signup.objectId, user=signup, active=False, promo=inps['promo'], chargify_active=False, blocks_enabled=False,)
 	acct.save()
 
 	comp = CompanyProfiles(user=signup,
@@ -290,8 +291,8 @@ def parse_login(email, password):
 	header = u.session_header()
 	
 	response = {'token': header['X-Parse-Session-Token'],
-				'chargify_active': u.chargify_active,
 				}
+				#'chargify_active': u.chargify_active,
 				#'active': u.active,
 				#'user': u,
 	

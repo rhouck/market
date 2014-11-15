@@ -11,7 +11,7 @@ class LoginForm(ResetForm):
     password = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs={'placeholder': 'Your Password'}))
 
 class SubscribeForm(LoginForm):
-    
+    full_name = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'First and last name'}))
     company = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Company name'}))
     website = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Link to company website'}))
     soc_one = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Link to company Twitter'}), required=False,)
@@ -129,6 +129,7 @@ class UpdateAdminForm(forms.Form):
     #goal = forms.CharField(required=False)
     #strategy = forms.CharField(required=False, widget=TinyMCE(attrs={'cols': 40, 'rows': 20}))
     active = forms.BooleanField(required=False)
+    blocks_enabled = forms.BooleanField(required=False)
 
 class CompDescForm(forms.Form):
     storage = forms.CharField(required=False)

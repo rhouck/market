@@ -155,7 +155,12 @@
 					</br>
 					<h3>Create account</h3>
 					<p>You will be asked to verify your email address</p>
-				
+						
+						{% for error in form.full_name.errors %}
+	                    	<p class="errors">{{ error }}</p>
+	                    {% endfor %}
+						{{ form.full_name|add_class:"text-button"}}
+
 						{% for error in form.email.errors %}
 	                    	<p class="errors">{{ error }}</p>
 	                    {% endfor %}

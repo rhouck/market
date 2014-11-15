@@ -48,12 +48,18 @@ def signup(request):
 			cd = form.cleaned_data
 			
 			# check if email already exists
-			
+			"""
 			existing = ParseUser.Query.all().filter(email=cd['email'])
 			existing = [e for e in existing]
 			if existing:
 				raise Exception("Email already registered in system.")
-					
+			"""
+			try:
+				existing = get_parse_user_by_email(cd['email'])		
+				raise Exception("Email already registered in system.")
+			except:
+				pass
+
 			# get user count
 			count = get_count()
 
@@ -70,11 +76,11 @@ def signup(request):
 			signup = ParseUser.signup(email, 
 										cd['password'], 
 										email=email, 
+										full_name=cd['full_name'],
 										ref=ref, 
 										count=count, 
 										type=env_type, 
 										highrise_id=highrise_id, 
-										chargify_active=False, 
 										staff=False)
 			
 			result = django_rq.enqueue(bg_cust_setup, cd, count, ref, referred_by)
@@ -165,9 +171,9 @@ def login(request):
 	inputs = request.POST if request.POST else None
 	form = LoginForm(inputs)
 	try:
-		
-		if (inputs) and form.is_valid():
 			
+		if (inputs) and form.is_valid():
+				
 			cd = form.cleaned_data
 			
 			token = parse_login(cd['email'], cd['password'])
@@ -288,13 +294,14 @@ def projects(request):
 		form = UpdateAdminForm(inputs)
 		
 		if (inputs) and form.is_valid():
+			cd = form.cleaned_data
 			
-			try:
-				cd = form.cleaned_data
+			try:	
 				user = get_signup_by_ref(cd['ref'])
 				acct = get_acct_details(user)
 				#acct.account_detail.strategy = cd['strategy']
 				acct.account_detail.active = cd['active']
+				acct.account_detail.blocks_enabled = cd['blocks_enabled']
 				#acct.account_detail.goal = cd['goal']
 				acct.account_detail.save()
 			except:

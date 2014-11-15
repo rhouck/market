@@ -121,7 +121,7 @@
 
 			<div class="one_fourth last">	
 				
-				<p>Payments Setup: {{ i.user.chargify_active }}</p>
+				<p>Payments Setup: {{ i.account_detail.chargify_active }}</p>
 
 				{% for error in form.active.errors %}
                 	<p class="errors">{{ error }}</p>
@@ -131,6 +131,16 @@
 					<p>Dashboard Active: <input checked="checked" class="" id="id_active" name="active" type="checkbox"/></p>
 				{% else %}
 					<p>Dashboard Active: <input class="" id="id_active" name="active" type="checkbox"/></p>
+				{% endif %}
+
+				{% for error in form.blocks_enabled.errors %}
+                	<p class="errors">{{ error }}</p>
+                {% endfor %}		
+				
+				{% if i.account_detail.blocks_enabled %}
+					<p>Blocks enabled: <input checked="checked" class="" id="id_blocks_enabled" name="blocks_enabled" type="checkbox"/></p>
+				{% else %}
+					<p>Blocks enabled: <input class="" id="id_blocks_enabled" name="blocks_enabled" type="checkbox"/></p>
 				{% endif %}
 				  
 				<input type="hidden" id="id_ref" name="ref" value="{{ i.user.ref }}">

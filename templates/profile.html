@@ -263,6 +263,9 @@
 										{% endif %}			
 									</div>
 
+					            {% elif not acct.account_detail.blocks_enabled %}
+									<h6><div class="left">Your account is not yet activated</div></h6>
+									<p><div class="left">The BoostBlocks team has not yet enabled your account for purchasing BoostBlocks. This is likely because your social media profiles are not yet complete. You will be notified shortly when your account is open for purchasing BoostBlocks.</div></p>					            	
 					            {% else %}
 									{% if blocks %}
 										<h6><div class="left">Updates go into effect at start of next billing cycle: {{ acct.account_detail.chargify_per_end|date:"M d" }}</div></h6>
