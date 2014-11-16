@@ -413,12 +413,20 @@ def record_profile_builder(user, form):
 	return True
 
 def get_current_blocks(user):
-	blocks = SelectedBlocks.Query.filter(user_id=user.objectId).order_by("-createdAt")
-	blocks = [b for b in blocks]
-	if blocks:
-		return blocks[0]
-	else:
-		return None
+	
+	last_per_end = AccountDetails.Query.get(user_id=user.objectId).chargify_per_end - datetime.timedelta(days=7)
+	blocks_set = {}
+	for i in (('latest', datetime.datetime(3000,1,1,0,0)), ('current', last_per_end)):
+		blocks = SelectedBlocks.Query.filter(user_id=user.objectId, createdAt__lte=i[1]).order_by("-createdAt")
+		blocks = [b for b in blocks]
+		if blocks:
+			blocks_set[i[0]] = blocks[0]
+		else:
+			blocks_set[i[0]] = None
+
+	return blocks_set
+
+
 
 def get_recent_profile_builders(user):
 	now = current_time_aware()

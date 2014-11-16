@@ -55,9 +55,10 @@
 					</br>
 				{% endif %}
 				
-				<h5>Current period's blocks:</h5>
+				
 			
 				{% if not acct.account_detail.chargify_active and not acct.user.staff %}
+					<h5>Current period's blocks:</h5>
 					<p>Activate billing acount 
 						{% if acct.user.type == 'test' %}
 							<a href="https://boostblocks-dev.chargify.com/h/3597467/subscriptions/new?reference={{ request.session.ref }}">
@@ -65,19 +66,20 @@
 							<a href="https://boostblocks.chargify.com/h/3562785/subscriptions/new?reference={{ request.session.ref }}">
 						{% endif %}
 							here</a></p>
-				{% elif not blocks %}
-					<p>You have not selected any BoostBlocks for this period.</p>
+				{% elif not blocks.current %}
+					
 				{% else %}
+					<h5>Current period's blocks:</h5>
 					<p>Period ending {{ acct.account_detail.chargify_per_end|date:"M d" }}</p>
 					
-					{% if blocks.facebook_scale > 0 %}
-						<p>Facebook Blocks: {{ blocks.facebook_scale }}</p>
+					{% if blocks.current.facebook_scale > 0 %}
+						<p>Facebook Blocks: {{ blocks.current.facebook_scale }}</p>
 					{% endif %}
-					{% if blocks.twitter_scale > 0 %}
-						<p>Twitter Blocks: {{ blocks.twitter_scale }}</p>
+					{% if blocks.current.twitter_scale > 0 %}
+						<p>Twitter Blocks: {{ blocks.current.twitter_scale }}</p>
 					{% endif %}
-					{% if blocks.instagram_scale > 0 %}
-						<p>Instagram Blocks: {{ blocks.instagram_scale }}</p>
+					{% if blocks.current.instagram_scale > 0 %}
+						<p>Instagram Blocks: {{ blocks.current.instagram_scale }}</p>
 					{% endif %}
 
 					
@@ -265,9 +267,75 @@
 
 					            {% elif not acct.account_detail.blocks_enabled %}
 									<h6><div class="left">Your account is not yet activated</div></h6>
-									<p><div class="left">The BoostBlocks team has not yet enabled your account for purchasing BoostBlocks. This is likely because your social media profiles are not yet complete. You will be notified shortly when your account is open for purchasing BoostBlocks.</div></p>					            	
+									<p><div class="left">The BoostBlocks team has not yet enabled your account for purchasing BoostBlocks. This is likely because your social media profiles are not yet complete. You will be notified shortly when your account is open for purchasing BoostBlocks.</div></p>	
+									</br>
+									<form method="post" action=""> 
+										{% csrf_token %}
+					            	
+					            	{% for error in form.non_field_errors %}
+									    <h3 class="errors">{{error}}</h3>
+										</br>
+									{% endfor %}
+									<div class="one_third">
+										<i class="icon-facebook-sign" style="font-size: 72px;"></i>	
+										<p>Facebook</p>							
+										
+										{% for error in form.facebook_url.errors %}
+							            	<p class="errors">{{ error }}</p>
+							            {% endfor %}
+										{{ form.facebook_url|add_class:"text-button-small-dashboard"}}
+										
+										<p style="text-align: left;">Must provide BoostBlocks admin access.</p>
+
+									</div>
+									<div class="one_third">
+										<i class="icon-twitter-sign" style="font-size: 72px;"></i>
+										<p>Twitter</p>
+										
+										{% for error in form.twitter_handle.errors %}
+							            	<p class="errors">{{ error }}</p>
+							            {% endfor %}
+										{{ form.twitter_handle|add_class:"text-button-small-dashboard"}}
+
+										{% for error in form.twitter_password.errors %}
+							            	<p class="errors">{{ error }}</p>
+							            {% endfor %}
+										{{ form.twitter_password|add_class:"text-button-small-dashboard"}}
+
+
+									</div>
+									<div class="one_third last">
+										<i class="icon-instagram" style="font-size: 72px;"></i>
+										<p>Instagram</p>
+										
+										{% for error in form.instagram_username.errors %}
+							            	<p class="errors">{{ error }}</p>
+							            {% endfor %}
+										{{ form.instagram_username|add_class:"text-button-small-dashboard"}}
+
+										{% for error in form.instagram_password.errors %}
+							            	<p class="errors">{{ error }}</p>
+							            {% endfor %}
+										{{ form.instagram_password|add_class:"text-button-small-dashboard"}}
+
+
+									</div>
+									<div>
+										<div class="clear"></div>
+										<div class="space2"></div>
+									</div>	
+									
+									<div>
+										<a href="#" class="button small" onclick="$(this).closest('form').submit()">Update</a>		
+									</div>
+									<input type="hidden" name="type" value="creds_only">
+									</form>
+
+
+
 					            {% else %}
-									{% if blocks %}
+
+									{% if blocks.latest %}
 										<h6><div class="left">Updates go into effect at start of next billing cycle: {{ acct.account_detail.chargify_per_end|date:"M d" }}</div></h6>
 									{% endif %}
 
