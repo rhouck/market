@@ -29,7 +29,6 @@ urlpatterns = patterns('',
     url(r'^create-staff/$', 'market.views.createStaff', name='create-staff'),
     url(r'^projects/$', 'market.views.projects', name='projects'),
     url(r'^projects/(?P<ref>[A-Za-z0-9]{8})$', 'market.views.company_description', name='company_description'),
-    url(r'^test/$', 'market.views.test'),
 
     (r'^django-rq/', include('django_rq.urls')),
      (r'^tinymce/', include('tinymce.urls')),
