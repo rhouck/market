@@ -27,7 +27,7 @@
 		
 			<h2><a href="{% url 'dashboard' i.user.ref %}"  target="_blank">{{ i.company_profile.company }}</a></h2>
 			
-			<div class="one_fourth">
+			<div class="one_fifth">
 				<p>SM Presence:</p>
 				{% if i.company_profile.website|slice:":4" != 'http' %}
 					<p><a href="http://{{ i.company_profile.website }}" target="_blank">{{ i.company_profile.website|truncatechars:25 }}</a></p>
@@ -55,7 +55,7 @@
 
 			</div>
 
-			<div class="one_fourth">
+			<div class="one_fifth">
 				<p>FB page: 
 				{% if i.account_detail.facebook_url %}
 					{% if i.account_detail.facebook_url|slice:":5" != 'https' %}
@@ -74,7 +74,7 @@
 
 			</div>
 
-			<div class="one_fourth">
+			<div class="one_fifth">
 				
 				{% comment %}
 					<p>Goal:</p>
@@ -121,7 +121,21 @@
 				
 			</div>
 
-			<div class="one_fourth last">	
+			<div class="one_fifth">	
+				
+				<p>Current Boost Blocks</p>
+
+				
+				{% if i.blocks %}
+					<p>Period End: {{ i.blocks.per_end|date:"M d" }}</p>
+					<p>Facebook: {{ i.blocks.current.facebook_scale }}</p>
+					<p>Twitter: {{ i.blocks.current.twitter_scale }}</p>
+					<p>Instagram: {{ i.blocks.current.instagram_scale }}</p>
+				{% endif %}
+			</div>
+
+
+			<div class="one_fifth last">	
 				
 				<p>Payments Setup: {{ i.account_detail.chargify_active }}</p>
 

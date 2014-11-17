@@ -138,7 +138,7 @@ def profile(request, ref):
 	acct = get_acct_details(user)
 	builders = get_recent_profile_builders(user)
 	blocks = get_current_blocks(user)
-	
+	#return HttpResponse(str(blocks))
 	initial = {'facebook_url': acct.account_detail.facebook_url,
 				'twitter_handle': acct.account_detail.twitter_handle,
 				'twitter_password': acct.account_detail.twitter_password,
@@ -401,7 +401,8 @@ def company_description(request, ref):
 
 
 def test(request):
-	result = django_rq.enqueue(profile_builder_alert_email)
+	#result = django_rq.enqueue(profile_builder_alert_email)
+	result = django_rq.enqueue(check_block_updates)
 	return HttpResponse(True)
 
 def philosophy(request):

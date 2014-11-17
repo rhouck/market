@@ -360,7 +360,14 @@ def get_acct_details(user):
 def get_accts():
 	users = ParseUser.Query.filter(staff=False)
 	accts = [get_acct_details(user) for user in users]
-	return accts
+	accts_blocks = []
+	for a in accts:
+		if a.account_detail.chargify_active:
+			a.blocks = get_current_blocks(a.user)
+		else:
+			a.blocks = None
+		accts_blocks.append(a)
+	return accts_blocks
 
 
 def user_is_active(email):
@@ -414,8 +421,16 @@ def record_profile_builder(user, form):
 
 def get_current_blocks(user):
 	
-	last_per_end = AccountDetails.Query.get(user_id=user.objectId).chargify_per_end - datetime.timedelta(days=7)
-	blocks_set = {}
+	try:
+		test = user.objectId 
+	except:
+		user = ParseUser.Query.get(objectId=str(user))
+
+	per_end = AccountDetails.Query.get(user_id=user.objectId).chargify_per_end
+	last_per_end = per_end - datetime.timedelta(days=7)
+	
+	blocks_set = {'per_end': per_end}
+
 	for i in (('latest', datetime.datetime(3000,1,1,0,0)), ('current', last_per_end)):
 		blocks = SelectedBlocks.Query.filter(user_id=user.objectId, createdAt__lte=i[1]).order_by("-createdAt")
 		blocks = [b for b in blocks]
@@ -423,10 +438,16 @@ def get_current_blocks(user):
 			blocks_set[i[0]] = blocks[0]
 		else:
 			blocks_set[i[0]] = None
-
+	
+	# show changes to block selection from prior period
+	if blocks_set['latest'] and blocks_set['current']:
+		blocks_set['change'] = {}
+		for i in ('facebook_scale', 'twitter_scale', 'instagram_scale'):
+			blocks_set['change'][i] = getattr(blocks_set['latest'], i) - getattr(blocks_set['current'], i)
+	else:
+		blocks_set['change'] = None		
+	
 	return blocks_set
-
-
 
 def get_recent_profile_builders(user):
 	now = current_time_aware()
@@ -512,5 +533,87 @@ def profile_builder_alert_email():
 			msg = EmailMultiAlternatives(subject, text_content, DEFAULT_FROM_EMAIL, [DEFAULT_FROM_EMAIL,], connection=connection)
 		msg.attach_alternative(html_content, "text/html")
 		msg.send()
+
+def check_block_updates():
+	
+	now = current_time_aware()
+	subject = title = "Updates to customer blocks"
+	body = ""
+
+	def build_email_body_by_date(accts, update_per_end=False):
+		body = ""
+		for a in accts:
+			user = get_parse_user_by_email(a.user['email'])
+			blocks = get_current_blocks(user)
+			if blocks['latest']:
+				body += "Email: %s\n" % (user.email)
+				try:
+					body += "Name: %s\n" % (user['full_name'])
+				except:
+					pass
+				try:
+					company = CompanyProfiles.Query.get(user_id=str(a.user_id))
+					body += "Company: %s\n" % (company.company)
+				except:
+					pass
+
+				for i in ('facebook_scale', 'twitter_scale', 'instagram_scale'):
+					body += "%s - set to: %s" % (i, getattr(blocks['latest'],i))
+					try:
+						body +=  " (change from last period: %s)" % (blocks['change'][i])
+					except:
+						pass
+					body += "\n"
+				body += "\n\n"
 		
+			if update_per_end:
+				# update billing period end
+				a.chargify_per_end += datetime.timedelta(days=7)
+				a.save()	
+		
+		return body	
+
+	# update billing period and show updates to blocks
+	accts = AccountDetails.Query.filter(chargify_active=True, chargify_per_end__lte=now)
+	accts = [a for a in accts]
+	if accts:
+		body += "Today's block updates:\n\n"
+		body += build_email_body_by_date(accts, update_per_end=True)
+		body += "\n\n\n"		
+		
+	# show expected updates to blocks
+	accts = AccountDetails.Query.filter(chargify_active=True, chargify_per_end__lte=(now+datetime.timedelta(days=1)), chargify_per_end__gte=now)
+	accts = [a for a in accts]
+	if accts:
+		body += "Tomorrow's expected block updates:\n\n"
+		body += build_email_body_by_date(accts)
+		body += "\n\n\n"
+
+	accts = AccountDetails.Query.filter(chargify_active=True, chargify_per_end__lte=(now+datetime.timedelta(days=2)), chargify_per_end__gte=(now+datetime.timedelta(days=1)))
+	accts = [a for a in accts]
+	if accts:
+		body += "Day after tomorrow's expected block updates:\n\n"
+		body += build_email_body_by_date(accts)
+		body += "\n\n\n"		
+
+	if body:
+		plaintext = get_template('email_template/admin_com.txt')
+		htmly     = get_template('email_template/admin_com.html')
+		d = Context({'title': title, 'body': body,})
+
+		text_content = plaintext.render(d)
+		html_content = htmly.render(d)
+
+		html_content = inline_css(html_content)
+
+		connection = get_connection(username=DEFAULT_FROM_EMAIL, password=EMAIL_HOST_PASSWORD, fail_silently=False)
+		if LIVE:
+			msg = EmailMultiAlternatives(subject, text_content, DEFAULT_FROM_EMAIL, [DEFAULT_FROM_EMAIL, 'ryan@boostblocks.com','sarina@boostblocks.com'], [HIGHRISE_CONFIG['email']], connection=connection)
+		else:
+			msg = EmailMultiAlternatives(subject, text_content, DEFAULT_FROM_EMAIL, [DEFAULT_FROM_EMAIL,], connection=connection)
+		msg.attach_alternative(html_content, "text/html")
+		msg.send()
+
+
+
 	
