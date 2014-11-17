@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'south',
     "django_rq",
     'tinymce',
+    'market',
     #'disqus',
     #'django.contrib.sites',
 )

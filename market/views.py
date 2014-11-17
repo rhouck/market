@@ -401,11 +401,6 @@ def company_description(request, ref):
 	return render_to_response('comp_desc.html', {'email': email, 'comp': comp, 'ref': ref, 'scope': 'internal', 'form': form}, context_instance=RequestContext(request))
 	
 
-
-def test(request):
-	daily_work()
-	return HttpResponse(True)
-
 def philosophy(request):
 	return render_to_response('philosophy.html', {}, context_instance=RequestContext(request))
 def service(request):
