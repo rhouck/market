@@ -150,6 +150,7 @@ def profile(request, ref):
 					'instagram_username': None,
 					'instagram_password': None,
 					}
+
 	if blocks['latest']:
 		initial.update({'facebook_scale': blocks['latest'].facebook_scale, 
 						'twitter_scale': blocks['latest'].twitter_scale, 
