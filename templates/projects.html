@@ -8,17 +8,28 @@
 
 <div id="slider_wrapper2">
 	<div class="wrap">
-			
 		<h1>Admin view</h1>
-
 	</div>
 </div>
 
 <div class="clear"></div>
 
+<div class="space2"></div>
+<div class="alignright">
+	
+	{% if request.GET.show_hidden %}
+		<a class="button small" href="{% url 'projects' %}">Hide Archived Cos</a>
+	{% else %}
+		<a class="button small" href="{% url 'projects' %}?show_hidden=True">Show Archived Cos</a>
+	{% endif %}
+</div>
+<div class="clear"></div>
+
+
 <div class="content portfolio_four">
 	<div class="wrap">
 
+		
 		{% for i in accts %}
 			
 			<form method="post" action=""> 
@@ -157,6 +168,16 @@
 					<p>Blocks enabled: <input checked="checked" class="" id="id_blocks_enabled" name="blocks_enabled" type="checkbox"/></p>
 				{% else %}
 					<p>Blocks enabled: <input class="" id="id_blocks_enabled" name="blocks_enabled" type="checkbox"/></p>
+				{% endif %}
+
+				{% for error in form.hidden.errors %}
+                	<p class="errors">{{ error }}</p>
+                {% endfor %}		
+				
+				{% if i.account_detail.hidden %}
+					<p>Archived: <input checked="checked" class="" id="id_hidden" name="hidden" type="checkbox"/></p>
+				{% else %}
+					<p>Archived: <input class="" id="id_hidden" name="hidden" type="checkbox"/></p>
 				{% endif %}
 				  
 				<input type="hidden" id="id_ref" name="ref" value="{{ i.user.ref }}">

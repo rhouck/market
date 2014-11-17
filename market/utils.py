@@ -15,6 +15,8 @@ from django.template.loader import get_template
 from django.template import Context
 from inlinestyler.utils import inline_css
 
+import django_rq
+redis_conn = django_rq.get_connection()
 
 class UserReferrals(Object):
     pass
@@ -193,7 +195,7 @@ def build_comp_profile(ref, inps):
 	
 	signup = get_signup_by_ref(ref)
 
-	acct = AccountDetails(user_id=signup.objectId, user=signup, active=False, promo=inps['promo'], chargify_active=False, blocks_enabled=False,)
+	acct = AccountDetails(user_id=signup.objectId, user=signup, active=False, promo=inps['promo'], chargify_active=False, blocks_enabled=False, hidden=False,)
 	acct.save()
 
 	comp = CompanyProfiles(user=signup,
@@ -339,6 +341,12 @@ def parse_login(email, password):
 
 def get_acct_details(user):
 	
+	# accepts either user object or user object ID
+	try:
+		test = user.objectId 
+	except:
+		user = ParseUser.Query.get(objectId=str(user))
+
 	account = Account()
 	account.user = user
 
@@ -357,9 +365,16 @@ def get_acct_details(user):
 
 	return account
 	
-def get_accts():
-	users = ParseUser.Query.filter(staff=False)
-	accts = [get_acct_details(user) for user in users]
+def get_accts(show_hidden=False):
+
+	
+	if not show_hidden:
+		accts = AccountDetails.Query.filter(hidden=False)
+	else:
+		accts = AccountDetails.Query.all()
+	
+	accts = [get_acct_details(a.user_id) for a in accts if not a.user['staff']]
+	
 	accts_blocks = []
 	for a in accts:
 		if a.account_detail.chargify_active:
@@ -388,6 +403,18 @@ def reset_parse_user_pass(email):
 
 
 def set_blocks(user, form):
+	
+	# if no blocks have previosly been requested and this set has zero values across board, don't record it
+	blocks = SelectedBlocks.Query.filter(user_id=user.objectId)
+	blocks = [b for b in blocks]
+	count = sum([int(form[i]) for i in ('facebook_scale', 'twitter_scale', 'instagram_scale')])
+	if len(blocks) == 0 and count == 0:
+		return True
+
+	# send email if this is first time blocks were purchased
+	if len(blocks) == 0 and count != 0:
+		result = django_rq.enqueue(check_first_blocks, user, form)
+
 	# update scale of boost blocks
 	blocks = SelectedBlocks(user=user, 
 							user_id=user.objectId,
@@ -403,6 +430,47 @@ def set_blocks(user, form):
 	blocks.save()
 	
 	return blocks
+
+def check_first_blocks(user, form):
+
+	# send email to boost blocks team if this is first time user has selected blocks
+	subject = "First time Boost Blocks ordered"
+	title = "First time Boost Blocks ordered"
+
+	body = "Email: %s\n" % (user.email)
+	try:
+		body += "Name: %s\n" % (user.full_name)
+	except:
+		pass
+	try:
+		company = CompanyProfiles.Query.get(user_id=str(user.objectId))
+		body += "Company: %s\n" % (company.company)
+	except:
+		pass
+
+	for i in ('facebook_scale', 'twitter_scale', 'instagram_scale'):
+		body += "%s - set to: %s\n" % (i, form[i])
+	body += "\n\n"
+	
+	plaintext = get_template('email_template/admin_com.txt')
+	htmly     = get_template('email_template/admin_com.html')
+	d = Context({'title': title, 'body': body,})
+
+	text_content = plaintext.render(d)
+	html_content = htmly.render(d)
+
+	html_content = inline_css(html_content)
+
+	connection = get_connection(username=DEFAULT_FROM_EMAIL, password=EMAIL_HOST_PASSWORD, fail_silently=False)
+	if LIVE:
+		msg = EmailMultiAlternatives(subject, text_content, DEFAULT_FROM_EMAIL, [DEFAULT_FROM_EMAIL, 'ryan@boostblocks.com','sarina@boostblocks.com'], [HIGHRISE_CONFIG['email']], connection=connection)
+	else:
+		msg = EmailMultiAlternatives(subject, text_content, DEFAULT_FROM_EMAIL, [DEFAULT_FROM_EMAIL,], connection=connection)
+	msg.attach_alternative(html_content, "text/html")
+	msg.send()
+
+
+
 
 
 def record_profile_builder(user, form):
@@ -486,7 +554,10 @@ def profile_builder_alert_email():
 	yesterday = now - datetime.timedelta(days=1)
 
 	builder = ProfileBuilder.Query.filter(createdAt__gte=yesterday)
-	builder = [b for b in builder]
+	if LIVE:
+		builder = [b for b in builder if b.user['type'] == 'live']
+	else:
+		builder = [b for b in builder]
 
 	if builder:
 			
@@ -573,9 +644,16 @@ def check_block_updates():
 		
 		return body	
 
+	def filter_accts(LIVE, accts):
+		if LIVE:
+			accts = [a for a in accts if a.user['type'] == 'live']
+		else:
+			accts = [a for a in accts]
+		return accts
+
 	# update billing period and show updates to blocks
 	accts = AccountDetails.Query.filter(chargify_active=True, chargify_per_end__lte=now)
-	accts = [a for a in accts]
+	accts = filter_accts(LIVE, accts)
 	if accts:
 		body += "Today's block updates:\n\n"
 		body += build_email_body_by_date(accts, update_per_end=True)
@@ -583,14 +661,14 @@ def check_block_updates():
 		
 	# show expected updates to blocks
 	accts = AccountDetails.Query.filter(chargify_active=True, chargify_per_end__lte=(now+datetime.timedelta(days=1)), chargify_per_end__gte=now)
-	accts = [a for a in accts]
+	accts = filter_accts(LIVE, accts)
 	if accts:
 		body += "Tomorrow's expected block updates:\n\n"
 		body += build_email_body_by_date(accts)
 		body += "\n\n\n"
 
 	accts = AccountDetails.Query.filter(chargify_active=True, chargify_per_end__lte=(now+datetime.timedelta(days=2)), chargify_per_end__gte=(now+datetime.timedelta(days=1)))
-	accts = [a for a in accts]
+	accts = filter_accts(LIVE, accts)
 	if accts:
 		body += "Day after tomorrow's expected block updates:\n\n"
 		body += build_email_body_by_date(accts)
@@ -615,5 +693,9 @@ def check_block_updates():
 		msg.send()
 
 
+def daily_work():
+	result = django_rq.enqueue(profile_builder_alert_email)
+	result = django_rq.enqueue(check_block_updates)
+	return True
 
 	

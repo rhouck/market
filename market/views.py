@@ -19,9 +19,6 @@ from settings import LIVE
 from utils import *
 
 
-import django_rq
-redis_conn = django_rq.get_connection()
-
 from parse_rest.user import User as ParseUser
 
 def splash(request):
@@ -279,6 +276,12 @@ def projects(request):
 
 	if request.session['staff']:
 		
+		show_hidden = False
+		inputs = request.GET if request.GET else None
+		if inputs and 'show_hidden' in inputs and inputs['show_hidden']:
+			show_hidden = True
+
+
 		inputs = request.POST if request.POST else None
 
 		form = UpdateAdminForm(inputs)
@@ -289,15 +292,14 @@ def projects(request):
 			try:	
 				user = get_signup_by_ref(cd['ref'])
 				acct = get_acct_details(user)
-				#acct.account_detail.strategy = cd['strategy']
 				acct.account_detail.active = cd['active']
 				acct.account_detail.blocks_enabled = cd['blocks_enabled']
-				#acct.account_detail.goal = cd['goal']
+				acct.account_detail.hidden = cd['hidden']
 				acct.account_detail.save()
 			except:
 				pass
 
-		accts = get_accts()
+		accts = get_accts(show_hidden=show_hidden)
 		return render_to_response('projects.html', {'form': form, 'accts': accts}, context_instance=RequestContext(request))
 
 	else:
@@ -401,8 +403,7 @@ def company_description(request, ref):
 
 
 def test(request):
-	#result = django_rq.enqueue(profile_builder_alert_email)
-	result = django_rq.enqueue(check_block_updates)
+	daily_work()
 	return HttpResponse(True)
 
 def philosophy(request):
