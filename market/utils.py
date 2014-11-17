@@ -494,10 +494,16 @@ def get_current_blocks(user):
 	except:
 		user = ParseUser.Query.get(objectId=str(user))
 
-	per_end = AccountDetails.Query.get(user_id=user.objectId).chargify_per_end
+	acct = AccountDetails.Query.get(user_id=user.objectId)
+	
+	blocks_set = {'per_end': None, 'latest': None, 'current': None, 'change': None}
+	if not acct.chargify_active:
+		return blocks_set
+
+	per_end = acct.chargify_per_end
 	last_per_end = per_end - datetime.timedelta(days=7)
 	
-	blocks_set = {'per_end': per_end}
+	blocks_set['per_end'] = per_end
 
 	for i in (('latest', datetime.datetime(3000,1,1,0,0)), ('current', last_per_end)):
 		blocks = SelectedBlocks.Query.filter(user_id=user.objectId, createdAt__lte=i[1]).order_by("-createdAt")
@@ -512,9 +518,7 @@ def get_current_blocks(user):
 		blocks_set['change'] = {}
 		for i in ('facebook_scale', 'twitter_scale', 'instagram_scale'):
 			blocks_set['change'][i] = getattr(blocks_set['latest'], i) - getattr(blocks_set['current'], i)
-	else:
-		blocks_set['change'] = None		
-	
+
 	return blocks_set
 
 def get_recent_profile_builders(user):

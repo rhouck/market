@@ -136,12 +136,20 @@ def profile(request, ref):
 	builders = get_recent_profile_builders(user)
 	blocks = get_current_blocks(user)
 	#return HttpResponse(str(blocks))
-	initial = {'facebook_url': acct.account_detail.facebook_url,
-				'twitter_handle': acct.account_detail.twitter_handle,
-				'twitter_password': acct.account_detail.twitter_password,
-				'instagram_username': acct.account_detail.instagram_username,
-				'instagram_password': acct.account_detail.instagram_password,
-				}
+	try:
+		initial = {'facebook_url': acct.account_detail.facebook_url,
+					'twitter_handle': acct.account_detail.twitter_handle,
+					'twitter_password': acct.account_detail.twitter_password,
+					'instagram_username': acct.account_detail.instagram_username,
+					'instagram_password': acct.account_detail.instagram_password,
+					}
+	except:
+		initial = {'facebook_url': None,
+					'twitter_handle': None,
+					'twitter_password': None,
+					'instagram_username': None,
+					'instagram_password': None,
+					}
 	if blocks['latest']:
 		initial.update({'facebook_scale': blocks['latest'].facebook_scale, 
 						'twitter_scale': blocks['latest'].twitter_scale, 
