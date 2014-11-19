@@ -153,24 +153,28 @@
 		    	{% else %}
 		    		<p><a href="{% url 'splash' %}"><i class="icon-th-large"></i>BoostBlocks</a></p>
 		    	{% endif %}
+				
 			</div>
-
-
-
 			
 			<a href="#nav" id="toggle"><i class="icon-reorder"></i></a>
 
 			<nav class="nav-collapse" id="nav">
 				<ul class="sf-menu">
 					{% if request.GET.ref %}      	
+						<li><a href="{% url 'splash' %}?ref={{ request.GET.ref }}">Home</a></li>
 						<li><a href="{% url 'service' %}?ref={{ request.GET.ref }}">Our Service</a></li>
 						<li><a href="{% url 'philosophy' %}?ref={{ request.GET.ref }}">Our Philosophy</a></li>
-						<li><a href="{% url 'join' %}?ref={{ request.GET.ref }}">Join The Team</a></li>
+						{% comment %}
+							<li><a href="{% url 'join' %}?ref={{ request.GET.ref }}">Join The Team</a></li>
+						{% endcomment %}
 						<li class="selected"><a href="{% url 'login' %}?ref={{ request.GET.ref }}">Login</a></li> 
 			    	{% else %}
+			    		<li><a href="{% url 'splash' %}">Home</a></li>
 			    		<li><a href="{% url 'service' %}">Our Service</a></li>
 			    		<li><a href="{% url 'philosophy' %}">Our Philosophy</a></li>
-			    		<li><a href="{% url 'join' %}">Join The Team</a></li>
+			    		{% comment %}
+			    			<li><a href="{% url 'join' %}">Join The Team</a></li>
+			    		{% endcomment %}
 			    		
 			    		{% if request.session.staff %}
 			    			<li><a href="{% url 'projects' %}">Admin</a></li>
@@ -824,6 +828,12 @@
 			
 			<p class="alignright"><a href="{% url 'tos' %}">Terms of Service</a> / <a href="{% url 'privacy' %}">Privacy Policy</a></p>
 			</br>
+			{% if request.GET.ref %}      		      
+	    		<p class="alignleft"><a href="{% url 'join' %}?ref={{ request.GET.ref }}">Join The Team</a></p>
+	    	{% else %}
+	    		<p class="alignleft"><a href="{% url 'join' %}">Join The Team</a></p>
+	    	{% endif %}
+			
 			<div class="alignright">
 				<script LANGUAGE="JavaScript" type="text/javascript">
 				  gen_mail_to_link('info','boostblocks.com','Hello...')
