@@ -9,81 +9,90 @@
 
 {% block body %}
 
-<div id="slider_wrapper">
-		<div class="wrap">
+<div class="content" style="padding: 20px 0 100px 0;">
+	<div class="wrap" style="width: 97%">
+		<div class="one_half" style="background: #ededed; width: 40%; margin: 0 0% 0 0;">
+			<div id="slider_wrapper" style="padding: 15% 0px 0px 0">
+				<div class="wrap" style="width:85%">
+						<div id="slider">
+							<div>
+								<div class="slide">
+									<div class="alignleft" style="padding: 0 15px 0 0px">
+										<h2>We grow your brand,</br>you run your company</h2>
+										
+										{% comment %}
+										<h1><i class="icon-facebook-sign" style="font-size: 72px;"></i>
+											<i class="icon-twitter-sign" style="font-size: 72px;"></i>
+											<i class="icon-instagram" style="font-size: 72px;"></i>
+										</h1>
+										{% endcomment %}
+										</br>
+										<p>No long-term contracts. No phone calls.</br>
+										Fill our your company profile to receive your free social media audit.</p>
+				
+									</div>
+									
 
-			<div id="slider">
-				<div>
-					<div class="slide">
-						<h2>We grow your brand, you run your company</h2>
-						<h1><i class="icon-facebook-sign" style="font-size: 72px;"></i>
-							<i class="icon-twitter-sign" style="font-size: 72px;"></i>
-							<i class="icon-instagram" style="font-size: 72px;"></i>
-							{% comment %}
-							<i class="icon-linkedin-sign" style="font-size: 72px;"></i>
-							{% endcomment %}
-						</h1>
+									
+								</div>
 
-						<p>No long-term contracts. No phone calls. Fill our your company profile to receive your free social media audit.</p>
+							</div>
+							<div>
+								<div class="slide">
+									<div class="alignleft" style="padding: 0 15px 0 0px">
+										<h2>Marketing and advertising</br> in one place</h2>
+										{% comment %}
+										<h1><i class="icon-facebook-sign" style="font-size: 72px;"></i>
+											<i class="icon-twitter-sign" style="font-size: 72px;"></i>
+											<i class="icon-instagram" style="font-size: 72px;"></i>
+										</h1>
+										{% endcomment %}
+										</br>
+										<p>Our team of social media experts makes the most out of your budget.</br>Our data-driven approach lets us find the optimal balance of engagement, and content curation and advertisement.</p>
+									</div>
+									
+									
+								</div>
+							</div>
+							<div>
+								<div class="slide">
+									<div class="alignleft" style="padding: 0 15px 0 0px">
+										<h2>Adjust your budget on the fly</h2>
+										{% comment %}
+										<h1><i class="icon-facebook-sign" style="font-size: 72px;"></i>
+											<i class="icon-twitter-sign" style="font-size: 72px;"></i>
+											<i class="icon-instagram" style="font-size: 72px;"></i>
+										</h1>
+										{% endcomment %}
+										</br>
+										<p>Every week you can adjust your spend on each social media network.</br>Want more Instagram and less Facebook? It's as simple as checking a box in your dashboard.</p>
+									</div>
+										
 
-						{% if request.GET.ref %}
-							<a class="button2" href="{% url 'signup' %}?ref={{ request.GET.ref }}">Get Started</a>
-				    	{% else %}
-				    		<a class="button2" href="{% url 'signup' %}">Get Started</a>
-				    	{% endif %}
-
-						<div class="clear"></div><br />
+									
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
-				<div>
-					<div class="slide">
-						<h2>Marketing and advertising in one place</h2>
-						<h1><i class="icon-facebook-sign" style="font-size: 72px;"></i>
-							<i class="icon-twitter-sign" style="font-size: 72px;"></i>
-							<i class="icon-instagram" style="font-size: 72px;"></i>
-							{% comment %}
-							<i class="icon-linkedin-sign" style="font-size: 72px;"></i>
-							{% endcomment %}
-						</h1>
-						
-						<p>Our team of social media experts makes the most out of your budget.</br>Our data-driven approach lets us find the optimal balance of engagement, and content curation and advertisement.</p>
+	
 
-						{% if request.GET.ref %}
-							<a class="button2" href="{% url 'signup' %}?ref={{ request.GET.ref }}">Get Started</a>
-				    	{% else %}
-				    		<a class="button2" href="{% url 'signup' %}">Get Started</a>
-				    	{% endif %}
+		</div>	
+		<div class="one_half last" style="background: #ededed; width: 60%; margin: 0 0% 0 0;">
+			<div class"wrap" style="padding: 5% 0 50px 0; text-align: center;">
+				<img src={% static "blocks3.png" %} alt="The BoostBlocks." width="30%" />
+				</br>
+				</br>
 
-						<div class="clear"></div><br />
-					</div>
-				</div>
-				<div>
-					<div class="slide">
-						<h2>Adjust your budget on the fly</h2>
-						<h1><i class="icon-facebook-sign" style="font-size: 72px;"></i>
-							<i class="icon-twitter-sign" style="font-size: 72px;"></i>
-							<i class="icon-instagram" style="font-size: 72px;"></i>
-							{% comment %}
-							<i class="icon-linkedin-sign" style="font-size: 72px;"></i>
-							{% endcomment %}
-						</h1>
-
-						<p>Every week you can adjust your spend on each social media network.</br>Want more Instagram and less Facebook? It's as simple as checking a box in your dashboard.</p>
-
-						{% if request.GET.ref %}
-							<a class="button2" href="{% url 'signup' %}?ref={{ request.GET.ref }}">Get Started</a>
-				    	{% else %}
-				    		<a class="button2" href="{% url 'signup' %}">Get Started</a>
-				    	{% endif %}
-
-						<div class="clear"></div><br />
-					</div>
-				</div>
+			</br>
+				{% if request.GET.ref %}
+					<a class="button2" href="{% url 'signup' %}?ref={{ request.GET.ref }}">Get Started</a>
+				{% else %}
+					<a class="button2" href="{% url 'signup' %}">Get Started</a>
+				{% endif %}
 			</div>
-
 		</div>
 	</div>
-	<div class="content">
 
 
 		<div class="wrap">
