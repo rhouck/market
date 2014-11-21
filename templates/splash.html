@@ -9,91 +9,91 @@
 
 {% block body %}
 
-<div class="content" style="padding: 20px 0 100px 0;">
-	<div class="wrap" style="width: 97%">
-		<div class="one_half" style="background: #ededed; width: 60%; margin: 0 0% 0 0;">
-			<div id="slider_wrapper" style="padding: 15% 0px 10% 0">
-				<div class="wrap" style="width:85%">
-						<div id="slider">
-							<div>
-								<div class="slide">
-									<div class="alignleft" style="padding: 0 15px 0 0px">
-										<h2>We grow your brand,</br>you run your company</h2>
-										
-										{% comment %}
-										<h1><i class="icon-facebook-sign" style="font-size: 72px;"></i>
-											<i class="icon-twitter-sign" style="font-size: 72px;"></i>
-											<i class="icon-instagram" style="font-size: 72px;"></i>
-										</h1>
-										{% endcomment %}
-										</br>
-										<p>No long-term contracts. No phone calls.</br>
-										Fill our your company profile to receive your free social media audit.</p>
-				
-									</div>
-									
+{% comment %}
+<div id="slider_wrapper" style="padding: 50px 0 0px 0; background: #91A8B6;">
+	<div class="wrap">
+			<div id="slider">
+				<div>
+					<div class="slide">
+						<div style="padding: 0 15px 0 0px">
+							<h2 style="color: white; text-align: left">We grow your brand, you run your company</h2>								
+						</div>									
+					</div>
 
-									
-								</div>
-
-							</div>
-							<div>
-								<div class="slide">
-									<div class="alignleft" style="padding: 0 15px 0 0px">
-										<h2>Marketing and advertising</br> in one place</h2>
-										{% comment %}
-										<h1><i class="icon-facebook-sign" style="font-size: 72px;"></i>
-											<i class="icon-twitter-sign" style="font-size: 72px;"></i>
-											<i class="icon-instagram" style="font-size: 72px;"></i>
-										</h1>
-										{% endcomment %}
-										</br>
-										<p>Our team of social media experts makes the most out of your budget.</br>Our data-driven approach lets us find the optimal balance of engagement, and content curation and advertisement.</p>
-									</div>
-									
-									
-								</div>
-							</div>
-							<div>
-								<div class="slide">
-									<div class="alignleft" style="padding: 0 15px 0 0px">
-										<h2>Adjust your budget on the fly</h2>
-										{% comment %}
-										<h1><i class="icon-facebook-sign" style="font-size: 72px;"></i>
-											<i class="icon-twitter-sign" style="font-size: 72px;"></i>
-											<i class="icon-instagram" style="font-size: 72px;"></i>
-										</h1>
-										{% endcomment %}
-										</br>
-										<p>Every week you can adjust your spend on each social media network.</br>Want more Instagram and less Facebook? It's as simple as checking a box in your dashboard.</p>
-									</div>
-										
-
-									
-								</div>
-							</div>
-						</div>
+				</div>
+				<div>
+					<div class="slide">
+						<div style="padding: 0 15px 0 0px">
+							<h2 style="color: white; text-align: left">Marketing and advertising all in one place</h2>		
+						</div>					
 					</div>
 				</div>
-	
-
-		</div>	
-		<div class="one_half last" style="background: #ededed; width: 40%; margin: 0 0% 0 0;">
-			<div class"wrap" style="padding: 20% 0 15% 0; text-align: center;">
-				<img src={% static "blocks3.png" %} alt="The BoostBlocks." width="40%" />
-				</br>
-				</br>
-				</br>
-
-			</br>
-				{% if request.GET.ref %}
-					<a class="button2" href="{% url 'signup' %}?ref={{ request.GET.ref }}">Get Started</a>
-				{% else %}
-					<a class="button2" href="{% url 'signup' %}">Get Started</a>
-				{% endif %}
+				<div>
+					<div class="slide">
+						<div style="padding: 0 15px 0 0px">
+							<h2 style="color: white; text-align: left">Adjust your budget on the fly</h2>							
+						</div>			
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
+{% endcomment %}
+
+
+<div class="content" style="padding: 0px 0 100px 0;">
+
+		{% comment %}
+			<div class="wrap" style="background: #ededed; width: 100%">
+		{% endcomment %}
+		<div class="wrap" style="background: #91A8B6; width: 100%; padding: 2%% 0% 0% 0;">
+			
+				<div class="clear"></div>
+				
+
+			<div>
+				
+
+				<div>
+					<div class="one_half">
+						
+						<div style="padding: 0% 15% 0% 15%;">
+							
+							<p style="color: white">No long-term contracts. No phone calls. Fill our your company profile to receive your free social media audit.</br>					
+							Our team of social media experts makes the most out of your budget. Our data-driven approach lets us find the optimal balance of engagement, and content curation and advertisement.</br>
+							
+							Every week you can adjust your spend on each social media network. Want more Instagram and less Facebook? It's as simple as checking a box in your dashboard.
+							</p>
+							
+							</br></br>
+
+							{% if request.GET.ref %}
+								<a class="button big" href="{% url 'signup' %}?ref={{ request.GET.ref }}">Get Started Now</a>
+							{% else %}
+								<a class="button big" href="{% url 'signup' %}">Get Started Now</a>
+							{% endif %}
+							</br></br></br></br>
+						</div>
+
+						
+					</div>
+					
+
+					<div class="one_half last">
+						<div style="padding: 0% 15% 0% 15%;">
+							<img src={% static "blocks3.png" %} alt="The BoostBlocks." width="100%" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			
+
+				<div class="clear"></div>
+				
+
+		</div>
+
 
 
 		<div class="wrap">
