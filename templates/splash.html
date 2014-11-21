@@ -46,7 +46,7 @@
 		{% comment %}
 			<div class="wrap" style="background: #ededed; width: 100%">
 		{% endcomment %}
-		<div class="wrap" style="background: #91A8B6; width: 100%; padding: 2%% 0% 0% 0;">
+		<div class="wrap" style="background: #91A8B6; width: 100%; padding: 5%% 0% 5% 0%;">
 			
 				<div class="clear"></div>
 				
@@ -57,22 +57,24 @@
 				<div>
 					<div class="one_half">
 						
-						<div style="padding: 0% 15% 0% 15%;">
+						<div style="padding: 0% 5% 0% 15%;">
+							<h1 style="color: white">The simplest way to grow your brand through social media</h1>
+							<p style="color: #E7ECEF">No long-term contracts. No phone calls. Tell us about your company and we'll design a social media strategy tailored to your business.</br></br>	
 							
-							<p style="color: white">No long-term contracts. No phone calls. Fill our your company profile to receive your free social media audit.</br>					
-							Our team of social media experts makes the most out of your budget. Our data-driven approach lets us find the optimal balance of engagement, and content curation and advertisement.</br>
-							
-							Every week you can adjust your spend on each social media network. Want more Instagram and less Facebook? It's as simple as checking a box in your dashboard.
+							Set your budget each week by selecting more or fewer BoostBlocks in your dashboard. Our team finds the right balance of engagement, content curation, and advertising to maximize the impact of your marketing spend.
 							</p>
 							
 							</br></br>
+							<div>
+								{% if request.GET.ref %}
+									<a class="button big" href="{% url 'signup' %}?ref={{ request.GET.ref }}">Get Started Now</a>
+								{% else %}
+									<a class="button big" href="{% url 'signup' %}">Get Started Now</a>
+								{% endif %}
+							</div>
+							</br></br>
+							<p style="color: white; font-size: 20px">Try FREE for one week. No obligations.</p> 
 
-							{% if request.GET.ref %}
-								<a class="button big" href="{% url 'signup' %}?ref={{ request.GET.ref }}">Get Started Now</a>
-							{% else %}
-								<a class="button big" href="{% url 'signup' %}">Get Started Now</a>
-							{% endif %}
-							</br></br></br></br>
 						</div>
 
 						
