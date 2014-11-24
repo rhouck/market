@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+
+
+{% block body %}
+
+
+<div class="content">
+	<div class="wrap">
+
+
+		<div class="heading"><span>Email Address</span></div>
+
+		{% for error in form.non_field_errors %}
+            <h3 style="color: red;">{{error}}</h3>
+        	</br>
+        {% endfor %}
+
+      	<form method="post" action=""> 
+			{% csrf_token %}
+			
+			{% for error in form.email.errors %}
+            	<p class="errors">{{ error }}</p>
+            {% endfor %}
+			{{ form.email|add_class:"text-button"}}
+
+			<div class="row">
+				</br>
+				<a href="#" class="button small" onclick="$(this).closest('form').submit()">Continue</a>		
+			</div>
+	
+		</form>
+
+		<div class="clear"></div>
+
+	</div>
+</div>
+
+
+{% endblock %}

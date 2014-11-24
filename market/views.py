@@ -25,8 +25,8 @@ def splash(request):
 	
 	return render_to_response('splash.html', {}, context_instance=RequestContext(request))
 
-def signup(request):
-
+def signup_email(request):
+	
 	# get referral code if exists
 	inputs = request.GET if request.GET else None
 	form = ReferralForm(inputs)
@@ -37,6 +37,54 @@ def signup(request):
 
 
 	inputs = request.POST if request.POST else None
+	form = ResetForm(inputs)
+	try:
+		
+		if (inputs) and form.is_valid():
+			
+			cd = form.cleaned_data
+			
+			result = django_rq.enqueue(create_highrise_account, cd['email'].lower(), 'signup_email_collection')
+			
+			url = str(reverse('signup_full'))
+			url += "?email=%s" % (cd['email'])
+			if referred_by:
+				url += "&ref=%s" % (referred_by)
+			return HttpResponseRedirect(url)	
+
+		else:
+			raise Exception()
+
+	except Exception as err:
+		
+		form.errors['__all__'] = form.error_class([err])
+		return render_to_response('signup_email.html', {'form': form}, context_instance=RequestContext(request))
+
+
+
+def signup(request):
+
+	inputs = request.GET if request.GET else None
+
+	# get referral code if exists
+	form = ReferralForm(inputs)
+	referred_by = None
+	if (inputs) and form.is_valid():
+		cd = form.cleaned_data 
+		referred_by = cd['ref'] 
+	
+	
+	inputs = request.POST if request.POST else None
+
+	"""
+	# get email if exists
+	form = ResetForm(inputs)
+	email = None
+	if (inputs) and form.is_valid():
+		cd = form.cleaned_data
+		email = cd['email']
+	"""
+	
 	form = SubscribeForm(inputs)
 	try:
 		
@@ -96,7 +144,6 @@ def signup(request):
 
 		
 	except Exception as err:
-		
 		form.errors['__all__'] = form.error_class([err])
 		return render_to_response('signup.html', {'form': form}, context_instance=RequestContext(request))
 	
