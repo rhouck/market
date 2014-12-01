@@ -5,31 +5,9 @@
 
 {% block head %}
 	
+	{{ form.media }}
+	{% include "wysiwyg-init.html" %}
 	
-
-{{ form.media }}
-{% include "wysiwyg-init.html" %}
-	{% comment %}
-		
-	
-
-		<script type="text/javascript" src="{% static 'tiny_mce/tiny_mce.min.js' %}"></script>
-		<script type="text/javascript" src="{% static 'tiny_mce/threads.js' %}"></script>
-		<script type="text/javascript" src="{% static 'tiny_mce/textareas.js' %}"></script>
-		<script src="{{ MEDIA_URL }}js/tiny_mce/tiny_mce.js"></script>
-   		<script src="{{ MEDIA_URL }}js/tiny_mce/textareas.js"></script>
-		<script type="text/javascript">
-	        tinyMCE.init({
-	                mode: "textareas",
-	                theme: "simple"
-	        });
-		</script>	
-		{% load url from future %}	
-		<script type="text/javascript" src="{{ MEDIA_URL }}js/tiny_mce/tiny_mce.js"></script>
-		<script type="text/javascript" src="{% url "tinymce-js" "NAME" %}"></script>
-	{% endcomment %}
-
-
 	{% include "disqus_head.html" %}
 {% endblock %}
 

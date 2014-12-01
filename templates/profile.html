@@ -419,12 +419,18 @@
 					        </div>
 					 		
 					 		<div id="tab3" class="tab">
-				        		
+				        		{% comment %}
 				        		<p><strong><div class="left">Primary Goals:</div></strong></p>
 								<p><div class="left">{{ acct.account_detail.goal }}</div></p>
 								</br>
 								<p><strong><div class="left">Strategy:</div></strong></p>
-								<div class="left">{{ acct.account_detail.strategy|safe }}</div>
+								{% endcomment %}
+								
+								<div class="clear"></div>
+								
+								<div class="force-left">
+									{{ acct.account_detail.strategy|safe }}
+								</div>
 							
 					        </div>
 

@@ -180,3 +180,13 @@
 	margin-left: 0px;
 	
 }
+
+.force-left p {
+text-align: left;
+}
+.force-left ul {
+	text-align: left;
+	list-style: inherit;
+	padding: 20px;
+}
+
