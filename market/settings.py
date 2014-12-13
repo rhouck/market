@@ -13,21 +13,25 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # Use site-specific settings
-"""
-from socket import gethostname
-host = gethostname()
-"""
-
 from os import environ
 host = environ.get('MODE', '')
 from re import search
 
+if search('live', host):
+    from settings_live import *
+    LIVE = True
+elif search('dev', host):
+    from settings_dev import *
+    LIVE = False
+else:
+    from settings_local import *
+    LIVE = False
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'z0-j!_ilf$kx=imqpk*v+w0(6e_@ozbp2f$ou8o&co1%as35wh'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 
 # Application definition
@@ -100,21 +104,22 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 
-#highrise cms API
-HIGHRISE_CONFIG = {'server': 'boostblocks', 'auth': '8170f80eac5ace00364b8d81eac26dac', 'email': 'dropbox@35586853.boostblocks.highrisehq.com'}
-
-
-# register parse
-from parse_rest.connection import register
-register("mgMLgAozJz1ShdgEFs1w1huGDpfOKpVKuwydMKmz", "HxBvkqWCuoSDE4OUJLh2z9w3sJsFJLloCCTTEsNk")
 
 # email setup
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'boostblocks@gmail.com'
-EMAIL_HOST_PASSWORD = '_2nd&mission_'
+EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
 DEFAULT_FROM_EMAIL = 'boostblocks@gmail.com'
+
+# register parse
+from parse_rest.connection import register
+PARSE_CONFIG = {'app_id': os.environ['PARSE_APPLICATION_ID'], 'api_key': os.environ['PARSE_REST_API_KEY']}
+register(PARSE_CONFIG['app_id'], PARSE_CONFIG['api_key'])
+
+#highrise cms API
+HIGHRISE_CONFIG = {'server': 'boostblocks', 'auth': os.environ['HIGHRISE_AUTH_TOKEN'], 'email': os.environ['HIGHRISE_EMAIL']}
 
 # google analytics
 GOOGLE_ANALYTICS_PROPERTY_ID = 'UA-54495948-1'
@@ -139,22 +144,3 @@ RQ_QUEUES = {
         'DEFAULT_TIMEOUT': 500,
     }
 }
-
-
-# disqus creds
-"""
-DISQUS_API_KEY = 'DwJvfEXNALMxzQecWZ2Z8odhqam8sFwVqfcy2kt4Yx9EODTSRzh0YPVRIHNh0gbw'
-DISQUS_WEBSITE_SHORTNAME = 'boostblocks'
-SITE_ID = 1
-"""
-
-if search('live', host):
-    from settings_live import *
-    LIVE = True
-elif search('dev', host):
-    from settings_dev import *
-    LIVE = False
-else:
-    from settings_local import *
-    LIVE = False
-
