@@ -9,4 +9,4 @@ class Command(BaseCommand):
 		test = True if 'test' in args else False
 		daily_work(test=test)
 		self.stdout.write("Successfully checked for customer product updates.")
-		
+		raise Exception("fake exception!!!")
