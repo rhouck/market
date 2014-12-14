@@ -27,6 +27,11 @@ else:
     from settings_local import *
     LIVE = False
 
+# create sqlite3 db for testing purposes
+import sys
+if 'test' in sys.argv:
+    DATABASES['default'] = {'ENGINE': 'django.db.backends.sqlite3'}
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
