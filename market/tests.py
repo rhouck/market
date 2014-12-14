@@ -31,8 +31,8 @@ class EnvVarsTests(TestCase):
 		self.assertTrue(HIGHRISE_CONFIG['email'])
 
 from parse_rest.user import User as ParseUser
-from django.core.mail import get_connection
-
+from django.core import mail
+import pyrise
 
 class ApiConnectionTests(TestCase):
 	
@@ -40,15 +40,36 @@ class ApiConnectionTests(TestCase):
 		"""
 		confirm propper connection to gmail
 		"""
-		#connection = get_connection(username='sdsdf', password=EMAIL_HOST_PASSWORD, fail_silently=False)
-		#print connection
-		pass
-		
+		mail.send_mail('subject', 'body', DEFAULT_FROM_EMAIL,['test@test.com'], fail_silently=False)
+		self.assertEquals(len(mail.outbox), 1)
+		self.assertEquals(mail.outbox[0].subject, 'subject')
+        
+
 	def test_parse_connection(self):
 		"""
 		confirm propper connection to parse
 		"""
-		# connection = get_connection(username=DEFAULT_FROM_EMAIL, password=EMAIL_HOST_PASSWORD, fail_silently=False)
 		# trigger exception if register credentials aren't correct
-		register(PARSE_CONFIG['app_id'], PARSE_CONFIG['api_key'])	
-		users = [u for u in ParseUser.Query.all().limit(1)]
+		raised = False
+		try:
+			register(PARSE_CONFIG['app_id'], PARSE_CONFIG['api_key'])	
+			users = [u for u in ParseUser.Query.all().limit(1)]
+		except:
+			raised = True
+		self.assertFalse(raised, 'Exception raised')
+
+	def test_highrise_connection(self):
+		"""
+		confirm propper connection to highrise
+		"""
+		# trigger exception if register credentials aren't correct
+		raised = False
+		try:
+			pyrise.Highrise.set_server(HIGHRISE_CONFIG['server'])
+			pyrise.Highrise.auth(HIGHRISE_CONFIG['auth'])
+			tags = pyrise.Tag.all()
+		except:
+			raised = True
+		self.assertFalse(raised, 'Exception raised')
+		
+		
