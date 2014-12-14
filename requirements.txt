@@ -1,11 +1,13 @@
 Django==1.6.5
 MySQL-python==1.2.5
 South==1.0
+coverage==3.7.1
 cssutils==1.0
 dj-database-url==0.3.0
 dj-static==0.0.6
 django-appconf==0.6
 django-disqus==0.4.3
+django-jenkins==0.16.3
 django-rq==0.7.0
 django-staticfiles==1.2.1
 django-tinymce==1.5.3
