@@ -71,5 +71,12 @@ class ApiConnectionTests(TestCase):
 		except:
 			raised = True
 		self.assertFalse(raised, 'Exception raised')
+
 		
-		
+from management.commands.daily_alerts import *
+
+class CommandTests(TestCase):
+	
+	def test_daily_alerts_works(self):
+		self.assertTrue(True)
+	
