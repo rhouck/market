@@ -5,5 +5,8 @@ class Command(BaseCommand):
 	help = "Sends email alerts when customers have purchased new blocks or requested profile builds."
 
 	def handle(self, *args, **options):
-		daily_work()
+		# don't send emails if test = True
+		test = True if 'test' in args else False
+		daily_work(test=test)
 		self.stdout.write("Successfully checked for customer product updates.")
+		

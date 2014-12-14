@@ -696,9 +696,10 @@ def check_block_updates():
 		msg.send()
 
 
-def daily_work():
-	result = django_rq.enqueue(profile_builder_alert_email)
-	result = django_rq.enqueue(check_block_updates)
+def daily_work(test=False):
+	if not test:
+		result = django_rq.enqueue(profile_builder_alert_email)
+		result = django_rq.enqueue(check_block_updates)
 	return True
 
 	

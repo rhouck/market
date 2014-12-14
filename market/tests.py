@@ -58,6 +58,7 @@ class ApiConnectionTests(TestCase):
 			raised = True
 		self.assertFalse(raised, 'Exception raised')
 
+
 	def test_highrise_connection(self):
 		"""
 		confirm propper connection to highrise
@@ -67,16 +68,21 @@ class ApiConnectionTests(TestCase):
 		try:
 			pyrise.Highrise.set_server(HIGHRISE_CONFIG['server'])
 			pyrise.Highrise.auth(HIGHRISE_CONFIG['auth'])
-			tags = pyrise.Tag.all()
+			people = pyrise.Person.filter(title='manager')
 		except:
 			raised = True
 		self.assertFalse(raised, 'Exception raised')
+	
 
-		
-from management.commands.daily_alerts import *
+from django.core.management import call_command
 
 class CommandTests(TestCase):
 	
 	def test_daily_alerts_works(self):
-		self.assertTrue(True)
-	
+		raised = False
+		try:
+			call_command('daily_alerts', 'test')
+		except:
+			raised = True
+		self.assertFalse(raised, 'Exception raised')
+
