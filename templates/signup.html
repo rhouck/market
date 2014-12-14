@@ -152,20 +152,29 @@
 						{{ form.wants_creatives.label }} {{ form.wants_creatives|add_class:""}}
 					</div>
 
-					</br>
+					</br></br>
 					<h3>Create account</h3>
 					<p>You will be asked to verify your email address</p>
 						
 						{% for error in form.full_name.errors %}
-	                    	<p class="errors">{{ error }}</p>
+                    		<p class="errors">{{ error }}</p>
 	                    {% endfor %}
-						{{ form.full_name|add_class:"text-button"}}
+						{% if request.GET.full_name %}
+							<input class="text-button" id="id_full_name" maxlength="50" name="full_name" placeholder="First and last name" type="text" value="{{ request.GET.full_name }}">
+						{% else %}
+							{{ form.full_name|add_class:"text-button"}}
+						{% endif %}
 
+						
 						{% for error in form.email.errors %}
 	                    	<p class="errors">{{ error }}</p>
 	                    {% endfor %}
-						{{ form.email|add_class:"text-button"}}
-	
+						{% if request.GET.email %}
+							<input class="text-button" id="id_email" maxlength="100" name="email" placeholder="Your Email Address" type="text" value="{{ request.GET.email }}">
+						{% else %}
+							{{ form.email|add_class:"text-button"}}
+						{% endif %}
+
 
 	                    {% for error in form.password.errors %}
 	                    	<p class="errors">{{ error }}</p>

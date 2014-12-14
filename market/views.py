@@ -37,7 +37,7 @@ def signup_email(request):
 
 
 	inputs = request.POST if request.POST else None
-	form = ResetForm(inputs)
+	form = SignupOneForm(inputs)
 	try:
 		
 		if (inputs) and form.is_valid():
@@ -48,6 +48,7 @@ def signup_email(request):
 			
 			url = str(reverse('signup_full'))
 			url += "?email=%s" % (cd['email'])
+			url += "&full_name=%s" % (cd['full_name'])
 			if referred_by:
 				url += "&ref=%s" % (referred_by)
 			return HttpResponseRedirect(url)	

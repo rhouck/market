@@ -10,6 +10,10 @@ class LoginForm(ResetForm):
 
     password = forms.CharField(max_length=50, widget=forms.PasswordInput(attrs={'placeholder': 'Your Password'}))
 
+class SignupOneForm(forms.Form):
+    email = forms.EmailField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Your Email Address'}))
+    full_name = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'First and last name'}))
+
 class SubscribeForm(LoginForm):
     full_name = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'First and last name'}))
     company = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Company name'}))
