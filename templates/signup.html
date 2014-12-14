@@ -131,11 +131,12 @@
 						{{ form.goals|add_class:"select-button"}}
 					</div>
 
-					{% for error in form.budget.errors %}
-                    	<p class="errors">{{ error }}</p>
-                    {% endfor %}				
-					{{ form.budget|add_class:"text-button"}}
-
+					{% comment %}
+						{% for error in form.budget.errors %}
+	                    	<p class="errors">{{ error }}</p>
+	                    {% endfor %}				
+						{{ form.budget|add_class:"text-button"}}
+					{% endcomment %}
 
 					{% for error in form.creatives.errors %}
                     	<p class="errors">{{ error }}</p>
@@ -144,14 +145,15 @@
 
 					
 	
+					{% comment %}
+						{% for error in form.wants_creatives.errors %}
+		                    	<p class="errors">{{ error }}</p>
+		                    {% endfor %}
+						<div>
+							{{ form.wants_creatives.label }} {{ form.wants_creatives|add_class:""}}
+						</div>
+					{% endcomment %}
 					
-					{% for error in form.wants_creatives.errors %}
-	                    	<p class="errors">{{ error }}</p>
-	                    {% endfor %}
-					<div>
-						{{ form.wants_creatives.label }} {{ form.wants_creatives|add_class:""}}
-					</div>
-
 					</br></br>
 					<h3>Create account</h3>
 					<p>You will be asked to verify your email address</p>

@@ -12,7 +12,7 @@ class LoginForm(ResetForm):
 
 class SignupOneForm(forms.Form):
     email = forms.EmailField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Your Email Address'}))
-    full_name = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'First and last name'}))
+    full_name = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'First and Last Name'}))
 
 class SubscribeForm(LoginForm):
     full_name = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'First and last name'}))
@@ -40,7 +40,7 @@ class SubscribeForm(LoginForm):
     #industry = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Your industry'}))
     pitch = forms.CharField(min_length=2, widget=forms.Textarea(attrs={'placeholder': 'What is your mission statement and sales pitch? (pretend we are a customer of yours)', 'rows': 6}))
     industry = forms.CharField(min_length=2, widget=forms.Textarea(attrs={'placeholder': 'Describe the industry you operate in. List some topics relevant to your industry and business.', 'rows': 4}))
-    target_description = forms.CharField(min_length=2, widget=forms.Textarea(attrs={'placeholder': 'Define your target market and buyer personas:\n - Where do they live?\n - What are their interests?\n - Social networks you know they are on?\n - Events that are popular for them?\n - Influencers they follow?', 'rows': 6}))
+    target_description = forms.CharField(min_length=2, widget=forms.Textarea(attrs={'placeholder': 'Define your target market and buyer personas:\n\n - Where do they live?\n - What are their interests?\n - Social networks you know they are on?\n - Influencers they follow?', 'rows': 6}))
     brand_description = forms.CharField(min_length=2, widget=forms.Textarea(attrs={'placeholder': 'Please briefly describe your brand as you see it and as want it to be.', 'rows': 4}))
     clients = forms.CharField(max_length=200, widget=forms.TextInput(attrs={'placeholder': 'List two current and two prospective clients/customers.'}))
     competition = forms.CharField(max_length=200, widget=forms.TextInput(attrs={'placeholder': 'List a couple of your primary competitors.'}))
@@ -54,12 +54,12 @@ class SubscribeForm(LoginForm):
         ('drive traffic', 'Drive traffic to website'),
     )
     goals = forms.ChoiceField(choices=Goals_Choices)
-    budget = forms.CharField(max_length=200, widget=forms.TextInput(attrs={'placeholder': 'What is your estimated monthly social media engagement spend?'}))
-    creatives = forms.CharField(min_length=2, widget=forms.Textarea(attrs={'placeholder': 'Will you be providing us your own marketing content regularly?\nIf so, how frequently?\nDescribe content you will provide us.\n(Images, White Papers, Press Releases, Blogs, etc.)', 'rows': 4}))
+    #budget = forms.CharField(max_length=200, widget=forms.TextInput(attrs={'placeholder': 'What is your estimated monthly social media engagement spend?'}))
+    creatives = forms.CharField(min_length=2, widget=forms.Textarea(attrs={'placeholder': 'Will you be providing us your own marketing content regularly?\n\nIf so, how frequently?\nDescribe content you will provide us.\n(Images, White Papers, Press Releases, Blogs, etc.)', 'rows': 4}))
 
     #wants_ads = forms.BooleanField(required=False, label="I want to run display and text ads")
     #wants_social = forms.BooleanField(required=False, label="I want you to run my social media presence")
-    wants_creatives = forms.BooleanField(required=False, label="I need you to build all creative content and/or social media profiles")
+    #wants_creatives = forms.BooleanField(required=False, label="I need you to build all creative content and/or social media profiles")
 
     promo = forms.CharField(required=False, max_length=30, widget=forms.TextInput(attrs={'placeholder': 'Promo Code'}))
 
