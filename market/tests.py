@@ -79,6 +79,7 @@ from django.core.management import call_command
 class CommandTests(TestCase):
 	
 	def test_daily_alerts_works(self):
+		
 		raised = False
 		try:
 			call_command('daily_alerts', 'test')
