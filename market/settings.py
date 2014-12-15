@@ -115,16 +115,16 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'boostblocks@gmail.com'
-EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
+EMAIL_HOST_PASSWORD = environ.get('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = 'boostblocks@gmail.com'
 
 # register parse
 from parse_rest.connection import register
-PARSE_CONFIG = {'app_id': os.environ['PARSE_APPLICATION_ID'], 'api_key': os.environ['PARSE_REST_API_KEY']}
+PARSE_CONFIG = {'app_id': environ.get('PARSE_APPLICATION_ID'), 'api_key': environ.get('PARSE_REST_API_KEY')}
 register(PARSE_CONFIG['app_id'], PARSE_CONFIG['api_key'])
 
 #highrise cms API
-HIGHRISE_CONFIG = {'server': 'boostblocks', 'auth': os.environ['HIGHRISE_AUTH_TOKEN'], 'email': os.environ['HIGHRISE_EMAIL']}
+HIGHRISE_CONFIG = {'server': 'boostblocks', 'auth': environ.get('HIGHRISE_AUTH_TOKEN'), 'email': environ.get('HIGHRISE_EMAIL')}
 
 # google analytics
 GOOGLE_ANALYTICS_PROPERTY_ID = 'UA-54495948-1'
