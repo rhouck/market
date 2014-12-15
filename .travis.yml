@@ -7,6 +7,15 @@ install: "pip install -r requirements.txt"
 notifications:
   email:
     - ryan@boostblocks.com
+# env variables
+env:
+  global:
+    - secure: "b+fxIQ9/La8e04Yuxx4ensS5kjobVZGYSUZEhn6MOXEKKdjEWAjsFLYjJVQdfQkE5tO77EMrjY+D24Pw8ENcFRjx4ncbg1Uw0uJ1Hq8aHKc2/z2dfEVdsbxmgE/AhXHJ/6OumaM+cJpG5FlhzY0MbEe2kV9TLXZ5KflwPsPk68g="
+    - secure: "dYOUaz3pDZq0m/pGr/04jV4Bq/2EwaMvm+JiCNJd+SrGGtGx/0gXn9kROY1ut60FYCOYLxmgxVbLdYajnJ6b5V9KIW0t3yFcrsD4dIZgd/wyvfqSHPksIk8nmN1HhxrmhCbOv4Ux3TpgL4chCkB2PVg4m5k2RjT/Sr4j0hkZ9a0="
+    - secure: "gHqwK/IiPbXMx4ZWtkTgksQ+lpM3dizw8SFV7/FkWxYgu8eD3kOCU+FKaV5XW/rX/kxeb+VJMI7K5UviLDzIzA0u6slWHRWC4zuq8+TAC98xHU62MB5K5oXDdledcwuK3snz3XOGI7OttNZFXVbBWazTyaCj/T+Pc7B76e2MWHk="
+    - secure: "XoYi2tGcN6oZzibHN/eZxWmgOyoeaez7vb5ffQr6xl3tm2xEDCMT80uXn9SRPao0G2Dt1py2wa7Bj4sR9/k+x4i8ekIqGQTdHpWRZ2pEHKkM5O7Mmbsq1ByhzP75l192z3+sO+ZyFypDMZZchpeN2n849G4LGeoX+baqE64bfA8="
+    - secure: "YEy0rmhFh9weGVPMe04uDLG8Dh2giUv1OMW0e6U4N+qcYUe4Dpl8yG2NPtU5Z1wWS/uzLxXKneJzu9lfyuw+W6GYvWQTiURICjqKjwNVU2K7hH1q0h1un1NU7F9YBn0rWgvXa0c0HA9tVLTBidPTHGQEyDWLNjWjfdnb5vyRxFk="
+    - secure: "BF8mX4S8GffwUcZ9ypvNRM/9VSBzwM5B99g/wmFN+HXdfwA/myuFUGKX9G/0w9vFU7+GzWADovqNm5mNtgS3mdZXUGeN+UxM6iLkWTp9iimWe45gpnb+BE3Czd6OcelMor0Q4Hgs25muD8lnTEk2Qn7sA4e3JGKkHgSFlCrgpAY="
 # command to run tests
 script: coverage run manage.py test
 after_success:
