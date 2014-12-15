@@ -16,6 +16,7 @@ env:
     - secure: "XoYi2tGcN6oZzibHN/eZxWmgOyoeaez7vb5ffQr6xl3tm2xEDCMT80uXn9SRPao0G2Dt1py2wa7Bj4sR9/k+x4i8ekIqGQTdHpWRZ2pEHKkM5O7Mmbsq1ByhzP75l192z3+sO+ZyFypDMZZchpeN2n849G4LGeoX+baqE64bfA8="
     - secure: "YEy0rmhFh9weGVPMe04uDLG8Dh2giUv1OMW0e6U4N+qcYUe4Dpl8yG2NPtU5Z1wWS/uzLxXKneJzu9lfyuw+W6GYvWQTiURICjqKjwNVU2K7hH1q0h1un1NU7F9YBn0rWgvXa0c0HA9tVLTBidPTHGQEyDWLNjWjfdnb5vyRxFk="
     - secure: "BF8mX4S8GffwUcZ9ypvNRM/9VSBzwM5B99g/wmFN+HXdfwA/myuFUGKX9G/0w9vFU7+GzWADovqNm5mNtgS3mdZXUGeN+UxM6iLkWTp9iimWe45gpnb+BE3Czd6OcelMor0Q4Hgs25muD8lnTEk2Qn7sA4e3JGKkHgSFlCrgpAY="
+    - secure: "Gadeocm3QzrHJ5TcxrpCQLutJXRu/EGHCGdwcvOKkmvepH5VcHfeBFdjga2PggY8vTmNlML7pG25KP9E60w99dN75lr/L0jeC14rMIaMOfBejTVeh4fnTQ1FgoMvGVmy0q6nFgU6QdaLeGQUEhmdu9S8DM0O2H66Wta0rdFTtOM="
 # command to run tests
 script: coverage run manage.py test
 after_success:
