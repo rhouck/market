@@ -23,13 +23,13 @@
 			<div>
 
 				<div>
-					<div class="one_half">
+					<div class="one_half" style="width: 60%;">
 						
 						<div style="padding: 0% 5% 0% 15%;">
 							<h1 style="color: white">The simplest way to grow your brand through social media</h1>
 							<p style="color: #E7ECEF">No long-term contracts. No phone calls. Tell us about your company and we'll design a social media strategy tailored to your business.</br></br>	
 							
-							Set your budget each week by selecting more or fewer BoostBlocks in your dashboard. Our team finds the right balance of promotion, content curation, engagement and advertising to maximize growth of your brand.
+							Each month you can select the BoostBlocks plan that fits your budget. Our team finds the right balance of promotion, content curation, and engagement to maximize growth of your brand.
 							</p>
 							
 							</br></br>
@@ -51,9 +51,9 @@
 
 					<div class="one_half last">
 						<div style="padding: 0% 15% 0% 15%;">
-							
+							{% comment %}
 							<img src={% static "blocks4.png" %} alt="The BoostBlocks." width="100%" />
-							
+							{% endcomment %}
 						</div>
 					</div>
 				</div>
@@ -67,6 +67,99 @@
 		</div>
 
 
+
+		<div class="wrap">
+
+				<div class="clear"></div>
+				<div class="space"></div>
+
+			<div>
+				<div class="heading"><span>Our Service</span></div>
+
+				
+					<div class="pricing_wrapper">
+					
+					<div class="one_third">
+						<div class="pricing">
+							<div class="pricing_top">
+								<h4>Basic Block</h4>
+								<p>$100/mo</p>
+							</div>
+							<ul>
+								<li>One social network</li>
+								<li>7+ posts per week</li>
+								<li>Light engagement</li>
+								<li>Content curation</li>
+								<li>Monthly reports</li>
+								
+								<li class="pricing_order">	
+									{% if request.GET.ref %}
+										<a href="{% url 'signup' %}?ref={{ request.GET.ref }}">Get Started</a>
+									{% else %}
+										<a href="{% url 'signup' %}">Get Started</a>
+									{% endif %}
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="one_third">
+						<div class="pricing">
+							<div class="pricing_ribbon">
+									<p>Most</br>Popular</p>
+								</div>
+							<div class="pricing_top">		
+								<h4>Cassic Block</h4>
+								<p>$150/mo</p>
+							</div>
+							<ul>
+								<li>Up to two social networks</li>
+								<li>15+ posts per week</li>
+								<li>Regular engagement</li>
+								<li>Content curation</li>
+								<li>Monthly reports</li>
+								<li class="pricing_order">	
+									{% if request.GET.ref %}
+										<a href="{% url 'signup' %}?ref={{ request.GET.ref }}">Get Started</a>
+									{% else %}
+										<a href="{% url 'signup' %}">Get Started</a>
+									{% endif %}
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="one_third last">
+						<div class="pricing">
+							<div class="pricing_top">		
+								<h4>Pro Block</h4>
+								<p>$200/mo</p>
+							</div>
+							<ul>
+								<li>Up to four social networks</li>
+								<li>30+ posts per week</li>
+								<li>Heavy engagement</li>
+								<li>Content curation</li>
+								<li>Monthly reports</li>
+								<li class="pricing_order">	
+									{% if request.GET.ref %}
+										<a href="{% url 'signup' %}?ref={{ request.GET.ref }}">Get Started</a>
+									{% else %}
+										<a href="{% url 'signup' %}">Get Started</a>
+									{% endif %}
+								</li>
+							</ul>
+						</div>
+					</div>
+				
+	
+			</div>
+			</div>
+
+			
+
+				<div class="clear"></div>
+				
+
+		</div>
 
 		<div class="wrap">
 
@@ -91,15 +184,12 @@
 
 						</div>
 					</div>
+					
 					<div class="one_third">
 						<div class="latest_post">
 							<h3><i class="icon-signal"></i> Choose Campaign Scope and Scale</h3>
 
-							<p>We'll provide recommendations but you choose where to spend your budget. Our services are packaged into blocks. Each block covers light content distribution, content curation and engagement, and ad placements. The more blocks you apply to a network, the bigger the impact.</p>
-							{% comment %}
-							<p>You select the social media networks you want to engage with and the amount of resources you want to apply to each. Our services are packaged into blocks. You can buy two Facebook blocks and one Instagram block, for instance.
-							</p>
-							{% endcomment %}
+							<p>We'll provide recommendations but you choose where to spend your budget. Our services are packaged into blocks. Each block covers light content distribution, content curation and engagement. The more blocks you apply to a network, the bigger the impact.</p>
 						</div>
 					</div>
 

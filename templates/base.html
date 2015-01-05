@@ -166,17 +166,19 @@
 				<ul class="sf-menu">
 					{% if request.GET.ref %}      	
 						<li><a href="{% url 'splash' %}?ref={{ request.GET.ref }}">Home</a></li>
+						{% comment %}
 						<li><a href="{% url 'service' %}?ref={{ request.GET.ref }}">Our Service</a></li>
 						<li><a href="{% url 'philosophy' %}?ref={{ request.GET.ref }}">Our Philosophy</a></li>
-						
+						{% endcomment %}
 						<li><a href="http://www.blog.boostblocks.com" target="_blank">Blog</a></li>
 						
 						<li class="selected"><a href="{% url 'login' %}?ref={{ request.GET.ref }}">Login</a></li> 
 			    	{% else %}
 			    		<li><a href="{% url 'splash' %}">Home</a></li>
+			    		{% comment %}
 			    		<li><a href="{% url 'service' %}">Our Service</a></li>
 			    		<li><a href="{% url 'philosophy' %}">Our Philosophy</a></li>
-			    		
+			    		{% endcomment %}
 			    		<li><a href="http://www.blog.boostblocks.com" target="_blank">Blog</a></li>
 			    		
 			    		
