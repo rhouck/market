@@ -44,7 +44,11 @@ def signup_email(request):
 			
 			cd = form.cleaned_data
 			
-			result = django_rq.enqueue(create_highrise_account, cd['email'].lower(), 'signup_email_collection')
+			tags = ['signup_email_collection',]
+			if not LIVE:
+				tags.append('dev')
+			
+			result = django_rq.enqueue(create_highrise_account, cd['email'].lower(), tags)
 			
 			url = str(reverse('signup_full'))
 			url += "?email=%s" % (cd['email'])
@@ -85,7 +89,7 @@ def signup(request):
 		cd = form.cleaned_data
 		email = cd['email']
 	"""
-	
+
 	form = SubscribeForm(inputs)
 	try:
 		
@@ -109,6 +113,7 @@ def signup(request):
 			# get user count
 			count = get_count()
 
+			
 			# create user
 			ref = gen_alphanum_key()
 			if LIVE:
@@ -119,26 +124,27 @@ def signup(request):
 				highrise_id = None
 
 			email = cd['email'].lower()
-			signup = ParseUser.signup(email, 
-										cd['password'], 
-										email=email, 
-										full_name=cd['full_name'],
-										ref=ref, 
-										count=count, 
-										type=env_type, 
-										highrise_id=highrise_id, 
-										staff=False)
 			
+			try:
+				signup = ParseUser.signup(email, 
+											cd['password'], 
+											email=email, 
+											full_name=cd['full_name'],
+											ref=ref, 
+											count=count, 
+											type=env_type, 
+											highrise_id=highrise_id, 
+											staff=False)
+			except Exception as err:
+				raise Exception(err)
+
+			del cd['password']
+			del cd['full_name']
+
 			result = django_rq.enqueue(bg_cust_setup, cd, count, ref, referred_by)
 			
 			rev = str(reverse('confirmation', kwargs={'ref': ref}))
 			return HttpResponseRedirect(rev)	
-			"""
-			url = "https://surprisr.chargify.com/h/3537446/subscriptions/new"
-			if referred_by:
-				url += "?ref=%s" % (referred_by)
-			return HttpResponseRedirect(url)	
-			"""
 			
 		else:
 			raise Exception()

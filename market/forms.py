@@ -36,12 +36,13 @@ class SubscribeForm(LoginForm):
         ('over $1 milliion', 'Over $1 milliion'),
         ('over $10 milliion', 'Over $10 milliion'),
     )
-    sales = forms.ChoiceField(choices=Sales_Choices)
+    sales = forms.ChoiceField(required=False, choices=Sales_Choices)
     #industry = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': 'Your industry'}))
-    pitch = forms.CharField(min_length=2, widget=forms.Textarea(attrs={'placeholder': 'What is your mission statement and sales pitch? (pretend we are a customer of yours)', 'rows': 6}))
-    industry = forms.CharField(min_length=2, widget=forms.Textarea(attrs={'placeholder': 'Describe the industry you operate in. List some topics relevant to your industry and business.', 'rows': 4}))
+    pitch = forms.CharField(min_length=2, widget=forms.Textarea(attrs={'placeholder': 'What is your mission statement and sales pitch?', 'rows': 6}))
+    industry = forms.CharField(min_length=2, widget=forms.Textarea(attrs={'placeholder': 'Describe the industry you operate in. Provide some keywords relevant to your industry and business.', 'rows': 4}))
     target_description = forms.CharField(min_length=2, widget=forms.Textarea(attrs={'placeholder': 'Define your target market and buyer personas:\n\n - Where do they live?\n - What are their interests?\n - Social networks you know they are on?\n - Influencers they follow?', 'rows': 6}))
     brand_description = forms.CharField(min_length=2, widget=forms.Textarea(attrs={'placeholder': 'Please briefly describe your brand as you see it and as want it to be.', 'rows': 4}))
+    influencers = forms.CharField(max_length=200, widget=forms.TextInput(attrs={'placeholder': 'Who are the primary influencers or thoguht leaders in your industry?'}))
     clients = forms.CharField(max_length=200, widget=forms.TextInput(attrs={'placeholder': 'List two current and two prospective clients/customers.'}))
     competition = forms.CharField(max_length=200, widget=forms.TextInput(attrs={'placeholder': 'List a couple of your primary competitors.'}))
     other = forms.CharField(required=False, min_length=2, widget=forms.Textarea(attrs={'placeholder': 'Anything else you would like us to know? (optional)', 'rows': 2}))

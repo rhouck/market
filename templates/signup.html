@@ -66,6 +66,11 @@
                     	<p class="errors">{{ error }}</p>
                     {% endfor %}
 					{{ form.soc_three|add_class:"text-button"}}
+
+					{% for error in form.soc_four.errors %}
+                    	<p class="errors">{{ error }}</p>
+                    {% endfor %}
+					{{ form.soc_four|add_class:"text-button"}}
 					
 					</br></br>
 					<h3>Let's get to know your business</h3>
@@ -80,25 +85,33 @@
 					{% for error in form.sales.errors %}
                     	<p class="errors">{{ error }}</p>
                     {% endfor %}
-					Expected sales this year:	
-					<div>
-						{{ form.sales|add_class:"select-button"}}
-					</div>
 					
+					{% comment %}
+						Expected sales this year:	
+						<div>
+							{{ form.sales|add_class:"select-button"}}
+						</div>
+					{% endcomment %}
+
 					{% for error in form.pitch.errors %}
                     	<p class="errors">{{ error }}</p>
                     {% endfor %}
 					{{ form.pitch|add_class:"textarea-button"}}
+
+					{% for error in form.brand_description.errors %}
+                    	<p class="errors">{{ error }}</p>
+                    {% endfor %}
+					{{ form.brand_description|add_class:"textarea-button"}}
 
 					{% for error in form.industry.errors %}
                     	<p class="errors">{{ error }}</p>
                     {% endfor %}
 					{{ form.industry|add_class:"textarea-button"}}
 
-					{% for error in form.brand_description.errors %}
+					{% for error in form.influencers.errors %}
                     	<p class="errors">{{ error }}</p>
                     {% endfor %}
-					{{ form.brand_description|add_class:"textarea-button"}}
+					{{ form.influencers|add_class:"text-button"}}
 
 					{% for error in form.target_description.errors %}
                     	<p class="errors">{{ error }}</p>
