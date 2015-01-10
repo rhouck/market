@@ -52,25 +52,32 @@
                     {% endfor %}
 					{{ form.website|add_class:"text-button"}}
 					
-					{% for error in form.soc_one.errors %}
-                    	<p class="errors">{{ error }}</p>
-                    {% endfor %}
-					{{ form.soc_one|add_class:"text-button"}}
+					{% comment %}
+						{% for error in form.soc_one.errors %}
+	                    	<p class="errors">{{ error }}</p>
+	                    {% endfor %}
+						{{ form.soc_one|add_class:"text-button"}}
 
-					{% for error in form.soc_two.errors %}
-                    	<p class="errors">{{ error }}</p>
-                    {% endfor %}
-					{{ form.soc_two|add_class:"text-button"}}
+						{% for error in form.soc_two.errors %}
+	                    	<p class="errors">{{ error }}</p>
+	                    {% endfor %}
+						{{ form.soc_two|add_class:"text-button"}}
 
-					{% for error in form.soc_three.errors %}
-                    	<p class="errors">{{ error }}</p>
-                    {% endfor %}
-					{{ form.soc_three|add_class:"text-button"}}
+						{% for error in form.soc_three.errors %}
+	                    	<p class="errors">{{ error }}</p>
+	                    {% endfor %}
+						{{ form.soc_three|add_class:"text-button"}}
 
-					{% for error in form.soc_four.errors %}
+						{% for error in form.soc_four.errors %}
+	                    	<p class="errors">{{ error }}</p>
+	                    {% endfor %}
+						{{ form.soc_four|add_class:"text-button"}}
+					{% endcomment %}
+
+					{% for error in form.social_media_presence.errors %}
                     	<p class="errors">{{ error }}</p>
                     {% endfor %}
-					{{ form.soc_four|add_class:"text-button"}}
+					{{ form.social_media_presence|add_class:"textarea-button"}}
 					
 					</br></br>
 					<h3>Let's get to know your business</h3>
@@ -121,12 +128,12 @@
 					{% for error in form.clients.errors %}
                     	<p class="errors">{{ error }}</p>
                     {% endfor %}			
-					{{ form.clients|add_class:"text-button"}}
+					{{ form.clients|add_class:"textarea-button"}}
 					
 					{% for error in form.competition.errors %}
                     	<p class="errors">{{ error }}</p>
                     {% endfor %}
-					{{ form.competition|add_class:"text-button"}}
+					{{ form.competition|add_class:"textarea-button"}}
 
 					{% for error in form.other.errors %}
                     	<p class="errors">{{ error }}</p>
@@ -135,7 +142,7 @@
 
 
 					</br></br>
-					<h3>Marketing needs</h3>
+					<h3>Marketing</h3>
 					{% for error in form.goals.errors %}
                     	<p class="errors">{{ error }}</p>
                     {% endfor %}
@@ -150,6 +157,11 @@
 	                    {% endfor %}				
 						{{ form.budget|add_class:"text-button"}}
 					{% endcomment %}
+
+					{% for error in form.marketing_team.errors %}
+                    	<p class="errors">{{ error }}</p>
+                    {% endfor %}
+					{{ form.marketing_team|add_class:"textarea-button"}}
 
 					{% for error in form.creatives.errors %}
                     	<p class="errors">{{ error }}</p>

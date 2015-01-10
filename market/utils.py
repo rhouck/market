@@ -167,8 +167,7 @@ def alert_admin_new_signup(inps):
 	if LIVE:
 		msg = EmailMultiAlternatives(subject, text_content, DEFAULT_FROM_EMAIL, [DEFAULT_FROM_EMAIL, 'ryan@boostblocks.com','sarina@boostblocks.com'], [HIGHRISE_CONFIG['email']], connection=connection)
 	else:
-		pass
-		#msg = EmailMultiAlternatives(subject, text_content, DEFAULT_FROM_EMAIL, [DEFAULT_FROM_EMAIL, 'ryan@boostblocks.com'], connection=connection)
+		msg = EmailMultiAlternatives(subject, text_content, DEFAULT_FROM_EMAIL, [DEFAULT_FROM_EMAIL, 'ryan@boostblocks.com'], connection=connection)
 	msg.attach_alternative(html_content, "text/html")
 	msg.send()
 
