@@ -70,6 +70,7 @@ def send_welcome_email(to_email, count, ref):
     else:
     	msg = EmailMultiAlternatives(subject, text_content, DEFAULT_FROM_EMAIL, [to_email], connection=connection)
     msg.attach_alternative(html_content, "text/html")
+    
     msg.send()
 
 def confirmed_payments_email(acct):

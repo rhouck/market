@@ -110,9 +110,10 @@ def signup(request):
 			except:
 				pass
 
+				
 			# get user count
 			count = get_count()
-
+			
 			
 			# create user
 			ref = gen_alphanum_key()
@@ -130,7 +131,7 @@ def signup(request):
 											cd['password'], 
 											email=email, 
 											full_name=cd['full_name'],
-											ref=ref, 
+											ref=ref,
 											count=count, 
 											type=env_type, 
 											highrise_id=highrise_id, 
